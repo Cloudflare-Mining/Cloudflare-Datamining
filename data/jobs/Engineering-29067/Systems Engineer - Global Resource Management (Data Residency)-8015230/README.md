@@ -7,43 +7,40 @@
 </div>
 <p><strong>Location: Austin </strong>(Hybrid)</p>
 <h2>About the Role&nbsp;</h2>
-<p>Cloudflare operates one of the world's largest networks, processing millions of requests per second across 300+ cities. Today, customers can localize where their traffic is processed, but their configuration data, logs, and cryptographic keys still live in centralized datacenters. Data Residency Architecture (DRA) closes that gap. It extends data residency from the data plane across every layer of how Cloudflare stores, processes, and protects customer data. Customers get the ability to keep their data where their laws say it should be. DRA isn't a separate network or an isolated fork. It's the same Cloudflare, with cryptographic and architectural controls ensuring customer data stays within the regions a customer chooses. The program spans multiple pillars, from regional storage and post-quantum cryptography to logging pipeline expansion and product onboarding, with multiple engineering teams working in parallel.</p>
-<p><strong>&nbsp;</strong></p>
-<p>You'll join a small, high-autonomy team within this larger program. Your primary focus is building the customer-facing and internal experience for DRA: how customers create regionalized accounts, how API requests route to regional control planes, how the dashboard adapts to per-account data residency, and how Cloudflare's internal teams provision and manage it all. The nature of a cross-cutting program means you won't stay in one lane. You'll integrate with teams building the regional storage orchestrator, the cryptographic key layer, and the data pipeline infrastructure. The scope is wide, the team is small, and the decisions you make will shape how this system works at scale.</p>
+<p>Cloudflare operates one of the world's largest networks, processing millions of requests per second across 300+ cities. Customers manage increasingly complex portfolios of resources on the platform, but there is no unified way to organize, group, or govern them across products. The Global Resource Management team introduces a centralized metadata across every Cloudflare resource, enabling customers to annotate resources with custom tags and unlocking platform-level capabilities.</p>
+<p>&nbsp;</p>
+<p>You'll join the Global Resource Management (GRM) team, a small, high-autonomy team that builds the platform infrastructure other Cloudflare products build on top of. GRM is the centralized orchestration layer for cross-cutting resource operations. If a feature needs to work across every product (tagging, sharing, universal resource identity), GRM builds and operates it.&nbsp;</p>
+<p>&nbsp;</p>
 <h2>What You'll Work On</h2>
-<ul>
-	<li><strong>Regional API Routing</strong> - Build per-account API hostname generation and routing so that customer requests terminate in their chosen country, integrating with Cloudflare's Data Localization Suite and edge API gateway.</li>
-	<li><strong>Dashboard Integration</strong> - Modify the Cloudflare dashboard so that API calls route through regional endpoints while surfacing clear regional indicators to the customer.</li>
-	<li><strong>Account Creation &amp; Provisioning</strong> - Build the account creation flow that captures country/region selection and integrates with the Control Plane Platform orchestrator to provision per-account regional storage and configuration.</li>
-	<li><strong>Internal Tooling</strong> - Build admin tooling (provisioning integrations, billing shims, operational dashboards) so that support, sales, and finance teams can manage DRA accounts without violating residency constraints.</li>
-	<li><strong>Cross-Team Integration </strong>- Work across the DRA program to integrate with regional storage, cryptographic key management, and logging infrastructure built by other teams.</li>
-	<li><strong>Migration &amp; Self-Service</strong> - Help design the path from manual provisioning (MVP) to dashboard self-service, and eventually tooling that migrates existing enterprise customers into DRA.&nbsp;</li>
-</ul>
-<p><strong>&nbsp;</strong></p>
-<h2>What We're Looking For&nbsp;</h2>
+<p>Your primary focus is building and operating the microservices and REST APIs that power the tag-api platform. You'll design and implement API endpoints, define data models, write migrations, and build the service-layer logic that handles validation, quota enforcement, and concurrency control. The work is hands-on backend engineering: building reliable, well-tested web services that other teams depend on.</p>
+<p>&nbsp;</p>
+<p>A significant part of the role is scaling the platform to support new resource types and higher-throughput use cases. This includes building bulk operations APIs that handle thousands of resources per request while considering consistency, latency, and failure-mode tradeoffs.</p>
+<p>&nbsp;</p>
+<p>GRM is a platform team, and this role is horizontal by nature. The services you build are consumed by teams across Cloudflare — Workers, Zero Trust, DNS, Access, Billing — and you'll work with those teams to onboard their resources, integrate with their APIs, and ensure the platform scales with their needs. The scope is wide, the team is small, and the systems you build will be foundational to how Cloudflare manages resources at scale.</p>
+<p>&nbsp;</p>
+<h2>What We're Looking For</h2>
 <h3>Required:</h3>
 <ul>
 	<li>3+ years of professional software engineering experience building production systems at scale.</li>
-	<li>Proficiency in Go. Our backend services and core platform are written in Go.&nbsp;</li>
-	<li>Comfort or willingness to work in TypeScript. Our control plane uses Cloudflare Workers (TypeScript), and the dashboard is a TypeScript application.</li>
-	<li>Experience designing and building REST APIs. You understand routing, authentication, request lifecycle, and how frontends consume distributed backends.</li>
-	<li>Comfort with distributed systems tradeoffs — data locality, replication, consistency models, and the latency implications of geographically distributed infrastructure. You don't need to have designed a sharded database, but you should be able to reason about why it matters that a customer's data is in Frankfurt and not Portland.</li>
-	<li>Ability to work across team boundaries. DRA spans nearly every engineering organization at Cloudflare. You'll need to navigate ambiguity, communicate technical tradeoffs clearly, and drive alignment with engineers you don't share a standup with.&nbsp;</li>
+	<li>Proficiency in Go.</li>
+	<li>Experience designing and building REST APIs. You understand routing, authentication, request lifecycle, and how to design APIs that other teams integrate with at scale.</li>
+	<li>Comfort with PostgreSQL in production including: schema design, migrations, query optimization, and understanding replication patterns.</li>
+	<li>Ability to navigate ambiguity, communicate technical tradeoffs clearly, and drive alignment with engineers you don't share a standup with.</li>
+	<li>Comfort with distributed systems tradeoffs; consistency models, eventual consistency, event-driven replication, and the operational implications of propagating state across multiple databases and edge infrastructure.</li>
 </ul>
-<p><strong>&nbsp;</strong></p>
 <h3>Nice to Have:</h3>
 <ul>
-	<li>Experience with data residency, sovereignty, or compliance engineering (GDPR, EU Data Act, EUCS, FedRAMP, or equivalent regulatory frameworks).</li>
-	<li>Familiarity with edge computing platforms such as Cloudflare Workers, Durable Objects, or similar serverless/edge-native runtimes.</li>
-	<li>Familiarity with PostgreSQL, ClickHouse, or SQLite in production environments.&nbsp;</li>
+	<li>Experience building platform infrastructure or internal developer platforms (ie: systems that other engineering teams build on top of)</li>
+	<li>Familiarity with Kubernetes for service deployment and operations.</li>
+	<li>Experience with event-driven architectures, outbox patterns, or message-based replication (e.g., Watermill, Kafka, or similar).</li>
+	<li>Familiarity with edge computing platforms such as Cloudflare Workers or similar serverless/edge-native runtimes.</li>
 </ul>
-<p><strong>&nbsp;</strong></p>
 <h2>Why This Role</h2>
 <ul>
-	<li>Greenfield at scale. You're building a new architectural capability from the ground up on one of the largest networks on the Internet&nbsp;</li>
-	<li>Small team, big scope. This is a small, high-autonomy engineering team operating within a major cross-functional program. You'll have outsized ownership and direct influence over technical decisions, not a ticket queue.</li>
-	<li>Cross-cutting impact. DRA touches the control plane, data plane, logging pipeline, cryptographic infrastructure, and customer experience. This role is not siloed into one service or one layer of the stack.</li>
-	<li>Regulatory relevance. Data sovereignty is one of the defining infrastructure challenges of the next decade. You'll build deep expertise in a problem space with growing demand across every major cloud provider and regulated industry.</li>
+	<li><strong>Platform-level impact.</strong> You're building and shaping infrastructure that every Cloudflare product depends on.&nbsp;</li>
+	<li><strong>Small team, big scope.</strong> GRM is a small, high-autonomy team operating on a platform-wide mandate. You'll have outsized ownership and direct influence over technical decisions, not a ticket queue.</li>
+	<li><strong>Cross-cutting by design.</strong> This role is inherently horizontal. You'll integrate with teams across the entire company; Workers, Zero Trust, DNS, Access, Billing, IAM, and understand how Cloudflare works end-to-end in a way that few roles offer.</li>
+	<li><strong>Greenfield systems work.</strong> Many projects are being designed and built now. You're not maintaining legacy systems, you're defining the patterns that the rest of the platform will adopt.</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Benefits</strong></p>
