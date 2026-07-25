@@ -1,99 +1,137 @@
 #!/usr/bin/env bash
-# Validates a Turnstile siteverify integration end-to-end.
-#
-# Reads:
-#   $TURNSTILE_SECRET      (required for the dummy-token check)
-#   $CLOUDFLARE_API_TOKEN  (optional — when set, also runs the widget-domains
-#                           sanity check; when unset, that check is skipped
-#                           so the post-dashboard flow can validate without
-#                           a manually-created token)
-#
-# Args:
-#   --account-id <id>             Cloudflare account ID (only used when CLOUDFLARE_API_TOKEN is set)
-#   --sitekey <key>               Widget sitekey
-#   --expected-domains <a,b,c>    Comma-separated domains that must appear in the widget's domains array
-#
-# Outputs JSON. Exit 0 if all checks pass, 1 otherwise.
-#   ok:    {"status":"ok","hostname_check":"ran"|"skipped"}
-#   fail:  {"status":"error","check":"dummy_siteverify|hostname","detail":"<msg>"}
+# Validates a Turnstile widget without placing its secret in arguments,
+# exported environment variables, logs, or temporary files.
 
-set -uo pipefail
+set +x
+set -euo pipefail
 
-ACCOUNT_ID=""
+usage() {
+  echo "Usage: printf '%s' \"\$TURNSTILE_SECRET\" | $0 --sitekey <sitekey> --account-id <account-id> --expected-domains '<json-array>'" >&2
+  exit 2
+}
+
+need_arg() {
+  if [[ -z "${2-}" || "$2" == --* ]]; then
+    usage
+  fi
+}
+
 SITEKEY=""
-EXPECTED_DOMAINS=""
+ACCOUNT_ID=""
+EXPECTED_DOMAINS_JSON=""
+
 while [[ $# -gt 0 ]]; do
-  case $1 in
-    --account-id)       ACCOUNT_ID="$2"; shift 2 ;;
-    --sitekey)          SITEKEY="$2"; shift 2 ;;
-    --expected-domains) EXPECTED_DOMAINS="$2"; shift 2 ;;
-    *) echo "validate: unknown arg $1" >&2; exit 2 ;;
+  case "$1" in
+    --sitekey)
+      need_arg "$1" "${2-}"
+      SITEKEY="$2"
+      shift 2
+      ;;
+    --account-id)
+      need_arg "$1" "${2-}"
+      ACCOUNT_ID="$2"
+      shift 2
+      ;;
+    --expected-domains)
+      need_arg "$1" "${2-}"
+      EXPECTED_DOMAINS_JSON="$2"
+      shift 2
+      ;;
+    *) usage ;;
   esac
 done
 
-: "${TURNSTILE_SECRET:?TURNSTILE_SECRET must be set (the secret captured in Step 8)}"
-: "${SITEKEY:?--sitekey required}"
-
-# Check 1: dummy-token siteverify against challenges.cloudflare.com.
-# A valid secret + dummy token returns success:false with
-# error-codes:["invalid-input-response"]. That confirms the secret is
-# correctly bound to the widget; anything else is a real misconfiguration.
-dummy=$(curl -sS -X POST "https://challenges.cloudflare.com/turnstile/v0/siteverify" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  --data-urlencode "secret=${TURNSTILE_SECRET}" \
-  --data-urlencode "response=XXXX.DUMMY.TOKEN.XXXX" 2>/dev/null || echo "")
-
-success=$(echo "$dummy" | (jq -r '.success // "missing"' 2>/dev/null || echo "missing"))
-codes=$(echo "$dummy" | (jq -r '.["error-codes"] // [] | join(",")' 2>/dev/null || echo ""))
-
-if [ "$success" != "false" ]; then
-  echo "validate: siteverify returned unexpected shape for a dummy token: $dummy" >&2
-  echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"expected success:false on a dummy token\"}"
+[[ -n "$SITEKEY" && -n "$ACCOUNT_ID" && -n "$EXPECTED_DOMAINS_JSON" ]] || usage
+: "${CLOUDFLARE_API_TOKEN:?CLOUDFLARE_API_TOKEN must be set}"
+API_TOKEN="$CLOUDFLARE_API_TOKEN"
+unset CLOUDFLARE_API_TOKEN
+[[ "$API_TOKEN" =~ ^[A-Za-z0-9_-]+$ ]] || {
+  echo "validate: CLOUDFLARE_API_TOKEN has an invalid format" >&2
   exit 1
-fi
+}
 
-case ",$codes," in
-  *,invalid-input-secret,*)
-    echo "validate: siteverify rejected the secret. TURNSTILE_SECRET does not match the widget's secret." >&2
-    echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"invalid-input-secret\"}"
+for command_name in curl jq python3; do
+  command -v "$command_name" >/dev/null 2>&1 || {
+    echo "validate: $command_name is required" >&2
     exit 1
-    ;;
-  *,invalid-input-response,*)
-    : # Expected. Continue.
-    ;;
-  *)
-    echo "validate: unexpected error codes from siteverify: $codes" >&2
-    echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"unexpected codes: $codes\"}"
-    exit 1
-    ;;
-esac
-
-# Check 2: hostname / widget domains registered. Optional — requires a
-# Cloudflare API token. When the token isn't available (e.g. post-dashboard
-# success-card flow), skip this check and report `hostname_check: skipped`.
-if [ -z "${CLOUDFLARE_API_TOKEN:-}" ] || [ -z "$ACCOUNT_ID" ] || [ -z "$EXPECTED_DOMAINS" ]; then
-  echo "validate: skipping hostname check (CLOUDFLARE_API_TOKEN, --account-id, or --expected-domains not provided)" >&2
-  echo '{"status":"ok","hostname_check":"skipped"}'
-  exit 0
-fi
-
-widget=$(curl -sS \
-  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \
-  -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" 2>/dev/null)
-registered=$(echo "$widget" | (jq -r '.result.domains[]' 2>/dev/null || python3 -c "import sys,json; [print(d) for d in json.load(sys.stdin)['result']['domains']]"))
-
-missing=""
-IFS=',' read -ra DOMS <<< "$EXPECTED_DOMAINS"
-for d in "${DOMS[@]}"; do
-  if ! echo "$registered" | grep -qFx "$d"; then
-    missing="${missing}${d} "
-  fi
+  }
 done
 
-if [ -n "$missing" ]; then
-  echo "validate: hostname check failed; domains not on widget: $missing" >&2
-  echo "{\"status\":\"error\",\"check\":\"hostname\",\"detail\":\"missing domains: ${missing% }\"}"
+if ! jq -e '
+  type == "array" and
+  length > 0 and
+  all(.[]; type == "string" and length > 0)
+' <<<"$EXPECTED_DOMAINS_JSON" >/dev/null; then
+  echo "validate: --expected-domains must be a non-empty JSON array of domains" >&2
+  exit 2
+fi
+
+WIDGET_SECRET=""
+IFS= read -r -d '' WIDGET_SECRET || true
+trap 'unset API_TOKEN WIDGET_SECRET WIDGET_API_SECRET WIDGET_RESPONSE SITEVERIFY_RESPONSE' EXIT
+
+if [[ -z "$WIDGET_SECRET" || "$WIDGET_SECRET" =~ [[:space:]] ]]; then
+  echo "validate: standard input must contain one non-empty secret without whitespace" >&2
   exit 1
 fi
 
-echo '{"status":"ok","hostname_check":"ran"}'
+ACCOUNT_ENCODED="$(python3 -I -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$ACCOUNT_ID")"
+SITEKEY_ENCODED="$(python3 -I -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$SITEKEY")"
+
+if ! WIDGET_RESPONSE="$(
+  printf 'header = "Authorization: Bearer %s"\n' "$API_TOKEN" |
+    curl --disable --config - --fail --silent --show-error \
+      "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ENCODED/challenges/widgets/$SITEKEY_ENCODED"
+)"; then
+  echo "validate: widget metadata lookup failed" >&2
+  exit 1
+fi
+
+if ! printf '%s' "$WIDGET_RESPONSE" | jq -e --arg sitekey "$SITEKEY" --argjson expected "$EXPECTED_DOMAINS_JSON" '
+  . as $widget
+  | (.success == true) and
+    (.result.sitekey == $sitekey) and
+    ((.result.clearance_level | type) == "string") and
+    (.result.clearance_level as $clearance | ["no_clearance", "interactive", "managed", "jschallenge"] | index($clearance) != null) and
+    ((.result.domains | type) == "array") and
+    (all($expected[]; . as $domain | $widget.result.domains | index($domain) != null))
+' >/dev/null; then
+  echo "validate: widget sitekey, domains, or clearance level was invalid" >&2
+  exit 1
+fi
+
+if ! WIDGET_API_SECRET="$(printf '%s' "$WIDGET_RESPONSE" | jq -er '.result.secret | select(type == "string" and test("^\\S+$"))')"; then
+  echo "validate: widget metadata did not include a valid secret" >&2
+  exit 1
+fi
+if [[ "$WIDGET_API_SECRET" != "$WIDGET_SECRET" ]]; then
+  echo "validate: secret does not belong to the requested sitekey" >&2
+  exit 1
+fi
+unset WIDGET_API_SECRET
+unset WIDGET_RESPONSE
+
+if ! SITEVERIFY_RESPONSE="$(
+  printf '%s' "$WIDGET_SECRET" |
+    python3 -I -c 'import sys,urllib.parse; print(urllib.parse.urlencode({"secret":sys.stdin.read(),"response":"XXXX.DUMMY.TOKEN.XXXX"}),end="")' |
+    curl --disable --fail --silent --show-error \
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify" \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      --data-binary @-
+)"; then
+  echo "validate: dummy-token siteverify request failed" >&2
+  exit 1
+fi
+
+if ! jq -e '
+  (.success == false) and
+  ((.["error-codes"] | type) == "array") and
+  ((.["error-codes"] | index("invalid-input-response")) != null) and
+  ((.["error-codes"] | index("invalid-input-secret")) == null)
+' <<<"$SITEVERIFY_RESPONSE" >/dev/null; then
+  echo "validate: siteverify did not confirm the widget secret" >&2
+  exit 1
+fi
+
+unset WIDGET_SECRET SITEVERIFY_RESPONSE
+echo '{"status":"ok","metadata_check":"ran","dummy_siteverify":"ran"}'
