@@ -1,0 +1,187 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"type": "string",
+			"minLength": 1
+		},
+		"composition_plan": {
+			"type": "object",
+			"properties": {
+				"chunks": {
+					"minItems": 1,
+					"type": "array",
+					"items": {
+						"anyOf": [
+							{
+								"type": "object",
+								"properties": {
+									"text": {
+										"type": "string",
+										"minLength": 1
+									},
+									"duration_ms": {
+										"type": "integer",
+										"minimum": 3000,
+										"maximum": 120000
+									},
+									"positive_styles": {
+										"minItems": 1,
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"negative_styles": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"context_adherence": {
+										"type": "string",
+										"enum": [
+											"low",
+											"medium",
+											"high"
+										]
+									},
+									"conditioning_ref": {
+										"type": "object",
+										"properties": {
+											"song_id": {
+												"type": "string",
+												"minLength": 1
+											},
+											"range": {
+												"type": "object",
+												"properties": {
+													"start_ms": {
+														"type": "integer",
+														"minimum": 0,
+														"maximum": 9007199254740991
+													},
+													"end_ms": {
+														"type": "integer",
+														"minimum": 1,
+														"maximum": 9007199254740991
+													}
+												},
+												"required": [
+													"start_ms",
+													"end_ms"
+												],
+												"additionalProperties": false
+											}
+										},
+										"required": [
+											"song_id",
+											"range"
+										],
+										"additionalProperties": false
+									},
+									"condition_strength": {
+										"type": "string",
+										"enum": [
+											"low",
+											"medium",
+											"high",
+											"xhigh"
+										]
+									}
+								},
+								"required": [
+									"text",
+									"duration_ms",
+									"positive_styles"
+								],
+								"additionalProperties": false
+							},
+							{
+								"type": "object",
+								"properties": {
+									"song_id": {
+										"type": "string",
+										"minLength": 1
+									},
+									"range": {
+										"type": "object",
+										"properties": {
+											"start_ms": {
+												"type": "integer",
+												"minimum": 0,
+												"maximum": 9007199254740991
+											},
+											"end_ms": {
+												"type": "integer",
+												"minimum": 1,
+												"maximum": 9007199254740991
+											}
+										},
+										"required": [
+											"start_ms",
+											"end_ms"
+										],
+										"additionalProperties": false
+									}
+								},
+								"required": [
+									"song_id",
+									"range"
+								],
+								"additionalProperties": false
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"chunks"
+			],
+			"additionalProperties": false
+		},
+		"music_length_ms": {
+			"type": "integer",
+			"minimum": 3000,
+			"maximum": 600000
+		},
+		"output_format": {
+			"type": "string",
+			"enum": [
+				"auto",
+				"mp3_48000_128",
+				"mp3_48000_192",
+				"mp3_48000_240",
+				"mp3_48000_320",
+				"mp3_22050_32",
+				"mp3_24000_48",
+				"mp3_44100_32",
+				"mp3_44100_64",
+				"mp3_44100_96",
+				"mp3_44100_128",
+				"mp3_44100_192",
+				"opus_48000_32",
+				"opus_48000_64",
+				"opus_48000_96",
+				"opus_48000_128",
+				"opus_48000_192"
+			]
+		},
+		"seed": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 4294967295
+		},
+		"force_instrumental": {
+			"type": "boolean"
+		},
+		"store_for_inpainting": {
+			"type": "boolean"
+		},
+		"sign_with_c2pa": {
+			"type": "boolean"
+		}
+	},
+	"additionalProperties": false
+}

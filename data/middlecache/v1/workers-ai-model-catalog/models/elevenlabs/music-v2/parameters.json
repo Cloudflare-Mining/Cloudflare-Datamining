@@ -1,0 +1,632 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"minLength": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "composition_plan",
+				"name": "composition_plan",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "composition_plan.chunks",
+						"name": "chunks",
+						"type": "array",
+						"isArray": true,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"metadata": {
+							"minItems": 1
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "composition_plan.chunks.0",
+								"name": "Option 1",
+								"type": "object",
+								"isArray": false,
+								"isObject": true,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": true,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								],
+								"children": [
+									{
+										"id": "composition_plan.chunks.0.text",
+										"name": "text",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"metadata": {
+											"minLength": 1
+										},
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									},
+									{
+										"id": "composition_plan.chunks.0.duration_ms",
+										"name": "duration_ms",
+										"type": "integer",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"metadata": {
+											"minimum": 3000,
+											"maximum": 120000
+										},
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									},
+									{
+										"id": "composition_plan.chunks.0.positive_styles",
+										"name": "positive_styles",
+										"type": "array",
+										"isArray": true,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"metadata": {
+											"minItems": 1
+										},
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										],
+										"children": [
+											{
+												"id": "composition_plan.chunks.0.positive_styles.items",
+												"name": "items",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": false,
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													true,
+													false,
+													false
+												]
+											}
+										]
+									},
+									{
+										"id": "composition_plan.chunks.0.negative_styles",
+										"name": "negative_styles",
+										"type": "array",
+										"isArray": true,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										],
+										"children": [
+											{
+												"id": "composition_plan.chunks.0.negative_styles.items",
+												"name": "items",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": false,
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													true,
+													false,
+													false
+												]
+											}
+										]
+									},
+									{
+										"id": "composition_plan.chunks.0.context_adherence",
+										"name": "context_adherence",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"enumValues": [
+											"low",
+											"medium",
+											"high"
+										],
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									},
+									{
+										"id": "composition_plan.chunks.0.conditioning_ref",
+										"name": "conditioning_ref",
+										"type": "object",
+										"isArray": false,
+										"isObject": true,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										],
+										"children": [
+											{
+												"id": "composition_plan.chunks.0.conditioning_ref.song_id",
+												"name": "song_id",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"metadata": {
+													"minLength": 1
+												},
+												"depth": 4,
+												"isLast": false,
+												"ancestorIsLast": [
+													false,
+													true,
+													false,
+													false
+												]
+											},
+											{
+												"id": "composition_plan.chunks.0.conditioning_ref.range",
+												"name": "range",
+												"type": "object",
+												"isArray": false,
+												"isObject": true,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													true,
+													false,
+													false
+												],
+												"children": [
+													{
+														"id": "composition_plan.chunks.0.conditioning_ref.range.start_ms",
+														"name": "start_ms",
+														"type": "integer",
+														"isArray": false,
+														"isObject": false,
+														"isOneOf": false,
+														"isOneOfChild": false,
+														"isFirstOneOfChild": false,
+														"isLastOneOfChild": false,
+														"required": true,
+														"metadata": {
+															"minimum": 0,
+															"maximum": 9007199254740991
+														},
+														"depth": 5,
+														"isLast": false,
+														"ancestorIsLast": [
+															false,
+															true,
+															false,
+															false,
+															true
+														]
+													},
+													{
+														"id": "composition_plan.chunks.0.conditioning_ref.range.end_ms",
+														"name": "end_ms",
+														"type": "integer",
+														"isArray": false,
+														"isObject": false,
+														"isOneOf": false,
+														"isOneOfChild": false,
+														"isFirstOneOfChild": false,
+														"isLastOneOfChild": false,
+														"required": true,
+														"metadata": {
+															"minimum": 1,
+															"maximum": 9007199254740991
+														},
+														"depth": 5,
+														"isLast": true,
+														"ancestorIsLast": [
+															false,
+															true,
+															false,
+															false,
+															true
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"id": "composition_plan.chunks.0.condition_strength",
+										"name": "condition_strength",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"enumValues": [
+											"low",
+											"medium",
+											"high",
+											"xhigh"
+										],
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									}
+								]
+							},
+							{
+								"id": "composition_plan.chunks.1",
+								"name": "Option 2",
+								"type": "object",
+								"isArray": false,
+								"isObject": true,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": true,
+								"required": false,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									true
+								],
+								"children": [
+									{
+										"id": "composition_plan.chunks.1.song_id",
+										"name": "song_id",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"metadata": {
+											"minLength": 1
+										},
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											true
+										]
+									},
+									{
+										"id": "composition_plan.chunks.1.range",
+										"name": "range",
+										"type": "object",
+										"isArray": false,
+										"isObject": true,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											false,
+											true,
+											true
+										],
+										"children": [
+											{
+												"id": "composition_plan.chunks.1.range.start_ms",
+												"name": "start_ms",
+												"type": "integer",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"metadata": {
+													"minimum": 0,
+													"maximum": 9007199254740991
+												},
+												"depth": 4,
+												"isLast": false,
+												"ancestorIsLast": [
+													false,
+													true,
+													true,
+													true
+												]
+											},
+											{
+												"id": "composition_plan.chunks.1.range.end_ms",
+												"name": "end_ms",
+												"type": "integer",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"metadata": {
+													"minimum": 1,
+													"maximum": 9007199254740991
+												},
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													true,
+													true,
+													true
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "music_length_ms",
+				"name": "music_length_ms",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"minimum": 3000,
+					"maximum": 600000
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "output_format",
+				"name": "output_format",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"enumValues": [
+					"auto",
+					"mp3_48000_128",
+					"mp3_48000_192",
+					"mp3_48000_240",
+					"mp3_48000_320",
+					"mp3_22050_32",
+					"mp3_24000_48",
+					"mp3_44100_32",
+					"mp3_44100_64",
+					"mp3_44100_96",
+					"mp3_44100_128",
+					"mp3_44100_192",
+					"opus_48000_32",
+					"opus_48000_64",
+					"opus_48000_96",
+					"opus_48000_128",
+					"opus_48000_192"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"minimum": 0,
+					"maximum": 4294967295
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "force_instrumental",
+				"name": "force_instrumental",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "store_for_inpainting",
+				"name": "store_for_inpainting",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "sign_with_c2pa",
+				"name": "sign_with_c2pa",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "audio",
+				"name": "audio",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Base64-encoded data URI for the generated music file.",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

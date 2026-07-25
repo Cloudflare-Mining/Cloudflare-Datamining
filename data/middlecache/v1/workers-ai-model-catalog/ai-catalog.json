@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-24T04:33:50.892Z",
-	"model_count": 206,
+	"generated_at": "2026-07-25T04:33:57.666Z",
+	"model_count": 210,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -711,6 +711,58 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "anthropic/claude-opus-5",
+			"slug": "anthropic/claude-opus-5",
+			"display_name": "Claude Opus 5",
+			"description": "Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Enterprise",
+				"Agentic",
+				"Financial Analysis",
+				"Legal"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://www.anthropic.com/legal/commercial-terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.anthropic.com/claude/opus"
+				}
+			],
+			"metadata": {
+				"Adaptive Thinking": "Yes",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://www.anthropic.com/claude/opus",
+			"terms": "https://www.anthropic.com/legal/commercial-terms",
+			"cover_image_url": null,
+			"created_at": "2026-07-24 19:36:01",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "anthropic/claude-sonnet-4.5",
 			"slug": "anthropic/claude-sonnet-4.5",
 			"display_name": "Claude Sonnet 4.5",
@@ -1382,6 +1434,47 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "elevenlabs/eleven-multilingual-v2",
+			"slug": "elevenlabs/eleven-multilingual-v2",
+			"display_name": "Eleven Multilingual v2",
+			"description": "ElevenLabs' multilingual text-to-speech model for generating natural speech across many languages with ElevenLabs voices.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Speech",
+				"Audio Generation",
+				"Multilingual"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert"
+				}
+			],
+			"metadata": {
+				"Languages": "Multilingual speech generation",
+				"Output Formats": "MP3, WAV, PCM, Opus, u-law, A-law",
+				"Voices": "Supports ElevenLabs voice IDs"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"created_at": "2026-07-24 20:04:40",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "elevenlabs/eleven-turbo-v2-5",
 			"slug": "elevenlabs/eleven-turbo-v2-5",
 			"display_name": "Eleven Turbo v2.5",
@@ -1422,6 +1515,89 @@
 			"terms": "https://elevenlabs.io/terms",
 			"cover_image_url": null,
 			"created_at": "2026-07-09 02:32:45",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "elevenlabs/eleven-v3",
+			"slug": "elevenlabs/eleven-v3",
+			"display_name": "Eleven v3",
+			"description": "ElevenLabs' latest text-to-speech model for highly expressive, natural speech generation with advanced voice control.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Speech",
+				"Audio Generation",
+				"Expressive Speech"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert"
+				}
+			],
+			"metadata": {
+				"Output Formats": "MP3, WAV, PCM, Opus, u-law, A-law",
+				"Voice Control": "Voice settings, seed, text normalization",
+				"Voices": "Supports ElevenLabs voice IDs"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"created_at": "2026-07-24 20:20:34",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "elevenlabs/music-v2",
+			"slug": "elevenlabs/music-v2",
+			"display_name": "ElevenLabs Music v2",
+			"description": "ElevenLabs Music v2 composes songs and instrumental tracks from a prompt or detailed composition plan.",
+			"task": {
+				"id": "",
+				"name": "Music Generation",
+				"description": ""
+			},
+			"tags": [
+				"Music",
+				"Audio Generation",
+				"Instrumental",
+				"Vocals"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/music/compose"
+				}
+			],
+			"metadata": {
+				"Controls": "Prompt, duration, seed, instrumental mode",
+				"Max Duration": "Up to 10 minutes",
+				"Output Formats": "MP3, PCM, Opus, u-law, A-law"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/music/compose",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"created_at": "2026-07-24 20:04:42",
 			"zdr_comment": null
 		},
 		{
@@ -9694,10 +9870,6 @@
 					"value": "true"
 				},
 				{
-					"property_id": "context_window",
-					"value": "131000"
-				},
-				{
 					"property_id": "price",
 					"value": [
 						{
@@ -9711,6 +9883,10 @@
 							"currency": "USD"
 						}
 					]
+				},
+				{
+					"property_id": "context_window",
+					"value": "131000"
 				},
 				{
 					"property_id": "function_calling",

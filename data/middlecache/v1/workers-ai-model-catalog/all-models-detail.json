@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-24T04:33:50.892Z",
-	"model_count": 206,
+	"generated_at": "2026-07-25T04:33:57.666Z",
+	"model_count": 210,
 	"models": {
 		"alibaba/hh1-i2v": {
 			"model_id": "alibaba/hh1-i2v",
@@ -11771,6 +11771,202 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/anthropic/claude-opus-4.8/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"anthropic/claude-opus-5": {
+			"model_id": "anthropic/claude-opus-5",
+			"slug": "anthropic/claude-opus-5",
+			"display_name": "Claude Opus 5",
+			"description": "Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Enterprise",
+				"Agentic",
+				"Financial Analysis",
+				"Legal"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://www.anthropic.com/legal/commercial-terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.anthropic.com/claude/opus"
+				}
+			],
+			"metadata": {
+				"Adaptive Thinking": "Yes",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://www.anthropic.com/claude/opus",
+			"terms": "https://www.anthropic.com/legal/commercial-terms",
+			"cover_image_url": null,
+			"schema_version": "1.0.0",
+			"created_at": "2026-07-24 19:36:01",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": [
+				"anthropic-messages"
+			],
+			"examples": [
+				{
+					"name": "Simple Question",
+					"description": "Basic message request",
+					"input": {
+						"max_tokens": 1024,
+						"messages": [
+							{
+								"content": "What are the three laws of thermodynamics?",
+								"role": "user"
+							}
+						]
+					},
+					"output": {
+						"text": "## The Three Laws (plus a \"zeroth\")\n\n**First Law — Conservation of Energy**\n\nEnergy cannot be created or destroyed, only converted from one form to another or transferred between systems.\n\n$$\\Delta U = Q - W$$\n\nThe change in a system's internal energy equals the heat added to it minus the work it does. Practically: you can't get more energy out of a system than you put in — no perpetual motion machine of the \"first kind.\"\n\n**Second Law — Entropy Increases**\n\nThe total entropy of an isolated system never decreases; it increases in any irreversible process and stays constant only in idealized reversible ones.\n\n$$\\Delta S_{\\text{universe}} \\geq 0$$\n\nEquivalent statements:\n- Heat flows spontaneously from hot to cold, never the reverse (Clausius)\n- No heat engine can convert heat entirely into work with no waste heat (Kelvin–Planck)\n\nThis law gives time its direction and sets hard limits on engine efficiency (the Carnot limit, $1 - T_c/T_h$).\n\n**Third Law — Absolute Zero**\n\nAs a system's temperature approaches absolute zero, its entropy approaches a constant minimum — zero for a perfect crystal.\n\n$$\\lim_{T \\to 0} S = 0$$\n\nA consequence: absolute zero (0 K, −273.15 °C) cannot be reached in a finite number of steps, since each cooling stage removes less and less heat.\n\n**Zeroth Law — Thermal Equilibrium**\n\nAdded later but numbered \"zeroth\" because it's logically prior: if A is in thermal equilibrium with B, and B with C, then A is in equilibrium with C. This is what makes temperature a meaningful, measurable quantity — it's why thermometers work.\n\n---\n\nA common informal summary, framed as a game you can't win:\n\n1. You can't win (best case, you break even on energy).\n2. You can't break even (entropy always takes a cut).\n3. You can't quit the game (you can't reach absolute zero)."
+					},
+					"raw_response": {
+						"model": "claude-opus-5",
+						"id": "msg_011CdMGDW2LrJq4cba8GUiPY",
+						"type": "message",
+						"role": "assistant",
+						"content": [
+							{
+								"type": "thinking",
+								"thinking": "",
+								"signature": "CAIS2QkKhwEIEBgCKkCGqpD8dichIGI5lLTLTWzD2GDKF+Gen+VeCqxOaNMRZqeYfoPp7HK0cVHWubFXJf9965IIfQf9nzzv65obd9QUMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ5ODY2MTIzNC03NmUwLTRlMGQtYTgyMS1iZThmOGMzNDc0ZDYSDJQqAt1B6hIXUNg92hoMn8f8ZlHzdjraBJ58IjCoPdmP+ZQgVQL5WQ0fxFWL3ypuvcKRaZyPWz3ZPRDaxGyyC/2U9eQ3wWYcVD9jfpkq/gfIcgr85vIMOp/wgzqFmC7S7m8v/Gu8FXVKd1TcBtdUrHnA50Aco+ze/xYQV8pVgllVgMW6om3v8kKDRBQ5FnC8h/5/HQ2sT4jaZnM74f1EgYD+hHF6MojpD7uKV0YUuZAfByYCvbzQvbjTrNtij7JfbfQuiYp11mbJdvf1qwOZYzNFfE6BkM8vt5wJCRF527i/+xS6gBf7NrN8nacvq7ZscjQ7NkZ4kE9i+npW7DGZ0/Bm8VxE7dsxdQJ4wHFL/iwR+EcqBk2OzwbKffji6PlFye/CYeFUC39ddwqkh4nasnv2qSJXZEB2n6SeQUrjnw2zBM8+2AhAqWyIAb4/RTkVRex4h/rLWEquKkbTl6eWjDYrOINMFl7fgdel6nH496BIkyK35r6SXA4Qzhnvhd9cPuVZvXjb3jzel1B1yNWvhbH0WxshRbQn+s8bs1ppX4jTRVy1YKKh1A1KT7rW74LQ/QgjY5OjScjv/Q181V/7VoFM7r/Bx+zZNTNFHbDFNjLyxIQyAjVi7AqiCJxjn9tIucRxSSkgix+gsgm81EER+ug5IxNuh84CbYDs/tldzXoE34zkeNFTn17GxdxiF4Q0DUc1Rq1m3ZigKUrnMhQUyE31S3lWS+ZdiXYAB8J9zGRhSsMDRjm7zbq5al0Rr3yEesOb5QtaaV1iguv8ybjUKvxPz/Y36ZV+91F8d5rWED3Nj2EEzd5jnS2759CoSXyOu6OQ7Z2DlWbYPgI8iP4To6WF2R3AIWp/3EbD7yqHIh5caA1MUog4AykTzlTyC+rM3ZTjSKAguveQwLriauP+xUe5iAbyRQsL2+QDqRbhmrOtegvq+32uM+Q7sOoqjwNuk4c9O/nrQ76Ht882YiejTyDTcU5uc7wTuxraK2r3QciQt9hB8xlP5sFGvFSdAAxLwTLQIUNy2UAMzeXez8Jrn86Dv8GiWnZDENTFq4yXn6NiaVxyEuc4Nl3HLeBD9pQcRcaIISjVtj7hlnXtJpVkPJvoHVSgQG2lLvqjU5JAaV3TZbPismWrfRrjKQ0kLhDu3Ta+b88kGWjxYooJX4zGHwnRQMloVwMgJoKNWvXAO+256IW7iyKvC36f8Xc+qoViVCf0+9fiEWn9+OPOfFmqJkkNaYNYV0IiIA17l4LjJ6G2jsqmElla9dZ0IQKl5rxPVYH1iEIONDxPAEjpgA4u3yV3n4TvhxF57CahHA0fWMFiY3FnX8k/SAHbwH8A4nYFRUHsQ3Zxwj8718DZRdg7uiTlPZAc/DpXIvjRUVn4crtT+cNatNaLIhVM7RK9VbPhai9bIZiIuZ6Tokc+TMcPrTsOHIDE/AX0q6MgGetLgJsZGB9o4WGp+FcqKimgaBgB"
+							},
+							{
+								"type": "text",
+								"text": "## The Three Laws (plus a \"zeroth\")\n\n**First Law — Conservation of Energy**\n\nEnergy cannot be created or destroyed, only converted from one form to another or transferred between systems.\n\n$$\\Delta U = Q - W$$\n\nThe change in a system's internal energy equals the heat added to it minus the work it does. Practically: you can't get more energy out of a system than you put in — no perpetual motion machine of the \"first kind.\"\n\n**Second Law — Entropy Increases**\n\nThe total entropy of an isolated system never decreases; it increases in any irreversible process and stays constant only in idealized reversible ones.\n\n$$\\Delta S_{\\text{universe}} \\geq 0$$\n\nEquivalent statements:\n- Heat flows spontaneously from hot to cold, never the reverse (Clausius)\n- No heat engine can convert heat entirely into work with no waste heat (Kelvin–Planck)\n\nThis law gives time its direction and sets hard limits on engine efficiency (the Carnot limit, $1 - T_c/T_h$).\n\n**Third Law — Absolute Zero**\n\nAs a system's temperature approaches absolute zero, its entropy approaches a constant minimum — zero for a perfect crystal.\n\n$$\\lim_{T \\to 0} S = 0$$\n\nA consequence: absolute zero (0 K, −273.15 °C) cannot be reached in a finite number of steps, since each cooling stage removes less and less heat.\n\n**Zeroth Law — Thermal Equilibrium**\n\nAdded later but numbered \"zeroth\" because it's logically prior: if A is in thermal equilibrium with B, and B with C, then A is in equilibrium with C. This is what makes temperature a meaningful, measurable quantity — it's why thermometers work.\n\n---\n\nA common informal summary, framed as a game you can't win:\n\n1. You can't win (best case, you break even on energy).\n2. You can't break even (entropy always takes a cut).\n3. You can't quit the game (you can't reach absolute zero)."
+							}
+						],
+						"stop_reason": "end_turn",
+						"stop_sequence": null,
+						"stop_details": null,
+						"usage": {
+							"input_tokens": 20,
+							"cache_creation_input_tokens": 0,
+							"cache_read_input_tokens": 0,
+							"cache_creation": {
+								"ephemeral_5m_input_tokens": 0,
+								"ephemeral_1h_input_tokens": 0
+							},
+							"output_tokens": 999,
+							"output_tokens_details": {
+								"thinking_tokens": 342
+							},
+							"service_tier": "standard",
+							"inference_geo": "global"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'anthropic/claude-opus-5',\n  {\n    max_tokens: 1024,\n    messages: [{ content: 'What are the three laws of thermodynamics?', role: 'user' }],\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"anthropic/claude-opus-5\",\n  \"max_tokens\": 1024,\n  \"messages\": [\n    {\n      \"content\": \"What are the three laws of thermodynamics?\",\n      \"role\": \"user\"\n    }\n  ]\n}'"
+						}
+					]
+				},
+				{
+					"name": "With System Message",
+					"description": "Using a system message to set context",
+					"input": {
+						"max_tokens": 1024,
+						"messages": [
+							{
+								"content": "How do I read a JSON file in Python?",
+								"role": "user"
+							}
+						],
+						"system": "You are a helpful coding assistant specializing in Python."
+					},
+					"output": {
+						"text": "# Reading JSON Files in Python\n\nPython's built-in `json` module handles this. The key function is `json.load()`.\n\n## Basic usage\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\nThat's it. `data` will be a Python object — usually a `dict` or `list`, depending on the JSON's top-level structure.\n\n## `load()` vs `loads()`\n\n| Function | Input | Use when |\n|---|---|---|\n| `json.load(f)` | file object | reading from a file |\n| `json.loads(s)` | string | you already have JSON text (e.g., from an API response) |\n\n```python\n# From a string\njson_string = '{\"name\": \"Ada\", \"age\": 36}'\ndata = json.loads(json_string)\nprint(data[\"name\"])  # Ada\n```\n\n## Type mapping\n\nJSON values convert to Python like this:\n\n```\nobject  -> dict\narray   -> list\nstring  -> str\nnumber  -> int / float\ntrue    -> True\nfalse   -> False\nnull    -> None\n```\n\n## A more robust version\n\nReal files can be missing, malformed, or wrongly encoded. Handle those cases:\n\n```python\nimport json\nfrom pathlib import Path\n\ndef read_json(path):\n    try:\n        with open(path, \"r\", encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        print(f\"No such file: {path}\")\n    except json.JSONDecodeError as e:\n        print(f\"Invalid JSON in {path}: {e}\")\n    return None\n\nconfig = read_json(\"config.json\")\nif config is not None:\n    print(config.get(\"debug\", False))\n```\n\n`pathlib` offers a neat shortcut for small files:\n\n```python\nfrom pathlib import Path\nimport json\n\ndata = json.loads(Path(\"data.json\").read_text(encoding=\"utf-8\"))\n```\n\n## Accessing nested data\n\n```python\n# data.json:\n# {\"users\": [{\"name\": \"Ada\", \"roles\": [\"admin\", \"dev\"]}]}\n\nfirst_user = data[\"users\"][0]\nprint(first_user[\"name\"])        # Ada\nprint(first_user[\"roles\"][0])    # admin\n\n# Safer, avoids KeyError:\nprint(data.get(\"users\", [{}])[0].get(\"email\", \"no email\"))\n```\n\n## Writing JSON back out\n\n```python\nwith open(\"output.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f, indent=2, ensure_ascii=False)\n```\n\n- `indent=2` — pretty-prints instead of one long line\n- `ensure_ascii=False` — keeps non-ASCII characters readable (é instead of `\\u00e9`)\n\n## Gotcha: JSON Lines files\n\nIf your file has **one JSON object per line** (`.jsonl` / `.ndjson`), `json.load()` will fail. Parse line by line instead:\n\n```python\nrecords = []\nwith open(\"data.jsonl\", \"r\", encoding=\"utf-8\") as f:\n    for line in f:\n        line ="
+					},
+					"raw_response": {
+						"model": "claude-opus-5",
+						"id": "msg_011CdMGERnNnjqoLKUi8f5e2",
+						"type": "message",
+						"role": "assistant",
+						"content": [
+							{
+								"type": "thinking",
+								"thinking": "",
+								"signature": "CAISlwMKhwEIEBgCKkDnY3H/QvnY169K1yMmFcaHZdAHKQi7HwNFYKkIZp0wSRf/yL/nQsZDx/LLEQSY1FfhHojVKOfc/hmWW7FxVu0OMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ5ODY2MTIzNC03NmUwLTRlMGQtYTgyMS1iZThmOGMzNDc0ZDYSDDMdNrNt9b+XZzJ9ThoM6/mpYVgdtMKdiz9dIjCFQYQHXEtVYcE+CVPJAnA4WmnqBups2JzH7gDGnzRdULLA+WADSrZEZzJ8bjK6PEwqvAFnL+V+NxB/M2Epn970QINI1ZgU84/DZbdlTH6pxs6Lb2vsc3UngVrPq32NU30AzTvWc5QDERI04A2deMbM9A181rB9WPcKc2as+W52tkGFYw+AEi+16HCtFge22n6ih+qYNphSX6+F3m8PIjpCerhJSRWLE/ecUeTVhpTWBBsYtOiCjgw8BVCsa7pmHg97dlZphBOOCPhy6EGWefxHmF7rH7iv977nFRgcnBTzqIYUcLVdz3RXpjdT2VntWRgB"
+							},
+							{
+								"type": "text",
+								"text": "# Reading JSON Files in Python\n\nPython's built-in `json` module handles this. The key function is `json.load()`.\n\n## Basic usage\n\n```python\nimport json\n\nwith open(\"data.json\", \"r\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\nprint(data)\n```\n\nThat's it. `data` will be a Python object — usually a `dict` or `list`, depending on the JSON's top-level structure.\n\n## `load()` vs `loads()`\n\n| Function | Input | Use when |\n|---|---|---|\n| `json.load(f)` | file object | reading from a file |\n| `json.loads(s)` | string | you already have JSON text (e.g., from an API response) |\n\n```python\n# From a string\njson_string = '{\"name\": \"Ada\", \"age\": 36}'\ndata = json.loads(json_string)\nprint(data[\"name\"])  # Ada\n```\n\n## Type mapping\n\nJSON values convert to Python like this:\n\n```\nobject  -> dict\narray   -> list\nstring  -> str\nnumber  -> int / float\ntrue    -> True\nfalse   -> False\nnull    -> None\n```\n\n## A more robust version\n\nReal files can be missing, malformed, or wrongly encoded. Handle those cases:\n\n```python\nimport json\nfrom pathlib import Path\n\ndef read_json(path):\n    try:\n        with open(path, \"r\", encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        print(f\"No such file: {path}\")\n    except json.JSONDecodeError as e:\n        print(f\"Invalid JSON in {path}: {e}\")\n    return None\n\nconfig = read_json(\"config.json\")\nif config is not None:\n    print(config.get(\"debug\", False))\n```\n\n`pathlib` offers a neat shortcut for small files:\n\n```python\nfrom pathlib import Path\nimport json\n\ndata = json.loads(Path(\"data.json\").read_text(encoding=\"utf-8\"))\n```\n\n## Accessing nested data\n\n```python\n# data.json:\n# {\"users\": [{\"name\": \"Ada\", \"roles\": [\"admin\", \"dev\"]}]}\n\nfirst_user = data[\"users\"][0]\nprint(first_user[\"name\"])        # Ada\nprint(first_user[\"roles\"][0])    # admin\n\n# Safer, avoids KeyError:\nprint(data.get(\"users\", [{}])[0].get(\"email\", \"no email\"))\n```\n\n## Writing JSON back out\n\n```python\nwith open(\"output.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f, indent=2, ensure_ascii=False)\n```\n\n- `indent=2` — pretty-prints instead of one long line\n- `ensure_ascii=False` — keeps non-ASCII characters readable (é instead of `\\u00e9`)\n\n## Gotcha: JSON Lines files\n\nIf your file has **one JSON object per line** (`.jsonl` / `.ndjson`), `json.load()` will fail. Parse line by line instead:\n\n```python\nrecords = []\nwith open(\"data.jsonl\", \"r\", encoding=\"utf-8\") as f:\n    for line in f:\n        line ="
+							}
+						],
+						"stop_reason": "max_tokens",
+						"stop_sequence": null,
+						"stop_details": null,
+						"usage": {
+							"input_tokens": 38,
+							"cache_creation_input_tokens": 0,
+							"cache_read_input_tokens": 0,
+							"cache_creation": {
+								"ephemeral_5m_input_tokens": 0,
+								"ephemeral_1h_input_tokens": 0
+							},
+							"output_tokens": 1024,
+							"output_tokens_details": {
+								"thinking_tokens": 50
+							},
+							"service_tier": "standard",
+							"inference_geo": "global"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'anthropic/claude-opus-5',\n  {\n    max_tokens: 1024,\n    messages: [{ content: 'How do I read a JSON file in Python?', role: 'user' }],\n    system: 'You are a helpful coding assistant specializing in Python.',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/messages \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"anthropic/claude-opus-5\",\n  \"max_tokens\": 1024,\n  \"messages\": [\n    {\n      \"content\": \"How do I read a JSON file in Python?\",\n      \"role\": \"user\"\n    }\n  ],\n  \"system\": \"You are a helpful coding assistant specializing in Python.\"\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/anthropic/claude-opus-5/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
@@ -27659,7 +27855,7 @@
 			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
 			"terms": "https://elevenlabs.io/terms",
 			"cover_image_url": null,
-			"schema_version": null,
+			"schema_version": "1.0.0",
 			"created_at": "2026-07-09 02:31:08",
 			"updated_at": null,
 			"zdr_comment": null,
@@ -27704,6 +27900,96 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/elevenlabs/eleven-flash-v2-5/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"elevenlabs/eleven-multilingual-v2": {
+			"model_id": "elevenlabs/eleven-multilingual-v2",
+			"slug": "elevenlabs/eleven-multilingual-v2",
+			"display_name": "Eleven Multilingual v2",
+			"description": "ElevenLabs' multilingual text-to-speech model for generating natural speech across many languages with ElevenLabs voices.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Speech",
+				"Audio Generation",
+				"Multilingual"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert"
+				}
+			],
+			"metadata": {
+				"Languages": "Multilingual speech generation",
+				"Output Formats": "MP3, WAV, PCM, Opus, u-law, A-law",
+				"Voices": "Supports ElevenLabs voice IDs"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"schema_version": "1.0.0",
+			"created_at": "2026-07-24 20:04:40",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": null,
+			"examples": [
+				{
+					"name": "French AI Gateway Speech",
+					"description": "Generate multilingual speech about Cloudflare AI Gateway",
+					"input": {
+						"text": "Bonjour et bienvenue dans Cloudflare AI Gateway. Suivez vos requetes, vos couts et les performances de vos modeles depuis une seule interface.",
+						"voice_id": "JBFqnCBsd6RMkjVDRZzb",
+						"language_code": "fr",
+						"output_format": "mp3_44100_128"
+					},
+					"output": {
+						"audio": "https://examples.aig.cloudflare.com/elevenlabs/eleven-multilingual-v2/french-ai-gateway-speech.mp3"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"audio": "https://examples.aig.cloudflare.com/elevenlabs/eleven-multilingual-v2/french-ai-gateway-speech.mp3"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'elevenlabs/eleven-multilingual-v2',\n  {\n    text: 'Bonjour et bienvenue dans Cloudflare AI Gateway. Suivez vos requetes, vos couts et les performances de vos modeles depuis une seule interface.',\n    voice_id: 'JBFqnCBsd6RMkjVDRZzb',\n    language_code: 'fr',\n    output_format: 'mp3_44100_128',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"elevenlabs/eleven-multilingual-v2\",\n  \"input\": {\n    \"text\": \"Bonjour et bienvenue dans Cloudflare AI Gateway. Suivez vos requetes, vos couts et les performances de vos modeles depuis une seule interface.\",\n    \"voice_id\": \"JBFqnCBsd6RMkjVDRZzb\",\n    \"language_code\": \"fr\",\n    \"output_format\": \"mp3_44100_128\"\n  }\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/elevenlabs/eleven-multilingual-v2/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
@@ -27795,6 +28081,186 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/elevenlabs/eleven-turbo-v2-5/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"elevenlabs/eleven-v3": {
+			"model_id": "elevenlabs/eleven-v3",
+			"slug": "elevenlabs/eleven-v3",
+			"display_name": "Eleven v3",
+			"description": "ElevenLabs' latest text-to-speech model for highly expressive, natural speech generation with advanced voice control.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Speech",
+				"Audio Generation",
+				"Expressive Speech"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert"
+				}
+			],
+			"metadata": {
+				"Output Formats": "MP3, WAV, PCM, Opus, u-law, A-law",
+				"Voice Control": "Voice settings, seed, text normalization",
+				"Voices": "Supports ElevenLabs voice IDs"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"schema_version": "1.0.0",
+			"created_at": "2026-07-24 20:20:34",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": null,
+			"examples": [
+				{
+					"name": "Expressive Speech",
+					"description": "Generate expressive speech with a selected ElevenLabs voice",
+					"input": {
+						"text": "Welcome to Cloudflare AI Gateway. This is ElevenLabs speech synthesis with a natural, expressive delivery.",
+						"voice_id": "JBFqnCBsd6RMkjVDRZzb",
+						"output_format": "mp3_44100_128"
+					},
+					"output": {
+						"audio": "https://examples.aig.cloudflare.com/elevenlabs/eleven-v3/expressive-speech.mp3"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"audio": "https://examples.aig.cloudflare.com/elevenlabs/eleven-v3/expressive-speech.mp3"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'elevenlabs/eleven-v3',\n  {\n    text: 'Welcome to Cloudflare AI Gateway. This is ElevenLabs speech synthesis with a natural, expressive delivery.',\n    voice_id: 'JBFqnCBsd6RMkjVDRZzb',\n    output_format: 'mp3_44100_128',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"elevenlabs/eleven-v3\",\n  \"input\": {\n    \"text\": \"Welcome to Cloudflare AI Gateway. This is ElevenLabs speech synthesis with a natural, expressive delivery.\",\n    \"voice_id\": \"JBFqnCBsd6RMkjVDRZzb\",\n    \"output_format\": \"mp3_44100_128\"\n  }\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/elevenlabs/eleven-v3/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"elevenlabs/music-v2": {
+			"model_id": "elevenlabs/music-v2",
+			"slug": "elevenlabs/music-v2",
+			"display_name": "ElevenLabs Music v2",
+			"description": "ElevenLabs Music v2 composes songs and instrumental tracks from a prompt or detailed composition plan.",
+			"task": {
+				"id": "",
+				"name": "Music Generation",
+				"description": ""
+			},
+			"tags": [
+				"Music",
+				"Audio Generation",
+				"Instrumental",
+				"Vocals"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/music/compose"
+				}
+			],
+			"metadata": {
+				"Controls": "Prompt, duration, seed, instrumental mode",
+				"Max Duration": "Up to 10 minutes",
+				"Output Formats": "MP3, PCM, Opus, u-law, A-law"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/music/compose",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"schema_version": "1.0.0",
+			"created_at": "2026-07-24 20:04:42",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": null,
+			"examples": [
+				{
+					"name": "Cinematic Instrumental",
+					"description": "Generate an instrumental music track from a short prompt",
+					"input": {
+						"prompt": "A warm cinematic ambient track with soft piano, subtle strings, and a hopeful mood",
+						"music_length_ms": 30000,
+						"force_instrumental": true,
+						"output_format": "mp3_48000_192"
+					},
+					"output": {
+						"audio": "https://examples.aig.cloudflare.com/elevenlabs/music-v2/cinematic-instrumental.mp3"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"audio": "https://examples.aig.cloudflare.com/elevenlabs/music-v2/cinematic-instrumental.mp3"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'elevenlabs/music-v2',\n  {\n    prompt: 'A warm cinematic ambient track with soft piano, subtle strings, and a hopeful mood',\n    music_length_ms: 30000,\n    force_instrumental: true,\n    output_format: 'mp3_48000_192',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"elevenlabs/music-v2\",\n  \"input\": {\n    \"prompt\": \"A warm cinematic ambient track with soft piano, subtle strings, and a hopeful mood\",\n    \"music_length_ms\": 30000,\n    \"force_instrumental\": true,\n    \"output_format\": \"mp3_48000_192\"\n  }\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/elevenlabs/music-v2/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
@@ -29043,48 +29509,47 @@
 						]
 					},
 					"output": {
-						"text": "While there are actually four laws of thermodynamics (numbered 0 through 3), the \"Three Laws\" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:\n\n### 1. The First Law: The Law of Conservation of Energy\n**\"Energy cannot be created or destroyed, only transformed from one form to another.\"**\n\nThis law states that the total amount of energy in an isolated system remains constant. In practical terms, if you add heat to a system, that energy must either increase the system's internal temperature or be used to do work on the surroundings.\n*   **The Equation:** $\\Delta U = Q - W$\n    *(Change in internal energy = Heat added - Work done by the system)*\n\n### 2. The Second Law: The Law of Entropy\n**\"The total entropy of an isolated system can never decrease over time; it can only remain constant or increase.\"**\n\nEntropy is a measure of \"disorder\" or randomness. This law explains why processes have a specific direction (the \"arrow of time\"). It tells us that heat will always flow spontaneously from a hot object to a cold object, and that no machine can ever be 100% efficient because some energy is always \"lost\" as waste heat.\n*   **Key takeaway:** Systems naturally progress toward a state of maximum disorder.\n\n### 3. The Third Law: The Law of Absolute Zero\n**\"As the temperature of a system approaches absolute zero, its entropy approaches a constant minimum.\"**\n\nAbsolute zero ($0$ Kelvin, or $-273.15^\\circ\\text{C}$) is the theoretical point where all molecular motion stops. This law implies that it is impossible to reach absolute zero in a finite number of steps. At this temperature, a perfect crystal would have zero entropy.\n*   **Key takeaway:** You can get very close to absolute zero, but you can never actually get there.\n\n***\n\n### Bonus: The Zeroth Law (The Law of Equilibrium)\nPhysicists realized they needed this law *after* the first three were already named, so they called it the \"Zeroth\" law because it is the most fundamental. \n*   **The Law:** If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. \n*   **Simplified:** This is the logic that allows us to use **thermometers**. If the thermometer says the water is $100^\\circ$ and the same thermometer says the tea is $100^\\circ$, then the water and the tea are the same temperature.\n\n***\n\n### A Common Way to Remember Them:\nScientists often use a cynical \"gambling\" analogy to remember the laws:\n1.  **First Law:** You can’t win (you can’t get more energy out than you put in).\n2.  **Second Law:** You can’t even break even (entropy always increases; you always lose some energy to heat).\n3.  **Third Law:** You can’t quit the game (you can’t reach absolute zero)."
+						"text": "While there are technically four laws (starting with the Zeroth Law), here are the **three primary laws of thermodynamics** that describe how energy, heat, and work behave in a system:\n\n### 1. The First Law: The Law of Conservation of Energy\nThis law states that **energy cannot be created or destroyed, only transformed from one form to another.** The total energy in an isolated system remains constant.\n\n*   **The Principle:** If you add heat to a system, that energy must go somewhere—it either increases the internal energy of the system (making it hotter) or it is used by the system to do work on its surroundings.\n*   **The Equation:** $\\Delta U = Q - W$ \n    *(Change in internal energy = Heat added to the system - Work done by the system)*\n*   **Simple Takeaway:** You can't get something for nothing.\n\n---\n\n### 2. The Second Law: The Law of Entropy\nThis law states that the **total entropy (disorder) of an isolated system can never decrease over time.** It explains the \"arrow of time\" and why certain processes are irreversible.\n\n*   **The Principle:** Heat will naturally flow from a hotter object to a colder object, never spontaneously the other way. In any energy transfer, some energy is always \"lost\" as waste heat, meaning no machine can ever be 100% efficient.\n*   **The Result:** Systems naturally move toward a state of maximum disorder or randomness.\n*   **Simple Takeaway:** Things tend to get messy, and you can't even break even (because you always lose some energy to friction/heat).\n\n---\n\n### 3. The Third Law: The Law of Absolute Zero\nThis law states that **as the temperature of a system approaches absolute zero (0 Kelvin or -273.15°C), the entropy of the system approaches a constant minimum.**\n\n*   **The Principle:** In a \"perfect crystal,\" the entropy at absolute zero would be exactly zero because all molecular motion would stop completely.\n*   **The Catch:** It is physically impossible to reach absolute zero in a finite number of steps because as you get closer, it requires more and more work to remove the remaining heat.\n*   **Simple Takeaway:** You can’t reach a state of zero energy/motion; you can’t quit the game.\n\n***\n\n### Summary (The \"Ginsberg's Theorem\" Mnemonic)\nScientists often use a humorous summary to remember these laws:\n1.  **First Law:** You can't win (You can't get more energy out than you put in).\n2.  **Second Law:** You can't break even (You always lose some energy as heat).\n3.  **Third Law:** You can't get out of the game (You can never reach absolute zero).\n\n***\n\n**Note on the \"Zeroth Law\":** \nThere is also a **Zeroth Law**, which was identified after the first three but is more fundamental. It states that if two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This is the law that allows us to use thermometers."
 					},
 					"raw_response": {
 						"candidates": [
 							{
-								"avgLogprobs": -0.1735024595133252,
 								"content": {
+									"role": "model",
 									"parts": [
 										{
-											"text": "While there are actually four laws of thermodynamics (numbered 0 through 3), the \"Three Laws\" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:\n\n### 1. The First Law: The Law of Conservation of Energy\n**\"Energy cannot be created or destroyed, only transformed from one form to another.\"**\n\nThis law states that the total amount of energy in an isolated system remains constant. In practical terms, if you add heat to a system, that energy must either increase the system's internal temperature or be used to do work on the surroundings.\n*   **The Equation:** $\\Delta U = Q - W$\n    *(Change in internal energy = Heat added - Work done by the system)*\n\n### 2. The Second Law: The Law of Entropy\n**\"The total entropy of an isolated system can never decrease over time; it can only remain constant or increase.\"**\n\nEntropy is a measure of \"disorder\" or randomness. This law explains why processes have a specific direction (the \"arrow of time\"). It tells us that heat will always flow spontaneously from a hot object to a cold object, and that no machine can ever be 100% efficient because some energy is always \"lost\" as waste heat.\n*   **Key takeaway:** Systems naturally progress toward a state of maximum disorder.\n\n### 3. The Third Law: The Law of Absolute Zero\n**\"As the temperature of a system approaches absolute zero, its entropy approaches a constant minimum.\"**\n\nAbsolute zero ($0$ Kelvin, or $-273.15^\\circ\\text{C}$) is the theoretical point where all molecular motion stops. This law implies that it is impossible to reach absolute zero in a finite number of steps. At this temperature, a perfect crystal would have zero entropy.\n*   **Key takeaway:** You can get very close to absolute zero, but you can never actually get there.\n\n***\n\n### Bonus: The Zeroth Law (The Law of Equilibrium)\nPhysicists realized they needed this law *after* the first three were already named, so they called it the \"Zeroth\" law because it is the most fundamental. \n*   **The Law:** If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. \n*   **Simplified:** This is the logic that allows us to use **thermometers**. If the thermometer says the water is $100^\\circ$ and the same thermometer says the tea is $100^\\circ$, then the water and the tea are the same temperature.\n\n***\n\n### A Common Way to Remember Them:\nScientists often use a cynical \"gambling\" analogy to remember the laws:\n1.  **First Law:** You can’t win (you can’t get more energy out than you put in).\n2.  **Second Law:** You can’t even break even (entropy always increases; you always lose some energy to heat).\n3.  **Third Law:** You can’t quit the game (you can’t reach absolute zero).",
-											"thoughtSignature": "CqkLAY89a19qCNl4uuKEEiZFrk/uT0hJLwMSmY8qnonXaWSr5n37N6xw9j45+UGCClhbVuK6cpRq7/oR4Tdzhsy6w7WWIspf2JBXYNOGo7i4L8638zGK5OGOvVcRpCuMXWsfrWhLS8fY9qC9WxEJqTsJR9gkNfO7A8h23/s2Ww2GhGvvRwYhA5L8uSaej/JdDd2rJdLn1QG0s8Hpf9Nhj7/mTRlfY5NYZv3r4UwIEurL3gE6Cqfk+kayL2/GEwcaRaGG3UbM74nSQmcldV2phXHuIDmNbUwoSNojDQteSPPG3NrGdW5A/qKz7W4dtTaq+Vq/dtEXleChH1Txf7hZtOfE62pxOEJK+Rm6E2hkXhOlkSry676UjrUHgLR23SfmmqgZ4Z9jdQ65DFAi3FA3Ww7Gw810tMasdXrdeeEGgDTXyjksTMmiG+DQ0ddw1npNb5v5Tnj6eEQpSxv57PpiAOkZF8pF8fk9E413eDCt6iRbZ3GToOeSplaN5z1ljhaKNMORBRDC7ZblLKzDJkES8vN2PGLGYlJdKA32pfT5Hmt82gkvC2udXwxsZH04TI4vb2wPfYfJQNgQRKv31n2jQryL9akJWjr1jwblk2P+DV1f+io5MYK0K/+V+b7FuOrDrzHRUuBqBm8OhJ5gNzThGTtjcMYNisw2tPgzddm9/uHd0mVYVHiRYGA7U8vlfZDFUTzQVD7A1B1LFEdhAkpbJ9z66xjS18bk4m/3GXfAIt8/QviFjmjAfeMZhylYNh2j7Cv8kEkIOAM3qApufLyuxbFrO/QRW2depUvJzD1M1qiTg139m9LQpQaEwao9PmzMxyUBKEUt6rV7cnycmvhjjAsG7MBn/WpQYzdUjHuzlAVF6ioDZEWu/co/FjYjnOzQjNfLCFjOy5TOuYgxANxAG3UtpLkLpwJdm6sAyn+gSyT8sRRofRa+cKYu5ZWmuziMC+2lbC4DEq/XMr/P6JCVYNJK2Ay9ZOsqWU0KpO17b6xynFZIeviXdPs3ODngRdE75u+SeJsFdsMUvsU0m+8WzmG76xGrX41/CprLlfax31xl6B7OxpsZvg1sl3D98+aPiTht5jJ9hQ9jSwl7GrKcOWKXCx98wYKPX4JIu78Yu0zBcpksgvbrQBJNRoVJJTQ06pT1oZQg0kPt6N7cbRqaZNbJun7ZRWb0lAIpUYO+P7jixDdMMr8sLtuYkbsd92Y/QlrDzSI5Dfb9Jg+5iPp+FvJappnXgjr3ZbdgV/4pXL7OznXMx+AWxrhldHVCmvW+qmlP8gJGovBfdR9t9rJSYlWP4M9UCjscUo/6Wl3xUEIdVtNf6gvfdb7LhT0e/AwIZmLEpvtbW8VTYtw7Ly4VWe0a/fkLP8d/L4p/nwb5PiARkbyLT0VIG5K3yZ+1F5d85ispp2szwjABH2yGgqQBbMUu4I/iae3VhFgOw24BabtdnH+QmogvA2Hi6wePJ4fmz2L+AVIwkGG7Z2ta6hde/8KEn38oM68LF6gJYvRkk1TFhSZlrYPZ+g1Ei+5gak37sbErhQ3qvkfxPIVBcuTRXQFR/a29L+Bcj4wvShU8PILtNaandlEQcMGfJzjU9cyM3EbJd1m/vIvHKL6gOjE2VUTqYfm8N0ELe/Kyvj1GJ1So3x2CMpYQJmNrrQBDA2SIJjdsXytkV5Ycaxt8cOCK9rkAkHHZ5lsujjjh2GgjJSWUKWeVWHCIfAwn8lsCIIZydTX1L515g7Rlz+hl29aZwf8F/cnBM68h5tu0zmfZAHCl3J6WuleW8ya1Ht6aOdb8Xe1xI+KKFJ+VnHjHU6Q7mLTWzaaNvboOBF5pW0dFDisDo+7YleHAtx5V9E3W3C2/V3pFrgjmfGAw3/tOR9h5ShpWdqAVJDWJCcZ4mYk3R0Wa7ezA2uTJpzKfl4Ya6XSisX9VN+EZfW4mglXB"
+											"text": "While there are technically four laws (starting with the Zeroth Law), here are the **three primary laws of thermodynamics** that describe how energy, heat, and work behave in a system:\n\n### 1. The First Law: The Law of Conservation of Energy\nThis law states that **energy cannot be created or destroyed, only transformed from one form to another.** The total energy in an isolated system remains constant.\n\n*   **The Principle:** If you add heat to a system, that energy must go somewhere—it either increases the internal energy of the system (making it hotter) or it is used by the system to do work on its surroundings.\n*   **The Equation:** $\\Delta U = Q - W$ \n    *(Change in internal energy = Heat added to the system - Work done by the system)*\n*   **Simple Takeaway:** You can't get something for nothing.\n\n---\n\n### 2. The Second Law: The Law of Entropy\nThis law states that the **total entropy (disorder) of an isolated system can never decrease over time.** It explains the \"arrow of time\" and why certain processes are irreversible.\n\n*   **The Principle:** Heat will naturally flow from a hotter object to a colder object, never spontaneously the other way. In any energy transfer, some energy is always \"lost\" as waste heat, meaning no machine can ever be 100% efficient.\n*   **The Result:** Systems naturally move toward a state of maximum disorder or randomness.\n*   **Simple Takeaway:** Things tend to get messy, and you can't even break even (because you always lose some energy to friction/heat).\n\n---\n\n### 3. The Third Law: The Law of Absolute Zero\nThis law states that **as the temperature of a system approaches absolute zero (0 Kelvin or -273.15°C), the entropy of the system approaches a constant minimum.**\n\n*   **The Principle:** In a \"perfect crystal,\" the entropy at absolute zero would be exactly zero because all molecular motion would stop completely.\n*   **The Catch:** It is physically impossible to reach absolute zero in a finite number of steps because as you get closer, it requires more and more work to remove the remaining heat.\n*   **Simple Takeaway:** You can’t reach a state of zero energy/motion; you can’t quit the game.\n\n***\n\n### Summary (The \"Ginsberg's Theorem\" Mnemonic)\nScientists often use a humorous summary to remember these laws:\n1.  **First Law:** You can't win (You can't get more energy out than you put in).\n2.  **Second Law:** You can't break even (You always lose some energy as heat).\n3.  **Third Law:** You can't get out of the game (You can never reach absolute zero).\n\n***\n\n**Note on the \"Zeroth Law\":** \nThere is also a **Zeroth Law**, which was identified after the first three but is more fundamental. It states that if two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This is the law that allows us to use thermometers.",
+											"thoughtSignature": "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"
 										}
-									],
-									"role": "model"
+									]
 								},
 								"finishReason": "STOP"
 							}
 						],
-						"createTime": "2026-04-17T05:47:50.289216Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3-flash-preview",
-						"responseId": "hsnhacDTEYGPq8YPsdmS-Qc",
 						"usageMetadata": {
-							"candidatesTokenCount": 652,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 652
-								}
-							],
 							"promptTokenCount": 8,
+							"candidatesTokenCount": 677,
+							"totalTokenCount": 1132,
+							"trafficType": "ON_DEMAND",
 							"promptTokensDetails": [
 								{
 									"modality": "TEXT",
 									"tokenCount": 8
 								}
 							],
-							"thoughtsTokenCount": 363,
-							"totalTokenCount": 1023,
-							"trafficType": "ON_DEMAND"
+							"candidatesTokensDetails": [
+								{
+									"modality": "TEXT",
+									"tokenCount": 677
+								}
+							],
+							"thoughtsTokenCount": 447
+						},
+						"modelVersion": "gemini-3-flash-preview",
+						"createTime": "2026-07-14T02:14:06.911390Z",
+						"responseId": "bptVap7QN-yN3dAPh4DzyAY",
+						"gatewayMetadata": {
+							"keySource": "Unified"
 						}
 					},
 					"code_snippets": [
@@ -29126,48 +29591,47 @@
 						}
 					},
 					"output": {
-						"text": "To read a JSON file in Python, you use the built-in **`json`** module.\n\nHere is the most common and recommended way to do it:\n\n### Basic Example\n```python\nimport json\n\n# Open the file and load the data\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n\n# Now 'data' is a Python dictionary (or list)\nprint(data)\n```\n\n---\n\n### Key Details to Remember\n\n#### 1. `json.load()` vs `json.loads()`\n*   **`json.load(file_object)`**: Used to read from a **file**.\n*   **`json.loads(json_string)`**: Used to parse a **string** that contains JSON data (the \"s\" stands for \"string\").\n\n#### 2. Using the `with` statement\nIt is best practice to use the `with` statement because it automatically closes the file for you, even if an error occurs during reading.\n\n#### 3. Handling Encoding\nIf your JSON file contains special characters (like emojis or non-English letters), it is safer to specify the encoding:\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n---\n\n### Error Handling\nIf the file is missing or the JSON is formatted incorrectly, your program will crash. You can wrap it in a `try-except` block to handle these cases:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file is not a valid JSON format.\")\n```\n\n### Reading JSON from a URL\nIf you want to read JSON directly from the web, you can use the `requests` library:\n\n```python\nimport requests\n\nresponse = requests.get('https://api.example.com/data')\ndata = response.json()  # Automatically parses the JSON\nprint(data)\n```"
+						"text": "To read a JSON file in Python, you use the built-in `json` module.\n\nHere is the most common and recommended way to do it:\n\n### Basic Example\n```python\nimport json\n\n# Open the file and load the data\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Now 'data' is a Python dictionary or list\nprint(data)\n```\n\n---\n\n### Key Details to Remember\n\n#### 1. `json.load()` vs `json.loads()`\n*   **`json.load(file_object)`**: Used to read data directly from a **file**.\n*   **`json.loads(string)`**: Used to parse a **string** that contains JSON data (the \"s\" stands for \"string\").\n\n#### 2. Using a Context Manager (`with`)\nIt is best practice to use the `with` statement. This ensures that the file is automatically closed as soon as the data is loaded, even if an error occurs during the process.\n\n#### 3. Handling Encodings\nIf your JSON file contains special characters (like emojis or non-English characters), it is safer to specify the encoding:\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n#### 4. Error Handling\nIf the file doesn't exist or the JSON is formatted incorrectly, your script will crash. You can wrap it in a `try-except` block to handle these cases gracefully:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file is not a valid JSON format.\")\n```\n\n### Summary Table\n| Function | Input Source | Output |\n| :--- | :--- | :--- |\n| `json.load()` | File Object | Python Object (dict/list) |\n| `json.loads()` | String | Python Object (dict/list) |\n| `json.dump()` | Python Object | Write to File |\n| `json.dumps()` | Python Object | Return as String |"
 					},
 					"raw_response": {
 						"candidates": [
 							{
-								"avgLogprobs": -0.09832632964156421,
 								"content": {
+									"role": "model",
 									"parts": [
 										{
-											"text": "To read a JSON file in Python, you use the built-in **`json`** module.\n\nHere is the most common and recommended way to do it:\n\n### Basic Example\n```python\nimport json\n\n# Open the file and load the data\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n\n# Now 'data' is a Python dictionary (or list)\nprint(data)\n```\n\n---\n\n### Key Details to Remember\n\n#### 1. `json.load()` vs `json.loads()`\n*   **`json.load(file_object)`**: Used to read from a **file**.\n*   **`json.loads(json_string)`**: Used to parse a **string** that contains JSON data (the \"s\" stands for \"string\").\n\n#### 2. Using the `with` statement\nIt is best practice to use the `with` statement because it automatically closes the file for you, even if an error occurs during reading.\n\n#### 3. Handling Encoding\nIf your JSON file contains special characters (like emojis or non-English letters), it is safer to specify the encoding:\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n---\n\n### Error Handling\nIf the file is missing or the JSON is formatted incorrectly, your program will crash. You can wrap it in a `try-except` block to handle these cases:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file is not a valid JSON format.\")\n```\n\n### Reading JSON from a URL\nIf you want to read JSON directly from the web, you can use the `requests` library:\n\n```python\nimport requests\n\nresponse = requests.get('https://api.example.com/data')\ndata = response.json()  # Automatically parses the JSON\nprint(data)\n```",
-											"thoughtSignature": "CpoIAY89a18jqSNoAkdnLwrTiEVOfCWU2h+i0cF80VkEbpiDJonCd8buSMVdR/N8pVtqibgPP3INdZkmGbxBAer3Ojz/B+IvLyYtJEvr9Lj7q18FPXX1GOG10u3noKl3uyxQ2doaIGaJ+iV3c6SwqaB+AxhptZ5ht0utR6jdQuVwefyygMRgERQ5J24dX0YT3r2GR1ZYP0HnKwgtihUhP7yrl2wML1bnDNfz7/aQDQTr1h62ua2VC5HKJz1aP8OQ9g7qpMKrr0lgT5C1/He0Mtdl5jaFpms+/Qi0Z3kInqBwoJH0SmGiPGAWeOhq00VZuw2TmepnYBdXZUu90Z1FxJzkngyP2tSXiefd71CZ7LcnEDZiIw2uzLhOo0Sh+6JVcDd0uqAPfA4HDfA+GUGuFW3iJBOtFs3miOdID0I0tf5MD9CCEvUwsA9zk5YRtbZzZ81IWbwyXsMav6zqU9i1nNfd6nDx0Rb9rvi6Fczygy9qcXQVeWvD3K8Pcwr8IgnM42W4erRtxp/4vkAbRBHQqEr8ON0NSSCSK5jgfEenjfWT0f+1hXouaFD62HhKJjhfqjR/9EFntv6KxT3jut+6HFTmQbJgS/RqauJx4QhOekkSB9OB6tK59W1iEhZ4/32ifP1SajQGXAX+jaDfqb948NMWmSOaAGPAQeGoj6y/40s5sH3MUzTdrs1K5AWh+r9vuQmd2/ktKdhVGm1lwuQeUY2sGuLWoS+iFMtYin5CGGlzgJ1ptScvq6EZ5jHl+P0u7fPx67+u3fXvDSlQGy9JybVoJxfWCHYE91TDLC/nik0prPiRRa5RRqhWyP646TvGX7tY9xhcpq3JRRU+gauo+hKD/PLpgtjjpDa4LcYXPHHGEmcUChahRH865UocrqSOA1J1Z7R59+I5KYYpcFzQPheo+uv5MmYvWYtNB/4ek3UWNU9Y/tGCIFBk74S5+b5Xw+oKUt6dockpvnIfXeBhVRwWBkRLjFVQTCW+sEMRYM8ml8nzuc3uCFCk9VpgRpTccivx5aPAXCgtdoJ1I/RjKUHDQqRS2yFAX78mQw6bPTJl59niGIuiN7yTFfg2phsyFIctkiE1zJS2u82GYFfsUESqZ5utVFZuPpHDVHXcXFb665oFSwlIkTqI8Xhx65fNuBCIG+jFkn+Tx2v+CJlbTG5v+SlVN6mbkwdSya6LUNQeX+eoLK1o3qz7HtF7XJRvc7guEc01pRl4i0RUYZGjkVC3SdC55H1UrH6uYQ938j2FJhLgih2RqEKEfWENwYs20zxJTkJwxw9fBUcfob9Qakhay5CNLZQ9C29H3Y7YmSo7nIf72upvVFy8rMUXY4H7l9CU/ZMR+bxLWDEY+ly/RaOOAscpiGHdOtgvghnps8Jbqk9VaTTXZ9nhcujJ"
+											"text": "To read a JSON file in Python, you use the built-in `json` module.\n\nHere is the most common and recommended way to do it:\n\n### Basic Example\n```python\nimport json\n\n# Open the file and load the data\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Now 'data' is a Python dictionary or list\nprint(data)\n```\n\n---\n\n### Key Details to Remember\n\n#### 1. `json.load()` vs `json.loads()`\n*   **`json.load(file_object)`**: Used to read data directly from a **file**.\n*   **`json.loads(string)`**: Used to parse a **string** that contains JSON data (the \"s\" stands for \"string\").\n\n#### 2. Using a Context Manager (`with`)\nIt is best practice to use the `with` statement. This ensures that the file is automatically closed as soon as the data is loaded, even if an error occurs during the process.\n\n#### 3. Handling Encodings\nIf your JSON file contains special characters (like emojis or non-English characters), it is safer to specify the encoding:\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n#### 4. Error Handling\nIf the file doesn't exist or the JSON is formatted incorrectly, your script will crash. You can wrap it in a `try-except` block to handle these cases gracefully:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file is not a valid JSON format.\")\n```\n\n### Summary Table\n| Function | Input Source | Output |\n| :--- | :--- | :--- |\n| `json.load()` | File Object | Python Object (dict/list) |\n| `json.loads()` | String | Python Object (dict/list) |\n| `json.dump()` | Python Object | Write to File |\n| `json.dumps()` | Python Object | Return as String |",
+											"thoughtSignature": "AY89a183n1HvGbI4q4zTRFxjxdRZcs7jbevbsOFvybvFJzvn34yQuUE0/cuxyD7rb2vYlKXbeB2vwLHig4Soy7MMIdUGx+Wd7GdMwUB8FM8aNtKvR3Ey9L7cEsL6mDd9Oc1Hi20PUrohGxDWiqv0HQyp2CkyuV2G4ufvLSuCQHG4ebaZUG/TtrCI3RjmxnpwXXJWvRwvfWfZOQsgS++CxtMnGoN+pnwu633crqMdSXcVgLGiysUmHXdpg7A3SFZlEM9X6drRS8N+SibUScLJHUJWcVMoi2Jw4IvphSOHxNSJUI9ebWcWliZ/T5+H4HICGl4VT4suZ23qxYYVrEHkkALu+30dOq8a/CJ/iKuoapBonAZhp0QTBtFKtBXhAT1El/KZnWeqDNnecawLfKH1mSw/CMk+INUkwWY/RRxbdmOVgqapGM6q6W51zZFKrOLBWVuNLf/xvRISv3rJPaTggKtXRJsplvkFyh0lOVnMqbR8fz1fJpwW1C4V6u9r1zqVWIm/wmXnp6quU0qOE9qsw7FeCbhuuhy7tzTKRMk1sQVPYcBAE1IE2A2khPW+4iXFsCU8FTVxg4WwAQhu5SQkG4P5VHqprD5TH4gjOIZL+iaVGK7yRlGHBn0zrPP90Z/4+L1yhCg/bf4A2SBMSepGmdo6PXLEVDNIFVROzi5XCdZ1K97LwFRMOZ5jUdXVaAX/S2vSomD8gIcOCelVZoeWTKW+1l/SqOKPtrYU9a4XWu3EXn2VkvtJNJnbL0xGEF3NgA7HDnivsyXR/o05eQzky2fy6XA4kE92H47pzG4eL+wIlVUGurLmNb5F19g+V3ss5k35mGaZ+8QzBXVHM3bAHVoyYeDqQugmNekN8q32EZ52ZnxuwoWUt1b/B7Spr1Ev2oomG6paGyHIldCW3LeaFYnjHhGoS4vNoCLd64Lvfg6W1aLER+r+F2f9rEYtZhmJRV6fFUsH+JfkHCgECS0q2cc7vtnW4989wdZvJ+r3zQR56k/UYo4xgxWyb8mUce6LZ2BT6y2nj4cuaycC+Svd/GfPhAP7yqWdyxuUj59l/AMrsdlV1agYqM+4DGvSehVMDMsYI7BqMwwEY+WJHQlxDIzM6Y+qOnNsyukPX4IY0+kx7ZntubtXZAJ0OEx980/XPmuNT+X+JQmyz1Bb47w56wDihRaPBmPgboRe2J76a3wH54diqrUWyUftVyOIuwQ/b3rAYS1IF/D2UENiaXjPNGcBkQuof0+vSyguVl3ynYE2Z2tPumUwBW8zNJ9ONxgtN/1H/BG9fOHPmCf7UT0/Wy+ftrSr6zqsRXCfZPKw5sv21Lt6y3XHJxsu+kDCC9I/gOEPmHpZbxyx4cmxYl7xFTf55ryG8HkojNW7+OHM4AyDjQNqesLh9VEwpnIKOXbgX62S9zMO96rtcnzZkJ+y04rMHlBxJ3AgsyNKe/7jJ9If0BPMJNortvReEs4kkzk3DulslLX0KvvRf+0n1h9GeRdEH7RBv9P/VOsn73P1+gYzssXq52kj4UQXbOs="
 										}
-									],
-									"role": "model"
+									]
 								},
 								"finishReason": "STOP"
 							}
 						],
-						"createTime": "2026-04-17T05:47:57.460588Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3-flash-preview",
-						"responseId": "jcnhaayOHISRq8YP2o-ouQg",
 						"usageMetadata": {
-							"candidatesTokenCount": 476,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 476
-								}
-							],
 							"promptTokenCount": 20,
+							"candidatesTokenCount": 501,
+							"totalTokenCount": 833,
+							"trafficType": "ON_DEMAND",
 							"promptTokensDetails": [
 								{
 									"modality": "TEXT",
 									"tokenCount": 20
 								}
 							],
-							"thoughtsTokenCount": 296,
-							"totalTokenCount": 792,
-							"trafficType": "ON_DEMAND"
+							"candidatesTokensDetails": [
+								{
+									"modality": "TEXT",
+									"tokenCount": 501
+								}
+							],
+							"thoughtsTokenCount": 312
+						},
+						"modelVersion": "gemini-3-flash-preview",
+						"createTime": "2026-07-14T02:14:14.559830Z",
+						"responseId": "dptVataVIoGR3dAPg-rnoA8",
+						"gatewayMetadata": {
+							"keySource": "Unified"
 						}
 					},
 					"code_snippets": [
@@ -29218,48 +29682,47 @@
 						}
 					},
 					"output": {
-						"text": "To give you the best recommendations, it helps to know how much time you have. The drive can"
+						"text": "A road trip from San Francisco to Los Angeles can take several different paths depending on whether you want speed or scenery. \n\n**Important Note:** If you plan on taking the scenic Highway 1 (Pacific Coast Highway), there is currently a major road closure south of Big Sur (near Lucia) due to landslides. You can visit Big Sur from the north, but you currently cannot drive all the way through to LA on the coast. You have to cut back to Highway 101.\n\nHere are the best stops based on the route you choose:\n\n### 1. The Scenic Route (Highway 1 & 101)\n*Best for: Nature lovers, photographers, and first-timers. Plan for 2–3 days.*\n\n*   **Monterey & Carmel-by-the-Sea:** Visit the Monterey Bay Aquarium, drive the \"17-Mile Drive\" for famous golf course views, and walk through the fairytale-style cottages in Carmel.\n*   **Big Sur:** Even with the closure, you can drive down to see the iconic **Bixby Creek Bridge** and **Pfeiffer Big Sur State Park**.\n*   **Hearst Castle (San Simeon):** A massive, opulent hilltop estate built by newspaper tycoon William Randolph Hearst. (Accessible by taking the 101 south and cutting back to the coast).\n*   **San Luis Obispo (SLO):** A great halfway point. Visit \"Bubblegum Alley\" or hike Bishop Peak.\n*   **Solvang:** A charming, authentic Danish village in the middle of California. Great for pastries and windmills.\n*   **Santa Barbara:** Known as the \"American Riviera.\" Stop at the Old Mission, walk State Street for shopping, or visit Stearns Wharf.\n\n### 2. The Wine & Inland Route (Highway 101)\n*Best for: Foodies, wine enthusiasts, and those who want a mix of speed and beauty. Plan for 1–2 days.*\n\n*   **Paso Robles:** One of the best wine regions in the state. Don't miss **Sensorio**, a massive outdoor light installation (best seen at dusk).\n*   **Pismo Beach:** Famous for its wide sandy beaches and the \"Oceano Dunes\" where you can drive vehicles on the sand.\n*   **Los Olivos:** A tiny, sophisticated town in the Santa Ynez Valley perfect for wine tasting and high-end boutiques.\n\n### 3. The Fast Route (I-5 South)\n*Best for: Getting there as quickly as possible. Plan for 6 hours.*\n\n*   **Harris Ranch (Coalinga):** A famous \"oasis\" in the middle of the farmland known for its high-quality steaks and resort-style atmosphere.\n*   **Bravo Farms (Kettleman City):** A quirky stop with a petting zoo, ice cream, and a multi-story \"treehouse\" structure for kids to climb.\n*   **Pyramid Lake:** Located just before you descend the \"Grapevine\" into LA, it offers a nice overlook and a visitor center.\n\n### Pro-Tips for your trip:\n1.  **Check the Weather:** If you take the coast, it can be very foggy (the \"June Gloom\") in the mornings.\n2.  **Gas Up:** If you decide to go through Big Sur, gas is extremely expensive and sparse. Fill up in Monterey or Carmel.\n3.  **The \"Grapevine\":** If taking the I-5, be aware of the \"Grapevine\" (Tejon Pass). It is a steep mountain pass that can occasionally close due to snow in winter or high winds.\n\n**How many days are you planning to take for the trip?** I can help you narrow down a specific itinerary!"
 					},
 					"raw_response": {
 						"candidates": [
 							{
-								"avgLogprobs": -7.779651683751491,
 								"content": {
+									"role": "model",
 									"parts": [
 										{
-											"text": "To give you the best recommendations, it helps to know how much time you have. The drive can",
-											"thoughtSignature": "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"
+											"text": "A road trip from San Francisco to Los Angeles can take several different paths depending on whether you want speed or scenery. \n\n**Important Note:** If you plan on taking the scenic Highway 1 (Pacific Coast Highway), there is currently a major road closure south of Big Sur (near Lucia) due to landslides. You can visit Big Sur from the north, but you currently cannot drive all the way through to LA on the coast. You have to cut back to Highway 101.\n\nHere are the best stops based on the route you choose:\n\n### 1. The Scenic Route (Highway 1 & 101)\n*Best for: Nature lovers, photographers, and first-timers. Plan for 2–3 days.*\n\n*   **Monterey & Carmel-by-the-Sea:** Visit the Monterey Bay Aquarium, drive the \"17-Mile Drive\" for famous golf course views, and walk through the fairytale-style cottages in Carmel.\n*   **Big Sur:** Even with the closure, you can drive down to see the iconic **Bixby Creek Bridge** and **Pfeiffer Big Sur State Park**.\n*   **Hearst Castle (San Simeon):** A massive, opulent hilltop estate built by newspaper tycoon William Randolph Hearst. (Accessible by taking the 101 south and cutting back to the coast).\n*   **San Luis Obispo (SLO):** A great halfway point. Visit \"Bubblegum Alley\" or hike Bishop Peak.\n*   **Solvang:** A charming, authentic Danish village in the middle of California. Great for pastries and windmills.\n*   **Santa Barbara:** Known as the \"American Riviera.\" Stop at the Old Mission, walk State Street for shopping, or visit Stearns Wharf.\n\n### 2. The Wine & Inland Route (Highway 101)\n*Best for: Foodies, wine enthusiasts, and those who want a mix of speed and beauty. Plan for 1–2 days.*\n\n*   **Paso Robles:** One of the best wine regions in the state. Don't miss **Sensorio**, a massive outdoor light installation (best seen at dusk).\n*   **Pismo Beach:** Famous for its wide sandy beaches and the \"Oceano Dunes\" where you can drive vehicles on the sand.\n*   **Los Olivos:** A tiny, sophisticated town in the Santa Ynez Valley perfect for wine tasting and high-end boutiques.\n\n### 3. The Fast Route (I-5 South)\n*Best for: Getting there as quickly as possible. Plan for 6 hours.*\n\n*   **Harris Ranch (Coalinga):** A famous \"oasis\" in the middle of the farmland known for its high-quality steaks and resort-style atmosphere.\n*   **Bravo Farms (Kettleman City):** A quirky stop with a petting zoo, ice cream, and a multi-story \"treehouse\" structure for kids to climb.\n*   **Pyramid Lake:** Located just before you descend the \"Grapevine\" into LA, it offers a nice overlook and a visitor center.\n\n### Pro-Tips for your trip:\n1.  **Check the Weather:** If you take the coast, it can be very foggy (the \"June Gloom\") in the mornings.\n2.  **Gas Up:** If you decide to go through Big Sur, gas is extremely expensive and sparse. Fill up in Monterey or Carmel.\n3.  **The \"Grapevine\":** If taking the I-5, be aware of the \"Grapevine\" (Tejon Pass). It is a steep mountain pass that can occasionally close due to snow in winter or high winds.\n\n**How many days are you planning to take for the trip?** I can help you narrow down a specific itinerary!",
+											"thoughtSignature": "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"
 										}
-									],
-									"role": "model"
+									]
 								},
-								"finishReason": "MAX_TOKENS"
+								"finishReason": "STOP"
 							}
 						],
-						"createTime": "2026-04-17T05:48:02.222198Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3-flash-preview",
-						"responseId": "ksnhafbHDZCeq8YPtfXXyQ4",
 						"usageMetadata": {
-							"candidatesTokenCount": 20,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 20
-								}
-							],
 							"promptTokenCount": 64,
+							"candidatesTokenCount": 796,
+							"totalTokenCount": 1357,
+							"trafficType": "ON_DEMAND",
 							"promptTokensDetails": [
 								{
 									"modality": "TEXT",
 									"tokenCount": 64
 								}
 							],
-							"thoughtsTokenCount": 476,
-							"totalTokenCount": 560,
-							"trafficType": "ON_DEMAND"
+							"candidatesTokensDetails": [
+								{
+									"modality": "TEXT",
+									"tokenCount": 796
+								}
+							],
+							"thoughtsTokenCount": 497
+						},
+						"modelVersion": "gemini-3-flash-preview",
+						"createTime": "2026-07-14T02:14:20.450752Z",
+						"responseId": "fJtVasDBG-jOu-gPvavt4Q4",
+						"gatewayMetadata": {
+							"keySource": "Unified"
 						}
 					},
 					"code_snippets": [
@@ -29294,50 +29757,10 @@
 							"temperature": 0.8
 						}
 					},
-					"output": {
-						"text": "The yellow police tape hummed in the drafty"
-					},
-					"raw_response": {
-						"candidates": [
-							{
-								"avgLogprobs": -15.592795781649631,
-								"content": {
-									"parts": [
-										{
-											"text": "The yellow police tape hummed in the drafty",
-											"thoughtSignature": "CvAIAY89a184jaSQCZEM4oHqR38/9rVamPb8K209g7cY61/Q3OxFivZwmOKnowcQMnAxvVGTaxxuDlXAqiNS70l3UPnk+3GPr8wExttqJyoSzP/k1E1UpMurGT/CEhXJnmfAaf3ChjjPztJVM/Mb94nkIjh284U1w0KQOHh/T1Za3F3KUlkPVcIPOoctReIMhsI1Z/Do/LZykKPYMZtDp73oJU6ADi+Yo6DZH1Voc56qKXmJTCadmNjsNXzTkklCXdwspIvfdeh3MeT/DY3wbu8SseGNxp8JQx6v+6hry8KL9G0EjP478Zz2iYmV58hdWvmhSvioQtJ9wGN2CEK4v2vpmGmlO4Xzh908uu3YA6pHevmPrgkWjYwJ/vZ27kVFCL2pfXNNQBWcX9rQuGueSfkLYjBr90c6iyVJcM/saAbmBbBfKHko5rfkwwKjPFoj9y8kXQ7lBl3H9YRVjvkfJNxaDVxz+IygwHB52H1h78mZmc27g9faKAwzxn/GNhIG3r18TVKy6liAsebOVKpeC1bPuFIGEo6nwdzIBdsJP7/ngU9+4mCZ60/n3293iPJxff4zA+7tRTfjDTjtSuPW2Ta6phZ2NfnKwKWbwuwqxDdSAK9N8RRugb6hn2o7lIoG1BEQ+T3W728uzpDFhEpa0P9RBiYAV1oDJ5kDCZBdC7JqWS1RjxfOqe8Mh6KgMD8eMEImYF4dHU8Ppt4BANexgK3rSHSauW3Ykb0r8KxTIjKmd6mJ/ImJLuqwVshwjx8Ovbt38D9cag4MiNbq5rwjAgTk1BbFF0XQvTRef2LHYEqIBIvYYxKLH6eYFhrAWG/TT9tp7R/TZD2pfs+fGqMzyehGEFOUjMyhphgK5o0hKsXe/xHGeQsTdu3kFySVlc+bvzV5ve0T2hau1xXD+tnBNFpCaHlS25amUdTXJluWuF2iDfzet648bckCQTxQRBEGT5QiF7CKdvu+l3x/Jct5l9ZynwMcr0rHhkm+7iL74QFykS1lZT+9GiJO7bj2Onz6RUdAIAEg7PWp/zvwX8P+uSeXMMX0hBuRZ69oR1z9EfUFBsravP/XwxWpbFi2QCk2RhbaBolrzPkNq5C1Fnk7H1YWFvDkRnQ+vCVdWitRVhIJSJ/MCuH2ryewJ1eywlVLPddlu/mGtTqAMJSZJz+f6h9BUrRffA8EDL10L2lVb+IpwvVrwvaVqCoFiRYmYmtyrm+ckJMR/8LRsM5aCoJyKGgt/QmhLrDI9br/r6ghkxj4IhS4K03+rcDpG6aZ/W6WKw5tnq/gaZNG7ZhV6PXSxuKdTBMnw6waSqFc2d1UhLTbSwJDxhUn3seOWltq6rBRxJNLRxn/rB0aM3G0chiHQxMwKZxoXBhmc+Lph07RZlSs/IGdn1tvPNhDbAKEVCBwRUrvouCYNdOqS5UCkLwnTFOpm5XX3G+I/hFPgBgZksGu7ylh298RfWUaojbDBd5rWjs6/vDyNKT8/M80B3B+anLSgpoGl+Emv0ocdKJbVf5OBCo="
-										}
-									],
-									"role": "model"
-								},
-								"finishReason": "MAX_TOKENS"
-							}
-						],
-						"createTime": "2026-04-17T05:48:06.216204Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3-flash-preview",
-						"responseId": "lsnhaYyZDd-jq8YPlobFmAo",
-						"usageMetadata": {
-							"candidatesTokenCount": 10,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 10
-								}
-							],
-							"promptTokenCount": 13,
-							"promptTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 13
-								}
-							],
-							"thoughtsTokenCount": 286,
-							"totalTokenCount": 309,
-							"trafficType": "ON_DEMAND"
-						}
+					"error": {
+						"kind": "runner-failure",
+						"message": "normalizer returned empty output -- check modality vs response shape, or recapture",
+						"timestamp": "2026-07-14T02:14:38.375Z"
 					},
 					"code_snippets": [
 						{
@@ -29983,48 +30406,47 @@
 						]
 					},
 					"output": {
-						"text": "The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the \"three\" laws, there are actually four (scientists later added a \"Zeroth\" law). \n\nHere is a breakdown of the three main laws, plus the bonus Zeroth law, explained in both scientific terms and plain English.\n\n### 1. The First Law: The Law of Conservation of Energy\n*   **The Science:** Energy cannot be created or destroyed in an isolated system; it can only change forms. The change in a system's internal energy is equal to the heat added to the system minus the work done by the system.\n*   **Plain English:** You can’t get something for nothing. Energy just trades places or changes its outfit. \n*   **Everyday Example:** When you turn on a lightbulb, electrical energy isn't destroyed; it is transformed into light energy and heat energy. When you eat an apple, your body converts the chemical energy in the food into kinetic energy so you can move.\n\n### 2. The Second Law: The Law of Entropy\n*   **The Science:** The total entropy (a measure of disorder, randomness, or chaotic energy) of an isolated system will always increase over time. Furthermore, heat will always flow spontaneously from a hotter object to a colder one, never the other way around. \n*   **Plain English:** Things naturally degrade and become more disorganized over time. Because some energy is always lost as unusable heat when it changes forms, no process is 100% efficient. \n*   **Everyday Example:** If you leave a hot cup of coffee on a table, it will naturally cool down as its heat spreads into the room. It will never spontaneously gather heat from the room to make itself boiling hot again. Similarly, a tidy room will naturally become messy over time unless you expend energy (do work) to clean it.\n\n### 3. The Third Law: Absolute Zero\n*   **The Science:** As the temperature of a system approaches absolute zero (0 Kelvin, or -273.15°C / -459.67°F), the entropy of the system approaches a constant minimum. \n*   **Plain English:** Absolute zero is the coldest possible temperature, where all molecular and atomic movement completely stops. This law states that it is physically impossible to actually reach absolute zero because doing so would require an infinite amount of work.\n*   **Everyday Example:** Imagine a bustling crowd of people (molecules) moving around. As the room gets colder, they slow down. At absolute zero, every single person would be perfectly frozen in place. \n\n---\n\n### *Bonus: The Zeroth Law (Thermal Equilibrium)*\nScientists realized this principle was so fundamental that it needed to precede the First, Second, and Third laws—hence, the \"Zeroth\" law.\n*   **The Science:** If System A is in thermal equilibrium (the same temperature) with System B, and System B is in thermal equilibrium with System C, then System A is in thermal equilibrium with System C.\n*   **Plain English:** If two things are the same temperature as a third thing, they are all the same temperature. \n*   **Everyday Example:** This is why thermometers work. If a thermometer is the same temperature as a room, and you are the same temperature as the room, you are the same temperature as the thermometer.\n\n### The \"Gambling\" Summary\nA famous and humorous way physicists remember the laws of thermodynamics is by comparing the universe to a rigged casino game:\n*   **1st Law:** *You can’t win.* (You cannot create energy out of nothing).\n*   **2nd Law:** *You can’t break even.* (You always lose some energy to heat/entropy).\n*   **3rd Law:** *You can’t quit the game.* (You can never reach absolute zero)."
+						"text": "The laws of thermodynamics are fundamental principles in physics that describe how energy moves, changes form, and interacts with matter in the universe. \n\nHere is a breakdown of the three laws (plus a \"bonus\" law) explained simply:\n\n### 1. The First Law: The Law of Conservation of Energy\n* **The Concept:** Energy cannot be created or destroyed; it can only be transferred or changed from one form to another. The total amount of energy in the universe is constant.\n* **In Simple Terms:** You can’t get something for nothing. \n* **Everyday Example:** When you eat an apple, your body doesn't \"destroy\" the calories (chemical energy). It transforms them into kinetic energy (when you move) and thermal energy (body heat). Similarly, a lightbulb doesn't create light out of nowhere; it converts electrical energy into light and heat.\n\n### 2. The Second Law: The Law of Entropy\n* **The Concept:** The total **entropy** (a measure of disorder or randomness) of an isolated system always increases over time. Because of this, heat will always naturally flow from a hotter object to a colder one, never the reverse. Energy transfers are never 100% efficient; some energy is always lost as unusable heat.\n* **In Simple Terms:** Things naturally get messier over time, and you can't even \"break even\" when transferring energy.\n* **Everyday Example:** If you leave a hot cup of coffee on a table, it will eventually cool down until it matches room temperature. The heat spreads out and dissipates. You will never see a cold cup of coffee spontaneously absorb heat from the room and start boiling. \n\n### 3. The Third Law: Absolute Zero\n* **The Concept:** As the temperature of a system approaches **absolute zero** (0 Kelvin, or -273.15°C / -459.67°F), the entropy (disorder) of the system approaches a constant minimum. At absolute zero, all atomic and molecular movement essentially stops.\n* **In Simple Terms:** Things stop moving when it gets as cold as physically possible. \n* **Everyday Example:** It is practically impossible to reach absolute zero, but scientists use this law to understand how materials behave at extreme extremes. For instance, creating superconductors (materials with zero electrical resistance) requires cooling them to near absolute zero so that atomic vibrations don't interfere with the flow of electricity.\n\n---\n\n### *Bonus: The Zeroth Law*\nWait, a zeroth law? Yes! Scientists realized later that there was a foundational rule they assumed to be true but never formally stated. Because the 1st, 2nd, and 3rd laws were already established, they named this the \"Zeroth\" law so it would logically come first.\n* **The Concept:** If System A and System B are both the same temperature as System C, then System A and System B must be the same temperature as each other. (This law establishes the basis for how thermometers work!).\n\n---\n\n### The Famous \"Gambler's Analogy\"\nTo make these laws easy to remember, physicists sometimes summarize them like a rigged game of cosmic poker:\n* **1st Law:** You can't win; you can only break even. *(Energy is conserved).*\n* **2nd Law:** You can't even break even; you will always lose. *(Entropy increases; energy is lost as heat).*\n* **3rd Law:** You can't quit the game. *(You can never reach absolute zero).*"
 					},
 					"raw_response": {
 						"candidates": [
 							{
-								"avgLogprobs": -0.24408692330364393,
 								"content": {
+									"role": "model",
 									"parts": [
 										{
-											"text": "The laws of thermodynamics are the fundamental principles that describe how energy moves and changes within the universe. While the prompt asks for the \"three\" laws, there are actually four (scientists later added a \"Zeroth\" law). \n\nHere is a breakdown of the three main laws, plus the bonus Zeroth law, explained in both scientific terms and plain English.\n\n### 1. The First Law: The Law of Conservation of Energy\n*   **The Science:** Energy cannot be created or destroyed in an isolated system; it can only change forms. The change in a system's internal energy is equal to the heat added to the system minus the work done by the system.\n*   **Plain English:** You can’t get something for nothing. Energy just trades places or changes its outfit. \n*   **Everyday Example:** When you turn on a lightbulb, electrical energy isn't destroyed; it is transformed into light energy and heat energy. When you eat an apple, your body converts the chemical energy in the food into kinetic energy so you can move.\n\n### 2. The Second Law: The Law of Entropy\n*   **The Science:** The total entropy (a measure of disorder, randomness, or chaotic energy) of an isolated system will always increase over time. Furthermore, heat will always flow spontaneously from a hotter object to a colder one, never the other way around. \n*   **Plain English:** Things naturally degrade and become more disorganized over time. Because some energy is always lost as unusable heat when it changes forms, no process is 100% efficient. \n*   **Everyday Example:** If you leave a hot cup of coffee on a table, it will naturally cool down as its heat spreads into the room. It will never spontaneously gather heat from the room to make itself boiling hot again. Similarly, a tidy room will naturally become messy over time unless you expend energy (do work) to clean it.\n\n### 3. The Third Law: Absolute Zero\n*   **The Science:** As the temperature of a system approaches absolute zero (0 Kelvin, or -273.15°C / -459.67°F), the entropy of the system approaches a constant minimum. \n*   **Plain English:** Absolute zero is the coldest possible temperature, where all molecular and atomic movement completely stops. This law states that it is physically impossible to actually reach absolute zero because doing so would require an infinite amount of work.\n*   **Everyday Example:** Imagine a bustling crowd of people (molecules) moving around. As the room gets colder, they slow down. At absolute zero, every single person would be perfectly frozen in place. \n\n---\n\n### *Bonus: The Zeroth Law (Thermal Equilibrium)*\nScientists realized this principle was so fundamental that it needed to precede the First, Second, and Third laws—hence, the \"Zeroth\" law.\n*   **The Science:** If System A is in thermal equilibrium (the same temperature) with System B, and System B is in thermal equilibrium with System C, then System A is in thermal equilibrium with System C.\n*   **Plain English:** If two things are the same temperature as a third thing, they are all the same temperature. \n*   **Everyday Example:** This is why thermometers work. If a thermometer is the same temperature as a room, and you are the same temperature as the room, you are the same temperature as the thermometer.\n\n### The \"Gambling\" Summary\nA famous and humorous way physicists remember the laws of thermodynamics is by comparing the universe to a rigged casino game:\n*   **1st Law:** *You can’t win.* (You cannot create energy out of nothing).\n*   **2nd Law:** *You can’t break even.* (You always lose some energy to heat/entropy).\n*   **3rd Law:** *You can’t quit the game.* (You can never reach absolute zero).",
-											"thoughtSignature": "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"
+											"text": "The laws of thermodynamics are fundamental principles in physics that describe how energy moves, changes form, and interacts with matter in the universe. \n\nHere is a breakdown of the three laws (plus a \"bonus\" law) explained simply:\n\n### 1. The First Law: The Law of Conservation of Energy\n* **The Concept:** Energy cannot be created or destroyed; it can only be transferred or changed from one form to another. The total amount of energy in the universe is constant.\n* **In Simple Terms:** You can’t get something for nothing. \n* **Everyday Example:** When you eat an apple, your body doesn't \"destroy\" the calories (chemical energy). It transforms them into kinetic energy (when you move) and thermal energy (body heat). Similarly, a lightbulb doesn't create light out of nowhere; it converts electrical energy into light and heat.\n\n### 2. The Second Law: The Law of Entropy\n* **The Concept:** The total **entropy** (a measure of disorder or randomness) of an isolated system always increases over time. Because of this, heat will always naturally flow from a hotter object to a colder one, never the reverse. Energy transfers are never 100% efficient; some energy is always lost as unusable heat.\n* **In Simple Terms:** Things naturally get messier over time, and you can't even \"break even\" when transferring energy.\n* **Everyday Example:** If you leave a hot cup of coffee on a table, it will eventually cool down until it matches room temperature. The heat spreads out and dissipates. You will never see a cold cup of coffee spontaneously absorb heat from the room and start boiling. \n\n### 3. The Third Law: Absolute Zero\n* **The Concept:** As the temperature of a system approaches **absolute zero** (0 Kelvin, or -273.15°C / -459.67°F), the entropy (disorder) of the system approaches a constant minimum. At absolute zero, all atomic and molecular movement essentially stops.\n* **In Simple Terms:** Things stop moving when it gets as cold as physically possible. \n* **Everyday Example:** It is practically impossible to reach absolute zero, but scientists use this law to understand how materials behave at extreme extremes. For instance, creating superconductors (materials with zero electrical resistance) requires cooling them to near absolute zero so that atomic vibrations don't interfere with the flow of electricity.\n\n---\n\n### *Bonus: The Zeroth Law*\nWait, a zeroth law? Yes! Scientists realized later that there was a foundational rule they assumed to be true but never formally stated. Because the 1st, 2nd, and 3rd laws were already established, they named this the \"Zeroth\" law so it would logically come first.\n* **The Concept:** If System A and System B are both the same temperature as System C, then System A and System B must be the same temperature as each other. (This law establishes the basis for how thermometers work!).\n\n---\n\n### The Famous \"Gambler's Analogy\"\nTo make these laws easy to remember, physicists sometimes summarize them like a rigged game of cosmic poker:\n* **1st Law:** You can't win; you can only break even. *(Energy is conserved).*\n* **2nd Law:** You can't even break even; you will always lose. *(Entropy increases; energy is lost as heat).*\n* **3rd Law:** You can't quit the game. *(You can never reach absolute zero).*",
+											"thoughtSignature": "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"
 										}
-									],
-									"role": "model"
+									]
 								},
 								"finishReason": "STOP"
 							}
 						],
-						"createTime": "2026-04-17T00:58:04.691850Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3.1-pro-preview",
-						"responseId": "nIXhaYqdKqyA9LsPwLiNqQg",
 						"usageMetadata": {
-							"candidatesTokenCount": 828,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 828
-								}
-							],
 							"promptTokenCount": 8,
+							"candidatesTokenCount": 750,
+							"totalTokenCount": 1778,
+							"trafficType": "ON_DEMAND",
 							"promptTokensDetails": [
 								{
 									"modality": "TEXT",
 									"tokenCount": 8
 								}
 							],
-							"thoughtsTokenCount": 925,
-							"totalTokenCount": 1761,
-							"trafficType": "ON_DEMAND"
+							"candidatesTokensDetails": [
+								{
+									"modality": "TEXT",
+									"tokenCount": 750
+								}
+							],
+							"thoughtsTokenCount": 1020
+						},
+						"modelVersion": "gemini-3.1-pro-preview",
+						"createTime": "2026-07-14T02:13:05.948743Z",
+						"responseId": "MZtVaof0Of-w3dAPzO-q6Qk",
+						"gatewayMetadata": {
+							"keySource": "Unified"
 						}
 					},
 					"code_snippets": [
@@ -30066,48 +30488,47 @@
 						}
 					},
 					"output": {
-						"text": "To read a JSON file in Python, you can use the built-in `json` module. \n\nHere is the most common and standard way to do it:\n\n### Basic Example\n\nAssuming you have a file named `data.json`, here is how you read it:\n\n```python\nimport json\n\n# Open the file in read mode\nwith open('data.json', 'r', encoding='utf-8') as file:\n    # Load the JSON data into a Python dictionary\n    data = json.load(file)\n\n# Now you can use 'data' like a normal Python dictionary\nprint(data)\n```\n\n### How it works:\n1. **`import json`**: Imports Python's built-in JSON library.\n2. **`with open(...) as file:`**: Opens the file safely. Using `with` ensures that the file is automatically closed after it is read, even if an error occurs. Adding `encoding='utf-8'` is a best practice to prevent errors with special characters.\n3. **`json.load(file)`**: Reads the file and converts the JSON data into the corresponding Python object (usually a dictionary or a list).\n\n---\n\n### Advanced Example (with Error Handling)\n\nIf you want to write robust code, it is a good idea to handle potential errors, such as the file not existing or the JSON being formatted incorrectly:\n\n```python\nimport json\n\nfile_path = 'data.json'\n\ntry:\n    with open(file_path, 'r', encoding='utf-8') as file:\n        data = json.load(file)\n        print(\"Successfully read JSON data!\")\n        \nexcept FileNotFoundError:\n    print(f\"Error: The file {file_path} was not found.\")\nexcept json.JSONDecodeError:\n    print(f\"Error: The file {file_path} does not contain valid JSON.\")\n```\n\n### A Quick Note: `load()` vs `loads()`\n* Use **`json.load()`** (no 's') when reading directly from a **file**.\n* Use **`json.loads()`** (with an 's' for string) if you are reading JSON from a **string variable** in your code."
+						"text": "To read a JSON file in Python, you can use the built-in **`json`** module. \n\nHere is the standard and safest way to do it:\n\n```python\nimport json\n\n# Open the file in read mode\nwith open('data.json', 'r', encoding='utf-8') as file:\n    # Load the JSON data into a Python dictionary\n    data = json.load(file)\n\n# Now you can use 'data' like a normal Python dictionary\nprint(data)\n```\n\n### Breakdown of the code:\n1. **`import json`**: Imports Python's built-in JSON library.\n2. **`with open(...) as file:`**: This is the best practice for opening files. It ensures that the file is automatically closed after you are done with it, even if an error occurs.\n3. **`encoding='utf-8'`**: It is highly recommended to specify the encoding to prevent errors if your JSON file contains special characters or emojis.\n4. **`json.load(file)`**: This function reads the file and converts the JSON data into a Python object (usually a dictionary or a list).\n\n---\n\n### Best Practice: Adding Error Handling\nIf you are writing code for a real application, it's a good idea to handle potential errors, such as the file not existing or the JSON being formatted incorrectly:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r', encoding='utf-8') as file:\n        data = json.load(file)\n        print(data)\n        \nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file does not contain valid JSON.\")\n```\n\n### 💡 Pro Tip: `load()` vs `loads()`\nIt is easy to confuse these two functions in the `json` module:\n* Use **`json.load()`** (no 's') when reading directly from a **file**.\n* Use **`json.loads()`** (with an 's' for **s**tring) when reading JSON data from a **Python string**."
 					},
 					"raw_response": {
 						"candidates": [
 							{
-								"avgLogprobs": -0.13193573454933058,
 								"content": {
+									"role": "model",
 									"parts": [
 										{
-											"text": "To read a JSON file in Python, you can use the built-in `json` module. \n\nHere is the most common and standard way to do it:\n\n### Basic Example\n\nAssuming you have a file named `data.json`, here is how you read it:\n\n```python\nimport json\n\n# Open the file in read mode\nwith open('data.json', 'r', encoding='utf-8') as file:\n    # Load the JSON data into a Python dictionary\n    data = json.load(file)\n\n# Now you can use 'data' like a normal Python dictionary\nprint(data)\n```\n\n### How it works:\n1. **`import json`**: Imports Python's built-in JSON library.\n2. **`with open(...) as file:`**: Opens the file safely. Using `with` ensures that the file is automatically closed after it is read, even if an error occurs. Adding `encoding='utf-8'` is a best practice to prevent errors with special characters.\n3. **`json.load(file)`**: Reads the file and converts the JSON data into the corresponding Python object (usually a dictionary or a list).\n\n---\n\n### Advanced Example (with Error Handling)\n\nIf you want to write robust code, it is a good idea to handle potential errors, such as the file not existing or the JSON being formatted incorrectly:\n\n```python\nimport json\n\nfile_path = 'data.json'\n\ntry:\n    with open(file_path, 'r', encoding='utf-8') as file:\n        data = json.load(file)\n        print(\"Successfully read JSON data!\")\n        \nexcept FileNotFoundError:\n    print(f\"Error: The file {file_path} was not found.\")\nexcept json.JSONDecodeError:\n    print(f\"Error: The file {file_path} does not contain valid JSON.\")\n```\n\n### A Quick Note: `load()` vs `loads()`\n* Use **`json.load()`** (no 's') when reading directly from a **file**.\n* Use **`json.loads()`** (with an 's' for string) if you are reading JSON from a **string variable** in your code.",
-											"thoughtSignature": "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"
+											"text": "To read a JSON file in Python, you can use the built-in **`json`** module. \n\nHere is the standard and safest way to do it:\n\n```python\nimport json\n\n# Open the file in read mode\nwith open('data.json', 'r', encoding='utf-8') as file:\n    # Load the JSON data into a Python dictionary\n    data = json.load(file)\n\n# Now you can use 'data' like a normal Python dictionary\nprint(data)\n```\n\n### Breakdown of the code:\n1. **`import json`**: Imports Python's built-in JSON library.\n2. **`with open(...) as file:`**: This is the best practice for opening files. It ensures that the file is automatically closed after you are done with it, even if an error occurs.\n3. **`encoding='utf-8'`**: It is highly recommended to specify the encoding to prevent errors if your JSON file contains special characters or emojis.\n4. **`json.load(file)`**: This function reads the file and converts the JSON data into a Python object (usually a dictionary or a list).\n\n---\n\n### Best Practice: Adding Error Handling\nIf you are writing code for a real application, it's a good idea to handle potential errors, such as the file not existing or the JSON being formatted incorrectly:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r', encoding='utf-8') as file:\n        data = json.load(file)\n        print(data)\n        \nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file does not contain valid JSON.\")\n```\n\n### 💡 Pro Tip: `load()` vs `loads()`\nIt is easy to confuse these two functions in the `json` module:\n* Use **`json.load()`** (no 's') when reading directly from a **file**.\n* Use **`json.loads()`** (with an 's' for **s**tring) when reading JSON data from a **Python string**.",
+											"thoughtSignature": "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"
 										}
-									],
-									"role": "model"
+									]
 								},
 								"finishReason": "STOP"
 							}
 						],
-						"createTime": "2026-04-17T00:58:06.706819Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3.1-pro-preview",
-						"responseId": "noXhaYOSK5eDpucP34WHiQw",
 						"usageMetadata": {
-							"candidatesTokenCount": 478,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 478
-								}
-							],
 							"promptTokenCount": 20,
+							"candidatesTokenCount": 462,
+							"totalTokenCount": 1060,
+							"trafficType": "ON_DEMAND",
 							"promptTokensDetails": [
 								{
 									"modality": "TEXT",
 									"tokenCount": 20
 								}
 							],
-							"thoughtsTokenCount": 590,
-							"totalTokenCount": 1088,
-							"trafficType": "ON_DEMAND"
+							"candidatesTokensDetails": [
+								{
+									"modality": "TEXT",
+									"tokenCount": 462
+								}
+							],
+							"thoughtsTokenCount": 578
+						},
+						"modelVersion": "gemini-3.1-pro-preview",
+						"createTime": "2026-07-14T02:13:22.321177Z",
+						"responseId": "QptVapnNE8WW3dAP2MmH4Aw",
+						"gatewayMetadata": {
+							"keySource": "Unified"
 						}
 					},
 					"code_snippets": [
@@ -30158,48 +30579,47 @@
 						}
 					},
 					"output": {
-						"text": "The best stops really depend on which route you decide to take! There are three"
+						"text": "The best places to stop really depend on which route you decide to take. The 5-6 hour drive I mentioned earlier is via the fastest route (Interstate 5), but if you have more time, the coastal routes are world-famous. \n\nHere are the three main routes and the best stops for each:\n\n**1. The Fast Route (Interstate 5)**\n*Time: ~5.5 to 6 hours (pure driving)*\nThis route cuts straight through the central valley. It's not very scenic, but it's efficient. \n*   **Harris Ranch (Coalinga):** About halfway between SF and LA, this is a famous steakhouse, BBQ spot, and hotel. It’s the ultimate I-5 pit stop for a good meal.\n*   **Kettleman City:** A major rest area with tons of fast food options (including a popular In-N-Out Burger) and gas stations.\n*   **Tejon Ranch Outlets:** Located right before you hit the mountains into LA, it's a good place to stretch your legs, use the restroom, and do some shopping.\n\n**2. The Best of Both Worlds (US Highway 101)**\n*Time: ~6.5 to 7.5 hours (pure driving)*\nThis route rolls through beautiful farmland, oak hills, wine country, and touches the coast towards the end.\n*   **Paso Robles:** A fantastic halfway point. It’s a slightly more laid-back (and affordable) wine country compared to Napa, with a great downtown square full of restaurants.\n*   **San Luis Obispo (SLO):** A charming college town. Stop by the famously quirky, hot-pink **Madonna Inn** for a slice of cake, or visit the historic downtown. \n*   **Santa Barbara:** Known as the \"American Riviera.\" It features gorgeous Spanish-style architecture, a beautiful palm-lined beach, and great seafood on Stearns Wharf. \n\n**3. The Ultimate Scenic Route (Highway 1 / Pacific Coast Highway)**\n*Time: 9-10+ hours (Best done over 2 days)*\nThis is the famous coastal drive. *(Note: Always check Caltrans for road closures before taking this route, as landslides occasionally close portions of the road in Big Sur).*\n*   **Monterey & Carmel-by-the-Sea:** Visit the world-class Monterey Bay Aquarium, drive the scenic \"17-Mile Drive,\" and grab coffee in the fairytale-like village of Carmel.\n*   **Big Sur:** The most dramatic coastline in the US. Must-stops include the **Bixby Creek Bridge** (you'll recognize it from a million photos) and **McWay Falls**, a waterfall that drops right onto the beach.\n*   **San Simeon:** Home to the extravagant **Hearst Castle** (book tickets in advance) and a massive, noisy, and entertaining Elephant Seal rookery right on the beach.\n*   **Morro Bay:** Famous for the massive \"Morro Rock\" sitting in the harbor. Great spot for clam chowder.\n\n**How to decide:**\n*   Are you trying to do this drive in a single day, or do you have time to stay overnight somewhere? \n*   What are you most interested in: beaches, food, wine, or weird roadside attractions? \n\nLet me know and we can narrow it down to the perfect itinerary!"
 					},
 					"raw_response": {
 						"candidates": [
 							{
-								"avgLogprobs": -8.212950519499952,
 								"content": {
+									"role": "model",
 									"parts": [
 										{
-											"text": "The best stops really depend on which route you decide to take! There are three",
-											"thoughtSignature": "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"
+											"text": "The best places to stop really depend on which route you decide to take. The 5-6 hour drive I mentioned earlier is via the fastest route (Interstate 5), but if you have more time, the coastal routes are world-famous. \n\nHere are the three main routes and the best stops for each:\n\n**1. The Fast Route (Interstate 5)**\n*Time: ~5.5 to 6 hours (pure driving)*\nThis route cuts straight through the central valley. It's not very scenic, but it's efficient. \n*   **Harris Ranch (Coalinga):** About halfway between SF and LA, this is a famous steakhouse, BBQ spot, and hotel. It’s the ultimate I-5 pit stop for a good meal.\n*   **Kettleman City:** A major rest area with tons of fast food options (including a popular In-N-Out Burger) and gas stations.\n*   **Tejon Ranch Outlets:** Located right before you hit the mountains into LA, it's a good place to stretch your legs, use the restroom, and do some shopping.\n\n**2. The Best of Both Worlds (US Highway 101)**\n*Time: ~6.5 to 7.5 hours (pure driving)*\nThis route rolls through beautiful farmland, oak hills, wine country, and touches the coast towards the end.\n*   **Paso Robles:** A fantastic halfway point. It’s a slightly more laid-back (and affordable) wine country compared to Napa, with a great downtown square full of restaurants.\n*   **San Luis Obispo (SLO):** A charming college town. Stop by the famously quirky, hot-pink **Madonna Inn** for a slice of cake, or visit the historic downtown. \n*   **Santa Barbara:** Known as the \"American Riviera.\" It features gorgeous Spanish-style architecture, a beautiful palm-lined beach, and great seafood on Stearns Wharf. \n\n**3. The Ultimate Scenic Route (Highway 1 / Pacific Coast Highway)**\n*Time: 9-10+ hours (Best done over 2 days)*\nThis is the famous coastal drive. *(Note: Always check Caltrans for road closures before taking this route, as landslides occasionally close portions of the road in Big Sur).*\n*   **Monterey & Carmel-by-the-Sea:** Visit the world-class Monterey Bay Aquarium, drive the scenic \"17-Mile Drive,\" and grab coffee in the fairytale-like village of Carmel.\n*   **Big Sur:** The most dramatic coastline in the US. Must-stops include the **Bixby Creek Bridge** (you'll recognize it from a million photos) and **McWay Falls**, a waterfall that drops right onto the beach.\n*   **San Simeon:** Home to the extravagant **Hearst Castle** (book tickets in advance) and a massive, noisy, and entertaining Elephant Seal rookery right on the beach.\n*   **Morro Bay:** Famous for the massive \"Morro Rock\" sitting in the harbor. Great spot for clam chowder.\n\n**How to decide:**\n*   Are you trying to do this drive in a single day, or do you have time to stay overnight somewhere? \n*   What are you most interested in: beaches, food, wine, or weird roadside attractions? \n\nLet me know and we can narrow it down to the perfect itinerary!",
+											"thoughtSignature": "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"
 										}
-									],
-									"role": "model"
+									]
 								},
-								"finishReason": "MAX_TOKENS"
+								"finishReason": "STOP"
 							}
 						],
-						"createTime": "2026-04-17T00:58:22.165603Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3.1-pro-preview",
-						"responseId": "roXhaeONCsmApucP_8_n-Qc",
 						"usageMetadata": {
-							"candidatesTokenCount": 16,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 16
-								}
-							],
 							"promptTokenCount": 64,
+							"candidatesTokenCount": 725,
+							"totalTokenCount": 1726,
+							"trafficType": "ON_DEMAND",
 							"promptTokensDetails": [
 								{
 									"modality": "TEXT",
 									"tokenCount": 64
 								}
 							],
-							"thoughtsTokenCount": 480,
-							"totalTokenCount": 560,
-							"trafficType": "ON_DEMAND"
+							"candidatesTokensDetails": [
+								{
+									"modality": "TEXT",
+									"tokenCount": 725
+								}
+							],
+							"thoughtsTokenCount": 937
+						},
+						"modelVersion": "gemini-3.1-pro-preview",
+						"createTime": "2026-07-14T02:13:32.346531Z",
+						"responseId": "TJtVaqOTFYSNu-gPqLui2AY",
+						"gatewayMetadata": {
+							"keySource": "Unified"
 						}
 					},
 					"code_snippets": [
@@ -30234,50 +30654,10 @@
 							"temperature": 0.8
 						}
 					},
-					"output": {
-						"text": "The air in Elias Vance’s apartment smelled of stale copper"
-					},
-					"raw_response": {
-						"candidates": [
-							{
-								"avgLogprobs": -7.339017173991171,
-								"content": {
-									"parts": [
-										{
-											"text": "The air in Elias Vance’s apartment smelled of stale copper",
-											"thoughtSignature": "Cq4JAY89a182dWgWqxl+2ki63AHSyM5ZH2lCKULPaq6FwVzqU8cjzEuUMCW+PtvlWb4o8I43mjINtaopb+0gfW34S3B+T/ho11F45VvPlOtThgRHYzNW380UwBnoDc95tH/lYRrI05dWolDbmYq6VlbJBzyuXa4KSRkQsPdgsaRRylO8j738BXvyGMuiKcPRRtm+5ZL6M1oeqKrGGu1Z9ye9f1ZiO5bX105o2QZwnJ3muHcraACV86Hn11Au6iEnhpoN94OzVxn4b9Gun97TLdAHA4PSI0zmVuo1twzc3Ai9ELnr79qMrHzi1FL/E3WG+zh8pftb5kpQHGpIW4VCvUXr0nPaswhuCCBFMc7sGrTG/9FnreK5QPQKKU+C1F+WojRr3k9ReZ36VAib4CqW8Y23JsUhup3OjwoU++C5g2PeVZF5l38VqzJTvLYHp4RKzKr3fYUsg5l0Rl3o7eHQ+/BXU5mdNbEmlvDHzHbpayGSDhGlxDjBBAAwclf/XM+6kNGIg9p0EcOS8kOmw+PqrRF09uLiuVceXYflgMbUT2g314LC7Gzmfygtd9XCNrl6lnYPoZZirjGax+14OL+/m6+BIZPT/HXyyy6EZn9yHpSRWkIpR8mbmclANJDPB1RmM9M67YzeZ4aenNZV3V0Kh9vSHgimXjuz3FkwINi+wxpErzFHsnbGtuBJv6xjl9jKa0DAq4FU/V1u5hjv1Z6K2uLEUtx67Ol9ojrd5AECXhhw1U1ytmPz1Enly3kNciGIprAHFa3/eWT+maYFNMbCHKCULAwEVzb2m3H6fCnMRyEXMQCFcbZ+QXDN+zUd1Hc7xsRw7u2fZloeR6/KVVlqN//4mefFy4HFGFjqpTCIPuUtpLwDDExWWDQqZHwnJy5xQhgT1MxpugXaCFWMkQIO6mOZbBLd+4LP1VR2ObW4e0kiFcuriJbpg/z2gzd3aQB3bbj2ufBBm2QffRzdu6pqCGHw1UICot926fux2fzFRf8ReF3ZVdcA4QeJzVuQe68wNtsSB+6bjp8O0/G+opcgy5GpjDbtfcqOM3h2dTshksC9LULh8WFxzxUZ9WxNoyjcITHqm5xoU3fZw0vAbyTPDEI9GtqcxNFvuhs266Z5FPlqoCGBFGbjViesqZaP0juB9q4N+WWF34Od8igXBWwYs8My+WM5Zce0eKwWp47UY3wAmpjVKimsNzI5lSES3o+72mW8garA6O0Cv+1lVXyqPKC2QdOim+CLxJyjwY/NZWVYy5b5hMHI+LRwhOIk4HXMZHejry53BQCLCyPhfhg81fVykTiAcwr4cs74aHbXb8C5514wpJwFQ1MeU4z5cCfTp9t/4ot7PeQbC8+HCTpO57m4rRdNpoEwzOGNezElnvf4nNzK/E2dv3uHxevjTyR23OQbB9l9MzZbKWqidlfJfzP5/YwAfy1a+vi7bbqvLSeIVwKHl5Yz6qz7VV2kJEigbG8DNJg8RrAtV8nz8kLg/LZgrtlkqAn4AaeAwwKer0OH33c+rREg8XVSPAoFKZHluqICy7xqzx3mD9rhgg7WUrXJYrcfEdGUGHjOLW4mtyaYOFhkMf1AhtblZpQTrAHb9w=="
-										}
-									],
-									"role": "model"
-								},
-								"finishReason": "MAX_TOKENS"
-							}
-						],
-						"createTime": "2026-04-17T00:58:27.814075Z",
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"modelVersion": "gemini-3.1-pro-preview",
-						"responseId": "s4XhafvXMemVq8YPzcOY0Qg",
-						"usageMetadata": {
-							"candidatesTokenCount": 12,
-							"candidatesTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 12
-								}
-							],
-							"promptTokenCount": 13,
-							"promptTokensDetails": [
-								{
-									"modality": "TEXT",
-									"tokenCount": 13
-								}
-							],
-							"thoughtsTokenCount": 284,
-							"totalTokenCount": 309,
-							"trafficType": "ON_DEMAND"
-						}
+					"error": {
+						"kind": "runner-failure",
+						"message": "normalizer returned empty output -- check modality vs response shape, or recapture",
+						"timestamp": "2026-07-14T02:14:05.609Z"
 					},
 					"code_snippets": [
 						{
@@ -31857,16 +32237,16 @@
 						"aspect_ratio": "16:9"
 					},
 					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png"
+						"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/futuristic-city.png"
 					},
 					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/futuristic-city.png"
+						},
 						"gatewayMetadata": {
 							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png"
-						},
-						"state": "Completed"
+						}
 					},
 					"code_snippets": [
 						{
@@ -31890,16 +32270,16 @@
 						"output_format": "png"
 					},
 					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png"
+						"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/abstract-art.jpg"
 					},
 					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/abstract-art.jpg"
+						},
 						"gatewayMetadata": {
 							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png"
-						},
-						"state": "Completed"
+						}
 					},
 					"code_snippets": [
 						{
@@ -31923,16 +32303,16 @@
 						"google_search": true
 					},
 					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png"
+						"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/with-google-search.jpg"
 					},
 					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/with-google-search.jpg"
+						},
 						"gatewayMetadata": {
 							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png"
-						},
-						"state": "Completed"
+						}
 					},
 					"code_snippets": [
 						{
@@ -31957,16 +32337,16 @@
 						"resolution": "4K"
 					},
 					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"
+						"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/high-resolution-portrait.jpg"
 					},
 					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/google/nano-banana-2/high-resolution-portrait.jpg"
+						},
 						"gatewayMetadata": {
 							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"
-						},
-						"state": "Completed"
+						}
 					},
 					"code_snippets": [
 						{
@@ -33925,7 +34305,7 @@
 						"resolution": "768P"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__hailuo-2.3/simple-video.mp4"
+						"video": "https://examples.aig.cloudflare.com/minimax/hailuo-2.3/simple-video.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -33962,7 +34342,7 @@
 						"resolution": "1080P"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__hailuo-2.3/high-resolution.mp4"
+						"video": "https://examples.aig.cloudflare.com/minimax/hailuo-2.3/high-resolution.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -34000,7 +34380,7 @@
 						"resolution": "768P"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__hailuo-2.3/image-to-video.mp4"
+						"video": "https://examples.aig.cloudflare.com/minimax/hailuo-2.3/image-to-video.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -34037,7 +34417,7 @@
 						"resolution": "768P"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/minimax__hailuo-2.3/fast-processing.mp4"
+						"video": "https://examples.aig.cloudflare.com/minimax/hailuo-2.3/fast-processing.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -193443,7 +193823,7 @@
 						"resolution": "720p"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/vidu__q3-turbo/simple-text-to-video.mp4"
+						"video": "https://examples.aig.cloudflare.com/vidu/q3-turbo/simple-text-to-video.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -193476,7 +193856,7 @@
 						"resolution": "1080p"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/vidu__q3-turbo/high-resolution.mp4"
+						"video": "https://examples.aig.cloudflare.com/vidu/q3-turbo/high-resolution.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -193510,7 +193890,7 @@
 						"resolution": "720p"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/vidu__q3-turbo/portrait-video.mp4"
+						"video": "https://examples.aig.cloudflare.com/vidu/q3-turbo/portrait-video.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -193543,7 +193923,7 @@
 						"resolution": "720p"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/vidu__q3-turbo/extended-duration.mp4"
+						"video": "https://examples.aig.cloudflare.com/vidu/q3-turbo/extended-duration.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -193576,7 +193956,7 @@
 						"resolution": "540p"
 					},
 					"output": {
-						"video": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/vidu__q3-turbo/low-resolution-fast-preview.mp4"
+						"video": "https://examples.aig.cloudflare.com/vidu/q3-turbo/low-resolution-fast-preview.mp4"
 					},
 					"raw_response": {
 						"gatewayMetadata": {
@@ -234280,10 +234660,6 @@
 					"value": "true"
 				},
 				{
-					"property_id": "context_window",
-					"value": "131000"
-				},
-				{
 					"property_id": "price",
 					"value": [
 						{
@@ -234297,6 +234673,10 @@
 							"currency": "USD"
 						}
 					]
+				},
+				{
+					"property_id": "context_window",
+					"value": "131000"
 				},
 				{
 					"property_id": "function_calling",
