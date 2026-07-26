@@ -2,7 +2,7 @@
 	"name": "workerd",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260724.1"
+		"latest": "1.20260726.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -12680,23 +12680,56 @@
 				"workerd": "bin/workerd"
 			},
 			"dist": {
-				"integrity": "sha512-mU7Ej7bSOBpoJ7J2ESMhky9qHZ/cSvlh7HAWpgGG61CYoYPL7dX+9hhEqAy6cV7aed2E25/klBobT8UAhIv9sQ==",
 				"shasum": "266d9d414e29b6f7b0bf1d5fab7f7b3997339ba9",
 				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20260724.1.tgz",
 				"fileCount": 7,
-				"unpackedSize": 4815149,
+				"integrity": "sha512-mU7Ej7bSOBpoJ7J2ESMhky9qHZ/cSvlh7HAWpgGG61CYoYPL7dX+9hhEqAy6cV7aed2E25/klBobT8UAhIv9sQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBO6O2unfV6wMKLPOCEZl1ysUAW2KiFkrluKp3VlzqaGAiEAj5isxDg1sKr7XxDQAPlVP9umqOadkseD8Ggj11VGBAk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20260724.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 4815149
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260726.1": {
+			"name": "workerd",
+			"version": "1.20260726.1",
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"shasum": "0d049d8c795517ccd0fbf1f0df7d5586679c27a9",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20260726.1.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-jcmmvFT2zJ2IwobibFZ7WTnTO3lnqBIVieI3FHjfgdAUQ2ma/XevkytpdcxIDoF4fOSfEnh7E/cCeRTQSvus/A==",
 				"signatures": [
 					{
+						"sig": "MEUCIHKot9O3Ibnqro1Umt+KdQ/7Eu9/Iz7jsCOItJ0Fhe4YAiEAqAxQ7KL/fERgWhYQfjb1LrsmJAgFTbDc1rzsrJabZL4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBO6O2unfV6wMKLPOCEZl1ysUAW2KiFkrluKp3VlzqaGAiEAj5isxDg1sKr7XxDQAPlVP9umqOadkseD8Ggj11VGBAk="
+						"sig": "MEUCIQCLNfbzOAcN1IOfOg15MFxmvWQY8Al9PhOWyMIx13970gIgf3vHxhwNJUkqioTItyl2pqCf45vaZO1XQkQvnho27po="
 					}
-				]
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20260726.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4815149
 			},
 			"engines": {
 				"node": ">=16"
