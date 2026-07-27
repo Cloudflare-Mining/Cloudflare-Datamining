@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 27, 2026[We're open sourcing our privacy proxy CLI](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
+
+pvcli is a curl-like tool designed to simplify the testing of complex privacy protocols like OHTTP.
+
+![Hannah Wang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHF9MV2X49QE0SXTCSPH1N2.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Ben Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TVKCM4J39JXG32VTCNG.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Fisher Darling](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PVCFZWEEPCE2T84TW2R.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Hannah Wang](https://blog.cloudflare.com/author/hannah-wang/), [Ben Yang](https://blog.cloudflare.com/author/ben-yang/), and [Fisher Darling](https://blog.cloudflare.com/author/fisher/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYB3B064VA70WMZ531KHRF8Z.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
+
 July 24, 2026[BGP ORIGIN attribute manipulation and its impact on the Internet](https://blog.cloudflare.com/bgp-origin-attribute/)
 
 By doing in-depth testing, we found nearly 70% of BGP paths experience ORIGIN attribute rewrites by transit providers seeking traffic advantages. We examine the global impact of this practice and argue for deprecating ORIGIN in route selection.
@@ -13,8 +23,6 @@ By doing in-depth testing, we found nearly 70% of BGP paths experience ORIGIN at
 ![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/) and [Bryton Herdes](https://blog.cloudflare.com/author/bryton/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAFEG7AYMPX77CPKXAQP7ZQ.webp&w=640&h=360&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/bgp-origin-attribute/)
 
 July 23, 2026[Introducing Cache Response Rules](https://blog.cloudflare.com/introducing-cache-response-rules/)
 
@@ -151,14 +159,6 @@ Cloudflare Workflows, our durable execution engine for multi-step applications, 
 ![Vaishnav Kavitha](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMMZ8JJQ1SE783SASV4PJ.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Mia Malden](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4559TC07A12MQHAEK8YM1R.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![André Venceslau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TZTSTWQ6JMKEC8GX38NE.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Vaishnav Kavitha](https://blog.cloudflare.com/author/vaishnav-kavitha/), [Mia Malden](https://blog.cloudflare.com/author/mia/), and [André Venceslau](https://blog.cloudflare.com/author/andre-venceslau/)
-
-June 24, 2026[Unlocking the Cloudflare app ecosystem with OAuth for all](https://blog.cloudflare.com/oauth-for-all/)
-
-Self-Managed OAuth is now available to all developers on Cloudflare. Here's how we executed a zero-downtime migration of our core OAuth engine to make it happen.
-
-![Sam Cabell](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMQHZ06NRJ1P977MAN3W6.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Mike Escalante](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49ABPBC57VY77RQCNPXWNP.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Nick Comer](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMBJG5ZDTS3AWWAWA2DVW.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Sam Cabell](https://blog.cloudflare.com/author/sam-cabell/), [Mike Escalante](https://blog.cloudflare.com/author/mike-escalante/), [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and [Nick Comer](https://blog.cloudflare.com/author/nick-comer/)
 
 Load more
 
