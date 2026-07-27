@@ -2,7 +2,7 @@
 	"DELETE /zones/{zone_id}/rate_limits/{rate_limit_id}": {
 		"operationId": "rate-limits-for-a-zone-delete-a-rate-limit",
 		"summary": "Delete a rate limit",
-		"description": "Deletes an existing rate limit.",
+		"description": "**Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead.",
 		"parameters": [
 			{
 				"name": "rate_limit_id",
@@ -873,7 +873,7 @@
 	"GET /zones/{zone_id}/rate_limits": {
 		"operationId": "rate-limits-for-a-zone-list-rate-limits",
 		"summary": "List rate limits",
-		"description": "Fetches the rate limits for a zone.",
+		"description": "**Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1750,7 +1750,7 @@
 	"GET /zones/{zone_id}/rate_limits/{rate_limit_id}": {
 		"operationId": "rate-limits-for-a-zone-get-a-rate-limit",
 		"summary": "Get a rate limit",
-		"description": "Fetches the details of a rate limit.",
+		"description": "**Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead.",
 		"parameters": [
 			{
 				"name": "rate_limit_id",
@@ -2572,7 +2572,7 @@
 	"POST /zones/{zone_id}/rate_limits": {
 		"operationId": "rate-limits-for-a-zone-create-a-rate-limit",
 		"summary": "Create a rate limit",
-		"description": "Creates a new rate limit for a zone. Refer to the object definition for a list of required attributes.",
+		"description": "**Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -3570,7 +3570,7 @@
 	"PUT /zones/{zone_id}/rate_limits/{rate_limit_id}": {
 		"operationId": "rate-limits-for-a-zone-update-a-rate-limit",
 		"summary": "Update a rate limit",
-		"description": "Updates an existing rate limit.",
+		"description": "**Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead.",
 		"parameters": [
 			{
 				"name": "rate_limit_id",

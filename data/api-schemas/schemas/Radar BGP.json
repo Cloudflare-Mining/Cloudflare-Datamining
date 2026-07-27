@@ -1983,6 +1983,262 @@
 		"x-fern-sdk-method-name": "moas",
 		"x-forge-hidden": true
 	},
+	"GET /radar/bgp/routes/paths/{asn}": {
+		"operationId": "radar-get-bgp-routes-paths",
+		"summary": "Get tier-1 path segments for an AS",
+		"description": "Retrieves the paths an AS uses to reach the tier-1 clique, derived from RouteViews RIB snapshots. Each entry is an ordered AS-path segment (from the queried AS toward a tier-1) with the number of observed paths and peers, and the collectors that observed it. By default segments are merged across all active collectors; pass \"collector\" to scope to one. The response also includes an \"asnInfo\" map (keyed by ASN) with the name and country for every ASN in the returned segments plus the queried ASN (best-effort; null when unavailable).",
+		"parameters": [
+			{
+				"name": "asn",
+				"in": "path",
+				"description": "Single Autonomous System Number (ASN) as integer.",
+				"required": true,
+				"schema": {
+					"description": "Single Autonomous System Number (ASN) as integer.",
+					"type": "integer",
+					"example": 174
+				}
+			},
+			{
+				"name": "ipVersion",
+				"in": "query",
+				"description": "Address family of the observed paths. Defaults to IPv4.",
+				"schema": {
+					"description": "Address family of the observed paths. Defaults to IPv4.",
+					"type": "string",
+					"example": "IPv4",
+					"default": "IPv4",
+					"enum": [
+						"IPv4",
+						"IPv6"
+					]
+				}
+			},
+			{
+				"name": "collector",
+				"in": "query",
+				"description": "Scope to a single RouteViews collector (e.g. \"route-views3\"). Omit to merge across all active collectors (identical path segments are deduplicated, observation counts summed, and every contributing collector listed).",
+				"schema": {
+					"description": "Scope to a single RouteViews collector (e.g. \"route-views3\"). Omit to merge across all active collectors (identical path segments are deduplicated, observation counts summed, and every contributing collector listed).",
+					"type": "string",
+					"example": "route-views3",
+					"maxLength": 100
+				}
+			},
+			{
+				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
+					"enum": [
+						"JSON",
+						"CSV"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"asnInfo": {
+											"type": "object",
+											"example": {
+												"13335": {
+													"asn": 13335,
+													"country": "US",
+													"name": "Cloudflare"
+												}
+											},
+											"additionalProperties": {
+												"properties": {
+													"asn": {
+														"description": "ASN number.",
+														"type": "integer"
+													},
+													"country": {
+														"description": "Alpha-2 country code.",
+														"type": "string",
+														"nullable": true
+													},
+													"name": {
+														"description": "AS name.",
+														"type": "string",
+														"nullable": true
+													}
+												},
+												"required": [
+													"asn",
+													"name",
+													"country"
+												],
+												"type": "object"
+											},
+											"nullable": true
+										},
+										"collectors": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"meta": {
+											"type": "object",
+											"properties": {
+												"dataTime": {
+													"description": "Timestamp of the underlying RIB data.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"effectiveCollector": {
+													"type": "string",
+													"nullable": true
+												},
+												"queryTime": {
+													"description": "Timestamp when the query was executed.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"stale": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"dataTime",
+												"queryTime",
+												"effectiveCollector",
+												"stale"
+											]
+										},
+										"paths": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"collectors": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"pathsCount": {
+														"type": "integer"
+													},
+													"peersCount": {
+														"type": "integer"
+													},
+													"segment": {
+														"type": "array",
+														"items": {
+															"type": "integer"
+														}
+													}
+												},
+												"required": [
+													"segment",
+													"pathsCount",
+													"peersCount",
+													"collectors"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"paths",
+										"collectors",
+										"asnInfo",
+										"meta"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Radar BGP"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.bgp.routes.paths",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
 	"GET /radar/bgp/routes/pfx2as": {
 		"operationId": "radar-get-bgp-pfx2as",
 		"summary": "Get prefix-to-ASN mapping",
@@ -2719,6 +2975,246 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
 		"x-fern-sdk-method-name": "stats",
+		"x-forge-hidden": true
+	},
+	"GET /radar/bgp/routes/upstreams/{asn}/timeseries": {
+		"operationId": "radar-get-bgp-routes-upstreams-timeseries",
+		"summary": "Get upstream composition time series for an AS",
+		"description": "Retrieves the share of an AS’s observed paths carried by each direct upstream over time, derived from RouteViews RIB snapshots across all collectors (the combined product). Each upstream ASN is returned as its own series of shares (0–1); the least-significant upstreams beyond the requested limit are grouped into an \"OTHER\" series. Series share a common set of timestamps.",
+		"parameters": [
+			{
+				"name": "asn",
+				"in": "path",
+				"description": "Single Autonomous System Number (ASN) as integer.",
+				"required": true,
+				"schema": {
+					"description": "Single Autonomous System Number (ASN) as integer.",
+					"type": "integer",
+					"example": 174
+				}
+			},
+			{
+				"name": "ipVersion",
+				"in": "query",
+				"description": "Address family of the observed paths. Defaults to IPv4.",
+				"schema": {
+					"description": "Address family of the observed paths. Defaults to IPv4.",
+					"type": "string",
+					"example": "IPv4",
+					"default": "IPv4",
+					"enum": [
+						"IPv4",
+						"IPv6"
+					]
+				}
+			},
+			{
+				"name": "dateStart",
+				"in": "query",
+				"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
+				"schema": {
+					"description": "Start of the date range (inclusive). Alternative to `dateRange`; provide together with `dateEnd`.",
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-09-01T11:41:33.782Z"
+				}
+			},
+			{
+				"name": "dateEnd",
+				"in": "query",
+				"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
+				"schema": {
+					"description": "End of the date range (inclusive). Alternative to `dateRange`; provide together with `dateStart`.",
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-09-01T11:41:33.782Z"
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"description": "Number of upstream ASNs to return as separate series, ranked by the first bucket. Remaining upstreams are grouped into an \"OTHER\" series. Defaults to 5.",
+				"schema": {
+					"description": "Number of upstream ASNs to return as separate series, ranked by the first bucket. Remaining upstreams are grouped into an \"OTHER\" series. Defaults to 5.",
+					"type": "integer",
+					"example": 5
+				}
+			},
+			{
+				"name": "format",
+				"in": "query",
+				"description": "Format in which results will be returned.",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"type": "string",
+					"example": "json",
+					"enum": [
+						"JSON",
+						"CSV"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"dataTime": {
+													"description": "Timestamp of the underlying RIB data.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"effectiveCollector": {
+													"type": "string",
+													"nullable": true
+												},
+												"queryTime": {
+													"description": "Timestamp when the query was executed.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"stale": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"dataTime",
+												"queryTime",
+												"effectiveCollector",
+												"stale"
+											]
+										},
+										"serie_0": {
+											"type": "object",
+											"example": {
+												"174": [
+													"0.7",
+													"0.6"
+												],
+												"OTHER": [
+													"0.1",
+													"0.4"
+												],
+												"timestamps": [
+													"2026-06-01T00:00:00Z",
+													"2026-06-01T00:15:00Z"
+												]
+											},
+											"additionalProperties": {
+												"items": {
+													"description": "A numeric string.",
+													"example": "10",
+													"pattern": "^-?\\d+(\\.\\d+)?$",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"properties": {
+												"timestamps": {
+													"type": "array",
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													}
+												}
+											},
+											"required": [
+												"timestamps"
+											]
+										}
+									},
+									"required": [
+										"serie_0",
+										"meta"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Radar BGP"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "radar.bgp.routes.upstreams",
+		"x-fern-sdk-method-name": "timeseries",
 		"x-forge-hidden": true
 	},
 	"GET /radar/bgp/rpki/aspa/changes": {
