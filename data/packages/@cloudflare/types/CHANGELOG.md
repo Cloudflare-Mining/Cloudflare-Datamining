@@ -1,5 +1,30 @@
 # Change Log
 
+## 7.0.1
+
+### Patch Changes
+
+- 713d9a95ca4: dash: BANDA-1788: Add AI Search (edit) permission to WORKERS_BUILD_TOKEN_PERMISSION_GROUPS
+- e0c8d6d934e: BANDA-1559 Add deploy hooks table, drawer, and delete dialog in Workers Builds settings UI
+- a42ac7fb801: dash: BANDA-1476 Hide PR merge toast in Workers Builds when PR is closed/merged in user repository
+- 693870bf9c4: dash: BANDA-1429: Add Connectivity Directory (read, bind) permissions to WORKERS_BUILD_TOKEN_PERMISSION_GROUPS
+- bed7eea9cf9: GCSOPS-14: Show OCI plan name on the plan picker, zone landing badge, and
+  the overview "Plan and Add-ons" panel for OCI accounts. Override is guarded
+  by `account_type === 'oci'` and the presence of an active account-level OCI
+  rate plan; both signals come from real backend data, so non-OCI customers
+  can never trigger it. Tier (Entry / Essentials / Advanced / Business) is
+  derived from the account's active account-level OCI rate plan, so the same
+  label is shown across the zone-onboarding picker, the in-account plan-change
+  flow, the zone landing plan badge / pill / chip, the overview
+  SubscriptionsPanel, the PendingPlanDialog, and the ExpandedSubscription row
+  in the billing subscriptions table. The new selectors live in
+  `common/selectors/ociSelectors.ts`. A shared `useZonePlanLabel` hook wraps
+  `mapPlansToTranslation` for the badge surfaces, and `formatPlanName` accepts
+  an optional precomputed OCI override key for the SubscriptionsPanel / billing
+  dialog surfaces.
+- b9d86044960: Use Zod 4 for runtime schemas.
+- 3c3edb4b443: BANDA-1698 Implement new inline deploy hook form and indicate builds created by deploy hooks
+
 ## 7.0.0
 
 ### Major Changes
