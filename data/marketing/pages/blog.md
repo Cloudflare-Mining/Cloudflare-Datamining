@@ -6,7 +6,7 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
-July 27, 2026[We're open sourcing our privacy proxy CLI](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
+July 27, 2026[We're open-sourcing our privacy proxy CLI](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
 
 pvcli is a curl-like tool designed to simplify the testing of complex privacy protocols like OHTTP.
 
