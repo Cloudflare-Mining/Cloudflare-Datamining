@@ -280,7 +280,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
 		"operationId": "waiting-room-delete-event",
@@ -573,7 +577,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
 		"operationId": "waiting-room-delete-waiting-room-rule",
@@ -1143,7 +1151,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/waiting_rooms": {
 		"operationId": "waiting-room-list-waiting-rooms-account",
@@ -2175,7 +2187,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.account-waiting-rooms",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms": {
 		"operationId": "waiting-room-list-waiting-rooms",
@@ -3208,7 +3224,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/{waiting_room_id}": {
 		"operationId": "waiting-room-waiting-room-details",
@@ -4040,7 +4060,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events": {
 		"operationId": "waiting-room-list-events",
@@ -4777,7 +4801,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
 		"operationId": "waiting-room-event-details",
@@ -5313,7 +5341,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}/details": {
 		"operationId": "waiting-room-preview-active-event-details",
@@ -5771,7 +5803,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events.details",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules": {
 		"operationId": "waiting-room-list-waiting-room-rules",
@@ -6325,7 +6361,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/{waiting_room_id}/status": {
 		"operationId": "waiting-room-get-waiting-room-status",
@@ -6649,12 +6689,16 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.statuses",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/waiting_rooms/settings": {
 		"operationId": "waiting-room-get-zone-settings",
 		"summary": "Get zone-level Waiting Room settings",
-		"description": "Gets the zone-level Waiting Room settings that apply as defaults to all waiting rooms on the zone.",
+		"description": "Get zone-level Waiting Room settings.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -6933,7 +6977,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/waiting_rooms/{waiting_room_id}": {
 		"operationId": "waiting-room-patch-waiting-room",
@@ -8031,7 +8079,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
 		"operationId": "waiting-room-patch-event",
@@ -8693,7 +8745,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
 		"operationId": "waiting-room-patch-waiting-room-rule",
@@ -9340,12 +9396,16 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/waiting_rooms/settings": {
 		"operationId": "waiting-room-patch-zone-settings",
 		"summary": "Patch zone-level Waiting Room settings",
-		"description": "Partially updates zone-level Waiting Room settings using PATCH semantics.",
+		"description": "Patch zone-level Waiting Room settings.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -9642,7 +9702,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/waiting_rooms": {
 		"operationId": "waiting-room-create-waiting-room",
@@ -10730,7 +10794,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events": {
 		"operationId": "waiting-room-create-event",
@@ -11379,7 +11447,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules": {
 		"operationId": "waiting-room-create-waiting-room-rule",
@@ -11974,7 +12046,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/waiting_rooms/preview": {
 		"operationId": "waiting-room-create-a-custom-waiting-room-page-preview",
@@ -12265,7 +12341,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.page",
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/waiting_rooms/{waiting_room_id}": {
 		"operationId": "waiting-room-update-waiting-room",
@@ -13363,7 +13443,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
 		"operationId": "waiting-room-update-event",
@@ -14025,7 +14109,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.events",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules": {
 		"operationId": "waiting-room-replace-waiting-room-rules",
@@ -14626,12 +14714,16 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/waiting_rooms/settings": {
 		"operationId": "waiting-room-update-zone-settings",
 		"summary": "Update zone-level Waiting Room settings",
-		"description": "Fully updates zone-level Waiting Room settings, replacing the existing configuration.",
+		"description": "Replace zone-level Waiting Room settings.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -14928,6 +15020,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "waiting-rooms.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
