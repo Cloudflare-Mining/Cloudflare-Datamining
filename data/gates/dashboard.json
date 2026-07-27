@@ -73,6 +73,9 @@
 	"agent-readiness-aeo": {
 		"enabled": true
 	},
+	"agent-readiness-webmcp": {
+		"enabled": true
+	},
 	"agents-in-dash": {
 		"enabled": false
 	},
@@ -1759,7 +1762,7 @@
 		"enabled": true
 	},
 	"name-length-limit-banner": {
-		"enabled": false
+		"enabled": true
 	},
 	"new-app-sec-navigation": {
 		"enabled": false
@@ -2775,7 +2778,7 @@
 		"enabled": false
 	},
 	"unified-analytics": {
-		"enabled": false
+		"enabled": true
 	},
 	"unified-appsec-default": {
 		"enabled": false
