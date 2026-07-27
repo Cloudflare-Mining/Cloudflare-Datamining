@@ -444,6 +444,33 @@
 					"maximum": 50,
 					"minimum": 5
 				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"schema": {
+					"description": "The field to sort the returned custom CSRs by.",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"account_tag",
+						"created_at"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"schema": {
+					"description": "The direction to sort by.",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
 			}
 		],
 		"responses": {

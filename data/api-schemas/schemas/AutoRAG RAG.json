@@ -2,6 +2,7 @@
 	"GET /accounts/{account_id}/autorag/rags/{id}/files": {
 		"operationId": "autorag-config-files",
 		"summary": "Files",
+		"description": "Lists files indexed by an AutoRAG.",
 		"parameters": [
 			{
 				"name": "id",
@@ -241,11 +242,15 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag",
+		"x-fern-sdk-method-name": "files"
 	},
 	"PATCH /accounts/{account_id}/autorag/rags/{id}/sync": {
 		"operationId": "autorag-config-sync",
 		"summary": "Sync",
+		"description": "Starts synchronization for an AutoRAG.",
 		"parameters": [
 			{
 				"name": "id",
@@ -496,6 +501,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag",
+		"x-fern-sdk-method-name": "sync"
 	}
 }

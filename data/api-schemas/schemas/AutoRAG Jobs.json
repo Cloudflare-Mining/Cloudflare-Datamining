@@ -2,6 +2,7 @@
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs": {
 		"operationId": "autorag-config-list-jobs",
 		"summary": "List Jobs",
+		"description": "Lists jobs for an AutoRAG.",
 		"parameters": [
 			{
 				"name": "id",
@@ -235,11 +236,15 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag.jobs",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs/{job_id}": {
 		"operationId": "autorag-config-get-job",
 		"summary": "Get a Job Details",
+		"description": "Returns details for an AutoRAG job.",
 		"parameters": [
 			{
 				"name": "id",
@@ -435,11 +440,15 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag.jobs",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs/{job_id}/logs": {
 		"operationId": "autorag-config-list-job-logs",
 		"summary": "List Job Logs",
+		"description": "Lists logs for an AutoRAG job.",
 		"parameters": [
 			{
 				"name": "id",
@@ -673,6 +682,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag.jobs",
+		"x-fern-sdk-method-name": "logs"
 	}
 }

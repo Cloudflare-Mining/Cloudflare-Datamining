@@ -2,6 +2,7 @@
 	"POST /accounts/{account_id}/autorag/rags/{id}/ai-search": {
 		"operationId": "autorag-config-ai-search",
 		"summary": "AI Search",
+		"description": "Runs an AI Search query against an AutoRAG.",
 		"parameters": [
 			{
 				"name": "id",
@@ -389,11 +390,15 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag",
+		"x-fern-sdk-method-name": "ai-search"
 	},
 	"POST /accounts/{account_id}/autorag/rags/{id}/search": {
 		"operationId": "autorag-config-search",
 		"summary": "Search",
+		"description": "Searches an AutoRAG.",
 		"parameters": [
 			{
 				"name": "id",
@@ -730,6 +735,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "autorag",
+		"x-fern-sdk-method-name": "search"
 	}
 }

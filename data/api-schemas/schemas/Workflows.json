@@ -1,4 +1,264 @@
 {
+	"DELETE /accounts/{account_id}/triggers/{script_name}": {
+		"operationId": "wor-delete-script-triggers",
+		"summary": "Delete script triggers",
+		"description": "Deletes all event trigger declarations owned by a Worker script.",
+		"parameters": [
+			{
+				"name": "script_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Number of deleted trigger declarations.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"deleted": {
+											"type": "integer",
+											"minimum": 0
+										}
+									},
+									"required": [
+										"deleted"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid trigger configuration.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Target workflow not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-ignore": true
+	},
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-delete-workflow",
 		"summary": "Deletes a Workflow",
@@ -496,6 +756,332 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"GET /accounts/{account_id}/triggers/{script_name}": {
+		"operationId": "wor-get-script-triggers",
+		"summary": "Get script triggers",
+		"description": "Returns the event trigger declarations owned by a Worker script.",
+		"parameters": [
+			{
+				"name": "script_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Script trigger declarations.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"script_name": {
+											"type": "string"
+										},
+										"triggers": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"filter": {
+														"type": "object",
+														"default": {},
+														"additionalProperties": {
+															"anyOf": [
+																{
+																	"maxLength": 1024,
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"targets": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"script_name": {
+																	"type": "string",
+																	"maxLength": 255,
+																	"minLength": 1
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"workflow"
+																	]
+																},
+																"workflow_name": {
+																	"type": "string",
+																	"maxLength": 255,
+																	"minLength": 1
+																}
+															},
+															"required": [
+																"type",
+																"script_name",
+																"workflow_name"
+															],
+															"type": "object"
+														},
+														"maxItems": 100,
+														"minItems": 1
+													},
+													"type": {
+														"type": "string",
+														"minLength": 1
+													}
+												},
+												"required": [
+													"type",
+													"targets"
+												],
+												"type": "object"
+											},
+											"maxItems": 100
+										}
+									},
+									"required": [
+										"script_name",
+										"triggers"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid trigger configuration.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Target workflow not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/workflows": {
 		"operationId": "wor-list-workflows",
@@ -5118,6 +5704,405 @@
 			"pro": true
 		}
 	},
+	"PATCH /accounts/{account_id}/triggers/{script_name}": {
+		"operationId": "wor-add-script-triggers",
+		"summary": "Add script triggers",
+		"description": "Adds event trigger declarations without removing existing declarations owned by the script.",
+		"parameters": [
+			{
+				"name": "script_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "array",
+						"items": {
+							"properties": {
+								"filter": {
+									"type": "object",
+									"default": {},
+									"additionalProperties": {
+										"anyOf": [
+											{
+												"maxLength": 1024,
+												"type": "string"
+											},
+											{
+												"type": "number"
+											},
+											{
+												"type": "boolean"
+											}
+										]
+									}
+								},
+								"targets": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"script_name": {
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"workflow"
+												]
+											},
+											"workflow_name": {
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"type",
+											"script_name",
+											"workflow_name"
+										],
+										"type": "object"
+									},
+									"maxItems": 100,
+									"minItems": 1
+								},
+								"type": {
+									"type": "string",
+									"minLength": 1
+								}
+							},
+							"required": [
+								"type",
+								"targets"
+							],
+							"type": "object"
+						},
+						"maxItems": 100
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Effective script trigger declarations.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"script_name": {
+											"type": "string"
+										},
+										"triggers": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"filter": {
+														"type": "object",
+														"default": {},
+														"additionalProperties": {
+															"anyOf": [
+																{
+																	"maxLength": 1024,
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"targets": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"script_name": {
+																	"type": "string",
+																	"maxLength": 255,
+																	"minLength": 1
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"workflow"
+																	]
+																},
+																"workflow_name": {
+																	"type": "string",
+																	"maxLength": 255,
+																	"minLength": 1
+																}
+															},
+															"required": [
+																"type",
+																"script_name",
+																"workflow_name"
+															],
+															"type": "object"
+														},
+														"maxItems": 100,
+														"minItems": 1
+													},
+													"type": {
+														"type": "string",
+														"minLength": 1
+													}
+												},
+												"required": [
+													"type",
+													"targets"
+												],
+												"type": "object"
+											},
+											"maxItems": 100
+										}
+									},
+									"required": [
+										"script_name",
+										"triggers"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid trigger configuration.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Target workflow not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-ignore": true
+	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
 		"operationId": "wor-change-status-workflow-instance",
 		"summary": "Change status of instance",
@@ -7222,6 +8207,405 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-ignore": true
+	},
+	"PUT /accounts/{account_id}/triggers/{script_name}": {
+		"operationId": "wor-replace-script-triggers",
+		"summary": "Replace script triggers",
+		"description": "Replaces all event trigger declarations owned by a Worker script.",
+		"parameters": [
+			{
+				"name": "script_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 255,
+					"minLength": 1
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "array",
+						"items": {
+							"properties": {
+								"filter": {
+									"type": "object",
+									"default": {},
+									"additionalProperties": {
+										"anyOf": [
+											{
+												"maxLength": 1024,
+												"type": "string"
+											},
+											{
+												"type": "number"
+											},
+											{
+												"type": "boolean"
+											}
+										]
+									}
+								},
+								"targets": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"script_name": {
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"workflow"
+												]
+											},
+											"workflow_name": {
+												"type": "string",
+												"maxLength": 255,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"type",
+											"script_name",
+											"workflow_name"
+										],
+										"type": "object"
+									},
+									"maxItems": 100,
+									"minItems": 1
+								},
+								"type": {
+									"type": "string",
+									"minLength": 1
+								}
+							},
+							"required": [
+								"type",
+								"targets"
+							],
+							"type": "object"
+						},
+						"maxItems": 100
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Effective script trigger declarations.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"script_name": {
+											"type": "string"
+										},
+										"triggers": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"filter": {
+														"type": "object",
+														"default": {},
+														"additionalProperties": {
+															"anyOf": [
+																{
+																	"maxLength": 1024,
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"targets": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"script_name": {
+																	"type": "string",
+																	"maxLength": 255,
+																	"minLength": 1
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"workflow"
+																	]
+																},
+																"workflow_name": {
+																	"type": "string",
+																	"maxLength": 255,
+																	"minLength": 1
+																}
+															},
+															"required": [
+																"type",
+																"script_name",
+																"workflow_name"
+															],
+															"type": "object"
+														},
+														"maxItems": 100,
+														"minItems": 1
+													},
+													"type": {
+														"type": "string",
+														"minLength": 1
+													}
+												},
+												"required": [
+													"type",
+													"targets"
+												],
+												"type": "object"
+											},
+											"maxItems": 100
+										}
+									},
+									"required": [
+										"script_name",
+										"triggers"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid trigger configuration.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Target workflow not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
