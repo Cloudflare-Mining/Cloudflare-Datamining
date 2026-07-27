@@ -2322,6 +2322,33 @@
 		"category": "account_and_billing"
 	},
 	{
+		"id": "31c1f5a4efb2413d9684b22790180dc1",
+		"name": "Messaging Edit",
+		"description": "Grants full read and write access to Messaging configuration and message content, plus permission to send and receive messages.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "5920c1f149f24adfa4629e44b3873f32",
+		"name": "Messaging Metadata Read",
+		"description": "Grants read access to Messaging configuration and metadata without access to message content or session data.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "f3145562cdc84fb5ad1452e752083151",
+		"name": "Messaging Read",
+		"description": "Grants read access to Messaging configuration and message content.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "42fae5a23ce84d7a896ac12ef509dafa",
 		"name": "MoQ Read",
 		"description": "Grants read access to MoQ relay configuration",
@@ -2988,9 +3015,36 @@
 		"category": "network_services"
 	},
 	{
+		"id": "12336472d64047e6b21280f317c1e858",
+		"name": "Websearch Metadata Read",
+		"description": "Grants read access to Cloudflare Websearch configuration and metadata without access to search results.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "ai_and_machine_learning"
+	},
+	{
+		"id": "4b881829a08043ae9cd371901e74f8b0",
+		"name": "Websearch Read",
+		"description": "Grants access to reading data from Cloudflare Websearch",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "ai_and_machine_learning"
+	},
+	{
 		"id": "839a02e413024d06a4e7d8c56d4470d7",
 		"name": "Websearch Run",
 		"description": "Grants access to run Cloudflare Websearch queries",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "ai_and_machine_learning"
+	},
+	{
+		"id": "498908ea4bf740ad9e81e1449c7f110e",
+		"name": "Websearch Write",
+		"description": "Grants access to reading and writing data from Cloudflare Websearch",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],

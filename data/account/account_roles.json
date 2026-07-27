@@ -1,5 +1,35 @@
 [
 	{
+		"id": "649b5b25c8f1f00020ee947b8c459ea7",
+		"name": "Websearch Admin",
+		"description": "Can create, read, update, delete and run queries in Websearch.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "f87f3c761bbae0dd408797a1fa219a02",
+		"name": "Websearch (Read-only)",
+		"description": "Grants access to reading data from Websearch.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "52c48e90484d2b9287bfd3d5b913b9bb",
 		"name": "Browser Run Admin",
 		"description": "Full control over Browser Run, including viewing and managing session content, creating and deleting sessions, using the playground, and interacting with live sessions via Human in the Loop.",
@@ -739,15 +769,15 @@
 		}
 	},
 	{
-		"id": "9a3a4955e550da8d002f634f4daad6b3",
-		"name": "Workers Platform Metadata (Read-Only)",
+		"id": "b56fcb30026789c27692b384868b0c51",
+		"name": "Developer Platform Metadata Read-Only",
 		"description": "Can view metadata, settings, and observability for all Developer Platform resources without access to secret values or stored data content.",
 		"permissions": {
-			"worker": {
+			"organization": {
 				"read": true,
 				"edit": false
 			},
-			"organization": {
+			"worker": {
 				"read": true,
 				"edit": false
 			},
@@ -1160,10 +1190,14 @@
 		}
 	},
 	{
-		"id": "e58cefd75d7adae0b761796c28815e5c",
-		"name": "Workers Platform (Read-only)",
-		"description": "Can read all resources in the Workers Platform.",
+		"id": "022d1304dbd64038805876e661b724ae",
+		"name": "Developer Platform Content Read-Only",
+		"description": "Can read all Developer Platform resources, including content.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"stream": {
 				"read": true,
 				"edit": false,
@@ -1174,10 +1208,6 @@
 				"edit": false
 			},
 			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
@@ -2083,48 +2113,6 @@
 			"subscription": {
 				"read": true,
 				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "37a46bc5222ebb5577b2efc7fc467fb4",
-		"name": "Magic Network Monitoring Admin",
-		"description": "Can view, edit, create, and delete MNM configuration",
-		"permissions": {
-			"fbm": {
-				"read": true,
-				"edit": true
-			},
-			"fbm_acc": {
-				"read": false,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "6d7861f7d7d85b03272fd2b964190391",
-		"name": "Magic Network Monitoring",
-		"description": "Can view and edit MNM configuration",
-		"permissions": {
-			"fbm": {
-				"read": true,
-				"edit": true
 			},
 			"zone": {
 				"read": true,
