@@ -1,6 +1,6 @@
-import { Overwrite, RequiredKeys } from '../../utils';
-import { SensitivityLevels, RulesetPhase } from './fields';
-import {
+import type { Overwrite, RequiredKeys } from '../../utils';
+import type { SensitivityLevels, RulesetPhase } from './fields';
+import type {
   AccountEntrypointType,
   ActionParameterOverride,
   RuleBase

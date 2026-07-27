@@ -1,7 +1,7 @@
-import { RulesetPhase } from './fields';
-import { RuleBase, RulesetBase } from './utils';
-import { OverrideRule } from './override';
-import { Overwrite } from '../../utils';
+import type { RulesetPhase } from './fields';
+import type { RuleBase, RulesetBase } from './utils';
+import type { OverrideRule } from './override';
+import type { Overwrite } from '../../utils';
 
 export type ManagedExecuteRule = OverrideRule;
 

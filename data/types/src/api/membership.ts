@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 import { Account } from './account';
 import { Permissions } from './permissions';
 import { MembershipsPolicy } from './policy';

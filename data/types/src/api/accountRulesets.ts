@@ -1,29 +1,29 @@
-import {
+import type {
   AccountEntrypointType,
   EntrypointOverrideActionParameters,
   RulesetPhaseType
 } from './phases/utils';
-import { ElementType } from './account';
-import {
+import type { ElementType } from './account';
+import type {
   CustomActionParameters,
   CustomRuleset
 } from './phases/http_request_firewall_custom';
-import { RateLimitRuleset } from './phases/http_ratelimit';
-import {
+import type { RateLimitRuleset } from './phases/http_ratelimit';
+import type {
   AccountRedirectRuleset,
   RedirectActionParameters
 } from './phases/http_request_redirect';
-import {
+import type {
   ActionParameterSkip,
   ManagedRule,
   ManagedRuleset
 } from './phases/http_request_firewall_managed';
-import { MagicTransitRuleset } from './phases/magic_transit';
-import { AccountMagicIdsRuleset } from './phases/magic_transit_ids_managed';
-import { DDoSl4Ruleset } from './phases/ddos_l4';
-import { MagicManagedRuleset } from './phases/magic_transit_managed';
-import { Actions, RulesetPhase } from './phases/fields';
-import { MagicTransitRateLimitRuleset } from './phases/magic_transit_ratelimit';
+import type { MagicTransitRuleset } from './phases/magic_transit';
+import type { AccountMagicIdsRuleset } from './phases/magic_transit_ids_managed';
+import type { DDoSl4Ruleset } from './phases/ddos_l4';
+import type { MagicManagedRuleset } from './phases/magic_transit_managed';
+import type { Actions, RulesetPhase } from './phases/fields';
+import type { MagicTransitRateLimitRuleset } from './phases/magic_transit_ratelimit';
 
 // Generics
 export type GenericRuleset =

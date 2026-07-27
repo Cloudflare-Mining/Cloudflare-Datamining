@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 //
 export const Origin = eg.object({
@@ -11,7 +11,12 @@ export const Origin = eg.object({
   weight: eg.number.optional,
   header: eg.object({
     Host: eg.array(eg.string)
-  }).optional
+  }).optional,
+  // When true (the default), the LB resolves the origin hostname to A/AAAA
+  // records before answering DNS-only requests. When false, the original
+  // CNAME is returned to the client. Only takes effect on non-apex,
+  // DNS-only (non-proxied) load balancers.
+  flatten_cname: eg.boolean.optional
 });
 
 export type Origin = TypeFromCodec<typeof Origin>;
@@ -86,7 +91,8 @@ export const LoadBalancerPool = eg.object({
       disable: eg.boolean.optional,
       healthy: eg.union([eg.boolean, eg.null]).optional
     }).optional
-  }).optional
+  }).optional,
+  monitor_group: eg.union([eg.string, eg.null]).optional
 });
 
 export type LoadBalancerPool = TypeFromCodec<typeof LoadBalancerPool>;
@@ -253,3 +259,21 @@ export const HealthGroup = eg.object({
 });
 
 export type HealthGroup = TypeFromCodec<typeof HealthGroup>;
+
+// Monitor Groups - allows multiple monitors to be attached to a pool
+export interface MonitorGroupMember {
+  monitor_id: string;
+  enabled: boolean;
+  monitoring_only: boolean;
+  must_be_healthy: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface MonitorGroup {
+  id: string;
+  description: string;
+  members: MonitorGroupMember[];
+  created_on?: string;
+  modified_on?: string;
+}

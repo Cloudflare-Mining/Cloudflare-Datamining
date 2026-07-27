@@ -1,6 +1,6 @@
-import { ElementType } from '../account';
-import { BypassProducts, ContentType, RulesetPhase } from './fields';
-import { RulesetPhaseType } from './utils';
+import type { ElementType } from '../account';
+import type { BypassProducts, ContentType, RulesetPhase } from './fields';
+import type { RulesetPhaseType } from './utils';
 
 export type CustomActionParameters = {
   id: string;

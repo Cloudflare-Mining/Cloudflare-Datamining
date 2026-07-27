@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 import {
   SubscriptionComponentName,
   SubscriptionSet,
@@ -40,7 +40,8 @@ export const PaymentMethodType = eg.union([
   eg.literal('ACH_DIRECT_DEBIT'),
   eg.literal('SEPA_DEBIT'),
   eg.literal('CASHAPP'),
-  eg.literal('LINK')
+  eg.literal('LINK'),
+  eg.literal('CRYPTO')
 ]);
 
 export type PaymentMethodType = TypeFromCodec<typeof PaymentMethodType>;
@@ -126,7 +127,8 @@ export const BillingProfile = eg.object({
   default: eg.boolean.optional,
   type: PaymentMethodType.optional,
   tax_id_type: eg.string.optional,
-  cf_turnstile_response: eg.string.optional
+  cf_turnstile_response: eg.string.optional,
+  preferred_locale: eg.string.optional
 });
 
 export type BillingProfile = TypeFromCodec<typeof BillingProfile>;
@@ -141,6 +143,7 @@ export const BillingAccountType = eg.union([
   eg.literal('startup'),
   eg.literal('intern'),
   eg.literal('ibm'),
+  eg.literal('oci'),
   eg.literal('pay_go'),
   eg.literal('cloudflare_ent')
 ]);
@@ -150,6 +153,7 @@ export type BillingAccountType = TypeFromCodec<typeof BillingAccountType>;
 export const BillingAccount = eg.object({
   account_type: BillingAccountType.optional,
   status: eg.string,
+  auto_retry_backup_pm: eg.boolean.optional,
   flags: eg.object({
     async_tract: eg.boolean,
     banned: eg.boolean,
@@ -176,6 +180,7 @@ export const BillingTransaction = eg.object({
   status: eg.union([
     eg.literal('OPEN'),
     eg.literal('CLOSED'),
+    eg.literal('SETTLED'),
     eg.literal('DRAFT'),
     eg.literal('PROCESSING'),
     eg.literal('CREDIT_FULLY_APPLIED'),
@@ -183,7 +188,15 @@ export const BillingTransaction = eg.object({
   ]),
   source: eg.string,
   hosted_invoice_url: eg.string.optional,
-  source_invoice_id: eg.string.optional
+  source_invoice_id: eg.string.optional,
+  // FINPE-1696 / FINPE-1782: On `type: 'credit'` rows this carries the
+  // human-friendly reason the credit memo was issued. BE maps internal
+  // `reason_code` metadata through an allowlist to a public code and
+  // serializes the field with `omitempty`, so it is either the mapped
+  // string or absent from the payload. Currently the FE only branches
+  // on `'bad_debt_proration'` (Honest Invoicing writes off unused
+  // service at uncollectible time).
+  reason: eg.string.optional
 });
 
 export type BillingTransaction = TypeFromCodec<typeof BillingTransaction>;
@@ -207,6 +220,12 @@ export const PayInvoice = eg.object({
 });
 
 export type PayInvoice = TypeFromCodec<typeof PayInvoice>;
+
+export const PayBadDebt = eg.object({
+  payment_method_id: eg.union([eg.number, eg.string]).optional
+});
+
+export type PayBadDebt = TypeFromCodec<typeof PayBadDebt>;
 
 export const BillingQuote = eg.object({
   id: eg.number,
@@ -342,3 +361,42 @@ export const BillingPlan = eg.object({
 });
 
 export type BillingPlan = TypeFromCodec<typeof BillingPlan>;
+
+// Billable Usage API follows the FOCUS specification (https://focus.finops.org/focus-specification/v1-1/),
+// which uses PascalCase.
+export const BillingRecord = eg.object({
+  ChargePeriodStart: eg.string,
+  ChargePeriodEnd: eg.string,
+  ConsumedQuantity: eg.number,
+  PricingQuantity: eg.number,
+  CumulatedPricingQuantity: eg.number,
+  CumulatedContractedCost: eg.number,
+  ContractedCost: eg.number,
+  BillingCurrency: eg.string,
+  BillingPeriodStart: eg.string,
+  ConsumedUnit: eg.string,
+  ServiceName: eg.string,
+  ServiceFamilyName: eg.string.optional,
+  ZoneId: eg.string.optional,
+  ZoneName: eg.string.optional,
+  SubscriptionId: eg.string.optional
+});
+
+export type BillingRecord = TypeFromCodec<typeof BillingRecord>;
+
+export const BillableUsageSubscription = eg.object({
+  id: eg.string,
+  start_timestamp: eg.string,
+  billing_cycle_anchor_timestamp: eg.string
+});
+
+export type BillableUsageSubscription = TypeFromCodec<
+  typeof BillableUsageSubscription
+>;
+
+export const BillableUsageInfo = eg.object({
+  covered: eg.boolean,
+  subscriptions: eg.array(BillableUsageSubscription)
+});
+
+export type BillableUsageInfo = TypeFromCodec<typeof BillableUsageInfo>;

@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const PageRuleMinifyValue = eg.object({
   html: eg.union([eg.literal('on'), eg.literal('off')]).optional,
@@ -209,18 +209,20 @@ export const PageRulesQuota = eg.object({
 export type PageRulesQuota = TypeFromCodec<typeof PageRulesQuota>;
 
 export const SnippetRuleProps = eg.object({
+  id: eg.string.optional,
   snippet_name: eg.string,
   expression: eg.string,
+  last_updated: eg.string.optional,
   description: eg.string.optional,
   enabled: eg.boolean
 });
 
 export const SnippetTypeProps = eg.object({
-  id: eg.string,
+  id: eg.string.optional,
   snippet_name: eg.string,
   created_on: eg.string.optional,
   modified_on: eg.string.optional,
-  rules: eg.array(SnippetRuleProps)
+  rules: eg.array(SnippetRuleProps).optional
 });
 
 export type SnippetRule = TypeFromCodec<typeof SnippetRuleProps>;

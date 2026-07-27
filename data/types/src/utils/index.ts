@@ -103,11 +103,8 @@ export type KeyOfUnion<Union> = keyof UnionToIntersection<Union>;
  *
  * type NonReadonlyArray = NonReadonly<typeof ReadonlyArray>
  */
-export type NonReadonly<T extends ReadonlyArray<any>> = T extends ReadonlyArray<
-  infer X
->
-  ? X[]
-  : never;
+export type NonReadonly<T extends ReadonlyArray<any>> =
+  T extends ReadonlyArray<infer X> ? X[] : never;
 
 /**
  * Remove types from T that are assignable to U
@@ -214,6 +211,22 @@ export type PartialKeys<T, K extends keyof T = keyof T> = Omit<T, K> & {
  */
 export type RequiredKeys<T, K extends keyof T = keyof T> = Omit<T, K> & {
   [P in K]-?: T[P];
+};
+
+/**
+ * Selectively remove null and undefined from certain properties.
+ *
+ * @example
+ * type T = {
+ *   foo: string;
+ *   bar?: string | null;
+ *   baz: number | undefined;
+ * }
+ *
+ * type NonNullBar = NonNullableValues<T, "bar" | "baz"> // { foo: string; bar: string; baz: number; }
+ */
+export type NonNullableValues<T, K extends keyof T = keyof T> = Omit<T, K> & {
+  [P in K]-?: Exclude<T[P], undefined | null>;
 };
 
 /**

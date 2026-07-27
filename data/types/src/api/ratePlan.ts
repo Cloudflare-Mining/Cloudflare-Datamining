@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const PlanId = eg.union([
   eg.literal('free'),
@@ -173,6 +173,7 @@ export const ProductPlanId = eg.union([
   eg.literal('IMAGES_V2_LEGACY_STREAM_BUNDLE_BASIC'),
   eg.literal('images_v2_legacy_stream_bundle_basic'),
   eg.literal('IMAGES_V2_LEGACY_STREAM_BUNDLE_ADVANCED'),
+  eg.literal('LOG_EXPLORER_BASIC'),
   eg.literal('images_v2_legacy_stream_bundle_advanced'),
   eg.literal('IMAGES_V2_BASIC'),
   eg.literal('images_v2_basic'),
@@ -218,6 +219,13 @@ export const ProductPlanId = eg.union([
   eg.literal('r2_nocost'),
   eg.literal('R2_CONTRACT_SS'),
   eg.literal('r2_contract_ss'),
+  eg.literal('SMART_SHIELD_ADVANCED'),
+  eg.literal('smart_shield_argo_ent'),
+  eg.literal('smart_shield_argo_zone_basic'),
+  eg.literal('WORKERS_PLANETSCALE_PAID'),
+  eg.literal('workers_planetscale_paid'),
+  eg.literal('WORKERS_PLANETSCALE_ENT'),
+  eg.literal('workers_planetscale_ent'),
   eg.literal('web3_ipfs_basic'),
   eg.literal('WEB3_IPFS_BASIC'),
   eg.literal('web3_ipfs_premium'),
@@ -264,7 +272,25 @@ export const ProductPlanId = eg.union([
   eg.literal('WORKERS_FOR_PLATFORMS'),
   eg.literal('workers_for_platforms_ent'),
   eg.literal('WORKERS_FOR_PLATFORMS_ENT'),
-  eg.literal('zaraz_paid')
+  eg.literal('zaraz_paid'),
+  eg.literal('client_side_security_advanced_paid'),
+  eg.literal('CLIENT_SIDE_SECURITY_ADVANCED_PAID'),
+  // OCI (Oracle Cloud Infrastructure) account-level rate plans. The active
+  // account-level OCI rate plan determines the customer's OCI tier; downstream
+  // zone-level entitlement groups (OCI_*_ZONE) are cascaded from this plan
+  // onto matching-tier OCI zones via catalog-api entitlement_rules on the
+  // load_balancing_base component.
+  eg.literal('oci_biz_account'),
+  eg.literal('OCI_BIZ_ACCOUNT'),
+  eg.literal('oci_ent_entry_account'),
+  eg.literal('OCI_ENT_ENTRY_ACCOUNT'),
+  eg.literal('oci_ent_ess_account'),
+  eg.literal('OCI_ENT_ESS_ACCOUNT'),
+  eg.literal('oci_ent_advanced_account'),
+  eg.literal('OCI_ENT_ADVANCED_ACCOUNT'),
+  // Zone-level OCI plans (still present in catalog; not yet deprecated).
+  eg.literal('oci_biz'),
+  eg.literal('OCI_BIZ')
 ]);
 export type ProductPlanId = TypeFromCodec<typeof ProductPlanId>;
 

@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 import { Zone } from './zone';
 
 export const DNSRecordMeta = eg.object({
@@ -45,6 +45,7 @@ export const DNSRecord = eg.object({
     eg.literal('MX'),
     eg.literal('NAPTR'),
     eg.literal('NS'),
+    eg.literal('OPENPGPKEY'),
     eg.literal('PTR'),
     eg.literal('SRV'),
     eg.literal('TXT'),
@@ -60,7 +61,8 @@ export const DNSRecord = eg.object({
   tags: eg.array(eg.string).optional,
   settings: eg.object({
     flatten_cname: eg.boolean.optional
-  }).optional
+  }).optional,
+  private_routing: eg.boolean.optional
 });
 
 export type DNSRecord = TypeFromCodec<typeof DNSRecord>;

@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-export type TElementBreakpoints<Value> = [Value, Value] | [Value, Value, Value];
+export type TElementBreakpoints<Value> =
+  | Value
+  | [Value, Value]
+  | [Value, Value, Value];
 
 type TextProps = 'fontSize' | 'textAlign';
 
@@ -44,7 +47,7 @@ export type TDesignSystemCSSProps = Pick<
   | 'verticalAlign'
 >;
 
-export type TScale = string | number | TElementBreakpoints<string | number>;
+export type TScale = TElementBreakpoints<string | number>;
 
 export type TfelaMProps = {
   m?: TScale;

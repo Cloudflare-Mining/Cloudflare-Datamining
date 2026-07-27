@@ -1,5 +1,5 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
-import { enumerable, TypeFromEnumerable } from '../utils/enumerable';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
+import { enumerable, type TypeFromEnumerable } from '../utils/enumerable';
 
 export const PagesUploadFileResult = eg.object({
   id: eg.string
@@ -48,6 +48,7 @@ export type BuildConfig = TypeFromCodec<typeof BuildConfig>;
 
 export const ProjectSourceConfig = eg.object({
   owner: eg.string,
+  owner_id: eg.string,
   owner_display_name: eg.string.optional,
   repo_name: eg.string,
   repo_display_name: eg.string.optional,
@@ -65,13 +66,30 @@ export const ProjectSourceConfig = eg.object({
 });
 
 export type ProjectSourceConfig = TypeFromCodec<typeof ProjectSourceConfig>;
+export type Provider = TypeFromCodec<typeof Provider>;
+export const Provider = eg.union([
+  eg.literal('github'),
+  eg.literal('gitlab'),
+  eg.literal('gitlab_internal')
+]);
 
 export const ProjectSource = eg.object({
-  type: eg.union([eg.literal('github'), eg.literal('gitlab')]),
+  type: Provider,
   config: ProjectSourceConfig
 });
 
 export type ProjectSource = TypeFromCodec<typeof ProjectSource>;
+
+export const DeploymentSkipReason = eg.union([
+  eg.literal('commit_message'),
+  eg.literal('preview_deployments_disabled'),
+  eg.literal('production_deployments_disabled'),
+  eg.literal('path_config'),
+  eg.literal('branch_config'),
+  eg.literal('pages_to_workers_conversion')
+]);
+
+export type DeploymentSkipReason = TypeFromCodec<typeof DeploymentSkipReason>;
 
 export const Deployment = eg.object({
   id: eg.string,
@@ -101,6 +119,7 @@ export const Deployment = eg.object({
   build_image_major_version: eg.number,
   source: ProjectSource.optional,
   is_skipped: eg.boolean.optional,
+  skip_reason: DeploymentSkipReason.optional,
   files: eg.record(eg.string, eg.string.optional).optional
 });
 
@@ -293,7 +312,11 @@ export const PagesTail = eg.object({
 
 export type PagesTailResult = TypeFromCodec<typeof PagesTail>;
 
-export const PlacementMode = eg.union([eg.literal('off'), eg.literal('smart')]);
+export const PlacementMode = eg.union([
+  eg.literal('off'),
+  eg.literal('smart'),
+  eg.literal('')
+]);
 
 export type PlacementMode = TypeFromCodec<typeof PlacementMode>;
 

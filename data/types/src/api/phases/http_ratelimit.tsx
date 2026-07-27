@@ -1,9 +1,9 @@
 // Rate Limiting HttpRateLimit
 
-import { Overwrite } from '../../utils';
-import { CustomActionParameters } from './http_request_firewall_custom';
-import { RuleBase, RulesetBase } from './utils';
-import { RulesetPhase } from './fields';
+import type { Overwrite } from '../../utils';
+import type { CustomActionParameters } from './http_request_firewall_custom';
+import type { RuleBase, RulesetBase } from './utils';
+import type { RulesetPhase } from './fields';
 
 export type RateLimitRule = Overwrite<
   RuleBase,
@@ -16,6 +16,9 @@ export type RateLimitRule = Overwrite<
     mitigation_timeout?: number;
     counting_expression?: string;
     requests_to_origin?: boolean;
+    rate_exceeds?: string;
+    score_per_period?: number;
+    score_response_header_name?: string;
   };
 };
 

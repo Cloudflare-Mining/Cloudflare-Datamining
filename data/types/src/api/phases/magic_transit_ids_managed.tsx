@@ -1,5 +1,5 @@
-import { Actions, RulesetPhase } from './fields';
-import { RulesetPhaseType } from './utils';
+import type { Actions, RulesetPhase } from './fields';
+import type { RulesetPhaseType } from './utils';
 
 export type AccountMagicIdsRuleset = RulesetPhaseType<
   RulesetPhase.MagicIDS,

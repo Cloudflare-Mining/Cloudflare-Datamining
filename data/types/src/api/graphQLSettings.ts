@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const GraphQLNodeName = eg.union([
   eg.literal('firewallEventsAdaptive'),
@@ -22,7 +22,8 @@ export const GraphQLNodeName = eg.union([
   eg.literal('magicTransitTunnelTrafficAdaptiveGroups'),
   eg.literal('magicFirewallNetworkAnalyticsAdaptiveGroups'),
   eg.literal('spectrumNetworkAnalyticsAdaptiveGroups'),
-  eg.literal('dnsAnalyticsAdaptiveGroups')
+  eg.literal('dnsAnalyticsAdaptiveGroups'),
+  eg.literal('dnsFirewallAnalyticsAdaptiveGroups')
 ]);
 
 export type GraphQLNodeName = TypeFromCodec<typeof GraphQLNodeName>;

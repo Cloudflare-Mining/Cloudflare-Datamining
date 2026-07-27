@@ -1,7 +1,6 @@
 import { Organization } from './organization';
 import { SupportedLocales } from '@cloudflare/intl-types';
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
-import { MembershipsPolicy } from './policy';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const User = eg.object({
   id: eg.string,
@@ -28,6 +27,7 @@ export const User = eg.object({
   twofactor: eg.object({ type: eg.literal('email') }).optional,
   totp_configured: eg.boolean.optional,
   webauthn_configured: eg.boolean.optional,
+  email_2fa_enabled: eg.boolean.optional,
   redirect_sso: eg.string.optional,
   redirect_oauth: eg.string.optional,
   primary_account_tag: eg.string.optional
@@ -40,16 +40,6 @@ export const UserDetails = eg.object({
 });
 
 export type UserDetails = TypeFromCodec<typeof UserDetails>;
-
-export const UserGroup = eg.object({
-  id: eg.string,
-  name: eg.string,
-  created_on: eg.string,
-  modified_on: eg.string,
-  policies: eg.array(MembershipsPolicy)
-});
-
-export type UserGroup = TypeFromCodec<typeof UserGroup>;
 
 export const UserGroupMember = eg.object({
   id: eg.string,

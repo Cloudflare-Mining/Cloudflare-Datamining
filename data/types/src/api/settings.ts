@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const SettingsId = eg.union([
   eg.literal('0rtt'),
@@ -12,11 +12,11 @@ export const SettingsId = eg.union([
   eg.literal('cache_level'),
   eg.literal('challenge_ttl'),
   eg.literal('ciphers'),
-  eg.literal('cname_flattening'),
+  eg.literal('content_converter'),
   eg.literal('development_mode'),
   eg.literal('early_hints'),
-  eg.literal('edge_cache_ttl'),
   eg.literal('ech'),
+  eg.literal('edge_cache_ttl'),
   eg.literal('email_obfuscation'),
   eg.literal('hotlink_protection'),
   eg.literal('http2'),
@@ -26,7 +26,6 @@ export const SettingsId = eg.union([
   eg.literal('max_upload'),
   eg.literal('min_tls_version'),
   eg.literal('minify'),
-  eg.literal('mirage'),
   eg.literal('opportunistic_encryption'),
   eg.literal('opportunistic_onion'),
   eg.literal('origin_error_page_pass_thru'),
@@ -34,6 +33,7 @@ export const SettingsId = eg.union([
   eg.literal('polish'),
   eg.literal('prefetch_preload'),
   eg.literal('pseudo_ipv4'),
+  eg.literal('redirects_for_ai_training'),
   eg.literal('replace_insecure_js'),
   eg.literal('response_buffering'),
   eg.literal('rocket_loader'),
@@ -49,13 +49,14 @@ export const SettingsId = eg.union([
   eg.literal('true_client_ip_header'),
   eg.literal('waf'),
   eg.literal('webp'),
-  eg.literal('websockets')
+  eg.literal('websockets'),
+  eg.literal('shared_dictionary_mode')
 ]);
 
 export type SettingsId = TypeFromCodec<typeof SettingsId>;
 
 // TODO: strongly type extra props to only settings which contain them. E.g. only 'development_mode' contains 'time_remaining'
-// See https://bitbucket.cfdata.org/projects/WWW/repos/api-docs/browse/schemas/client/definitions/zone.json#64,460-461 and the zone settings API for details
+// See https://gitlab.cfdata.org/cloudflare/https/api-docs/-/blob/master/schemas/client/definitions/zone.json#L460-461 and the zone settings API for details
 export const Settings = eg.object({
   id: SettingsId,
   value: eg.any,

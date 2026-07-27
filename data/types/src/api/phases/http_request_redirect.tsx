@@ -1,6 +1,6 @@
-import { AccountEntrypointType, RulesetPhaseType } from './utils';
-import { RulesetPhase } from './fields';
-import { ElementType } from '..';
+import type { AccountEntrypointType, RulesetPhaseType } from './utils';
+import type { RulesetPhase } from './fields';
+import type { ElementType } from '..';
 
 export type RedirectActionParameters = {
   id: string;

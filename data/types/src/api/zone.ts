@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 import { Frequency } from './subscription';
 import { PlanId } from './ratePlan';
@@ -33,7 +33,8 @@ export type ZoneAccount = TypeFromCodec<typeof ZoneAccount>;
 export const ZoneType = eg.union([
   eg.literal('full'),
   eg.literal('partial'),
-  eg.literal('secondary')
+  eg.literal('secondary'),
+  eg.literal('internal')
 ]);
 export type ZoneType = TypeFromCodec<typeof ZoneType>;
 
@@ -153,6 +154,14 @@ export const Zone = eg.object({
     eg.null
   ]).optional,
   verification_key: eg.string.optional,
+  // Activation-failure diagnostics written by zonekeeper while a zone fails
+  // verification and cleared once it activates. `activation_failure_reason` is a
+  // stable, machine-readable string (the contract is defined by zonekeeper's
+  // verifier `FailureReason` map); `observed_name_servers` are the live
+  // nameservers zonekeeper last saw for the zone. Surfaced by cf-www's
+  // getClientAPIView. See DEE-3586.
+  activation_failure_reason: eg.string.optional,
+  observed_name_servers: eg.array(eg.string).optional,
   host: eg.object({
     name: eg.string,
     website: eg.string

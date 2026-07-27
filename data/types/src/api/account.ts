@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 import { Permissions } from './permissions';
 import { MembershipsPolicy } from './policy';
 import { User } from './user';
@@ -11,6 +11,7 @@ export const AccountSettings = eg.object({
   access_approval_expiry: eg.union([eg.string, eg.null]),
   enforce_twofactor: eg.boolean,
   api_access_enabled: eg.union([eg.boolean, eg.null]),
+  oauth_app_access_enabled: eg.union([eg.boolean, eg.null]),
   abuse_contact_email: eg.union([eg.string, eg.null])
 });
 
@@ -48,7 +49,8 @@ export const AccountLegacyFlags = eg.object({
   china_private_key_network_deployment: AccountLegacyFlagStatus,
   cname_signup: AccountLegacyFlagStatus,
   custom_pages: AccountLegacyFlagStatus,
-  enterprise_zone_quota: AccountLegacyFlagEnterpriseZoneQuota
+  enterprise_zone_quota: AccountLegacyFlagEnterpriseZoneQuota,
+  zone_create_prohibited: eg.boolean.optional
 });
 
 export type AccountLegacyFlags = TypeFromCodec<typeof AccountLegacyFlags>;
@@ -110,6 +112,7 @@ export type AccountMemberPolicy = TypeFromCodec<typeof AccountMemberPolicy>;
 
 export const AccountMember = eg.object({
   id: eg.string,
+  email: eg.string,
   user: eg.pick(User, [
     'id',
     'first_name',
@@ -124,7 +127,8 @@ export const AccountMember = eg.object({
   ]),
   api_access_enabled: eg.union([eg.boolean, eg.null]).optional,
   roles: eg.array(AccountRole),
-  policies: eg.array(MembershipsPolicy).optional
+  policies: eg.array(MembershipsPolicy).optional,
+  user_groups: eg.array(eg.any)
 });
 
 export type AccountMember = TypeFromCodec<typeof AccountMember>;
@@ -172,6 +176,11 @@ export const Account = eg.object({
   name: eg.string,
   type: eg.string.optional,
   created_on: eg.string.optional,
+  managed_by: eg.object({
+    parent_org_id: eg.string.optional,
+    parent_org_name: eg.string.optional,
+    should_display_parent_orgs: eg.boolean.optional
+  }).optional,
   settings: AccountSettings,
   meta: AccountMeta,
   legacy_flags: AccountLegacyFlags

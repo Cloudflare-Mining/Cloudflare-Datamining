@@ -1,11 +1,11 @@
-import { RulesetPhase, RulesetKind } from './fields';
+import type { RulesetPhase, RulesetKind } from './fields';
 
-import { ActionParameterSkip } from './http_request_firewall_managed';
-import { AccountEntrypointType, RuleBase, RulesetBase } from './utils';
+import type { ActionParameterSkip } from './http_request_firewall_managed';
+import type { AccountEntrypointType, RuleBase, RulesetBase } from './utils';
 
-export enum RateLimitParamType  {
+export enum RateLimitParamType {
   bits = 'bits',
- packets = 'packets'
+  packets = 'packets'
 }
 
 export type MagicTransitRateLimitRules = RuleBase<

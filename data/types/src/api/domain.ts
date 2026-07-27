@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const RegistrationStatus = eg.union([
   eg.literal('registrationPending'),
@@ -67,7 +67,17 @@ export const RegistrantContact = eg.object({
   organization: eg.string,
   phone: eg.string,
   state: eg.string,
-  zip: eg.string
+  zip: eg.string,
+  extensions: eg.object({
+    nexus_category: eg.string.optional,
+    application_purpose: eg.string.optional,
+    ca_legal_type: eg.string.optional,
+    registrant_type: eg.string.optional,
+    company_number: eg.string.optional
+  }).optional,
+  whois_visibility: eg.object({
+    organization: eg.boolean.optional
+  }).optional
 });
 
 export type RegistrantContact = TypeFromCodec<typeof RegistrantContact>;
@@ -100,7 +110,7 @@ export const RegistrationSettings = eg.object({
 export type RegistrationSettings = TypeFromCodec<typeof RegistrationSettings>;
 
 export const DomainFees = eg.object({
-  icann_fee: eg.number,
+  icann_fee: eg.number.optional, // Optional for ccTLDs (e.g. .uk) — ICANN fees only apply to gTLDs (REG-8025)
   redemption_fee: eg.number,
   registration_fee: eg.number,
   renewal_fee: eg.number,
@@ -214,7 +224,7 @@ export const DomainSearchResult = eg.object({
       name: eg.string,
       availability: eg.string,
       price: eg.number,
-      icann_fee: eg.number,
+      icann_fee: eg.number.optional, // Optional for ccTLDs (e.g. .uk) — ICANN fees only apply to gTLDs (REG-8025)
       pricing: eg.object({
         currency: eg.string,
         registration_fee: eg.number,
@@ -242,7 +252,6 @@ export const DomainEligibility = eg.object({
 export type DomainEligibility = TypeFromCodec<typeof DomainEligibility>;
 
 // Domain Protection services
-
 export enum ApproverStatus {
   PENDING = 'pending',
   VERIFIED = 'verified',
@@ -330,3 +339,5 @@ export const DefaultContactInformation = eg.object({
     })
   })
 });
+
+export const PrimaryContactUpdateResult = RegistrantContacts;

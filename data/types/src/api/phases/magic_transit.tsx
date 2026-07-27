@@ -1,6 +1,6 @@
-import { RulesetPhase, RulesetKind } from './fields';
-import { ActionParameterSkip } from './http_request_firewall_managed';
-import { AccountEntrypointType, RuleBase, RulesetBase } from './utils';
+import type { RulesetPhase, RulesetKind } from './fields';
+import type { ActionParameterSkip } from './http_request_firewall_managed';
+import type { AccountEntrypointType, RuleBase, RulesetBase } from './utils';
 
 export type MagicTransitRules = RuleBase<Omit<ActionParameterSkip, 'rules'>> & {
   logging: { enabled: boolean };

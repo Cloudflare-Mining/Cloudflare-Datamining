@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 import { RatePlanId } from './ratePlan';
 
 export const SubscriptionZone = eg.object({
@@ -26,6 +26,7 @@ export type Frequency = TypeFromCodec<typeof Frequency>;
 export const SubscriptionState = eg.union([
   eg.literal('Paid'),
   eg.literal('Unpaid'),
+  eg.literal('Expired'),
   eg.literal('subscription.state.')
 ]);
 export type SubscriptionState = TypeFromCodec<typeof SubscriptionState>;
@@ -89,6 +90,7 @@ export const SubscriptionProductName = eg.union([
   eg.literal('registrar'),
   eg.literal('apps_welcome_bar'),
   eg.literal('prod_argo'),
+  eg.literal('prod_billing'),
   eg.literal('prod_rate_limiting'),
   eg.literal('prod_load_balancing'),
   eg.literal('prod_workers'),
@@ -109,7 +111,12 @@ export const SubscriptionProductName = eg.union([
   eg.literal('jdc_cloudflare_zones'),
   eg.literal('bots'),
   eg.literal('prod_queues'),
-  eg.literal('calls')
+  eg.literal('calls'),
+  eg.literal('prod_log_explorer'),
+  eg.literal('prod_smart_shield'),
+  eg.literal('prod_client_side_security'),
+  eg.literal('prod_planetscale'),
+  eg.literal('planetscale')
 ]);
 
 export type SubscriptionProductName = TypeFromCodec<
@@ -258,7 +265,9 @@ export const Subscription = eg.object({
   created_date: eg.string.optional,
   deleted_date: eg.string.optional,
   downgrade_date: eg.string.optional,
-  trial: eg.union([SubscriptionTrial, eg.null]).optional
+  trial: eg.union([SubscriptionTrial, eg.null]).optional,
+  client_secrets: eg.union([eg.array(eg.string), eg.null]).optional,
+  user_is_on_session: eg.union([eg.boolean, eg.string]).optional
 });
 
 export type Subscription = TypeFromCodec<typeof Subscription>;
@@ -281,7 +290,9 @@ export const SubscriptionSchedule = eg.object({
 
 export const BulkSubscription = eg.object({
   coupon_code: eg.string.optional,
-  subscriptions: eg.array(Subscription)
+  subscriptions: eg.array(Subscription),
+  client_secrets: eg.array(eg.string),
+  user_is_on_session: eg.union([eg.boolean, eg.string]).optional
 });
 
 export type BulkSubscription = TypeFromCodec<typeof BulkSubscription>;

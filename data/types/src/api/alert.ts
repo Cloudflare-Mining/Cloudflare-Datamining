@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 // NotificationMechanism is specifies how a notification is delivered -
 // via email, SMS, PagerDuty, etc
 // type INotificationMechanism = 'email' | 'sms' | 'pagerduty';
@@ -159,4 +159,13 @@ export type AlertHistory = {
   mechanism_type: string;
   policy_id: string;
   sent: string;
+};
+
+export type Silence = {
+  id: string;
+  policy_id: string;
+  start_time: string;
+  end_time: string;
+  created_at: string;
+  updated_at: string;
 };

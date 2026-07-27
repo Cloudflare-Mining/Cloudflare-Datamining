@@ -1,9 +1,9 @@
-import {
+import type {
   InferableComponentEnhancerWithProps,
   HandleThunkActionCreator,
   ResolveThunks
 } from 'react-redux';
-import { Reducer } from 'redux';
+import type { Reducer } from 'redux';
 
 /**
  * Get mapped PropTypes of selectors and action creators from `connect` HOC.
@@ -37,12 +37,8 @@ export type ConnectedProps<Connect> =
  *
  * type ReduxState = ReducerState<typeof rootReducer>
  */
-export type ReducerState<MaybeReducer> = MaybeReducer extends Reducer<
-  infer State,
-  infer Action
->
-  ? State
-  : never;
+export type ReducerState<MaybeReducer> =
+  MaybeReducer extends Reducer<infer State, infer Action> ? State : never;
 
 /**
  * Transforms action creator into a bound action creator.

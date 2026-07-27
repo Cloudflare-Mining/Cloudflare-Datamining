@@ -1,6 +1,6 @@
-import { Overwrite } from '../../utils';
+import type { Overwrite } from '../../utils';
 
-import {
+import type {
   Actions,
   SensitivityLevels,
   RulesetPhase,

@@ -1,11 +1,11 @@
-import {
+import type {
   AccountEntrypointType,
   CategoryOverride,
   RuleBase,
   RulesetPhaseType
 } from './utils';
-import { Actions, SensitivityLevels, RulesetPhase } from './fields';
-import { ElementType } from '..';
+import type { Actions, SensitivityLevels, RulesetPhase } from './fields';
+import type { ElementType } from '..';
 
 export type DDoSL4ActionParameters = {
   sensitivity_level: SensitivityLevels;

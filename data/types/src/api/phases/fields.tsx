@@ -8,6 +8,8 @@ export enum RulesetKind {
 
 export enum RulesetPhase {
   Cache = 'http_request_cache_settings',
+  CacheResponse = 'http_response_cache_settings',
+  HttpCustomErrors = 'http_custom_errors',
   HttpConfigSettings = 'http_config_settings',
   HttpLogCustomFields = 'http_log_custom_fields',
   HttpRateLimit = 'http_ratelimit',
@@ -51,7 +53,12 @@ export enum Actions {
   Set_Config = 'set_config',
   Reset = 'reset',
   Redirect = 'redirect',
-  Cache = 'set_cache_settings'
+  Cache = 'set_cache_settings',
+  CacheControl = 'set_cache_control',
+  CacheTags = 'set_cache_tags',
+  WhiteList = 'whitelist',
+  Error = 'serve_error',
+  Add_Reporting_Directives = 'add_reporting_directives'
 }
 
 export enum BypassProducts {

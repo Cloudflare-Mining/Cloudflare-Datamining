@@ -5,6 +5,7 @@ export * from './accountRulesets';
 export * from './alert';
 export * from './apiKey';
 export * from './apiToken';
+export * from './autofix';
 export * from './billing';
 export * from './builds';
 export * from './contentBlock';

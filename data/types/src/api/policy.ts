@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const ZoneLevelAccessPolicyScope = eg.object({
   accountId: eg.string.optional,
@@ -35,12 +35,14 @@ export const MembershipsPermission = eg.object({
 export const PolicyPermissionGroup = eg.object({
   id: eg.string,
   name: eg.string,
+  status: eg.string,
   meta: eg.object({
     description: eg.string,
-    editable: eg.boolean,
+    editable: eg.string.optional,
     label: eg.string,
     scopes: eg.string,
-    visibility: eg.string.optional
+    visibility: eg.string.optional,
+    category: eg.string.optional
   }),
   permissions: eg.array(MembershipsPermission).optional
 });

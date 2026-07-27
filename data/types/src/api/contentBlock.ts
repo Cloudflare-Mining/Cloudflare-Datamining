@@ -1,4 +1,4 @@
-import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { eg, type TypeFromCodec } from '@cloudflare/util-en-garde';
 
 /** A content entity that has been blocked by Trust & Safety. */
 export const ContentBlock = eg.object({
@@ -24,8 +24,10 @@ export const ContentBlock = eg.object({
   type: eg.union([
     eg.literal('geo_block'),
     eg.literal('legal_block'),
+    eg.literal('network_block'),
     eg.literal('phishing_interstitial'),
-    eg.literal('malware_interstitial')
+    eg.literal('malware_interstitial'),
+    eg.literal('misleading_interstitial')
   ]),
   url_query: eg.array(
     eg.object({

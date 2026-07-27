@@ -1,11 +1,11 @@
-import { RulesetKind, RulesetPhase } from './fields';
+import type { RulesetKind, RulesetPhase } from './fields';
 
-import {
+import type {
   ManagedExecuteRule,
   ManagedSkipRule
 } from './http_request_firewall_managed';
-import { AccountEntrypointType, RulesetBase } from './utils';
-import { ElementType } from '..';
+import type { AccountEntrypointType, RulesetBase } from './utils';
+import type { ElementType } from '..';
 
 export type MagicManagedExecuteRuleset = RulesetBase<
   RulesetPhase.MagicManaged,
