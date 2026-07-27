@@ -5,29 +5,83 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4>Available Locations</h4>
+<p><strong>About the Role</strong></p>
+<p>The Product Platform Tools team builds and operates Cloudflare's internal support and admin platform - the foundation that customer-facing and operational teams across the company rely on to do their jobs. As a Systems Engineer on this team, you'll design and build the backend services, infrastructure, APIs, and integrations that power this platform at enterprise scale, working closely with both engineering teams and non-engineering stakeholders like Support, Legal, and Security (who depend on it daily). You'll need a deep curiosity for how Cloudflare works under the hood, a strong security and governance mindset, the ability to scale systems to meet the demands of a global organization, and the communication skills to bridge technical complexity with the real operational needs of diverse teams across the company.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Tokyo, Japan</li>
+	<li>
+		<p>Design, implement, and operate backend services, infrastructure, APIs, and integrations that form the core of Cloudflare's internal support and admin platform, built to scale with the demands of a large, globally distributed organization.</p>
+	</li>
+	<li>
+		<p>Partner with engineering teams across the company to onboard their support and admin applications onto the platform - understanding their requirements and ensuring smooth, well-governed, and scalable integration.</p>
+	</li>
+	<li>
+		<p>Work directly with non-engineering stakeholders - including Support, Legal, and Security teams - to understand their operational needs and translate them into reliable, maintainable, and appropriately scaled platform capabilities.</p>
+	</li>
+	<li>
+		<p>Own and continuously improve the platform's security and authorization posture, partnering with the Security and Legal team to ensure access control policies, governance requirements, and compliance standards are correctly implemented and enforced at scale.</p>
+	</li>
+	<li>
+		<p>Ramp quickly into unfamiliar and legacy codebases, build context across a wide range of Cloudflare systems, and make thoughtful improvements that reduce operational toil and improve platform reliability.</p>
+	</li>
+	<li>
+		<p>Participate in on-call rotations, respond to production incidents, and drive post-incident reviews to raise reliability and scalability standards across the platform.</p>
+	</li>
+	<li>
+		<p>Contribute to platform observability, developer experience, and engineering standards with broad impact across the teams that depend on this platform.</p>
+	</li>
 </ul>
-<h4>About the Role</h4>
-<p>We are hiring for a Senior Talent Acquisition Business Partner to join our Japan Go To Market hiring efforts. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of our sales and GTM teams. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
-<h4>Responsibilities</h4>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
-	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon your extensive network of industry contacts and candidates to build pipeline strategies for a variety of GTM roles with a heavy focus on Account Executives and Customer Engineers.</li>
-	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with the GEO VP and cross functional stakeholders, including Finance, HRBPs and compensation teams.</li>
-	<li><strong>AI-Driven Efficiency &amp; Process Optimization:</strong> Integrate AI tools to enhance your daily productivity, such as using generative AI to craft highly personalized outreach messages at scale, automate repetitive administrative workflows, and synthesize market data to inform your talent strategies.</li>
-	<li><strong>Data Utilization &amp; Analytics:</strong> Use data analytics to inform recruitment strategies, actively analyzing metrics such as time-to-hire and source efficiency to drive decisions and optimize processes.</li>
-	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the Japan market to elevate Cloudflare's profile as a top destination for GTM talent.</li>
+	<li>
+		<p>5+ years of professional experience building and operating production backend services at enterprise or large-scale organizations, with strong proficiency in Go and/or TypeScript.</p>
+	</li>
+	<li>
+		<p>Demonstrated experience in platform engineering, internal tooling, or support/admin systems — with direct experience supporting non-technical end users or customer-facing teams.</p>
+	</li>
+	<li>
+		<p>Strong understanding of authorization and authentication systems such as OAuth 2.0, OIDC, JWT, OPA/Rego, role-base access control, policy based-access or similar and a security-first approach to system design.</p>
+	</li>
+	<li>
+		<p>Proven scalability mindset — experience designing and operating systems that serve a large, diverse set of internal consumers with varying reliability and performance requirements.</p>
+	</li>
+	<li>
+		<p>Proven ability to work across organizational boundaries: comfortable engaging with engineering teams, Security, Legal, and non-technical operational stakeholders alike.</p>
+	</li>
+	<li>
+		<p>Confident working in unfamiliar and legacy codebases; able to ramp quickly, orient independently, and contribute incrementally without full context.</p>
+	</li>
+	<li>
+		<p>Strong written and verbal communication — able to translate between technical implementation details and the business or operational needs of diverse stakeholders.</p>
+	</li>
+	<li>
+		<p>Advanced, hands-on experience with Kubernetes and Docker in production environments — including cluster operations, resource management, networking, and debugging containerized workloads.</p>
+	</li>
+	<li>
+		<p>Strong database experience — including schema design, query optimization, and operating databases in high-availability production environments.</p>
+	</li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience</h4>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li><strong>Extensive GTM Recruiting Experience:</strong> You are a respected Senior Recruiter with a proven track record of success, and well-versed in your craft.</li>
-	<li><strong>Strategic Problem Solving:</strong> You operate two "plays" ahead and can anticipate potential bottlenecks or challenges before they have a chance to materialize. You regularly resolve complex issues with little support from managers and make sound decisions that drive positive business outcomes</li>
-	<li><strong>Negotiation &amp; Closing Skills:</strong> You are an effective negotiator who is often able to get candidates over the line who might have otherwise taken offers elsewhere. You understand and can explain Cloudflare’s value proposition</li>
-	<li><strong>AI &amp; Tool Proficiency:</strong> You bring innovative solutions to your role, actively leveraging AI automation (such as AI-powered sourcing assistants and LLMs for complex Boolean logic/market mapping) to multiply your efficiency. You also must have a good grasp of the advanced features of modern recruiting tools</li>
-	<li><strong>Candidate Experience Focus:</strong> You are well organized and proactive, ensuring candidates rarely stay in the 'gray stage' for extended periods while communicating clearly about any delays.</li>
-	<li><strong>Communication:</strong> While the majority of your work experience will be in Japanese, we do require you to comfortable with written and verbal communications in English to work with cross functional teams globally</li>
+	<li>
+		<p>Experience building or operating internal support tooling, admin consoles, case management systems, or operational dashboards used by non-engineering teams at enterprise scale.</p>
+	</li>
+	<li>
+		<p>Prior exposure to security governance workflows, compliance tooling, or partnering closely with a dedicated Security or Legal team on access control requirements.</p>
+	</li>
+	<li>
+		<p>Familiarity with Cloudflare's product ecosystem (Workers, Access, Zero Trust, Gateway) as either a user or implementer.</p>
+	</li>
+	<li>
+		<p>Experience with observability tooling and practices — including distributed tracing, structured logging, and metrics dashboards using tools such as Grafana, Kibana, Jaeger, or similar.</p>
+	</li>
+	<li>
+		<p>Experience with Terraform for infrastructure-as-code and GitLab CI/CD for automated build, test, and deployment pipelines.</p>
+	</li>
+	<li>
+		<p>Exposure to Temporal workflows or distributed workflow orchestration.</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

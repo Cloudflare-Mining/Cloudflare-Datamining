@@ -5,55 +5,35 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco, CA, Austin, TX or New York City</strong></p>
-<h4><strong>What you'll do</strong></h4>
-<p>The Vice President of Internal Audit will play a critical role in ensuring the effectiveness of our company's internal control framework, risk management processes, and compliance with regulatory requirements.&nbsp;</p>
-<p>Reporting directly to Cloudflare’s Chair of the Audit Committee with a dotted line to the CFO, this individual will lead the internal audit function, providing independent and objective assessments of the company's operations, financial reporting, and internal control environment.</p>
-<p>In a world of AI-native agentic solutions, we are looking for a creative and entrepreneurial leader who will help to reshape and transform our legacy human-execution IA processes and controls. We’re looking for someone to couple the core tenets of integrity, security and compliance with an AI-assisted and automated operating model.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Strategic Leadership:</strong></p>
+<p><strong>Available Locations: Austin Texas or New York</strong></p>
+<p><strong>About the Role</strong><br>We are currently seeking a highly skilled and adaptable Floating Administrative Assistant to join our team. This individual will provide comprehensive backup administrative support to executives across various organizations as needed. You will step in as a vital reinforcement to the admin team to cover planned and unplanned absences (such as PTO, sick days, maternity/paternity leave, and sabbaticals) and provide overflow support during peak project periods.<br>The ideal candidate will possess a dynamic personality, demonstrating a genuine enthusiasm for engaging with different individuals, departments, and facets of our organization. With a minimum of 3-5 years of experience supporting VP-level executives, the successful candidate will be a "chameleon", able to seamlessly integrate into new workflows, ensure operational continuity, and provide invaluable assistance across diverse functions.<br><strong><br>Key Responsibilities</strong></p>
 <ul>
-	<li>Develop and execute the internal audit strategy, vision, and annual audit plan in alignment with the company's goals and objectives and its shift toward automated workflows.</li>
-	<li>Provide guidance and support to the internal audit team, fostering a culture of excellence, continuous learning, innovation and professional development.</li>
-	<li>Collaborate with executive leadership across functions, CEO, CFO and the Audit Committee to identify and address key risks and ensure effective risk mitigation strategies; including identifying and addressing key risks within automated environments.</li>
+	<li><strong>Seamless Coverage:</strong> Provide comprehensive backup administrative support to executives during EA absences, demonstrating rapid proficiency in their specific calendar management, domestic and international travel arrangements, and expense reporting.</li>
+	<li><strong>Adaptable Prioritization:</strong> Exhibit exceptional multitasking abilities and adeptness in prioritizing tasks within a fast-paced environment, while maintaining meticulous attention to detail, accuracy, and adherence to deadlines.</li>
+	<li><strong>Cross-Functional Communication:</strong> Serve as a reliable liaison between executives and internal/external stakeholders, facilitating effective communication and collaboration across all levels of the organization.</li>
+	<li><strong>Project &amp; Overflow Support:</strong> Handle ad hoc projects, event coordination, and operational assignments with professionalism and efficiency, demonstrating flexibility and resourcefulness in addressing evolving priorities.</li>
+	<li><strong>Process Improvement:</strong> Contribute to the efficiency of office operations by anticipating needs, proactively identifying solutions, and implementing streamlined processes for hand-offs and coverage.</li>
+	<li><strong>Confidentiality:</strong> Handle highly sensitive and confidential information with the utmost discretion and professionalism at all times.</li>
 </ul>
-<p><strong>Risk Assessment and Audit Planning:</strong></p>
+<p>Requirements</p>
 <ul>
-	<li>Conduct comprehensive risk assessments to identify areas of significant risk, evaluate internal controls, and develop appropriate audit programs.</li>
-	<li>Prepare an annual audit plan based on risk assessments, regulatory requirements, and management requests.</li>
-	<li>Monitor emerging operational risks and regulatory changes to adjust the audit plan as needed in a dynamic environment.</li>
+	<li><strong>Experience:</strong> 3+ years of experience as an Administrative Assistant or Executive Assistant supporting leadership-level executives.</li>
+	<li><strong>Adaptability:</strong> Proven ability to quickly learn and adapt to different executives' working styles, preferences, and internal processes without missing a beat.</li>
+	<li><strong>Emotional Intelligence:</strong> High EQ with a strong ability to build trust rapidly with new teams and maintain a calm, solutions-oriented demeanor under pressure.</li>
+	<li><strong>Communication:</strong> Exceptional written and verbal communication skills.</li>
+	<li><strong>Organization:</strong> Strong organizational skills, meticulous attention to detail, and a strong sense of urgency and proactiveness.</li>
+	<li><strong>Project Skills:</strong> Proven experience assisting with or managing ad-hoc operational or administrative projects.</li>
 </ul>
-<p><strong>Audit Execution and Reporting:</strong></p>
+<p>Bonus Points</p>
 <ul>
-	<li>Lead and manage a team of internal auditors to execute audits across various business functions and global locations.</li>
-	<li>Conduct thorough and independent evaluations of internal controls, financial systems, and operational processes to assess their effectiveness, security and data integrity.</li>
-	<li>Prepare clear and concise audit reports, including identified issues, root causes, and actionable recommendations for improvement.</li>
-	<li>Present audit findings to executive management, the Chair of the Audit Committee, and the Audit Committee, ensuring a clear understanding of the risks, opportunities for enhancement and actions required to address audit findings.&nbsp;</li>
-</ul>
-<p><strong>Stakeholder Collaboration:</strong></p>
-<ul>
-	<li>Collaborate with cross-functional teams, including Finance, Legal, IT, Security, HR and Operations to promote robust risk management and internal controls.</li>
-	<li>Establish and maintain strong relationships with the Chair of the Audit Committee, external auditors, regulatory bodies, and industry professionals navigating the evolving technological landscape.</li>
-	<li>Provide guidance and support to management in the design and implementation of effective control measures.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>10+ years of progressive management experience in consulting, internal audit and/or risk management, preferably within the technology industry.</li>
-	<li>Professional certification such as Certified Internal Auditor (CIA), Certified Public Accountant (CPA), or Certified Information Systems Auditor (CISA) is required.</li>
-	<li>Strong knowledge of internal control frameworks, risk assessment methodologies, and industry best practices.</li>
-	<li>Ability to influence cross functional teams utilizing different skill sets and perspectives, prioritizing team objectives and managing scope, managing and reconciling conflicting team member opinions.</li>
-	<li>Demonstrated ability to build and maintain relationships with stakeholders at all levels of the organization, including the Chair of the Audit Committee.</li>
-	<li>High ethical standards and integrity, with a commitment to promoting a culture of compliance and ethics.</li>
-	<li>Dynamic and results-driven professional with a passion for driving excellence and continuous improvement.&nbsp;</li>
-	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
-	<li>Outstanding verbal and written communication skills, with the ability to present complex concepts in a clear and concise manner.</li>
-	<li>Bachelor's degree in Accounting, Finance, or a related field. A Master's degree is preferred.</li>
+	<li><strong>AI Experience:</strong> Familiarity with using AI tools to streamline administrative tasks and increase efficiency.</li>
+	<li><strong>Hospitality Background:</strong> Experience in hospitality, guest relations, or luxury client services is highly valued.</li>
+	<li><strong>Google Workspace:</strong> Strong proficiency with Google Workspace (Gmail, Calendar, Docs, and Sheets).</li>
+	<li><strong>Navan Experience:</strong> Prior experience using Navan for booking travel and managing expenses.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For San Francisco / San Jose Bay Area or NYC based hires: Estimated annual salary range of $300,000 - $375,000.</li>
-</ul>
+<p>New York Estimated Base salary $84,000 - $105,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

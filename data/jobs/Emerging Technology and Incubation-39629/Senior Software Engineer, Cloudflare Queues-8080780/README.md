@@ -5,58 +5,73 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco, CA, Austin, TX or New York City</strong></p>
-<h4><strong>What you'll do</strong></h4>
-<p>The Vice President of Internal Audit will play a critical role in ensuring the effectiveness of our company's internal control framework, risk management processes, and compliance with regulatory requirements.&nbsp;</p>
-<p>Reporting directly to Cloudflare’s Chair of the Audit Committee with a dotted line to the CFO, this individual will lead the internal audit function, providing independent and objective assessments of the company's operations, financial reporting, and internal control environment.</p>
-<p>In a world of AI-native agentic solutions, we are looking for a creative and entrepreneurial leader who will help to reshape and transform our legacy human-execution IA processes and controls. We’re looking for someone to couple the core tenets of integrity, security and compliance with an AI-assisted and automated operating model.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Strategic Leadership:</strong></p>
-<ul>
-	<li>Develop and execute the internal audit strategy, vision, and annual audit plan in alignment with the company's goals and objectives and its shift toward automated workflows.</li>
-	<li>Provide guidance and support to the internal audit team, fostering a culture of excellence, continuous learning, innovation and professional development.</li>
-	<li>Collaborate with executive leadership across functions, CEO, CFO and the Audit Committee to identify and address key risks and ensure effective risk mitigation strategies; including identifying and addressing key risks within automated environments.</li>
-</ul>
-<p><strong>Risk Assessment and Audit Planning:</strong></p>
-<ul>
-	<li>Conduct comprehensive risk assessments to identify areas of significant risk, evaluate internal controls, and develop appropriate audit programs.</li>
-	<li>Prepare an annual audit plan based on risk assessments, regulatory requirements, and management requests.</li>
-	<li>Monitor emerging operational risks and regulatory changes to adjust the audit plan as needed in a dynamic environment.</li>
-</ul>
-<p><strong>Audit Execution and Reporting:</strong></p>
-<ul>
-	<li>Lead and manage a team of internal auditors to execute audits across various business functions and global locations.</li>
-	<li>Conduct thorough and independent evaluations of internal controls, financial systems, and operational processes to assess their effectiveness, security and data integrity.</li>
-	<li>Prepare clear and concise audit reports, including identified issues, root causes, and actionable recommendations for improvement.</li>
-	<li>Present audit findings to executive management, the Chair of the Audit Committee, and the Audit Committee, ensuring a clear understanding of the risks, opportunities for enhancement and actions required to address audit findings.&nbsp;</li>
-</ul>
-<p><strong>Stakeholder Collaboration:</strong></p>
-<ul>
-	<li>Collaborate with cross-functional teams, including Finance, Legal, IT, Security, HR and Operations to promote robust risk management and internal controls.</li>
-	<li>Establish and maintain strong relationships with the Chair of the Audit Committee, external auditors, regulatory bodies, and industry professionals navigating the evolving technological landscape.</li>
-	<li>Provide guidance and support to management in the design and implementation of effective control measures.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>10+ years of progressive management experience in consulting, internal audit and/or risk management, preferably within the technology industry.</li>
-	<li>Professional certification such as Certified Internal Auditor (CIA), Certified Public Accountant (CPA), or Certified Information Systems Auditor (CISA) is required.</li>
-	<li>Strong knowledge of internal control frameworks, risk assessment methodologies, and industry best practices.</li>
-	<li>Ability to influence cross functional teams utilizing different skill sets and perspectives, prioritizing team objectives and managing scope, managing and reconciling conflicting team member opinions.</li>
-	<li>Demonstrated ability to build and maintain relationships with stakeholders at all levels of the organization, including the Chair of the Audit Committee.</li>
-	<li>High ethical standards and integrity, with a commitment to promoting a culture of compliance and ethics.</li>
-	<li>Dynamic and results-driven professional with a passion for driving excellence and continuous improvement.&nbsp;</li>
-	<li>Excellent analytical, problem-solving, and decision-making skills.</li>
-	<li>Outstanding verbal and written communication skills, with the ability to present complex concepts in a clear and concise manner.</li>
-	<li>Bachelor's degree in Accounting, Finance, or a related field. A Master's degree is preferred.</li>
-</ul>
-<p><strong>Compensation</strong></p>
+<h3><strong>Available Locations: Austin, TX | Seattle, WA</strong></h3>
+<div class="flex-1 overflow-y-auto">
+	<div class="mx-auto max-w-3xl px-4 py-4">
+		<div>
+			<div data-index="3">
+				<div class="pb-5">
+					<div class="flex justify-start">
+						<div class="max-w-[85%] min-w-0 space-y-1.5">
+							<div class="prose-chat text-sm text-foreground">
+								<div class="doc-section">
+									<h3>About the role</h3>
+									<p class="doc-paragraph">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+									<p class="doc-paragraph">The <a href="https://developers.cloudflare.com/queues/"><strong>Cloudflare Queues</strong></a>&nbsp;team builds a managed, global message queuing service for developers. Queues allows customers to send, buffer, and reliably deliver messages between Workers with at-least-once delivery, batching, and configurable delivery guarantees, without managing infrastructure or paying bandwidth egress fees. Deeply integrated with Cloudflare Workers, Queues supports event-driven and asynchronous applications across the Developer Platform. Generally available since September 2024, Queues runs at global scale on Cloudflare’s edge network and is a foundational building block for event-driven and asynchronous applications.</p>
+									<p class="doc-paragraph">In this role, you will help design and build <a href="https://developers.cloudflare.com/queues/"><strong>Cloudflare Queues</strong></a>, improving reliability, performance, and delivery guarantees while shipping new features at global scale. You will own your work from design through release and contribute across the software stack. This role is AI-first, and you will be expected to use AI tools thoughtfully throughout the development lifecycle without compromising security, reliability, or quality.</p>
+								</div>
+								<div class="doc-section">
+									<h3>Responsibilities</h3>
+									<ul class="doc-bullets">
+										<li>Design and build Cloudflare Queues as part of Cloudflare’s developer platform.</li>
+										<li>Maintain and improve a global-scale message queuing service.</li>
+										<li>Ship new features and product improvements.</li>
+										<li>Improve reliability, performance, and delivery guarantees.</li>
+										<li>Own code from inception through release.</li>
+										<li>Work across all layers of the software stack.</li>
+										<li>Write design documents to propose and communicate solutions.</li>
+										<li>Improve message buffering and delivery behavior.</li>
+										<li>Improve producer and consumer scalability under load.</li>
+										<li>Debug and fix user-facing bugs.</li>
+										<li>Use AI tools responsibly throughout development.</li>
+									</ul>
+								</div>
+								<div class="doc-section">
+									<h3>Desirable skills, Knowledge &amp; Experience</h3>
+									<ul class="doc-bullets">
+										<li>4+ years of experience with distributed systems and data.</li>
+										<li>Experience using AI-assisted development tools across the software development lifecycle.</li>
+										<li>Strong judgment for when to rely on AI tools and when to validate independently.</li>
+										<li>Strong ownership of correctness, security, and quality.</li>
+										<li>Willingness to share knowledge and mentor others.</li>
+										<li>Excellent oral and written communication skills.</li>
+										<li>Ability to document complex ideas clearly and concisely.</li>
+										<li>Solid understanding of TypeScript/JavaScript.</li>
+										<li>Strong systems-level programming skills.</li>
+										<li>Understanding of security issues and responsibilities.</li>
+										<li>Experience monitoring, alerting, and debugging high-volume production systems.</li>
+										<li>Experience with continuous integration workflows and git.</li>
+										<li>Ability to analyze data sets such as logs.</li>
+										<li>Experience designing and building APIs.</li>
+										<li>Commitment to continuous learning and improvement.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For San Francisco / San Jose Bay Area or NYC based hires: Estimated annual salary range of $300,000 - $375,000.</li>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - 254,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
@@ -69,14 +84,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

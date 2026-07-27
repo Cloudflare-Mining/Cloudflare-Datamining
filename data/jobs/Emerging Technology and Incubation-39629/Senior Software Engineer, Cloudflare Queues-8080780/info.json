@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8080851?gh_jid=8080851",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8080780?gh_jid=8080780",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,24 +10,26 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3500895,
+	"education": "education_optional",
+	"internal_job_id": 3500863,
 	"location": {
-		"name": "Hybrid"
+		"name": "In-Office"
 	},
 	"metadata": [
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6350 - Internal Audit",
+			"value": "4330 - Developer Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
 				"New York, US",
-				"San Francisco, US"
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -35,23 +37,24 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Accounting & Finance"
+				"Emerging Technology & Incubation",
+				"Engineering"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 8080851,
-	"updated_at": "2026-07-27T13:19:14-04:00",
-	"requisition_id": null,
-	"title": "Vice President, Internal Audit",
+	"id": 8080780,
+	"updated_at": "2026-07-27T13:32:54-04:00",
+	"requisition_id": "923",
+	"title": "Senior Software Engineer, Cloudflare Queues",
 	"company_name": "Cloudflare",
-	"first_published": "2026-07-23T19:27:53-04:00",
+	"first_published": "2026-07-27T09:16:05-04:00",
 	"language": "en",
 	"application_deadline": null,
 	"departments": [
 		{
-			"id": 29062,
-			"name": "Accounting and Finance",
+			"id": 39629,
+			"name": "Emerging Technology and Incubation",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -72,9 +75,16 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19991,
-			"name": "San Francisco, CA",
-			"location": "San Francisco, CA, United States",
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
