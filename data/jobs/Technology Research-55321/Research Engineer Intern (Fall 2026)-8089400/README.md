@@ -5,65 +5,53 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p>Available Locations- New York</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare’s Engineering Team is home to some of the industry’s top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our Detection department sits at the heart of that mission: we identify automated, fraudulent, and malicious activity across the Internet and through our gateway. We develop advanced detection systems and machine learning models that operate at scale, collaborating with Product and Engineering teams across the company to protect our customers and stay ahead of the constantly evolving threat landscape.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet more resilient, efficient, and transparent.</p>
+<p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable computing, with a focus on security and&nbsp; privacy, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
+<p>Our team includes experts in many disciplines, including applied cryptography, privacy, network architectures and protocols, measurement, distributed systems, storage optimization, machine learning for systems, and more.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
+<p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
+<p>Successful candidates will be matched to suitable projects in on-going research directions. We are particularly interested in applications in the following areas:</p>
 <ul>
-	<li>Research, design, and evaluate detection models that identify automated, fraudulent, and malicious activity across Internet-scale data.</li>
-	<li>Dig into massive datasets to uncover the patterns and behaviors that distinguish adversaries from legitimate users.</li>
-	<li>Define how detection success is measured, designing metrics and evaluation strategies for problems where ground truth is noisy, delayed, or contested.</li>
-	<li>Stay current on emerging AI/ML research and evaluate how new techniques (e.g., LLMs, generative AI) can be applied to our products.</li>
-	<li>Partner with ML Engineers, Data Engineers, and Product to take detection approaches from research to production and measure their real-world impact.</li>
+	<li>AI</li>
+	<li>Distributed Systems</li>
+	<li>Privacy</li>
+	<li>Trusted Execution Environments</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience&nbsp;</strong></p>
+<p>The Internet is evolving in ways that challenge convention, and many existing assumptions no longer hold. Interns and internship projects are designed to help maintain the integrity of the Internet, its systems, and its applications. Some of the fundamental areas we’re investigating focus on include advanced cryptography, hardware isolation, balancing user privacy against notions of identity, network and internetwork observability in a seemingly fragmented world, even applications of formal methods at scale — and this is just a small view into our <a href="https://research.cloudflare.com/outreach/updates/">work</a>! We’re also acutely aware that AI will impact all layers of a globally distributed system and the wider Internet.</p>
+<p><strong>General Research Intern Requirements</strong></p>
 <ul>
-	<li><strong>Fraud and bots at scale.</strong> You have experience across fraud, abuse, and/or bot detection on large, high-velocity traffic. You may focus on one, but you transfer instincts between them.</li>
-	<li><strong>Strong fundamentals, fluent in data.</strong> You have solid applied statistics, machine learning, and AI methodology fundamentals. You choose the right technique for the problem, and are fluent with large-scale data.</li>
-	<li>You have at least 5-7 years of experience professionally working in Data Science, ML Engineering, or Software Engineering.&nbsp;</li>
-	<li>You are very comfortable with Python &amp; SQL in production environments.</li>
+	<li>Evidence of tackling hard or open-ended problems</li>
+	<li>Proven track record of peer-reviewed research, open-source software contributions, <strong>or</strong> standards development, that is commensurate with level of training --- students at all levels are welcome to apply</li>
+	<li>Experience clearly communicating research ideas through papers, pre-prints, standards documents, blogs, or similar media</li>
+	<li>Ability to work in a systems-level programming language (e.g. Rust, C, Go)&nbsp;</li>
+	<li>Passion for debugging and ensuring system reliability</li>
+	<li>Familiarity with continuous integration workflows and source control systems (e.g., Gitlab, Github)</li>
+	<li>Willing and eager to share knowledge, with the skills to do so</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<p><strong>Additional Requirements</strong></p>
+<p>Knowledge or experience with at least one of the following:</p>
 <ul>
-	<li><strong>At home in ground truth ambiguity.</strong> Building detections when ground truth is scarce is the heart of this job. You make real progress with weak, delayed, or absent labels and you're energized by adversaries that fight back.</li>
-	<li><strong>You don't burn signals.</strong> You understand (or are curious to learn) how to act on detections without tipping your hand, knowing that how you deploy and respond can erode your future visibility.</li>
-	<li><strong>Pragmatic about complexity.</strong> You know when a simple solution beats a complex one, and you don't chase small gains at disproportionate cost.</li>
-	<li><strong>Disciplined in code.</strong> You apply strong programming and engineering best practices in both research and production code.</li>
-	<li><strong>Impact-driven and clear.</strong> You connect your work to business impact and communicate clearly across technical and non-technical stakeholders.</li>
+	<li>Computer networking protocols (TCP/IP, DNS, BGP, QUIC, etc.) and related algorithms</li>
+	<li>Machine learning analysis, ideally in systems or network optimization</li>
+	<li>Authentication protocols, applied cryptography, PKI and SSL/TLS</li>
+	<li>Operating or distributed systems analysis or development</li>
+	<li>Measurement for network and computer systems</li>
+	<li>Proficiency in a scripting language, such as Python</li>
 </ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>&nbsp;<strong>Bonus Points:</strong></p>
 <ul>
-	<li>&nbsp;For New York City based hires: Estimated annual salary of $185,000 - $231,000.</li>
+	<li>Proven track record of independently driving projects in a fast-paced environment</li>
+	<li>Experience working in groups, or with multiple stakeholders</li>
+	<li>Able to fluently work across multiple programming languages</li>
 </ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Internship Availability and Expectations:</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Ability to commit to a 12 week fall internship</li>
+	<li>In office 3-4 days a week in Lisbon, Portugal</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

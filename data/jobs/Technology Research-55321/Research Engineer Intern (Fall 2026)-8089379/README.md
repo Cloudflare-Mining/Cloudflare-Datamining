@@ -5,46 +5,52 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Location:</strong> Austin, TX&nbsp;</p>
-<h2><strong>About the Department</strong></h2>
-<p><strong>Cloudforce One</strong> is Cloudflare's threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs). Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.</p>
-<p>Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world's largest global networks can provide. The team analyzes these unique data points at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
-<h2><strong>About INTERDICT</strong></h2>
-<p><strong>I.N.T.E.R.D.I.C.T.</strong> (Identify, Neutralize, Triage, Engage, Respond, Disrupt, Integrate, Contain, Threat Hunting) is Cloudforce One's unified operational security organization responsible for identifying, analyzing, and responding to threats targeting Cloudflare and its customers. INTERDICT encompasses three main sub-functions:</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet more resilient, efficient, and transparent.</p>
+<p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable computing, with a focus on security and&nbsp; privacy, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
+<p>Our team includes experts in many disciplines, including applied cryptography, privacy, network architectures and protocols, measurement, distributed systems, storage optimization, machine learning for systems, and more.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
+<p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
+<p>Successful candidates will be matched to suitable projects in on-going research directions. We are particularly interested in applications in the following areas:</p>
 <ul>
-	<li><strong>PhishGuard:</strong> Managed email threat detection and response service</li>
-	<li><strong>Cloudflare Managed Defense (CMD):</strong> Network and application security monitoring for 'Under Attack' mitigation support.</li>
-	<li><strong>Detection Engineering:</strong> ML model development and detection optimization</li>
+	<li>AI</li>
+	<li>Distributed Systems</li>
+	<li>Privacy</li>
+	<li>Trusted Execution Environments</li>
 </ul>
-<p>Together, INTERDICT provides comprehensive <strong>24×7×365 protection</strong> across email, application, and network threat surfaces.</p>
-<h2>&nbsp;</h2>
-<h3><strong>Role Summary</strong></h3>
-<p>As a <strong>Response Engineer for PhishGuard</strong>, you will serve as the essential human intelligence layer responsible for identifying, tracking, and defeating sophisticated email-borne cyber threats like Business Email Compromise (BEC) and vendor fraud. You will operate within the <strong>INTERDICT</strong> organization, collaborating closely with internal teams like <strong>Detection Engineering</strong>, <strong>PREDICT</strong> (Threat Intelligence), and <strong>SIRT</strong> to hunt down adversaries and refine global security models. Our ideal candidate possesses deep forensic thoroughness, exceptional nuance detection, and a growth-minded curiosity to protect global organizations using one of the world's largest networks.</p>
-<h3><strong>Role Responsibilities</strong></h3>
+<p>The Internet is evolving in ways that challenge convention, and many existing assumptions no longer hold. Interns and internship projects are designed to help maintain the integrity of the Internet, its systems, and its applications. Some of the fundamental areas we’re investigating focus on include advanced cryptography, hardware isolation, balancing user privacy against notions of identity, network and internetwork observability in a seemingly fragmented world, even applications of formal methods at scale — and this is just a small view into our <a href="https://research.cloudflare.com/outreach/updates/">work</a>! We’re also acutely aware that AI will impact all layers of a globally distributed system and the wider Internet.</p>
+<p><strong>General Research Intern Requirements</strong></p>
 <ul>
-	<li>Conduct continuous, real-time monitoring of email threat queues to review and analyze sophisticated attacks flagged by Cloudflare Email Security automated systems.</li>
-	<li>Investigate customer-reported submissions, execute proactive threat hunts targeting emerging patterns, and perform manual retraction or quarantine of verified malicious emails.</li>
-	<li>Provide critical feedback to Detection Engineering to update machine learning models and contribute novel campaign data to global intelligence repositories.</li>
-	<li>Identify nuanced threat patterns by correlating technical telemetry with behavioral indicators, generating detailed threat dossiers for impending organizational risks.</li>
-	<li>Deliver direct crisis intervention and proactive phone notifications to customers regarding high-dollar BEC threats and active insider risks.</li>
-	<li>Lead technical onboarding sessions for new customers, configuring internal system instances with bespoke detection rules, thresholds, and custom allow/block lists.</li>
-	<li>Guide customers through their multi-year DMARC implementation journey toward strict "Reject" policy enforcement by conducting SPF and DKIM alignment audits.</li>
+	<li>Evidence of tackling hard or open-ended problems</li>
+	<li>Proven track record of peer-reviewed research, open-source software contributions, <strong>or</strong> standards development, that is commensurate with level of training --- students at all levels are welcome to apply</li>
+	<li>Experience clearly communicating research ideas through papers, pre-prints, standards documents, blogs, or similar media</li>
+	<li>Ability to work in a systems-level programming language (e.g. Rust, C, Go)&nbsp;</li>
+	<li>Passion for debugging and ensuring system reliability</li>
+	<li>Familiarity with continuous integration workflows and source control systems (e.g., Gitlab, Github)</li>
+	<li>Willing and eager to share knowledge, with the skills to do so</li>
 </ul>
-<h3><strong>Role Requirements (Must-Have Skills)</strong></h3>
+<p><strong>Additional Requirements</strong></p>
+<p>Knowledge or experience with at least one of the following:</p>
 <ul>
-	<li>Undergraduate degree in Computer Science, Information Security, Information Systems, or equivalent practical experience.</li>
-	<li>5+ years of experience tracking and analyzing complex cyber campaigns utilizing technical indicators such as Domains, IP Addresses, and email headers.</li>
-	<li>Proven expertise analyzing, investigating, and defending against highly targeted phishing, invoice fraud, and Business Email Compromise (BEC) attacks.</li>
-	<li>Deep working knowledge of core email authentication protocols (SPF, DKIM, DMARC) and aggregate/forensic data interpretation.</li>
-	<li>Hands-on experience utilizing AI LLM tools (such as OpenCode or Windsurf) to develop automations for daily analysis and productivity workflows.</li>
-	<li>Excellent verbal and written English communication skills, with a strong ability to translate complex technical threats into actionable business intelligence for executive stakeholders.</li>
+	<li>Computer networking protocols (TCP/IP, DNS, BGP, QUIC, etc.) and related algorithms</li>
+	<li>Machine learning analysis, ideally in systems or network optimization</li>
+	<li>Authentication protocols, applied cryptography, PKI and SSL/TLS</li>
+	<li>Operating or distributed systems analysis or development</li>
+	<li>Measurement for network and computer systems</li>
+	<li>Proficiency in a scripting language, such as Python</li>
 </ul>
-<h3><strong>Nice-to-Have Skills</strong></h3>
+<p>&nbsp;<strong>Bonus Points:</strong></p>
 <ul>
-	<li>Relevant industry certifications such as GCIH, GCIA, CEH, Security+, or equivalent.</li>
-	<li>Technical familiarity with regular expressions, YARA rules, SQL query formulation, and malicious file format analysis (e.g., Microsoft Office Documents, Adobe PDFs).</li>
-	<li>Prior experience working within managed security services (MSSP) or customer-facing security consulting environments.</li>
-	<li>Familiarity with the broader Cloudflare ecosystem, including Cloudflare Email Security, WAF, and Zero Trust architectures.</li>
+	<li>Proven track record of independently driving projects in a fast-paced environment</li>
+	<li>Experience working in groups, or with multiple stakeholders</li>
+	<li>Able to fluently work across multiple programming languages</li>
+</ul>
+<p><strong>Internship Availability and Expectations:</strong></p>
+<ul>
+	<li>Ability to commit to a 12 week fall internship</li>
+	<li>In office 3-4 days a week in Austin, TX</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
