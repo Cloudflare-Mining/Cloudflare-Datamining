@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 28, 2026[Natural disasters and government interference: examining Q2 2026's major Internet disruption events](https://blog.cloudflare.com/q2-2026-internet-disruption-summary/)
+
+Cloudflare Radar tracked Internet disruptions driven by natural disasters, government-mandated shutdowns, and DNSSEC key rollovers over the last quarter. This post analyzes traffic telemetry to explain how these events impacted global connectivity.
+
+![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYM8RW93ZNV65MYYDC60FVTW.png&w=1600&h=901&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/q2-2026-internet-disruption-summary/)
+
 July 27, 2026[We're open-sourcing our privacy proxy CLI](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
 
 pvcli is a curl-like tool designed to simplify the testing of complex privacy protocols like OHTTP.
@@ -13,8 +23,6 @@ pvcli is a curl-like tool designed to simplify the testing of complex privacy pr
 ![Hannah Wang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHF9MV2X49QE0SXTCSPH1N2.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Ben Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TVKCM4J39JXG32VTCNG.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Fisher Darling](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PVCFZWEEPCE2T84TW2R.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Hannah Wang](https://blog.cloudflare.com/author/hannah-wang/), [Ben Yang](https://blog.cloudflare.com/author/ben-yang/), and [Fisher Darling](https://blog.cloudflare.com/author/fisher/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYB3B064VA70WMZ531KHRF8Z.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
 
 July 24, 2026[BGP ORIGIN attribute manipulation and its impact on the Internet](https://blog.cloudflare.com/bgp-origin-attribute/)
 
@@ -151,14 +159,6 @@ One year after declaring Content Independence Day, a dynamic market for monetize
 ![Arielle Weiss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q27P8MJVNRWP3T72QCMX.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Zach Albertson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMPKP5X812DFFWSFK61EG.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Emily Lanfear](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF8NNKWVPXS9KJSP1PP9.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Arielle Weiss](https://blog.cloudflare.com/author/arielle-weiss/), [Zach Albertson](https://blog.cloudflare.com/author/zach-albertson/), and [Emily Lanfear](https://blog.cloudflare.com/author/emily-lanfear/)
-
-June 25, 2026[How we built saga rollbacks for Cloudflare Workflows](https://blog.cloudflare.com/rollbacks-for-workflows/)
-
-Cloudflare Workflows, our durable execution engine for multi-step applications, now supports saga-style rollbacks, allowing developers to specify a compensating action for each step.do(). 
-
-![Vaishnav Kavitha](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMMZ8JJQ1SE783SASV4PJ.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Mia Malden](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4559TC07A12MQHAEK8YM1R.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![André Venceslau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TZTSTWQ6JMKEC8GX38NE.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Vaishnav Kavitha](https://blog.cloudflare.com/author/vaishnav-kavitha/), [Mia Malden](https://blog.cloudflare.com/author/mia/), and [André Venceslau](https://blog.cloudflare.com/author/andre-venceslau/)
 
 Load more
 
