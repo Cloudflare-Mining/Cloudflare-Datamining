@@ -770,14 +770,14 @@
 	},
 	{
 		"id": "9a3a4955e550da8d002f634f4daad6b3",
-		"name": "Developer Platform Metadata Read-Only",
+		"name": "Workers Platform Metadata (Read-Only)",
 		"description": "Can view metadata, settings, and observability for all Developer Platform resources without access to secret values or stored data content.",
 		"permissions": {
-			"organization": {
+			"worker": {
 				"read": true,
 				"edit": false
 			},
-			"worker": {
+			"organization": {
 				"read": true,
 				"edit": false
 			},
@@ -1191,13 +1191,9 @@
 	},
 	{
 		"id": "e58cefd75d7adae0b761796c28815e5c",
-		"name": "Developer Platform Content Read-Only",
-		"description": "Can read all Developer Platform resources, including content.",
+		"name": "Workers Platform (Read-only)",
+		"description": "Can read all resources in the Workers Platform.",
 		"permissions": {
-			"organization": {
-				"read": true,
-				"edit": false
-			},
 			"stream": {
 				"read": true,
 				"edit": false,
@@ -1208,6 +1204,10 @@
 				"edit": false
 			},
 			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
 				"read": true,
 				"edit": false
 			},
