@@ -4267,7 +4267,11 @@
 		"fraudDetectionIdArray": "Array of fraud detection ids",
 		"fraudDetectionIdCountArray": "Count array of fraud detection ids. Elements in this array correspond to elements in fraudDetectionIdArray by index.",
 		"fraudDetectionTagArray": "Array of fraud detection tags",
-		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index."
+		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"AccountFirewallEventsAdaptiveJa4SignalsElem": {
 		"__description": "",
@@ -4739,7 +4743,8 @@
 		"__description": "BETA - Aggregate counts of Gateway L7 requests with adaptive sampling",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of Gateway L7 requests",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
 	},
 	"AccountGatewayL7RequestsAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -4788,6 +4793,11 @@
 	},
 	"AccountGatewayL7RequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountGatewayL7RequestsAdaptiveGroupsUniq": {
+		"__description": "",
+		"email": "Approximate count of unique emails",
+		"httpHost": "Approximate count of unique http hosts"
 	},
 	"AccountGatewayResolverByCategoryAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway Resolver queries by category with adaptive sampling",
@@ -5620,7 +5630,11 @@
 		"productMatchRulesetIdCountArray": "Estimated request count per ruleset ID. Elements correspond to productMatchRulesetIdArray by index.",
 		"rulesMetadataKeyArray": "Distinct rule metadata keys observed across aggregated requests",
 		"rulesMetadataKeyCountArray": "Estimated request count per metadata key. Elements correspond to rulesMetadataKeyArray by index.",
-		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
+		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"AccountHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
@@ -12324,7 +12338,11 @@
 		"fraudDetectionIdArray": "Array of fraud detection ids",
 		"fraudDetectionIdCountArray": "Count array of fraud detection ids. Elements in this array correspond to elements in fraudDetectionIdArray by index.",
 		"fraudDetectionTagArray": "Array of fraud detection tags",
-		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index."
+		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"OrganizationHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
@@ -12528,7 +12546,11 @@
 		"originResponseHeaderReceiveDurationMs": "The sum of originResponseHeaderReceiveDuration, in milliseconds",
 		"originTcpHandshakeDurationMs": "The sum of originTcpHandshakeDuration, in milliseconds",
 		"originTlsHandshakeDurationMs": "The sum of originTlsHandshakeDuration, in milliseconds",
-		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
+		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"OrganizationHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
@@ -13406,7 +13428,11 @@
 		"fraudDetectionIdArray": "Array of fraud detection ids",
 		"fraudDetectionIdCountArray": "Count array of fraud detection ids. Elements in this array correspond to elements in fraudDetectionIdArray by index.",
 		"fraudDetectionTagArray": "Array of fraud detection tags",
-		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index."
+		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"ZoneFirewallEventsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -13527,7 +13553,11 @@
 		"fraudDetectionIdArray": "Array of fraud detection ids",
 		"fraudDetectionIdCountArray": "Count array of fraud detection ids. Elements in this array correspond to elements in fraudDetectionIdArray by index.",
 		"fraudDetectionTagArray": "Array of fraud detection tags",
-		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index."
+		"fraudDetectionTagCountArray": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"ZoneFirewallEventsAdaptiveJa4SignalsElem": {
 		"__description": "",
@@ -14333,7 +14363,11 @@
 		"productMatchRulesetIdCountArray": "Estimated request count per ruleset ID. Elements correspond to productMatchRulesetIdArray by index.",
 		"rulesMetadataKeyArray": "Distinct rule metadata keys observed across aggregated requests",
 		"rulesMetadataKeyCountArray": "Estimated request count per metadata key. Elements correspond to rulesMetadataKeyArray by index.",
-		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
+		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)",
+		"wafRequestSignatureCategoriesArray": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+		"wafRequestSignatureCategoriesCountArray": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+		"wafRequestSignatureRefsArray": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+		"wafRequestSignatureRefsCountArray": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index."
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",

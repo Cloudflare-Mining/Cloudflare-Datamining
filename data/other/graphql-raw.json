@@ -233808,6 +233808,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "userAgent ascending",
 							"isDeprecated": false,
 							"name": "userAgent_ASC"
@@ -234184,6 +234232,102 @@
 							"description": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
 							"isDeprecated": false,
 							"name": "fraudDetectionTagCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -262732,6 +262876,18 @@
 								"name": "AccountGatewayL7RequestsAdaptiveGroupsDimensions",
 								"ofType": null
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "uniq",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountGatewayL7RequestsAdaptiveGroupsUniq",
+								"ofType": null
+							}
 						}
 					],
 					"inputFields": [],
@@ -267330,6 +267486,30 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "uniq(email) ascending",
+							"isDeprecated": false,
+							"name": "uniq_email_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(email) descending",
+							"isDeprecated": false,
+							"name": "uniq_email_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(httpHost) ascending",
+							"isDeprecated": false,
+							"name": "uniq_httpHost_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "uniq(httpHost) descending",
+							"isDeprecated": false,
+							"name": "uniq_httpHost_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "untrustedCertificateAction ascending",
 							"isDeprecated": false,
 							"name": "untrustedCertificateAction_ASC"
@@ -267394,6 +267574,49 @@
 					"interfaces": [],
 					"kind": "ENUM",
 					"name": "AccountGatewayL7RequestsAdaptiveGroupsOrderBy",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate count of unique emails",
+							"isDeprecated": false,
+							"name": "email",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Approximate count of unique http hosts",
+							"isDeprecated": false,
+							"name": "httpHost",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountGatewayL7RequestsAdaptiveGroupsUniq",
 					"possibleTypes": []
 				},
 				{
@@ -311922,6 +312145,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "threatIntelIpDatasets ascending",
 							"isDeprecated": false,
 							"name": "threatIntelIpDatasets_ASC"
@@ -313567,6 +313838,102 @@
 									"kind": "SCALAR",
 									"name": "uint64",
 									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
 								}
 							}
 						}
@@ -628495,6 +628862,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "userAgent ascending",
 							"isDeprecated": false,
 							"name": "userAgent_ASC"
@@ -628859,6 +629274,102 @@
 							"description": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
 							"isDeprecated": false,
 							"name": "fraudDetectionTagCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -642421,6 +642932,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "threatIntelIpDatasets ascending",
 							"isDeprecated": false,
 							"name": "threatIntelIpDatasets_ASC"
@@ -643670,6 +644229,102 @@
 									"kind": "SCALAR",
 									"name": "uint64",
 									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
 								}
 							}
 						}
@@ -694082,6 +694737,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "verifiedBotCategory ascending",
 							"isDeprecated": false,
 							"name": "verifiedBotCategory_ASC"
@@ -694434,6 +695137,102 @@
 							"description": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
 							"isDeprecated": false,
 							"name": "fraudDetectionTagCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -712096,6 +712895,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "userAgent ascending",
 							"isDeprecated": false,
 							"name": "userAgent_ASC"
@@ -712460,6 +713307,102 @@
 							"description": "Count array of fraud detection tags. Elements in this array correspond to elements in fraudDetectionTagArray by index.",
 							"isDeprecated": false,
 							"name": "fraudDetectionTagCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -751561,6 +752504,54 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureCategoriesCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureCategoriesCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsArray_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) ascending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(wafRequestSignatureRefsCountArray) descending",
+							"isDeprecated": false,
+							"name": "sum_wafRequestSignatureRefsCountArray_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "threatIntelIpDatasets ascending",
 							"isDeprecated": false,
 							"name": "threatIntelIpDatasets_ASC"
@@ -753194,6 +754185,102 @@
 									"kind": "SCALAR",
 									"name": "uint64",
 									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature categories associated with the rule refs in wafRequestSignatureRefsArray",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature categories. Elements in this array correspond to elements in wafRequestSignatureCategoriesArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureCategoriesCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Array of WAF request signature refs (Ruleset field cf.waf.signature.request.refs)",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "string",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Count array of WAF request signature refs. Elements in this array correspond to elements in wafRequestSignatureRefsArray by index.",
+							"isDeprecated": false,
+							"name": "wafRequestSignatureRefsCountArray",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint32",
+											"ofType": null
+										}
+									}
 								}
 							}
 						}
