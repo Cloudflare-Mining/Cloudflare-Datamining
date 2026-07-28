@@ -23,51 +23,22 @@ yarn add @cloudflare/realtimekit-recording-sdk
 ## Usage
 
 ```typescript
-import { RecordingSDK } from '@cloudflare/realtimekit-recording-sdk';
+import { RealtimeKitRecording } from '@cloudflare/realtimekit-recording-sdk';
+import RealtimeKitClient from '@cloudflare/realtimekit';
 
-// Initialize the recording SDK
-const recording = new RecordingSDK({
-  // Your configuration here
+// Create the recording SDK instance
+const recordingSDK = new RealtimeKitRecording({
+  autoStart: true,   // start recording as soon as init is called (default: true)
+  autoStop: true,    // automatically stop when all peers leave (default: true)
+  waitTimeMs: 60000, // wait 1 min after last peer leaves before stopping (default)
 });
 
-// Start recording
-await recording.start();
-
-// Stop recording
-await recording.stop();
+// Initialize with a RealtimeKitClient instance
+const meeting = await RealtimeKitClient.init({ authToken: '...' });
+await recordingSDK.init(meeting);
 ```
 
-For detailed usage instructions and API documentation, visit the [official documentation](https://developers.cloudflare.com/realtime/realtimekit/).
-
-## Development
-
-### Prerequisites
-
-- Node.js (>= 16)
-- npm or yarn
-
-### Setup
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build the project
-npm run build
-
-# Run tests
-npm run test
-
-# Run linting
-npm run lint
-```
-
-### Contributing
-
-Contributions are welcome! Please read our [DEVELOPMENT.md](./DEVELOPMENT.md) guide for details on our development workflow and how to submit changes.
+For detailed usage instructions and API documentation, visit the [official documentation](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/).
 
 ## License
 

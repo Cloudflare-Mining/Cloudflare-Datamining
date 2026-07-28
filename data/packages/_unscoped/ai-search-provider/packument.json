@@ -1,0 +1,72 @@
+{
+	"name": "ai-search-provider",
+	"dist-tags": {
+		"latest": "0.1.1"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "ai-search-provider",
+			"version": "0.1.0",
+			"devDependencies": {
+				"ai": "^6.0.204",
+				"tsdown": "^0.22.3",
+				"vitest": "~4.1.9",
+				"typescript": "6.0.3",
+				"@ai-sdk/provider": "^3.0.10",
+				"@cloudflare/workers-types": "^4.20260628.1"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0",
+				"@ai-sdk/provider": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "d78b8af4fcef6cf39704bd03c9614f26090dccc5",
+				"tarball": "https://registry.npmjs.org/ai-search-provider/-/ai-search-provider-0.1.0.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-yqnlc3XvtEcLvwybBnxNwwYxxqrmxKHCsJ/uiB3bMKa3JqLWIJNCap84d6hXNPAOVrwYqe0vAAaWW41GiEsAIg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDKCdY2BtvjqSiXSbMXrk6zslsuyCHN1rdPKpyLA/1hJgIhAKRDddwTjNxm0QB0/hZMK8soPiOSH/n/J4zLBTnNKRBl",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 88741
+			}
+		},
+		"0.1.1": {
+			"name": "ai-search-provider",
+			"version": "0.1.1",
+			"devDependencies": {
+				"ai": "^6.0.204",
+				"tsdown": "^0.22.3",
+				"vitest": "~4.1.9",
+				"typescript": "6.0.3",
+				"@ai-sdk/provider": "^3.0.10",
+				"@cloudflare/workers-types": "^4.20260628.1"
+			},
+			"peerDependencies": {
+				"ai": "^6.0.0",
+				"@ai-sdk/provider": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "74f63acd55498a58c936118b2aa77d7712bc1460",
+				"tarball": "https://registry.npmjs.org/ai-search-provider/-/ai-search-provider-0.1.1.tgz",
+				"fileCount": 14,
+				"integrity": "sha512-iLfbWQlMnEcsMtAhDk2N8X6gv11jsiJTcJ7ioBxyV7biKXGuylIkFjMkmPYYzdg+/EAWjp2u/Ayx+BZQWA4cNw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCINIbttneRs/0j40uwYxQdzwcFjp23fscif1RndTfZIAIhAK/UDq2sOJqKHdi7vBNUDfmJ6WB8rTmOSIXz1TuC+CU0",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/ai-search-provider@0.1.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 88741
+			}
+		}
+	}
+}
