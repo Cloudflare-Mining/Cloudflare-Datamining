@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>Available Locations: </strong>Austin, TX | Seattle, WA | Denver, CO</p>
 <h4><strong>About the Department</strong></h4>
 <p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Sales organization. We are responsible for partnering with sales to structure, negotiate, and close complex deals. We ensure that deals meet the requirements of "good business" while also keeping our customers' best interest in mind. We are committed to building a data-centric and AI-augmented Deal Desk that leverages predictive analytics and automated workflows to optimize pricing in real-time and automate routine approvals, allowing for deeper strategic focus.</p>
 <h4><strong>About the Role</strong></h4>
@@ -37,6 +37,10 @@
 <p>If you're excited by fast-paced innovation, dedicated to driving global growth, and want to help build a better internet, we'd love to hear from you.</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Seattle based hires: Estimated annual salary of $147,000 - $202,000</span></li>
+	<li><span data-sheets-root="1">For Denver based hires: Estimated annual salary of $134,000 - $184,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
