@@ -5,32 +5,30 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: London, UK</strong></p>
-<p><strong>About the Department<br></strong>The Global Customer Services (GCS) team is the heartbeat of Cloudflare’s post-sales ecosystem. While our Customer Support engineers handle the "break-fix," GCE (Customer Engineering and Professional Services) owns the customer journey. Our mission is to empower customers globally through proactive guidance and expert services to accelerate their time to value and business outcomes. We are responsible for driving product adoption, architecting complex deployments, and ensuring our customers obtain maximum value from the Cloudflare platform.&nbsp;</p>
-<p><strong>About the Role<br></strong>The AI Builder Intern will support the Global Customer Services team by assisting with foundational developer platform tasks and contributing to projects that enable customers to successfully build and deploy on Cloudflare. This role provides hands-on exposure to Cloudflare’s developer ecosystem while working alongside consultants and engineers who deliver technical solutions to customers. Through this role, you will gain hands-on experience working with Cloudflare’s developer platform and edge services, exposure to how Professional Services and Customer Success teams deliver technical solutions for global customers, mentorship from experienced consultants and engineers, and real-world experience contributing to projects that support customer adoption of Cloudflare technologies.</p>
-<p><strong>Responsibilities</strong></p>
+<h3><strong>Available Locations: Austin, TX (Hybrid)&nbsp;</strong></h3>
+<h3 data-path-to-node="2">About the role</h3>
+<p data-path-to-node="3">You'll design and build the core infrastructure that powers AI inference across Cloudflare's global network — real-time voice, frontier open LLMs, and customer-deployed models running on a heterogeneous fleet of GPUs and next-generation accelerators in hundreds of cities worldwide. Working alongside AI/ML engineers, hardware partners, and Cloudflare product teams, you'll solve hard problems in distributed systems and high-performance computing: sub-second model cold starts, multi-accelerator workload scheduling, efficient KV cache management, and a model deployment platform serving both Cloudflare and customers bringing their own models.</p>
+<p data-path-to-node="4">We're building an AI inference platform embedded in the fabric of the internet — something that doesn't exist yet — and this role puts you at the center of it. We're looking for high-agency systems engineers who are energized by foundational infrastructure problems and want to define how AI runs at the edge of the network.</p>
+<h3 data-path-to-node="6">Responsibilities</h3>
 <ul>
-	<li>Design, develop, and deploy AI-driven prototypes (using LLMs, RAG architectures, or predictive modeling) to automate manual workflows within the GCS ecosystem. Build out models to help automate future forecasting and resource planning.</li>
-	<li>Work with APIs to integrate AI capabilities into our existing tech stack to provide real-time solutions.</li>
-	<li>Partner with our engineering to identify, clean, and structure high-volume post-sales data for model training and fine-tuning.</li>
-	<li>Refine and optimize system prompts and model parameters to ensure high-quality, hallucination-free outputs for internal advisory tools.</li>
-	<li>Act as the technical translator, taking high-level optimization ideas from GCS leadership and turning them into technical requirements and minimum viable products (MVPs).</li>
-	<li>Contribute to internal knowledge bases and documentation to improve team efficiency and consistency. Create collateral to enable the team.</li>
-	<li>Partner with GCS to join select customer-facing sessions, capturing "voice of the customer" insights to ensure our AI roadmap directly addresses the challenges our customers face.</li>
+	<li data-path-to-node="7,0,0"><strong data-path-to-node="7,0,0" data-index-in-node="0">Platform Architecture:</strong> Develop and maintain core components of the serverless inference platform to ensure high availability and scalability for Cloudflare users.</li>
+	<li data-path-to-node="7,1,0"><strong data-path-to-node="7,1,0" data-index-in-node="0">Optimization &amp; Performance:</strong> Optimize the model scheduling system to significantly increase efficiency and resource utilization across our inference infrastructure, and implement improvements to request routing logic to reduce latency for end-users.</li>
+	<li data-path-to-node="7,2,0"><strong data-path-to-node="7,2,0" data-index-in-node="0">System Reliability:</strong> Drive significant, measurable improvements in the platform's reliability and resilience by identifying and mitigating systemic risks.</li>
+	<li data-path-to-node="7,3,0"><strong data-path-to-node="7,3,0" data-index-in-node="0">Observability:</strong> Expand and refine the observability stack (metrics, logging, tracing) and fine-tune alerts to proactively identify and resolve production issues.</li>
+	<li data-path-to-node="7,4,0"><strong data-path-to-node="7,4,0" data-index-in-node="0">Technical Leadership:</strong> Lead complex, cross-functional technical projects from initial concept and design through final deployment and operationalization.</li>
+	<li data-path-to-node="7,5,0"><strong data-path-to-node="7,5,0" data-index-in-node="0">Mentorship:</strong> Act as a mentor to junior engineers and actively contribute to cultivating a strong, collaborative engineering culture within the team.</li>
 </ul>
-<p><strong>Skills &amp; Qualifications</strong></p>
+<h3 data-path-to-node="9">Desirable skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li>Available for a full-time, 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Currently pursuing a Bachelor’s or Master’s degree in Computer Science, Software Engineering, Business or a related technical field.</li>
-	<li>Basic experience with programming or scripting (e.g., JavaScript, Python, or similar).</li>
-	<li>Experience building AI Agents and / or other applications leveraging AI.</li>
-	<li>Experience connecting disparate systems via REST APIs.</li>
-	<li>Familiarity with web development concepts, APIs, RAG, Git or developer platforms.</li>
-	<li>Strong problem-solving and analytical skills.</li>
-	<li>Ability to learn quickly in a fast-paced technical environment.</li>
-	<li>Strong communication and collaboration skills to explain complex technical AI concepts to non-technical stakeholders.</li>
-	<li><strong>Bonus points:</strong> Experience in a customer facing role.</li>
-	<li><strong>Bonus points:</strong> Experience deploying applications leveraging Cloudflare Workers AI.</li>
+	<li data-path-to-node="10,0,0">Proven experience in systems engineering, with a primary focus on distributed, high-performance systems.</li>
+	<li data-path-to-node="10,1,0">Expert proficiency in <strong data-path-to-node="10,1,0" data-index-in-node="22">Rust</strong> programming, particularly in an asynchronous environment.</li>
+	<li data-path-to-node="10,2,0">Deep understanding and hands-on experience with relevant networking and application protocols (e.g., TCP, HTTP, WebSocket).</li>
+	<li data-path-to-node="10,3,0">Solid experience with scaling and performance optimization techniques, including load balancing and caching in a distributed environment.</li>
+</ul>
+<h3 data-path-to-node="12">Bonus Points</h3>
+<ul>
+	<li data-path-to-node="13,0,0">Demonstrable experience with container orchestration platforms, specifically <strong data-path-to-node="13,0,0" data-index-in-node="77">Kubernetes</strong> and/or <strong data-path-to-node="13,0,0" data-index-in-node="95">Nomad</strong>.</li>
+	<li data-path-to-node="13,1,0">Familiarity with the unique architectural challenges involved in large-scale inference serving (e.g., LLMs and diffusion models).</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
