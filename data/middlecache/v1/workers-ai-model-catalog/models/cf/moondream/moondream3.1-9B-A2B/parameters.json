@@ -172,7 +172,7 @@
 				"description": "Max tokens to generate for `query` and `caption`.",
 				"metadata": {
 					"minimum": 1,
-					"maximum": 28672
+					"maximum": 8192
 				},
 				"depth": 0,
 				"isLast": false,
@@ -210,7 +210,7 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"defaultValue": "true",
+				"defaultValue": "false",
 				"description": "Return incremental tokens for `query` and `caption`. `point` and `detect` do not support streaming.",
 				"depth": 0,
 				"isLast": true,
