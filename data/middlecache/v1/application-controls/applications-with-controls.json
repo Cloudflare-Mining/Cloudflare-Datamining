@@ -3128,6 +3128,24 @@
 								"operation_group_id": 132
 							},
 							{
+								"operation_name": "AuthorizeUser",
+								"operation_id": 701,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Authorization",
+								"operation_group_id": 176
+							},
+							{
+								"operation_name": "AuthorizeUser",
+								"operation_id": 701,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Authorization",
+								"operation_group_id": 176
+							},
+							{
 								"operation_name": "DownloadZipArchive",
 								"operation_id": 710,
 								"application_control": "Download",
@@ -3135,24 +3153,6 @@
 								"contains_payload": true,
 								"operation_group": "Zip Downloads",
 								"operation_group_id": 140
-							},
-							{
-								"operation_name": "AuthorizeUser",
-								"operation_id": 701,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Authorization",
-								"operation_group_id": 176
-							},
-							{
-								"operation_name": "AuthorizeUser",
-								"operation_id": 701,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Authorization",
-								"operation_group_id": 176
 							}
 						]
 					},
