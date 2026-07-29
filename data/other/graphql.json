@@ -407,6 +407,51 @@
 	"AccountAgentMemoryOperationsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountAgentModelInvocationsAdaptiveGroups": {
+		"__description": "Agent model invocation usage with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"agentName": "Durable Object agent class or entrypoint",
+		"date": "Model invocation date",
+		"datetime": "Model invocation timestamp",
+		"datetimeFifteenMinutes": "Model invocation timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Model invocation timestamp truncated to five minutes",
+		"datetimeHour": "Model invocation timestamp truncated to the hour",
+		"datetimeMinute": "Model invocation timestamp truncated to the minute",
+		"model": "Model used by the agent",
+		"scriptName": "Worker script name"
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsSum": {
+		"__description": "",
+		"inputTokens": "Total model input tokens",
+		"outputTokens": "Total model output tokens"
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"inputTokens": "Confidence interval for the corresponding point estimate",
+		"outputTokens": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAgentModelInvocationsAdaptiveGroupsUniq": {
+		"__description": "",
+		"runs": "Unique agent runs, identified by trace ID",
+		"sessions": "Unique agent sessions"
+	},
 	"AccountAiGatewayCacheAdaptiveGroups": {
 		"__description": "AI Gateway Cache",
 		"confidence": "ALPHA - DO NOT USE",
@@ -10209,6 +10254,7 @@
 		"advancedTcpProtectionNetworkAnalyticsAdaptiveGroups": "",
 		"aegisIpUtilizationAdaptiveGroups": "",
 		"agentMemoryOperationsAdaptiveGroups": "",
+		"agentModelInvocationsAdaptiveGroups": "",
 		"aiGatewayCacheAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
@@ -15687,6 +15733,7 @@
 		"advancedTcpProtectionNetworkAnalyticsAdaptiveGroups": "<small>DEPRECATED (This node is an alias for <code>advancedTcpProtectionNetworkAnalyticsAdaptiveGroups</code>; prefer using the new name instead):</small> Network analytics data for Advanced TCP Protection",
 		"aegisIpUtilizationAdaptiveGroups": "Beta. Aegis IP utilization metrics",
 		"agentMemoryOperationsAdaptiveGroups": "Agent Memory operations with adaptive sampling",
+		"agentModelInvocationsAdaptiveGroups": "Agent model invocation usage with adaptive sampling",
 		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
@@ -15906,7 +15953,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
