@@ -5,46 +5,53 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations: London, UK</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet more resilient, efficient, and transparent.</p>
+<p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable computing, with a focus on security and&nbsp; privacy, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
+<p>Our team includes experts in many disciplines, including applied cryptography, privacy, network architectures and protocols, measurement, distributed systems, storage optimization, machine learning for systems, and more.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
+<p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
+<p>Successful candidates will be matched to suitable projects in on-going research directions. We are particularly interested in applications in the following areas:</p>
 <ul>
-	<li>Austin, US</li>
+	<li>AI</li>
+	<li>Distributed Systems</li>
+	<li>Privacy</li>
+	<li>Trusted Execution Environments</li>
 </ul>
-<h2>About the Role</h2>
-<p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers. The Security Technical Program Management team sits at the cross-section of engineering, security, and business. We define, align, and drive the strategic security programs that reduce risk and advance innovation across Cloudflare, while partnering to build the best solutions for our customers.</p>
-<h2>Responsibilities</h2>
-<p>We need to solve big security challenges at scale. As a Technical Program Manager focused on Threat Detection, Response, and Emulation, you will help discover, define, and drive the execution of security projects to reduce risk at Cloudflare. You will work with the Security team and all of our stakeholders to:</p>
+<p>The Internet is evolving in ways that challenge convention, and many existing assumptions no longer hold. Interns and internship projects are designed to help maintain the integrity of the Internet, its systems, and its applications. Some of the fundamental areas we’re investigating focus on include advanced cryptography, hardware isolation, balancing user privacy against notions of identity, network and internetwork observability in a seemingly fragmented world, even applications of formal methods at scale — and this is just a small view into our <a href="https://research.cloudflare.com/outreach/updates/">work</a>! We’re also acutely aware that AI will impact all layers of a globally distributed system and the wider Internet.</p>
+<p><strong>General Research Intern Requirements</strong></p>
 <ul>
-	<li>Partner with the Threat Detection, Response, and Emulation team as their dedicated Technical Program Manager</li>
-	<li>Connect with Cloudflare's many teams through expert communication and diplomacy to maintain alignment and encourage collaboration</li>
-	<li>Build automations and AI agents to handle routine program administration at scale</li>
-	<li>Utilize AI platforms to consolidate diverse project streams into unified roadmaps, generating initial metrics, status updates, and executive reporting dashboards</li>
-	<li>Support the long term program roadmap planning, manage project updates aligned with the roadmap and report on project level OKRs</li>
-	<li>Navigate high-ambiguity environments and shifting priorities by pairing sound judgment with AI insights to implement proactive risk-mitigation frameworks</li>
-	<li>Identify stakeholders and drive alignment, including dependency identification and tracking</li>
-	<li>Partner with SIRT during active P0 incidents to coordinate communications and stakeholders, then drive postmortem action items and resulting risk-mitigation work to completion</li>
-	<li>Manage change to scope, timeline, key results/outcomes and budget</li>
-	<li>Maintain a project management framework using milestones, communication plans, decision logs, issues, risks, etc.</li>
-	<li>Balance the focus on long term vision and roadmap versus addressing high risk tactical security issues</li>
+	<li>Evidence of tackling hard or open-ended problems</li>
+	<li>Proven track record of peer-reviewed research, open-source software contributions, <strong>or</strong> standards development, that is commensurate with level of training --- students at all levels are welcome to apply</li>
+	<li>Experience clearly communicating research ideas through papers, pre-prints, standards documents, blogs, or similar media</li>
+	<li>Ability to work in a systems-level programming language (e.g. Rust, C, Go)&nbsp;</li>
+	<li>Passion for debugging and ensuring system reliability</li>
+	<li>Familiarity with continuous integration workflows and source control systems (e.g., Gitlab, Github)</li>
+	<li>Willing and eager to share knowledge, with the skills to do so</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Additional Requirements</strong></p>
+<p>Knowledge or experience with at least one of the following:</p>
 <ul>
-	<li>8+ years of experience in technical program management and a desire for continuous improvement</li>
-	<li>Experience in cybersecurity or security program management in a technical, fast-moving environment</li>
-	<li>BS in Computer Science, Information Technology, Information Security or related field or equivalent experience</li>
-	<li>Proven track record of creating realistic project plans, managing dependencies, and overseeing execution to meet commitments with predictability</li>
-	<li>Proven track record of effective communication at various levels including executive level</li>
-	<li>Hands-on experience or a strong competency in leveraging AI productivity tools and development platforms (e.g., Gemini Gems, OpenCode, etc) to automate routine program administration, with rigorous human-in-the-loop review of AI output</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
-	<li>Proven ability to forge and sustain effective partnerships internally and externally</li>
-	<li>Strong competency with Confluence and Jira and various development methodologies</li>
-	<li>Embraces technology including automation and AI augmentation</li>
-	<li>Experience working with multiple time zones and cross-functional teams</li>
+	<li>Computer networking protocols (TCP/IP, DNS, BGP, QUIC, etc.) and related algorithms</li>
+	<li>Machine learning analysis, ideally in systems or network optimization</li>
+	<li>Authentication protocols, applied cryptography, PKI and SSL/TLS</li>
+	<li>Operating or distributed systems analysis or development</li>
+	<li>Measurement for network and computer systems</li>
+	<li>Proficiency in a scripting language, such as Python</li>
 </ul>
-<h2>Compensation</h2>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family, including medical, dental, and vision insurance, a 401(k) plan with company match, flexible paid time off, and fertility &amp; family-forming benefits.</p>
+<p>&nbsp;<strong>Bonus Points:</strong></p>
+<ul>
+	<li>Proven track record of independently driving projects in a fast-paced environment</li>
+	<li>Experience working in groups, or with multiple stakeholders</li>
+	<li>Able to fluently work across multiple programming languages</li>
+</ul>
+<p><strong>Internship Availability and Expectations:</strong></p>
+<ul>
+	<li>Ability to commit to a 12 week fall internship</li>
+	<li>In office 3-4 days a week in London, UK</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
