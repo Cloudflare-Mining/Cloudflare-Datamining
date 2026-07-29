@@ -440,6 +440,16 @@
 		"id": "zone-settings-change-pseudo-i-pv4-setting"
 	},
 	{
+		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
+		"method": "GET",
+		"id": "zone-settings-get-pseudo-i-pv4-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
+		"method": "PATCH",
+		"id": "zone-settings-change-pseudo-i-pv4-setting"
+	},
+	{
 		"uri": "/zones/:zone_identifier/settings/rocket_loader",
 		"method": "GET",
 		"id": "rocket_loader.api.title.get"
