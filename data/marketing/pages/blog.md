@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 29, 2026[Post-quantum authentication to origins is now supported](https://blog.cloudflare.com/post-quantum-authentication-to-origins/)
+
+Cloudflare now supports post-quantum (PQ) authentication when connecting to customer origin servers via Authenticated Origin Pulls and Custom Origin Trust Store. This is the first step towards providing PQ authentication for all Cloudflare products.
+
+![Luke Valenta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455BBR3DXDBC0E9512XF44.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Kevin Guthrie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VQ8K1T55ANDEX70V1EEQ.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Luke Valenta](https://blog.cloudflare.com/author/luke/) and [Kevin Guthrie](https://blog.cloudflare.com/author/kevin-guthrie/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYMHM4H5CM9Y90DXVC3WJ164.jpg&w=1280&h=720&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/post-quantum-authentication-to-origins/)
+
 July 28, 2026[Natural disasters and government interference: examining Q2 2026's major Internet disruption events](https://blog.cloudflare.com/q2-2026-internet-disruption-summary/)
 
 Cloudflare Radar tracked Internet disruptions driven by natural disasters, government-mandated shutdowns, and DNSSEC key rollovers over the last quarter. This post analyzes traffic telemetry to explain how these events impacted global connectivity.
@@ -13,8 +23,6 @@ Cloudflare Radar tracked Internet disruptions driven by natural disasters, gover
 ![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYM8RW93ZNV65MYYDC60FVTW.png&w=1600&h=901&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/q2-2026-internet-disruption-summary/)
 
 July 27, 2026[We're open-sourcing our privacy proxy CLI](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
 
@@ -151,14 +159,6 @@ We're opening the waitlist for our Monetization Gateway, which will allow you to
 ![Rohin Lohe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4732TDPVKGF30GJC5C5KJV.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Justin Ridgely](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PGKA3M43DHXBD4JK7ZH5.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Rohin Lohe](https://blog.cloudflare.com/author/rohin/), [Justin Ridgely](https://blog.cloudflare.com/author/justin-ridgely/), and [Will Papper](https://blog.cloudflare.com/author/will-papper/)
-
-July 1, 2026[Content Independence Day, one year on: building the business model for the agentic Internet](https://blog.cloudflare.com/agentic-internet-bot-report/)
-
-One year after declaring Content Independence Day, a dynamic market for monetized content has officially emerged. In this report, we examine how the rise of autonomous AI agents is upending traditional search referrals and detail the new infrastructure required to support a sustainable web economy. 
-
-![Arielle Weiss](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q27P8MJVNRWP3T72QCMX.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Zach Albertson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMPKP5X812DFFWSFK61EG.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Emily Lanfear](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF8NNKWVPXS9KJSP1PP9.png&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Arielle Weiss](https://blog.cloudflare.com/author/arielle-weiss/), [Zach Albertson](https://blog.cloudflare.com/author/zach-albertson/), and [Emily Lanfear](https://blog.cloudflare.com/author/emily-lanfear/)
 
 Load more
 

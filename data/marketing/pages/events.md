@@ -34,13 +34,7 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
-Las Vegas, NV
-
-Black Hat USA
-
-Aug 3–6
-
-Coming soon
+[Las Vegas, NVBlack Hat USAAug 3–6Learn more](https://fieldmarketing.www.cloudflare.com/CAD-black-hat-2026)
 
 Orlando, FL
 
