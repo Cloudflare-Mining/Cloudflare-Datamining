@@ -5,28 +5,70 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Location</h2>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>About the Role</strong></p>
+<p>The CNI team builds and operates the systems that let Cloudflare's enterprise customers connect their networks directly to Cloudflare through private, dedicated interconnects — rather than traversing the public Internet. The product, Cloudflare Network Interconnect (CNI), supports various interconnect types across hundreds of locations worldwide.These systems underpin Magic Transit, Cloudflare WAN, Zero Trust, and application security for some of Cloudflare's largest customers.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>As an Engineering Manager on the CNI team you will hire, mentor, and coach a distributed team of Software Engineers. You will play a key role in developing the team and shaping its culture and technical vision.&nbsp;You will work closely with Product Managers and other Engineering leaders to communicate the vision, prioritize the team's roadmap, and achieve cross-functional objectives.&nbsp;You are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Austin, Texas</li>
+	<li>Using tools and processes to convey project status and resolve blockages.</li>
+	<li>Understanding the technical implications of work across BGP, physical and virtual interconnect provisioning, and distributed control-plane services in order to influence scope, work across teams, and help unblock projects.</li>
+	<li>Taking responsibility for the team's production services by organizing on-call rotations, handling customer escalations, and overseeing incident response and follow-up.</li>
+	<li>Driving reliability and automation improvements for the provisioning pipeline that turns a customer order into a live, monitored BGP session.</li>
+	<li>Coordinating with Network Operations, Sales Engineering, and Partner teams on interconnect capacity planning, partner onboarding, and cloud provider integrations.</li>
 </ul>
-<h2>About the Role</h2>
-<p>As a Project Manager Intern specializing in Process &amp; AI Innovation within the Professional Services team, you will be pivotal in boosting our operational efficiency. This is a dynamic opportunity to apply project management principles and emerging AI technologies to streamline internal processes across the Revenue organization. You will gain practical experience supporting key initiatives and enhancing team operations through process optimization. A major goal will be leveraging AI tools and 'No-Code' platforms to identify, automate, and accelerate manual, repetitive tasks, enabling teams to discover and implement more efficient ways of working.</p>
-<h2>Responsibilities</h2>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li><strong>Project and Administrative Support:</strong> Provide administrative and project management support, including coordinating activities, tracking milestones, and assisting with team deliverables, documentation, and reporting (meeting notes, project reports, etc.).</li>
-	<li><strong>Operational Playbook and Wiki:</strong> Assist in mapping, analyzing, and documenting existing partner processes (AE, PAM, etc.) to create clear visual playbooks and internal wikis.</li>
-	<li><strong>AI Strategy and Automation: </strong>Support the research, classification, and prioritization of AI use cases for RevOps/Sales, including defining the AI operating model and helping to automate manual, repetitive tasks using 'No-Code' platforms and AI tools.</li>
-	<li><strong>Tech Stack Analysis &amp; Collaboration:</strong> Contribute to efforts to build a unified tech stack, assisting with 'build vs. buy' evaluations for new tools. You will also collaborate with IT and engineering to prototype and validate AI solutions.</li>
-	<li><strong>Recommendations:</strong> Help synthesize findings and data into clear, measurable recommendations that align with sales motions and business outcomes.</li>
+	<li>3+ years experience as an Engineering Manager for a team of Software and Systems Engineers.</li>
+	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You're as good at explaining "why" as you are "how".</li>
+	<li>Excel at planning and overseeing execution to meet commitments and deliver with predictability.</li>
+	<li>Technical background in IP networking: BGP, Layer 3 routing, physical and virtual interconnect technologies (cross-connects, VLANs, partner fabric integrations).</li>
+	<li>Experience building or operating provisioning/automation systems for network infrastructure.</li>
+	<li>Experience with monitoring, alerting, and debugging distributed systems — ideally services that bridge software and physical network operations.</li>
+	<li>Experience participating in and/or managing an on-call rotation for production services with direct customer impact.</li>
+	<li>Willingness to adopt and integrate AI tools and systems into your workflow.</li>
+	<li>Clarity in written and verbal communication.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Currently pursuing a degree in Business, Project Management, Operations, Data Science, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
-	<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
-	<li>A natural problem-solver who enjoys mapping out a process (using tools like Lucidchart or Miro) and thinking about how to make it simpler and faster.</li>
-	<li>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</li>
+	<li>Hands-on experience with BGP configuration, route policy, and peering operations.</li>
+	<li>Familiarity with network inventory and IPAM systems (e.g., NetBox).</li>
+	<li>Experience with cloud provider networking (AWS Direct Connect, GCP Partner Interconnect, Azure ExpressRoute).</li>
+	<li>Knowledge of GRE, VXLAN, or other overlay/tunnel technologies.</li>
+	<li>Systems-level programming experience in Go, Python, Rust, C, or C++.</li>
+	<li>Experience with Kubernetes-based service deployments and CI/CD pipelines.</li>
+	<li>Comfort with customer-facing technical communication (escalation handling, partner engagements).</li>
+	<li>Experience using AI-assisted engineering tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
