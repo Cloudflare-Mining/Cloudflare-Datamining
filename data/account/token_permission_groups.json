@@ -2360,7 +2360,7 @@
 	{
 		"id": "2f912625599b434a8df3e4e02d64c7b4",
 		"name": "MoQ Write",
-		"description": "Grants read/write access to MoQ relay configuration",
+		"description": "Grants read/write access to MoQ relay configuration and access to MoQ Bench",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -2601,9 +2601,18 @@
 		"category": "developer_platform"
 	},
 	{
+		"id": "b0568182c2d546f998c2ea17999e3334",
+		"name": "Realtime Read",
+		"description": "Grants read access to Realtime SFU, TURN, and RealtimeKit configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "de62b15d79cc4d8d9c7b443c656eadbd",
 		"name": "Realtime",
-		"description": "Grants access to Realtime configuration excluding sensitive data",
+		"description": "Grants read and write access to Realtime SFU, TURN, and RealtimeKit configuration",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
