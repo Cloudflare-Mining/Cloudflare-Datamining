@@ -1,22 +1,74 @@
 {
 	"name": "@cloudflare/computer",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.0",
+		"alpha": "0.1.0-alpha.1"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/computer",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-TS8IsT6OhpilE77/RpPFpoxQFxjXXv2vkM/qZRqeTY5cuMf2Yr1L49N4UfHs57Q9TPzWzraRJ0KuG58eaQSjMg==",
 				"shasum": "1a9f26ed32f034ed7f92b533ec744ab788167d3a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/computer/-/computer-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 238,
+				"integrity": "sha512-TS8IsT6OhpilE77/RpPFpoxQFxjXXv2vkM/qZRqeTY5cuMf2Yr1L49N4UfHs57Q9TPzWzraRJ0KuG58eaQSjMg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFx8WABBXSpVSo82nxafVIQs/NVAeLHGkNSJZ0yFyeE5AiAnwdb3jlaivgsVLe1eeShk10PFzNcmQGrbU2EojCWV5g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 238
+			}
+		},
+		"0.1.0-alpha.1": {
+			"name": "@cloudflare/computer",
+			"version": "0.1.0-alpha.1",
+			"dependencies": {
+				"capnweb": "^0.8.0",
+				"just-bash": "^3.0.1"
+			},
+			"devDependencies": {
+				"@cloudflare/computer-rpc": "*",
+				"@cloudflare/dofs": "*",
+				"@cloudflare/vitest-pool-workers": "^0.16.10",
+				"@cloudflare/workers-types": "^4.20260616.1",
+				"@platformatic/vfs": "^0.4.0",
+				"ai": "^7.0.0",
+				"diff": "^9.0.0",
+				"esbuild": "^0.28.1",
+				"isomorphic-git": "^1.38.3",
+				"memfs": "^4.57.6",
+				"rolldown": "^1.0.2",
+				"rolldown-plugin-dts": "^0.25.2",
+				"typescript": "^6.0.3",
+				"vitest": "^4.1.7",
+				"wrangler": "^4.107.1",
+				"zod": "^4.4.3"
+			},
+			"peerDependencies": {
+				"@platformatic/vfs": "*",
+				"ai": "^6.0.196 || ^7.0.0",
+				"isomorphic-git": "^1.27.0",
+				"zod": "^4.4.3"
+			},
+			"dist": {
+				"integrity": "sha512-oZ0SvnYeNqs5nt2Qe8CkakuPHjpEQUtY165iIQhaaBig4OR8Fvk7jKjLFZt7pf9D2evuu9stnIQdSTUvC/yB4w==",
+				"shasum": "7289b606a6a7f54d5946714d588167a92a01c8e5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/computer/-/computer-0.1.0-alpha.1.tgz",
+				"fileCount": 40,
+				"unpackedSize": 135991475,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcomputer@0.1.0-alpha.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFx8WABBXSpVSo82nxafVIQs/NVAeLHGkNSJZ0yFyeE5AiAnwdb3jlaivgsVLe1eeShk10PFzNcmQGrbU2EojCWV5g=="
+						"sig": "MEQCIGeO6/WZoHq75plFvHaXX/bf7KAXgwhbUlCt8rpKoehkAiBQ8Cp45MooM+iiwHlpeO5s9W2I1QoVeIE9QHic5k+Byw=="
 					}
 				]
 			}
