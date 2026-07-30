@@ -6,54 +6,44 @@
 	</div>
 </div>
 <p><strong>Available Locations: </strong>Austin, TX</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Threat Application Services (TAS) team lives at the core of that effort. The team builds the automated services and systems that transform Cloudflare’s massive network telemetry into actionable intelligence. We empower customers with products to combat advanced threats, enabling them to query, investigate, and automatically mitigate attacks using Cloudflare’s unique visibility into global threat actor activity.</p>
-<p>At a high level, the Threat Application Services team is the engineering engine within Cloudforce One. We are responsible for the end-to-end lifecycle of threat intelligence data, from ingestion and enrichment to exposing high-fidelity indicators through the Threat Events platform and high-performance APIs. Our work ensures that threat intelligence is not just a report, but a scalable, real-time defensive layer across the Cloudflare stack.</p>
-<p><strong>About the Role</strong></p>
-<p>This role is for the Senior Engineering Manager of the Threat Application Services team within Cloudforce One’s Engineering organization. You will lead a team of high-performing engineers dedicated to building and scaling the Cloudforce One Threat Events platform, our external Threat Intel APIs, and the backend systems that integrate Indicators of Compromise (IOCs) directly into products like WAF and Gateway for automated mitigation. You will also lead hiring efforts to expand our engineering capabilities as we build the next generation of agentic threat intelligence tools.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will be responsible for the architectural direction and operational excellence of the services owned by your team, ensuring our intelligence platforms meet the latency and reliability requirements of Enterprise security operations. You will also drive the professional development of your direct reports and collaborate with product managers and security researchers to turn complex threat data into intuitive, automated customer experiences.</p>
-<p>You thrive in a fast-paced environment where software engineering meets security research. You have experience delivering scalable distributed systems, managing complex data pipelines, and leading teams through the transition from "getting things done" to building world-class, reliable products.</p>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Desirable skills and experience</strong></p>
+<h4>About the team</h4>
+<p>Cloudflare's&nbsp;<strong>Packet Processing</strong> team builds and operates the L3/L4 dataplane services that sit at the front door of our global network. We own the systems that receive, inspect, route, and forward every packet entering Cloudflare — from DDoS-scrubbed IP transit to TCP/UDP application traffic — across every colo in the world. Our work spans <strong>Unimog</strong> (Cloudflare's L4 load balancer that steers traffic to the right machine in every datacenter), <strong>Magic Transit</strong> and <strong>Cloudflare WAN</strong> (our IP-layer DDoS protection and private connectivity products), and <strong>Spectrum</strong> (our L4 reverse proxy for arbitrary TCP and UDP applications). Together, these systems form the packet-processing foundation of the <strong>Traffic Management</strong> organization.</p>
+<p>We are a team of engineers who obsess over performance, correctness, and reliability at massive scale. We work close to the metal, we own what we build in production, and we take pride in shipping systems that "just work" for a very large fraction of the internet.</p>
+<h4>About Spectrum</h4>
+<p>Spectrum is Cloudflare's Layer 4 reverse proxy — the front door for arbitrary TCP and UDP traffic. It gives customers Cloudflare's DDoS mitigation, anycast performance, TLS termination, and global footprint for any TCP or UDP application: gaming servers, SSH, MQTT, custom protocols, and TLS-terminated services of every shape. Spectrum's edge dataplane runs across every Cloudflare colo, terminating and forwarding a very large volume of concurrent connections per second, and its control plane manages configuration, provisioning, and integration with adjacent Cloudflare systems.</p>
+<h4>About the role</h4>
+<p>As a member of Spectrum in the Packet Processing team, we're looking for a Systems Engineer who wants to take shared ownership of a critical, high-scale L4 proxy and help evolve it into the next generation of Cloudflare's non-HTTP traffic platform. This is a rare opportunity to work on a product with massive existing scale while helping shape where it goes next as a first-class part of our L3/L4 dataplane story.</p>
+<h4><strong>Responsibilities</strong></h4>
+<p>Some of the things you'll work on:</p>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows.</li>
-	<li>Prior experience building high-performance APIs or platforms for threat intelligence, security operations, or large-scale data analytics.</li>
-	<li>8+ years of Software Development experience, with a focus on Go, JavaScript, or distributed systems.</li>
-	<li>Led high-performing engineering teams for over 8 years, responsible for architectural direction and operational excellence of large-scale distributed security platforms (e.g., Threat Intel APIs, automated mitigation systems). Proven ability to manage technical debt, drive professional development through strong mentorship, and excel at planning and execution to deliver predictable, world-class products in a high-growth environment.</li>
-	<li>Proven experience leading engineering teams and managing technical debt in a high-growth environment.</li>
-	<li>Understanding of the Cyber Kill Chain and how to automate the ingestion and distribution of IOCs (IPs, domains, hashes, JA3/4 fingerprints).</li>
-	<li>Experience with edge computing (e.g., Workers), SQL-at-the-edge (D1/SQLite), and building systems that scale to handle trillions of signals.</li>
-	<li>Excel at planning and execution to deliver predictable, reliable features for security teams.</li>
-	<li>Strong mentorship and coaching skills to support the career growth of engineers in a specialized security engineering domain.</li>
+	<li>The <strong>Spectrum edge dataplane</strong> (Go): TCP/UDP connection acceptance and forwarding, TLS termination, PROXY protocol, connection accounting, and eBPF integrations</li>
+	<li>The <strong>Spectrum control plane</strong> (Go): application configuration APIs, provisioning, and the systems that push config globally to every edge machine</li>
+	<li><strong>Cross-dataplane integrations</strong>: how Spectrum fits together with Unimog for L4 load balancing, with Magic Transit for IP transit, with Argo Smart Routing for accelerated origin paths, etc</li>
+	<li><strong>Operational excellence</strong>: analytics pipelines, observability, on-call, incident response, and paying down technical debt in a product with a long production history</li>
+	<li><strong>Roadmap evolution</strong>: help shape where Spectrum goes next as the L4 counterpart to our HTTP proxy stack</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p>You'll partner closely with the rest of Packet Processing, other Traffic Management teams, DDoS, DNS, Core SRE, and Edge SRE to solve problems that span the entire Cloudflare stack.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Experience building and shipping large-scale, reliable, highly distributed systems</li>
+	<li>Strong programming experience in <strong>Go</strong>; familiarity with or willingness to work in <strong>Rust</strong> is a plus</li>
+	<li>Solid understanding of <strong>L3 and L4 networking</strong>: TCP, UDP, IP, connection state, NAT, anycast, and packet flows</li>
+	<li>Experience with <strong>Linux networking primitives</strong> — sockets, eBPF, network namespaces, netfilter/nftables, tc</li>
+	<li>Experience designing and integrating <strong>RESTful APIs</strong> and backend systems</li>
+	<li>Comfort with <strong>operating what you build</strong> in production — on-call rotations, incident response, and root-cause analysis</li>
+	<li>Ability to reason about <strong>existing systems at scale</strong>: reading unfamiliar code, understanding hidden dependencies, and safely evolving software that has been in production for years</li>
+	<li>Excellent debugging and optimization skills, particularly around performance and connection lifecycle issues</li>
+	<li>Focus on clarity in written and verbal communication; ability to work across teams to land shared solutions</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h4>Bonus Points</h4>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Experience with <strong>TLS termination</strong>, PROXY protocol, or L4/L7 proxies (Envoy, HAProxy, nginx stream, etc.)</li>
+	<li>Experience with <strong>ClickHouse</strong>, Kafka, or large-scale connection/flow analytics pipelines</li>
+	<li>Experience with globally-distributed KV or config-push systems</li>
+	<li>Prior work on DDoS mitigation, anycast routing, L4 load balancing, or high-throughput edge network daemons</li>
+	<li>Contributions to open-source networking or proxy projects</li>
 </ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

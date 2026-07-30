@@ -5,55 +5,31 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Threat Application Services (TAS) team lives at the core of that effort. The team builds the automated services and systems that transform Cloudflare’s massive network telemetry into actionable intelligence. We empower customers with products to combat advanced threats, enabling them to query, investigate, and automatically mitigate attacks using Cloudflare’s unique visibility into global threat actor activity.</p>
-<p>At a high level, the Threat Application Services team is the engineering engine within Cloudforce One. We are responsible for the end-to-end lifecycle of threat intelligence data, from ingestion and enrichment to exposing high-fidelity indicators through the Threat Events platform and high-performance APIs. Our work ensures that threat intelligence is not just a report, but a scalable, real-time defensive layer across the Cloudflare stack.</p>
-<p><strong>About the Role</strong></p>
-<p>This role is for the Senior Engineering Manager of the Threat Application Services team within Cloudforce One’s Engineering organization. You will lead a team of high-performing engineers dedicated to building and scaling the Cloudforce One Threat Events platform, our external Threat Intel APIs, and the backend systems that integrate Indicators of Compromise (IOCs) directly into products like WAF and Gateway for automated mitigation. You will also lead hiring efforts to expand our engineering capabilities as we build the next generation of agentic threat intelligence tools.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will be responsible for the architectural direction and operational excellence of the services owned by your team, ensuring our intelligence platforms meet the latency and reliability requirements of Enterprise security operations. You will also drive the professional development of your direct reports and collaborate with product managers and security researchers to turn complex threat data into intuitive, automated customer experiences.</p>
-<p>You thrive in a fast-paced environment where software engineering meets security research. You have experience delivering scalable distributed systems, managing complex data pipelines, and leading teams through the transition from "getting things done" to building world-class, reliable products.</p>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Desirable skills and experience</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
+<h3><strong>About the role</strong></h3>
+<p>Cloudflare engineering delivers code to production at a tremendous pace, and depends on automated testing to do so without incidents. The SLO team builds and runs tooling and the internal platform for other engineering teams, to allow them to effectively measure their service and feature reliability that verify the interactions between systems and products in production at huge scale.</p>
+<p>We are looking for highly motivated software engineers to join our Production Platform Organization.&nbsp; You’ll have a strong programming background with a deep understanding and experience developing and maintaining&nbsp; distributed systems. You’ll need to be able to communicate effectively and proactively with engineers across the company to understand the behaviours of our systems and products in order to deliver tooling to meet their monitoring and reliability needs. You will also work closely with product managers and Product Site Reliability Engineers on quality of service measurements for enterprise customers.</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows.</li>
-	<li>Prior experience building high-performance APIs or platforms for threat intelligence, security operations, or large-scale data analytics.</li>
-	<li>8+ years of Software Development experience, with a focus on Go, JavaScript, or distributed systems.</li>
-	<li>Led high-performing engineering teams for over 8 years, responsible for architectural direction and operational excellence of large-scale distributed security platforms (e.g., Threat Intel APIs, automated mitigation systems). Proven ability to manage technical debt, drive professional development through strong mentorship, and excel at planning and execution to deliver predictable, world-class products in a high-growth environment.</li>
-	<li>Proven experience leading engineering teams and managing technical debt in a high-growth environment.</li>
-	<li>Understanding of the Cyber Kill Chain and how to automate the ingestion and distribution of IOCs (IPs, domains, hashes, JA3/4 fingerprints).</li>
-	<li>Experience with edge computing (e.g., Workers), SQL-at-the-edge (D1/SQLite), and building systems that scale to handle trillions of signals.</li>
-	<li>Excel at planning and execution to deliver predictable, reliable features for security teams.</li>
-	<li>Strong mentorship and coaching skills to support the career growth of engineers in a specialized security engineering domain.</li>
+	<li>Proven track record as a software engineer or similar role.</li>
+	<li>Programming experience with one of the following languages. Go, Rust or Python.&nbsp;</li>
+	<li>Experience designing, implementing and maintaining secure and highly-available distributed systems</li>
+	<li>Ability to develop, document and execute test and SLO plans, test cases and test scripts to verify systems continue to operate as expected</li>
+	<li>Create and maintain production testing infrastructure and availability reporting&nbsp;</li>
+	<li>Collaborate with cross-functional engineering teams to understand how their systems function and interact with other Cloudflare systems</li>
+	<li>Help drive continued improvements in the software development testing processes</li>
+	<li>Be an excellent communicator, provide clear and concise feedback to engineering and product teams</li>
+	<li>Experience with measuring uptime metrics like correctness, availability &amp; latency SLOs/SLIs&nbsp;</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Experience working with synthetic traffic &amp; load testing tools</li>
+	<li>Experience working with Clickhouse, Prometheus, GraphQL, Postgres</li>
+	<li>Experience working with data pipelines with a focus on reliability and scale</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

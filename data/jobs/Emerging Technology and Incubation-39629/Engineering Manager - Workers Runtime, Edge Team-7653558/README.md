@@ -5,33 +5,53 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Threat Application Services (TAS) team lives at the core of that effort. The team builds the automated services and systems that transform Cloudflare’s massive network telemetry into actionable intelligence. We empower customers with products to combat advanced threats, enabling them to query, investigate, and automatically mitigate attacks using Cloudflare’s unique visibility into global threat actor activity.</p>
-<p>At a high level, the Threat Application Services team is the engineering engine within Cloudforce One. We are responsible for the end-to-end lifecycle of threat intelligence data, from ingestion and enrichment to exposing high-fidelity indicators through the Threat Events platform and high-performance APIs. Our work ensures that threat intelligence is not just a report, but a scalable, real-time defensive layer across the Cloudflare stack.</p>
-<p><strong>About the Role</strong></p>
-<p>This role is for the Senior Engineering Manager of the Threat Application Services team within Cloudforce One’s Engineering organization. You will lead a team of high-performing engineers dedicated to building and scaling the Cloudforce One Threat Events platform, our external Threat Intel APIs, and the backend systems that integrate Indicators of Compromise (IOCs) directly into products like WAF and Gateway for automated mitigation. You will also lead hiring efforts to expand our engineering capabilities as we build the next generation of agentic threat intelligence tools.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will be responsible for the architectural direction and operational excellence of the services owned by your team, ensuring our intelligence platforms meet the latency and reliability requirements of Enterprise security operations. You will also drive the professional development of your direct reports and collaborate with product managers and security researchers to turn complex threat data into intuitive, automated customer experiences.</p>
-<p>You thrive in a fast-paced environment where software engineering meets security research. You have experience delivering scalable distributed systems, managing complex data pipelines, and leading teams through the transition from "getting things done" to building world-class, reliable products.</p>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Desirable skills and experience</strong></p>
+<h3><strong>Available Locations: Austin (Hybrid)</strong></h3>
+<h3 id="EngineeringManagerWorkersRuntimeEdge-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3 id="EngineeringManagerWorkersRuntimeEdge-AbouttheTeam">About the Team</h3>
+<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.<br>Our work is deeply systems-oriented. We build and maintain the C++ and Rust codebase that embeds the JavaScript engine, manages isolate lifecycles, enforces resource limits (CPU, memory, I/O), and orchestrates how customer scripts are loaded, cached, and executed. We operate in a hostile multi-tenant environment where security must be foundational — from side-channel attack mitigations to isolate sandboxing — and performance is measured in microseconds.</p>
+<h3 id="EngineeringManagerWorkersRuntimeEdge-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>We are looking for an Engineering Manager to lead the Workers Runtime - Edge team. You will own the team that keeps our runtime service running in production across Cloudflare's entire fleet and drives the architectural evolution of the platform.<br>You will:</p>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows.</li>
-	<li>Prior experience building high-performance APIs or platforms for threat intelligence, security operations, or large-scale data analytics.</li>
-	<li>8+ years of Software Development experience, with a focus on Go, JavaScript, or distributed systems.</li>
-	<li>Led high-performing engineering teams for over 8 years, responsible for architectural direction and operational excellence of large-scale distributed security platforms (e.g., Threat Intel APIs, automated mitigation systems). Proven ability to manage technical debt, drive professional development through strong mentorship, and excel at planning and execution to deliver predictable, world-class products in a high-growth environment.</li>
-	<li>Proven experience leading engineering teams and managing technical debt in a high-growth environment.</li>
-	<li>Understanding of the Cyber Kill Chain and how to automate the ingestion and distribution of IOCs (IPs, domains, hashes, JA3/4 fingerprints).</li>
-	<li>Experience with edge computing (e.g., Workers), SQL-at-the-edge (D1/SQLite), and building systems that scale to handle trillions of signals.</li>
-	<li>Excel at planning and execution to deliver predictable, reliable features for security teams.</li>
-	<li>Strong mentorship and coaching skills to support the career growth of engineers in a specialized security engineering domain.</li>
+	<li data-uuid="5f495329-19c2-4578-91d7-069b78e47256">Lead a team of senior systems engineers working in C++ and Rust on one of the most performance-critical and security-sensitive services at Cloudflare.</li>
+	<li data-uuid="71383b55-0646-4b67-b8b8-637eaa4cb258">Drive major infrastructure initiatives — migrating legacy systems, redesigning core abstractions, and laying the groundwork for next-generation runtime architecture that will define the platform for years to come.</li>
+	<li data-uuid="d9d97d6a-a0a3-4a81-8233-ff23f9fa0654">Own reliability and release safety for a service handling tens of millions of requests per second. You will improve release processes, invest in health monitoring and automated rollback, and ensure the team can ship changes confidently at scale.</li>
+	<li data-uuid="6a66d754-af4e-477f-8e9e-944836c2168c">Make hard prioritisation calls between new feature work that unblocks customers and the ongoing investment in foundations, security, and developer velocity that the team needs to stay healthy long-term.</li>
+	<li data-uuid="38070735-ed79-4a2f-94a8-4475ae542a93">Partner closely with adjacent teams across the Developer Platform to ensure the runtime supports the broader product roadmap — including compute, storage, networking, and observability teams.</li>
+	<li data-uuid="8fbb6ff6-1e62-4462-8541-8d4920a257f2">Grow and develop the team Hire strong systems engineers, set clear expectations, provide technical mentorship, and create an environment where people do their best work.</li>
 </ul>
-<p><strong>Equity</strong></p>
+<p>You bring a track record of leading teams that operate large-scale, low-latency distributed systems. You understand how to balance the urgency of production with the patience required for foundational improvement. You are technically credible enough to evaluate architectural proposals, weigh tradeoffs in C++/Rust systems, and earn the respect of a deeply technical team — while being a strong enough manager to build a healthy, high-performing engineering culture.</p>
+<h3 id="EngineeringManagerWorkersRuntimeEdge-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<ul>
+	<li>Experience leading a team</li>
+	<li>Comfortable leading and hiring a team that builds low level distributed systems.</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Comfortable building developer-loved APIs that scale</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>At least 4 years of recent professional experience with C++ or Rust.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
+	<li data-uuid="7803e3e3-598b-4b5c-86f3-1f0a58a3fce7">Strong understanding of Linux systems programming, process models, and networking.</li>
+</ul>
+<h3 id="EngineeringManagerWorkersRuntimeEdge-BonusPoints"><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Experience building high performance distributed systems.</li>
+	<li>Experience working with cloud platforms, especially server-less platforms.</li>
+	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
+	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
+	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
+	<li>Contributions to large open source projects</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+</ul>
+<h3><strong>Compensation</strong></h3>
+<p>Compensation may be adjusted depending on work location.</p>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -42,14 +62,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

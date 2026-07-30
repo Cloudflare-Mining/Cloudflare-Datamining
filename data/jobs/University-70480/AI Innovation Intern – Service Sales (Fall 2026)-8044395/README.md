@@ -5,54 +5,33 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Threat Application Services (TAS) team lives at the core of that effort. The team builds the automated services and systems that transform Cloudflare’s massive network telemetry into actionable intelligence. We empower customers with products to combat advanced threats, enabling them to query, investigate, and automatically mitigate attacks using Cloudflare’s unique visibility into global threat actor activity.</p>
-<p>At a high level, the Threat Application Services team is the engineering engine within Cloudforce One. We are responsible for the end-to-end lifecycle of threat intelligence data, from ingestion and enrichment to exposing high-fidelity indicators through the Threat Events platform and high-performance APIs. Our work ensures that threat intelligence is not just a report, but a scalable, real-time defensive layer across the Cloudflare stack.</p>
-<p><strong>About the Role</strong></p>
-<p>This role is for the Senior Engineering Manager of the Threat Application Services team within Cloudforce One’s Engineering organization. You will lead a team of high-performing engineers dedicated to building and scaling the Cloudforce One Threat Events platform, our external Threat Intel APIs, and the backend systems that integrate Indicators of Compromise (IOCs) directly into products like WAF and Gateway for automated mitigation. You will also lead hiring efforts to expand our engineering capabilities as we build the next generation of agentic threat intelligence tools.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will be responsible for the architectural direction and operational excellence of the services owned by your team, ensuring our intelligence platforms meet the latency and reliability requirements of Enterprise security operations. You will also drive the professional development of your direct reports and collaborate with product managers and security researchers to turn complex threat data into intuitive, automated customer experiences.</p>
-<p>You thrive in a fast-paced environment where software engineering meets security research. You have experience delivering scalable distributed systems, managing complex data pipelines, and leading teams through the transition from "getting things done" to building world-class, reliable products.</p>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Desirable skills and experience</strong></p>
+<p><strong>Available Location: London, UK</strong></p>
+<p><strong>About the Department<br></strong>The Global Customer Services (GCS) team is the heartbeat of Cloudflare’s post-sales ecosystem. While our Customer Support engineers handle the "break-fix," GCE (Customer Engineering and Professional Services) owns the customer journey. Our mission is to empower customers globally through proactive guidance and expert services to accelerate their time to value and business outcomes. We are responsible for driving product adoption, architecting complex deployments, and ensuring our customers obtain maximum value from the Cloudflare platform.&nbsp;</p>
+<p><strong>About the Role<br></strong>The AI Innovation Intern will support the Professional Services team by assisting with foundational developer platform tasks and contributing to projects that enables the commercial practice to develop strategies and solutions for deeper market penetration. This role provides hands-on exposure to Cloudflare’s developer ecosystem while working alongside the Global Professional Services Commercial leadership to deliver customer outcomes and strategies.Through this role, you will gain hands-on experience working with Cloudflare’s developer platform, exposure to how Professional Services and Customer Success teams deliver sales and commercial outcomes for global customers, mentorship from commercial leadership , and real-world experience contributing to projects that support customer adoption of Cloudflare technologies.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows.</li>
-	<li>Prior experience building high-performance APIs or platforms for threat intelligence, security operations, or large-scale data analytics.</li>
-	<li>8+ years of Software Development experience, with a focus on Go, JavaScript, or distributed systems.</li>
-	<li>Led high-performing engineering teams for over 8 years, responsible for architectural direction and operational excellence of large-scale distributed security platforms (e.g., Threat Intel APIs, automated mitigation systems). Proven ability to manage technical debt, drive professional development through strong mentorship, and excel at planning and execution to deliver predictable, world-class products in a high-growth environment.</li>
-	<li>Proven experience leading engineering teams and managing technical debt in a high-growth environment.</li>
-	<li>Understanding of the Cyber Kill Chain and how to automate the ingestion and distribution of IOCs (IPs, domains, hashes, JA3/4 fingerprints).</li>
-	<li>Experience with edge computing (e.g., Workers), SQL-at-the-edge (D1/SQLite), and building systems that scale to handle trillions of signals.</li>
-	<li>Excel at planning and execution to deliver predictable, reliable features for security teams.</li>
-	<li>Strong mentorship and coaching skills to support the career growth of engineers in a specialized security engineering domain.</li>
+	<li><strong>Build &amp; Prototype:</strong> Design, develop, and deploy AI-driven prototypes (using LLMs, RAG architectures, or predictive modeling) to automate manual workflows within the GCS ecosystem. Build out models to help automate future forecasting and resource planning.</li>
+	<li><strong>Tooling Integration:</strong> Work with APIs to integrate AI capabilities into our existing tech stack to provide real-time solutions.</li>
+	<li><strong>Data Wrangling:</strong> Partner with our Rev Ops/Sales Ops to identify, clean, and structure high-volume post-sales data for model training and fine-tuning.</li>
+	<li><strong>Prompt Engineering &amp; Optimization:</strong> Refine and optimize system prompts and model parameters to ensure high-quality, hallucination-free outputs for internal advisory tools.</li>
+	<li><strong>Collaboration:</strong> Act as the technical translator, taking high-level optimization ideas from GCS Commercial leadership and turning them into technical requirements and minimum viable products (MVPs).</li>
+	<li>Contribute to internal knowledge bases and documentation to improve team efficiency and consistency. Create collateral to enable the team.</li>
+	<li><strong>Customer engagement:</strong> Working alongside commercial leadership to present solutions to internal stakeholders to deliver external solutions for customer outcomes.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Currently pursuing a Bachelor’s or Master’s degree in Management Information Systems (MIS), Business Analytics, or a related technical field.</li>
+	<li>Available for a full-time, 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Be commercially minded and understand basic principles of a Vendor Sales business.</li>
+	<li>Basic experience with programming or scripting (e.g., JavaScript, Python, or similar)</li>
+	<li>Experience building AI Agents and/or other applications leveraging AI.</li>
+	<li>Experience connecting disparate systems via REST APIs</li>
+	<li>Familiarity with web development concepts, APIs, RAG, Git or developer platforms</li>
+	<li>Strong problem-solving and analytical skills</li>
+	<li>Ability to learn quickly in a fast-paced technical environment</li>
+	<li>Strong communication and collaboration skills to explain complex technical AI concepts to non-technical stakeholders</li>
+	<li>Bonus points: Experience in a customer facing role</li>
+	<li>Bonus points: Experience deploying applications leveraging Cloudflare Workers AI.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
