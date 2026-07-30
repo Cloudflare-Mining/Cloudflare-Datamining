@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 30, 2026[Dogfooding at scale: migrating cdnjs to Cloudflare's Developer Platform](https://blog.cloudflare.com/cdnjs-dev-platform-migration/)
+
+We moved cdnjs, serving 9 billion requests a day, entirely onto Cloudflare's Developer Platform. That means we're running one of the Internet's busiest open-source CDNs on our own building blocks, and we pushed Workflows and Workers limits higher for everyone.
+
+![Simona Badoiu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BY2VVWXQKZQA2SJ3N42J.jpeg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
+
+[Simona Badoiu](https://blog.cloudflare.com/author/simona-badoiu/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYQNB0R8TB2YYRS41PYE8GCC.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cdnjs-dev-platform-migration/)
+
 July 29, 2026[Post-quantum authentication to origins is now supported](https://blog.cloudflare.com/post-quantum-authentication-to-origins/)
 
 Cloudflare now supports post-quantum (PQ) authentication when connecting to customer origin servers via Authenticated Origin Pulls and Custom Origin Trust Store. This is the first step towards providing PQ authentication for all Cloudflare products.
@@ -13,8 +23,6 @@ Cloudflare now supports post-quantum (PQ) authentication when connecting to cust
 ![Luke Valenta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455BBR3DXDBC0E9512XF44.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Kevin Guthrie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VQ8K1T55ANDEX70V1EEQ.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Luke Valenta](https://blog.cloudflare.com/author/luke/) and [Kevin Guthrie](https://blog.cloudflare.com/author/kevin-guthrie/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYMHM4H5CM9Y90DXVC3WJ164.jpg&w=1280&h=720&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/post-quantum-authentication-to-origins/)
 
 July 28, 2026[Natural disasters and government interference: examining Q2 2026's major Internet disruption events](https://blog.cloudflare.com/q2-2026-internet-disruption-summary/)
 
@@ -151,14 +159,6 @@ For our second Content Independence Day, we're giving website owners finer optio
 ![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)
 
 [Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
-
-July 1, 2026[Announcing the Monetization Gateway: charge for any resource behind Cloudflare via x402](https://blog.cloudflare.com/monetization-gateway/)
-
-We're opening the waitlist for our Monetization Gateway, which will allow you to charge for any web page, dataset, API, or MCP tool behind Cloudflare. The charges will settle in stablecoins over the x402 open protocol, with no payments stack of your own to build.
-
-![Rohin Lohe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4732TDPVKGF30GJC5C5KJV.jpg&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Justin Ridgely](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PGKA3M43DHXBD4JK7ZH5.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=32&h=32&q=60&f=webp&fit=cover&position=center)
-
-[Rohin Lohe](https://blog.cloudflare.com/author/rohin/), [Justin Ridgely](https://blog.cloudflare.com/author/justin-ridgely/), and [Will Papper](https://blog.cloudflare.com/author/will-papper/)
 
 Load more
 
