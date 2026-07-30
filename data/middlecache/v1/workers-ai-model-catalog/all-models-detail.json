@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-07-29T04:33:55.413Z",
+	"generated_at": "2026-07-30T04:33:48.710Z",
 	"model_count": 210,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -231102,6 +231102,10 @@
 			"data_source": "legacy",
 			"properties": [
 				{
+					"property_id": "require_workers_paid",
+					"value": "true"
+				},
+				{
 					"property_id": "context_window",
 					"value": "262144"
 				},
@@ -231938,6 +231942,10 @@
 			"properties": [
 				{
 					"property_id": "async_queue",
+					"value": "true"
+				},
+				{
+					"property_id": "require_workers_paid",
 					"value": "true"
 				},
 				{
@@ -232907,6 +232915,10 @@
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
+				{
+					"property_id": "require_workers_paid",
+					"value": "true"
+				},
 				{
 					"property_id": "context_window",
 					"value": "262144"
