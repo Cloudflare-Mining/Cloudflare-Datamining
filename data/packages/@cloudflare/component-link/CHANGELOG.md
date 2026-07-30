@@ -1,5 +1,12 @@
 # Change Log
 
+## 10.0.7
+
+### Patch Changes
+
+- Updated dependencies [e5e7de9cfe]
+  - @cloudflare/util-sparrow@6.0.4
+
 ## 10.0.6
 
 ### Patch Changes
