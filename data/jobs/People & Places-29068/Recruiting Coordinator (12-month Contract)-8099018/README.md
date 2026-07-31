@@ -5,31 +5,39 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations</strong></p>
 <ul>
-	<li>Austin, US</li>
+	<li>Austin, TX</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
-<p>Cloudflare engineering delivers multiple products and features to production at a tremendous pace, and depends on real time load balancing and long term capacity planning to do so with high performance and efficiency. The MAPS team is responsible for highly granular and large-scale resource usage instrumentation and measurement of Cloudflare's edge platform.&nbsp; The team builds and runs data pipelines, as well as systems and libraries for measuring and collecting the data, and collaborates closely across the range of teams that build and run services on Cloudflare's global edge network to ensure consistent, complete, and correct attribution of all resource usage.</p>
-<p><strong>What are we looking for?</strong></p>
-<p>We are looking for highly motivated software engineers to join our MAPS team.&nbsp; You’ll have a strong programming background with a deep understanding and experience developing and maintaining&nbsp; distributed systems. You’ll need to be able to communicate effectively with engineers across the company to understand the behaviours of our systems and products in order to deliver tooling to meet their testing needs. You will also work closely with product managers to support our public facing synthetic testing and load testing products for enterprise customers.</p>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4>About the Role</h4>
+<p>Cloudflare is looking for a highly organized and detail-oriented Recruiting Coordinator to be a cornerstone of our hiring engine in Austin, Texas. This isn't just about managing calendars; you'll be a key player in bringing structure to our hiring efforts, ensuring an exceptional global candidate experience, and supporting the high-quality hiring decisions that drive our mission forward.</p>
+<p>If you're someone who thrives in a collaborative, fast-paced setting, possesses a keen eye for detail, and is dedicated to delivering positive experiences, we want to hear from you. You'll work closely with recruiters, hiring managers, and interviewers, ensuring every candidate interaction truly reflects Cloudflare's best. This is a fantastic opportunity to launch or pivot into a career in Talent Acquisition, where your organizational skills and candidate-centric approach will directly influence our ability to attract top talent and shape their perception of Cloudflare.&nbsp;</p>
+<h4>Responsibilities</h4>
 <ul>
-	<li>Experience as a software engineer or similar role working on latency and efficiency sensitive server infrastructure.</li>
-	<li>Experience working with large-scale data pipelines and processing, including use of distributed column-oriented data storage and processing such as ClickHouse, BigQuery/Dremel, etc.</li>
-	<li>Strong knowledge of TCP/IP networking fundamentals and routing basics</li>
-	<li>Successful track record of collaborating with many teams concurrently to achieve goals that require alignment across a range of teams and orgs.</li>
-	<li>Track record of owning problems, goals, and outcomes - not (just) specific pieces of software.</li>
-	<li>Track record of building long-term sustainable, maintainable systems.</li>
-	<li>Ability to dive deep into technical specifics of systems and codebases, while always keeping the big picture in mind.</li>
-	<li>Experience with one or more of the following programming languages: Go, Rust, C</li>
+	<li>Manage interview logistics across various formats (video, phone, and in-person) with precision and efficiency, ensuring a seamless experience for all participants.</li>
+	<li>Deliver an exceptional candidate experience, both virtually and in-person, demonstrating empathy and a customer/candidate-oriented approach.</li>
+	<li>Utilize applicant tracking system, scheduling tools, dashboards, and candidate trackers to ensure accuracy and maximize efficiency for Cloudflare’s Interview Experience program.</li>
+	<li>Handle sensitive and confidential information with the utmost professionalism.&nbsp;</li>
+	<li>Communicate clearly, directly, and transparently with candidates, recruiters, and internal stakeholders</li>
+	<li>Partner with Recruiters and Hiring Managers to streamline processes and contribute to cross-functional recruiting operations projects and improvements.&nbsp;</li>
+	<li>Actively identify opportunities for process enhancements and suggesting solutions, as well as supporting program initiatives where bandwidth allows.</li>
+	<li>Collaborate with and provide mutual support to team members on shared tasks and challenges.</li>
 </ul>
-<h2>Bonus Points</h2>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
-	<li>Strong understanding of Linux kernel internals, especially any of: networking, scheduling, resource isolation, virtualization</li>
-	<li>Experience troubleshooting and resolving performance issues in large-scale distributed systems.</li>
-	<li>Experience with large scale configuration/deployment management.</li>
+	<li>Experience in a fast-paced environment where exceptional <strong>organizational skills</strong>, <strong>high-volume coordination</strong>, or extensive <strong>client/customer support</strong> were essential.</li>
+	<li>Proven ability to prioritize tasks and manage time effectively.</li>
+	<li>Maintain meticulous attention to detail, even under pressure.</li>
+	<li>Consistently meet deadlines and service standards.</li>
+	<li>A resourceful and proactive approach to identifying and resolving routine challenges independently.</li>
+	<li>Quick to learn and adapt to ambiguous or changing situations.</li>
+	<li>View mistakes as opportunities for growth.</li>
+	<li>Outstanding written and verbal communication skills.</li>
+	<li>Able to engage professionally and empathetically with diverse stakeholders.</li>
+	<li>Possess a strong collaborative spirit.</li>
+	<li>Build positive professional relationships and contribute to a supportive team environment.</li>
+	<li>A genuine passion for delivering positive experiences.</li>
+	<li>Lead with empathy and assume good intentions in all interactions.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

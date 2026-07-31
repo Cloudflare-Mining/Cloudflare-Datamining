@@ -5,101 +5,54 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>About the Team</strong></p>
-<p>Domain management is the foundation for any online presence and Cloudflare Registrar is our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</p>
-<p><strong>What you'll do</strong></p>
-<p>We are looking for a talented systems engineer to be part of our engineering team. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</p>
-<p><strong>Requirements</strong></p>
+<p><strong>Available Locations: San Francisco, CA</strong></p>
+<p><strong>About the role<br><br></strong>The Customer Advocacy Intern will support the team responsible for building, managing and growing customer marketing programs. Reporting to the Principle, Customer Advocacy Manager, the ideal candidate will be interested in a focus on customer storytelling and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to build a better internet.<strong><br></strong></p>
+<h4><strong>What you'll do<br></strong></h4>
+<p>You will shadow the Customer Advocacy Manager and work cross functionally with global teams in building customer stories, and scaling customer advocacy programs, including participation with enterprise customers across many industries. You will work with Strategy, Sales, Customer Success, Marketing, Product, and Communications.&nbsp;</p>
+<p>The candidate is an entry level intern who will work closely with the global strategy team. Success is measured by the ability to drive forward efficiently and at the speed of the business, learn how to use AI tools to drive efficiency, and deliver quality content.</p>
+<p>The main projects are:</p>
+<p><strong>Customer References:</strong></p>
 <ul>
-	<li>
-		<p>4+ years of experience as a software engineer with a focus on designing, building and scaling data infrastructure</p>
-	</li>
-	<li>
-		<p>Strong communication skills, especially around articulating technical concepts for technical and non-technical audiences</p>
-	</li>
-	<li>
-		<p>Experience working on, and deploying, large scale systems in Java, Go, Ruby/Rails, or other high performance languages</p>
-	</li>
-	<li>
-		<p>Experience (and love) for debugging to ensure the system works in all cases</p>
-	</li>
-	<li>
-		<p>Strong systems level programming skills</p>
-	</li>
-	<li>
-		<p>Excited by the idea of optimizing complex solutions to general problems that all websites face</p>
-	</li>
-	<li>
-		<p>Experience with a continuous integration workflow and using source control</p>
-	</li>
+	<li>Help support and fulfill sales 1:1 and RFP requests for customer references working with tools and across customer advocacy and account teams</li>
+	<li>Manage/track customer references requests via customer marketing tools</li>
+	<li>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;</li>
 </ul>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Customer Advocacy:&nbsp;</strong></p>
 <ul>
-	<li>
-		<p>Designing, building, running and scaling tools and services that support the full spectrum of domain management.</p>
-	</li>
-	<li>
-		<p>Analyzing and communicating complex technical requirements and concepts, working with technical leaders to carve a path to delivery</p>
-	</li>
-	<li>
-		<p>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</p>
-	</li>
-	<li>
-		<p>Ongoing monitoring and maintenance of production services, including participation in on-call rotations</p>
-	</li>
+	<li>Help to qualify, develop and maintain a targeted pipeline of strategic customer relationships</li>
+	<li>Help to qualify incoming nominations &nbsp;</li>
+	<li>Contribute to the development of high quality, world-class customer story content and promotion</li>
 </ul>
+<p><strong>Advisory Boards and Councils:&nbsp;</strong></p>
 <ul>
-	<li>
-		<p>Experience working on, and deploying, large scale systems in Typescript,&nbsp; Go, Ruby/Rails, Java, or other high performance languages</p>
-	</li>
-	<li>
-		<p>Experience (and love) for debugging to ensure the system works in all cases</p>
-	</li>
-	<li>
-		<p>Strong systems level programming skills</p>
-	</li>
-	<li>
-		<p>Excited by the idea of optimizing complex solutions to general problems that all websites face</p>
-	</li>
-	<li>
-		<p>Experience with a continuous integration workflow and using source control (we use git)&nbsp;</p>
-	</li>
+	<li>Shadow the process and contribute to our customer advisory boards/councils</li>
+	<li>Help coordinate across many teams and executives, pre/post event success &nbsp;</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>
-		<p>Experience with Cloudflare Developer Platform</p>
-	</li>
-	<li>
-		<p>Experience with Google Cloud Platform</p>
-	</li>
-	<li>
-		<p>Experience with Java or Go&nbsp; (or a strong desire to learn)</p>
-	</li>
-	<li>
-		<p>Experience working with OpenAPI</p>
-	</li>
-	<li>
-		<p>Experience with AI coding tools</p>
-	</li>
-	<li>
-		<p>Experience with Kubernetes</p>
-	</li>
-	<li>
-		<p>Experience with Kibana, Grafana, and/or Prometheus</p>
-	</li>
-	<li>
-		<p>Experience with relational databases (e.g. Postgres)</p>
-	</li>
-	<li>
-		<p>Experience with Gitlab and Gitlab CI</p>
-	</li>
-	<li>
-		<p>Experience with DNS (and DNSSEC)</p>
-	</li>
-	<li>
-		<p>Experience in the registry/registrar industry</p>
-	</li>
+	<li>Collaborate with the Strategy team to develop and execute customer marketing strategies that align with business goals.</li>
+	<li>Support the research, writing, and editing of engaging case studies, internal and external interviews, and other marketing collateral.</li>
+	<li>Learn and support marketing and customer advocacy tech stack.</li>
+	<li>Contribute to planning and brainstorming sessions, bringing creative ideas and new efficiencies using AI to the table.</li>
+	<li>Support the team in analyzing advocacy activity performance and identifying opportunities for improvement.</li>
+	<li>Contribute to monthly and quarterly reporting, including newsletters</li>
+</ul>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, Business, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sep-Dec).</li>
+	<li>A strong portfolio showcasing your writing samples across different formats (e.g., blog posts, articles, essays).</li>
+	<li>Ability to write clearly, concisely, and adaptably for various digital platforms and audiences.</li>
+	<li>Strong project management skills.</li>
+	<li>Strong research skills and a keen eye for detail.</li>
+	<li>Excellent communication and collaboration skills.</li>
+	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
+	<li>A passion for technology and its impact on the internet is desirable.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

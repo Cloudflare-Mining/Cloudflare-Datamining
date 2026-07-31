@@ -7,9 +7,7 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>Austin, US</li>
-	<li>New York, US</li>
-	<li>San Francisco, US</li>
+	<li>Remote US</li>
 </ul>
 <h2>About the role</h2>
 <p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing them to do their best work. As we continue to scale our global organization, we are looking for a trusted Business Partner who is naturally curious about our technology, deeply invested in our business strategy, and driven to help our people thrive.In this role, you will report to the Senior Director, People Team Business Partners and serve as a heavy-hitting strategic partner to our senior leadership across Product, Engineering and Security.</p>
@@ -37,7 +35,8 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</li>
-	<li>For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $178,000 - $245,000.</li>
+	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000</li>
 </ul>
 <p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan.&nbsp;The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the&nbsp;Sales Compensation Plan.</p>
 <h3>Equity</h3>
