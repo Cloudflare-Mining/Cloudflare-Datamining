@@ -22,7 +22,7 @@ April 15 · London, UK
 
 July 30 · Sydney, AU
 
-[  Cloudflare Connect 2026  Register now — October 19-21, 2026 · San Francisco, CA  Register → ](https://www.cloudflare.com/connect/) 
+[  Cloudflare Connect 2026  Register now — October 19-21, 2026 · San Francisco, CA  Register → ](https://www.cloudflare.com/connect/)[  Connect on Tour Sydney  July 30, 2026 · Sydney  Register → ](https://events.www.cloudflare.com/Sydney2026) 
 
 ### All Scheduled Events
 
