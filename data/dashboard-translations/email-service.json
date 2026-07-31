@@ -402,6 +402,8 @@
 	"email-service.reputation.thresholdGood": "Good",
 	"email-service.reputation.thresholdWarning": "Warning",
 	"email-service.reputation.thresholdCritical": "Critical",
+	"email-service.reputation.softLimitHigher": "Safe below %{warning}%, at risk at %{critical}%",
+	"email-service.reputation.softLimitLower": "Safe above %{warning}%, at risk below %{critical}%",
 	"email-service.reputation.remediationTitle": "Recommended actions",
 	"email-service.reputation.remediationBounceWarning": "Your bounce rate is elevated. Clean your recipient lists and remove invalid addresses. Consider implementing email verification at signup.",
 	"email-service.reputation.remediationBounceCritical": "Your bounce rate is critically high. Your sending may be paused if this rate does not improve. Immediately audit recipient lists and halt sending to unverified addresses.",
