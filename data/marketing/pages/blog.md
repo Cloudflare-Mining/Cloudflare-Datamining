@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+July 31, 2026[An API for MoQ: provision your own isolated relays](https://blog.cloudflare.com/moq-relays/)
+
+Last year we made every Cloudflare server a Media over QUIC (MoQ) relay. Now the new provisioning API lets you create your own isolated relay and control who can publish and who can only watch.
+
+![Jacob Curtis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PQ4K29N870V855TKQSYT.png&w=64&h=64&f=webp&fit=cover&position=center)![Manish Pandit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYVX7C6NS9762W5KTANHJ704.webp&w=64&h=64&f=webp&fit=cover&position=center)![Mike English](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456AKXY6NZWXBX72F7RG6T.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Jacob Curtis](https://blog.cloudflare.com/author/jacob-curtis/), [Manish Pandit](https://blog.cloudflare.com/author/manish-pandit/), and [Mike English](https://blog.cloudflare.com/author/mike-english/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYVQE39B1KP2WVG5CB9PGEV3.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/moq-relays/)
+
 July 30, 2026[Dogfooding at scale: migrating cdnjs to Cloudflare's Developer Platform](https://blog.cloudflare.com/cdnjs-dev-platform-migration/)
 
 We moved cdnjs, serving 9 billion requests a day, entirely onto Cloudflare's Developer Platform. That means we're running one of the Internet's busiest open-source CDNs on our own building blocks, and we pushed Workflows and Workers limits higher for everyone.
@@ -13,8 +23,6 @@ We moved cdnjs, serving 9 billion requests a day, entirely onto Cloudflare's Dev
 ![Simona Badoiu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BY2VVWXQKZQA2SJ3N42J.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Simona Badoiu](https://blog.cloudflare.com/author/simona-badoiu/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYQNB0R8TB2YYRS41PYE8GCC.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cdnjs-dev-platform-migration/)
 
 July 29, 2026[Post-quantum authentication to origins is now supported](https://blog.cloudflare.com/post-quantum-authentication-to-origins/)
 
@@ -151,14 +159,6 @@ Search is how we find nearly everything on the web — creators, merchants, answ
 ![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
-
-July 1, 2026[Your site, your rules: new AI traffic options for all customers](https://blog.cloudflare.com/content-independence-day-ai-options/)
-
-For our second Content Independence Day, we're giving website owners finer options to manage AI traffic. Instead of a one-size-fits-all block, all customers can now easily distinguish and manage Search, Agent, and Training bots, alongside the new ability to protect ad-monetized pages.
-
-![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
 
 Load more
 
