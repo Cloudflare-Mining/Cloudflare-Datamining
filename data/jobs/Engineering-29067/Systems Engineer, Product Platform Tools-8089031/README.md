@@ -5,60 +5,83 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<h2><strong>About the Role</strong></h2>
-<p>Cloudflare is looking for a bright, proactive, and detail-oriented Senior Administrative Assistant to support two leaders in our Developer GTM organization, the VP, Developer Revenue &amp; VP, Growth. We are looking for a dynamic and dedicated candidate who is comfortable with multi-tasking and prioritization in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
-<p>As a seasoned, experienced professional, you will work on problems of diverse scope, demonstrate good judgment in selecting methods, and network effectively with senior personnel across the organization.</p>
-<h2><strong>Responsibilities</strong></h2>
-<ul>
-	<li><strong>Calendar &amp; Conflict Management:</strong> Proactively manage complex calendars with a strong understanding of business priorities. Independently resolve most scheduling conflicts and anticipate meeting requests and logistical needs before they are explicitly stated.</li>
-	<li><strong>Travel &amp; Logistics:</strong> Independently manage and coordinate complex international and domestic travel, including visa and passport needs, as well as end-to-end logistical arrangements.</li>
-	<li><strong>Executive Support &amp; Business Context:</strong> Develop a deeper understanding of the managers' roles and the broader business context. Serve as a trusted gatekeeper who can confidently answer routine questions on behalf of the executives.</li>
-	<li><strong>Expense &amp; Meeting Coordination:</strong> Prepare and manage expense reports, and coordinate both internal and external meeting needs with precision.</li>
-	<li><strong>Projects &amp; Process Improvement:</strong> Contributes significantly to ad-hoc/special projects. Recognize where operational processes can be improved and actively suggest and implement those process improvements.</li>
-	<li><strong>Event Planning:</strong> Coordinate and assist with event planning as needed.</li>
-	<li><strong>Leadership &amp; Influence:</strong> Act as an informal mentor to junior admins and begin to influence and improve team-wide processes.</li>
-</ul>
-<h2><strong>Requirements</strong></h2>
+<p><strong>About the Role</strong></p>
+<p>The Product Platform Tools team builds and operates Cloudflare's internal support and admin platform - the foundation that customer-facing and operational teams across the company rely on to do their jobs. As a Systems Engineer on this team, you'll design and build the backend services, infrastructure, APIs, and integrations that power this platform at enterprise scale, working closely with both engineering teams and non-engineering stakeholders like Support, Legal, and Security (who depend on it daily). You'll need a deep curiosity for how Cloudflare works under the hood, a strong security and governance mindset, the ability to scale systems to meet the demands of a global organization, and the communication skills to bridge technical complexity with the real operational needs of diverse teams across the company.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
 	<li>
-		<ul>
-			<li><strong>3+</strong> of experience as an Administrative Assistant.</li>
-			<li><strong>Scope &amp; Judgment:</strong> A seasoned professional with proven experience handling problems of diverse scope and demonstrating excellent judgment in selecting administrative and operational methods.</li>
-			<li><strong>Proactiveness &amp; Autonomy:</strong> Strong sense of urgency, proactiveness, and the ability to manage your own time with limited or no supervision—hitting the ground running to take charge of the position.</li>
-			<li><strong>Communication &amp; Networking:</strong> Strong written and verbal communication skills; ability to network and build strong relationships with senior personnel.</li>
-			<li><strong>Organizational Skills:</strong> Exceptional organizational skills and an elite attention to detail.</li>
-			<li><strong>Mindset:</strong> A "no task is too small" attitude combined with the strategic mindset needed to anticipate executive needs.</li>
-		</ul>
+		<p>Design, implement, and operate backend services, infrastructure, APIs, and integrations that form the core of Cloudflare's internal support and admin platform, built to scale with the demands of a large, globally distributed organization.</p>
+	</li>
+	<li>
+		<p>Partner with engineering teams across the company to onboard their support and admin applications onto the platform - understanding their requirements and ensuring smooth, well-governed, and scalable integration.</p>
+	</li>
+	<li>
+		<p>Work directly with non-engineering stakeholders - including Support, Legal, and Security teams - to understand their operational needs and translate them into reliable, maintainable, and appropriately scaled platform capabilities.</p>
+	</li>
+	<li>
+		<p>Own and continuously improve the platform's security and authorization posture, partnering with the Security and Legal team to ensure access control policies, governance requirements, and compliance standards are correctly implemented and enforced at scale.</p>
+	</li>
+	<li>
+		<p>Ramp quickly into unfamiliar and legacy codebases, build context across a wide range of Cloudflare systems, and make thoughtful improvements that reduce operational toil and improve platform reliability.</p>
+	</li>
+	<li>
+		<p>Participate in on-call rotations, respond to production incidents, and drive post-incident reviews to raise reliability and scalability standards across the platform.</p>
+	</li>
+	<li>
+		<p>Contribute to platform observability, developer experience, and engineering standards with broad impact across the teams that depend on this platform.</p>
 	</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>
+		<p>5+ years of professional experience building and operating production backend services at enterprise or large-scale organizations, with strong proficiency in Go and/or TypeScript.</p>
+	</li>
+	<li>
+		<p>Demonstrated experience in platform engineering, internal tooling, or support/admin systems — with direct experience supporting non-technical end users or customer-facing teams.</p>
+	</li>
+	<li>
+		<p>Strong understanding of authorization and authentication systems such as OAuth 2.0, OIDC, JWT, OPA/Rego, role-base access control, policy based-access or similar and a security-first approach to system design.</p>
+	</li>
+	<li>
+		<p>Proven scalability mindset — experience designing and operating systems that serve a large, diverse set of internal consumers with varying reliability and performance requirements.</p>
+	</li>
+	<li>
+		<p>Proven ability to work across organizational boundaries: comfortable engaging with engineering teams, Security, Legal, and non-technical operational stakeholders alike.</p>
+	</li>
+	<li>
+		<p>Confident working in unfamiliar and legacy codebases; able to ramp quickly, orient independently, and contribute incrementally without full context.</p>
+	</li>
+	<li>
+		<p>Strong written and verbal communication — able to translate between technical implementation details and the business or operational needs of diverse stakeholders.</p>
+	</li>
+	<li>
+		<p>Advanced, hands-on experience with Kubernetes and Docker in production environments — including cluster operations, resource management, networking, and debugging containerized workloads.</p>
+	</li>
+	<li>
+		<p>Strong database experience — including schema design, query optimization, and operating databases in high-availability production environments.</p>
+	</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>
+		<p>Experience building or operating internal support tooling, admin consoles, case management systems, or operational dashboards used by non-engineering teams at enterprise scale.</p>
+	</li>
+	<li>
+		<p>Prior exposure to security governance workflows, compliance tooling, or partnering closely with a dedicated Security or Legal team on access control requirements.</p>
+	</li>
+	<li>
+		<p>Familiarity with Cloudflare's product ecosystem (Workers, Access, Zero Trust, Gateway) as either a user or implementer.</p>
+	</li>
+	<li>
+		<p>Experience with observability tooling and practices — including distributed tracing, structured logging, and metrics dashboards using tools such as Grafana, Kibana, Jaeger, or similar.</p>
+	</li>
+	<li>
+		<p>Experience with Terraform for infrastructure-as-code and GitLab CI/CD for automated build, test, and deployment pipelines.</p>
+	</li>
+	<li>
+		<p>Exposure to Temporal workflows or distributed workflow orchestration.</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
