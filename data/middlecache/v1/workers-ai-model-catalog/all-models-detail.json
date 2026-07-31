@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-07-30T04:33:48.710Z",
+	"generated_at": "2026-07-31T04:33:57.529Z",
 	"model_count": 210,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -234375,9 +234375,14 @@
 			"supports_async": false,
 			"hosting": "hosted",
 			"data_source": "legacy",
-			"properties": [],
+			"properties": [
+				{
+					"property_id": "beta",
+					"value": "true"
+				}
+			],
 			"metadata": {
-				"beta": false,
+				"beta": true,
 				"lora": false,
 				"function_calling": false,
 				"partner": false,
