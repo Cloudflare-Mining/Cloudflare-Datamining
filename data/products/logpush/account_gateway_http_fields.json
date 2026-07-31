@@ -25,6 +25,7 @@
 	"DownloadMatchedDlpProfiles": "array[string]; List of matched DLP profiles in the HTTP request.",
 	"DownloadedFileNames": "array[string]; List of files downloaded in the HTTP request.",
 	"Email": "string; Email used to authenticate the client.",
+	"ExperimentalFeatures": "object; List of experimental features, which will be either permanently added to the schema or marked for deprecation. In that case, they will be removed 3 months after the notice.",
 	"FileInfo": "object; Information about files detected within the HTTP request.",
 	"ForensicCopyStatus": "string; Status of any associated forensic copies that may have been captured during the request.",
 	"HTTPHost": "string; Content of the host header in the HTTP request.",
