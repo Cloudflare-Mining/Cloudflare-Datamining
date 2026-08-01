@@ -1,0 +1,205 @@
+<p>Debugging privacy-preserving protocols is hard. Oblivious HTTP has several different steps across four different parties, not to mention binary HTTP encoding and details spread across many draft RFCs. We've taken what we've learned operating protocols like Oblivious HTTP at the scale of millions of requests per second, and wrapped it up in a nice, clean CLI tool — that we are open-sourcing today.</p>
+<p>We call it our <strong>privacy-client</strong>, or <strong>pvcli</strong>. We’re releasing it under the Apache-2.0 License, and it is<a href="https://github.com/cloudflareresearch/pvcli" target="_blank" rel="noopener noreferrer"> <u>open for contributions</u></a>.</p>
+<p>Here’s a single line of code that executes a full Oblivious HTTP request with a relay, gateway and origin. Don't worry if you don't know what that means, we'll cover it below.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> --ohttp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   --first-hop</span><span class="sk-032f62-99ffe4"> https://relay-cloudflare.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   --proxy</span><span class="sk-032f62-99ffe4"> https://gateway.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   --header</span><span class="sk-032f62-99ffe4"> "content-type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   --data</span><span class="sk-032f62-99ffe4"> '{"test":1}'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   https://target.ohttp.info/anything</span></span></code></pre>
+</div>
+<p>We’ll explain why we built this tool, and show just how handy it can be.</p>
+<h3>Why privacy protocols can be hard to debug</h3>
+<p>Let’s take a closer look at our motivation for creating pvcli. Over time, the Privacy team’s product suite and customer base grew. We added products like Privacy Proxy and Privacy Gateway, which power Apple’s <a href="https://blog.cloudflare.com/icloud-private-relay" target="_blank" rel="noopener noreferrer"><u>Private Relay</u></a>, Microsoft’s <a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network" target="_blank" rel="noopener noreferrer"><u>Edge Secure Network VPN</u></a>, Flo Health’s <a href="https://www.cloudflare.com/case-studies/flo-health" target="_blank" rel="noopener noreferrer"><u>Anonymous Mode</u></a>, and more. With it came an increasing amount of special customer requirements, domain knowledge, and complexity. As a result, we saw increased friction in development and incident response.</p>
+<p>To see this in action, let’s look at how one of our products implements <a href="https://developers.cloudflare.com/privacy-gateway" target="_blank" rel="noopener noreferrer"><u>Oblivious HTTP</u></a>, also known as OHTTP. First, a quick primer. OHTTP provides users with a privacy guarantee: no one can know both <em>who</em> made a request and <em>what</em> they’re requesting. To achieve this, OHTTP requires two servers, a relay and a gateway, operated by two non-colluding parties.&nbsp;</p>
+<p>Below is a sequence diagram of OHTTP, where our customer owns the relay and Cloudflare owns the gateway. At a high level, OHTTP can be broken down into these steps:</p>
+<ol>
+	<li>Client gets public key from the gateway.</li>
+	<li>Client encrypts the request and sends it to the relay.</li>
+	<li>Relay removes “who” the client is from the encrypted request, and sends it to the gateway.</li>
+	<li>Gateway decrypts the request, and sends it to the target.</li>
+	<li>Target processes the request, and sends a response to the gateway.</li>
+	<li>Gateway encrypts the response, and sends it to the relay.</li>
+	<li>Relay sends the encrypted response to the client.</li>
+	<li>Client decrypts, and gets the plaintext response.</li>
+</ol>
+<p>It involves quite a bit of back-and-forth, as you can see:&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//z5//f09u3o8ujj9uzn+fLu9fLv7O3r//77//n1+O/r9Orm9+/r+/Xy9/Xz7u/t///+//z5+vLv9u7r+vPx/vn4+vj38fHw///////9/fb0+PLx/Pf3//79/fz89PT0//////////r5+/b2//v8////////9/f4//////////39/fn5//7/////////+fr7//////////////r7////////////+vv+//////////////v8////////////+/z/" alt="" width="715" height="639" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=715&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=640&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=715&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=750&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=828&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=1080&amp;h=965&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=1280&amp;h=1144&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=1430&amp;h=1278&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3291-diagram.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHJGDJ9FNGZ1NW6W47DAJ4R.png&amp;w=1920&amp;h=1717&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1717" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="639" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Each step is a potential point of failure that we have to consider while debugging!</p>
+<p>In particular, we saw certain kinds of problems when debugging OHTTP.</p>
+<ul>
+	<li>Customers asked for ways to test the live system from their end, and we often wrote one-off, custom clients for our customers specific deployments.</li>
+	<li>Figuring out which step caused an issue was time-consuming. Was the root cause a bug in our system or our customer’s system?</li>
+	<li>Examining raw bits was tedious and highly prone to human error. OHTTP builds on binary HTTP, which is a binary encoded HTTP request. Anytime we needed to check the binary encoding, we were painstakingly going through raw bits.</li>
+</ul>
+<p>As a result, we decided to place all of our privacy protocols in one tool. It has a clean interface that’s already familiar, displays every single step of the protocol in order, and is flexible enough to support new protocols and architectures.</p>
+<p>To see the difference this makes, let’s see an OHTTP debugging scenario — before and after pvcli.</p>
+<h3>Debugging without pvcli</h3>
+<p>Say we operate an OHTTP relay that sits in front of a customer's gateway. The customer has asked us to do an end-to-end test with a request:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">POST</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">anything </span><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Host</span><span class="sk-24292e-fff">: target.ohttp.info</span></span>
+<span class="line"><span class="sk-24292e-fff">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Type</span><span class="sk-24292e-fff">: application</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">json</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-032f62-99ffe4">"test"</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Recall the OHTTP steps from earlier. The first step is to fetch the public key from the gateway. We use curl to fetch it from the customer gateway and get this back:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">0029550020b9bb667e2230dc01c6d6cc047f94a1083beb185c63e50ec09f7692a5a083254000040001000104a9280041c8321a49d6196fc82c05f48dc7a8c6fc24b15b60ae2685ca17810fc3b5424ee70265149236f254b832bf1f333fb899aac62709839a5aae3363f3133c35213323db18a9a490edb0a9f76728af0206e5754bdae82270b7978fc3226c015344f20b60dba799d6c9695a60ca16bf675625b6071f6cac844e08968a0970ec63cc8c6a900af2ca2eb279cc5248c3f09ed5140f9e3aa0a7b055adfa862e1552c5656e2691c2378442d2131ed5b863e9183fb161821ee0c923ec51b7864df068ca2b5470590736a6e01ae2194e84c46165b25d082b9df2d15ac1da785081c899166bb93a8c0865938380aa2012a26d745320b4c7e5a941eb8976a4534ac2cc9c9c99ccb5403dbe480d032ba4ca8a116564...[SNIP]</span></span></code></pre>
+</div>
+<p>That’s a big binary string in hex. To make sense of it, we look at OHTTP <a href="https://www.rfc-editor.org/rfc/rfc9458#name-key-configuration-encoding" target="_blank" rel="noopener noreferrer"><u>RFC 9458 §3</u></a> and parse it manually:</p>
+<ul>
+	<li><code>0029</code> is 41 in decimal, telling us this public key entry has 41 bytes associated with it.</li>
+	<li><code>55</code> is the public key ID.</li>
+	<li><code>0020</code> identifies the asymmetric encryption method we can use. In this case, DHKEM(X25519, HKDF-SHA256).</li>
+	<li><code>b9bb667e2230dc01c6d6cc047f94a1083beb185c63e50ec09f7692a5a0832540</code>&nbsp;is the public key.</li>
+	<li><code>0004</code> tells us there are 4 bytes of symmetric cryptographic IDs that follow.</li>
+	<li><code>0001</code> and <code>0001</code> identify the symmetric encryption methods we can use: HKDF-SHA256 and AES-128-GCM.</li>
+</ul>
+<p>We repeat this process for however many public keys are in the binary string.</p>
+<p>Next, we convert our original HTTP request into binary HTTP, referencing <a href="https://www.rfc-editor.org/rfc/rfc9292" target="_blank" rel="noopener noreferrer"><u>RFC 9292</u></a>. We manually craft the binary with the help of some bespoke scripts:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">0204504f5354056874747073117461726765742e6f687474702e696e666f092f616e797468696e670c636f6e74656e742d74797065106170706c69636174696f6e2f6a736f6e0a757365722d6167656e740c6665727265742f302e312e30000a7b2274657374223a317d2000</span></span></code></pre>
+</div>
+<p>We verify each field:</p>
+<ul>
+	<li><code>02</code> means it's an indeterminate-length request</li>
+	<li><code>04504f5354</code> is <code>POST</code></li>
+	<li><code>056874747073</code> is https</li>
+	<li><code>117461726765742e6f687474702e696e666f</code> is <code>target.ohttp.info</code></li>
+	<li>and so on</li>
+</ul>
+<p>Finally, we form a wrapper HTTP request that will hold our OHTTP request. To do so, we spend some more time writing another makeshift script that encrypts the binary HTTP request in the manner OHTTP specifies, using the public key from earlier. We create a header, which is the concatenation of public key ID, asymmetric encryption method ID, and symmetric encryption method IDs. Then, we concatenate header and encrypted binary HTTP request, resulting in:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">5500200001000164f03cef18f625f1dcd9fb26aa802081196bd6d7ba225bf60d3ba65f4f669d59f22d4d37dfd1e45ac9d5097bd7d8e186576ebff850509b5708fe1dbe4c88a7b93b95d153ee203382979063603fb1759bcc41049ac40950f80564de9d45fe8aa4e24259e313da4768b469bbb03037b9b0c34ae5f1b65dea09b8d25f2d5bb4833b68d516a3b19f0265841d5f23a11e74a8d17a04b616e888dd60f147</span></span></code></pre>
+</div>
+<p>We put those bytes into the body of our wrapper HTTP request, and send it to our relay. We get back a response.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">malformed</span><span class="sk-032f62-99ffe4"> request</span></span></code></pre>
+</div>
+<p>What does that mean? We reach out to the customer to ask if they can share logs from their gateway. In the meantime, we double-check the bits we've crafted. The decoded public keys look fine. The binary HTTP request... Oh! We see:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">..</span><span class="sk-032f62-99ffe4">.0a</span><span class="sk-032f62-99ffe4"> 7b2274657374223a317d</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-</span><span class="sk-032f62-99ffe4"> spaces</span><span class="sk-032f62-99ffe4"> added</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> human</span><span class="sk-032f62-99ffe4"> readability</span></span></code></pre>
+</div>
+<p>BHTTP is length prefixed. That means we specify a length (0x0a is 10 in decimal), and then 10 bytes follow. But here, 11 bytes follow. There is an extra 20 before the 00. 20 represents a space character, so we must have accidentally added that when building the body. We remove the extra character, resend, and it works!</p>
+<h3>Debugging with pvcli</h3>
+<p>With pvcli, all of that is now a single command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> -vvv</span><span class="sk-005cc5-99ffe4"> --ohttp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop</span><span class="sk-032f62-99ffe4"> https://relay-cloudflare.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --proxy</span><span class="sk-032f62-99ffe4"> https://gateway.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --header</span><span class="sk-032f62-99ffe4"> "content-type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --data</span><span class="sk-032f62-99ffe4"> '{"test":1}'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    https://target.ohttp.info/anything</span></span></code></pre>
+</div>
+<p>It handles all the binary parsing and encrypting for us, and prints logs in case we want to dive deeper:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TRCE</span><span class="sk-032f62-99ffe4"> Full</span><span class="sk-032f62-99ffe4"> decoded</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> config:</span><span class="sk-032f62-99ffe4"> ClientConfig</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> key_configs:</span><span class="sk-24292e-fff"> [KeyConfig </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  key_id:</span><span class="sk-032f62-99ffe4"> 85,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  key:</span><span class="sk-032f62-99ffe4"> PublicKey</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> kem_id:</span><span class="sk-032f62-99ffe4"> X25519HkdfSha256,</span><span class="sk-032f62-99ffe4"> bytes:</span><span class="sk-032f62-99ffe4"> b9bb667e...0832540</span><span class="sk-032f62-99ffe4"> },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  symmetric_algorithms:</span><span class="sk-24292e-fff"> [(HkdfSha256, </span><span class="sk-032f62-99ffe4">AesGcm128</span><span class="sk-24292e-fff">)] },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  ...</span></span>
+<span class="line"><span class="sk-24292e-fff">] }</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBG</span><span class="sk-032f62-99ffe4"> Creating</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> https://target.ohttp.info/anything</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBG</span><span class="sk-032f62-99ffe4"> Parsed</span><span class="sk-032f62-99ffe4"> URI:</span><span class="sk-032f62-99ffe4"> scheme:</span><span class="sk-032f62-99ffe4"> Some</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"https"</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> host:</span><span class="sk-032f62-99ffe4"> Some</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"target.ohttp.info"</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> port:</span><span class="sk-032f62-99ffe4"> None,</span><span class="sk-032f62-99ffe4"> path:</span><span class="sk-032f62-99ffe4"> /anything</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">TRCE</span><span class="sk-032f62-99ffe4"> Building</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> headers:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"content-type: application/json"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"User-Agent:pvcli/0.1.0"],</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4"> Some</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">b</span><span class="sk-6f42c1-ffc799">"{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">test</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:1}"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">TRCE</span><span class="sk-032f62-99ffe4"> BHTTP</span><span class="sk-032f62-99ffe4"> encoded</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> bytes,</span><span class="sk-032f62-99ffe4"> hex:</span><span class="sk-032f62-99ffe4"> 0204504f5354056874747073117461726765742e6f687474702e696e666f092f616e797468696e670c636f6e74656e742d74797065106170706c69636174696f6e2f6a736f6e0a757365722d6167656e740b7076636c692f302e312e30000a7b2274657374223a317d00</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">TRCE</span><span class="sk-032f62-99ffe4"> Encrypted</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> bytes,</span><span class="sk-032f62-99ffe4"> hex:</span><span class="sk-032f62-99ffe4"> 5500200001000164f03cef18f625f1dcd9fb26aa802081196bd6d7ba225bf60d3ba65f4f669d59f22d4d37dfd1e45ac9d5097bd7d8e186576ebff850509b5708fe1dbe4c88a7b93b95d153ee203382979063603fb1759bcc41049ac40950f80564de9d45fe8aa4e24259e313da4768b469bbb03037b9b0c34ae5f1b65dea09b8d25f2d5bb4833b68d516a3b19f0265841d5f23a11e74a8d17a04b616e888dd60f147</span></span></code></pre>
+</div>
+<p>What used to be a fragile process — involving manipulating bits, gluing together scripts, and referencing long RFCs — is now one command.</p>
+<h3>What pvcli can do</h3>
+<p>To install:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># install rust if not already installed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://sh.rustup.rs</span><span class="sk-005cc5-99ffe4"> -sSf</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sh</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># install pvcli</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cargo</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --git</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflareresearch/pvcli</span></span></code></pre>
+</div>
+<p>pvcli takes a lot of inspiration from curl. We designed it with the “principle of least surprise” in mind. As a result, a lot of the arguments are the same as curl’s! Try a quick GET request to our <a href="https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint" target="_blank" rel="noopener noreferrer"><u>cdn-cgi endpoint</u></a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-032f62-99ffe4"> https://cloudflare.com/cdn-cgi/trace</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> --http3</span><span class="sk-032f62-99ffe4"> https://cloudflare.com/cdn-cgi/trace</span></span></code></pre>
+</div>
+<p>If you’re curious about what is happening under the hood, you can use <code>-v</code> to get detailed logs:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># more logs</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> --http3</span><span class="sk-032f62-99ffe4"> https://cloudflare.com/cdn-cgi/trace</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># even more logs</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> -vvv</span><span class="sk-005cc5-99ffe4"> --http3</span><span class="sk-032f62-99ffe4"> https://cloudflare.com/cdn-cgi/trace</span></span></code></pre>
+</div>
+<p>Now, about that OHTTP command from earlier: you use --ohttp to tell pvcli to construct an OHTTP request. You pass in the relay as the --first-hop and the gateway as the --proxy. The target will be an echo server, so you can see what the target would see. In this command, we filled in the arguments with a relay, gateway, and target from <a href="http://ohttp.info" target="_blank" rel="noopener noreferrer">ohttp.info</a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> -vvv</span><span class="sk-005cc5-99ffe4"> --ohttp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop</span><span class="sk-032f62-99ffe4"> https://relay-cloudflare.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --proxy</span><span class="sk-032f62-99ffe4"> https://gateway.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --header</span><span class="sk-032f62-99ffe4"> "content-type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --data</span><span class="sk-032f62-99ffe4"> '{"test":1}'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    https://target.ohttp.info/anything</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># abridged output below</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "request"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "method"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "POST",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "url"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://target.ohttp.info/anything",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "headers"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "content-length"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "10",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "content-type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "application/json",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "user-agent"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "pvcli/0.1.0",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "x-ohttp-gateway"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "true"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "body"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "test"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "cf"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "ip"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Unknown",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "country"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Unknown",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "colo"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Unknown",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "asn"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Unknown",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "asOrganization"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Unknown"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Hello from Lilo's OHTTP target!",</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>Try running the command yourself!</p>
+<p>We’ve encountered many cases where we wanted to pass headers to the relay, rather than the target. You are able to do that with <code>--first-hop-header</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> -vvv</span><span class="sk-005cc5-99ffe4"> --ohttp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop</span><span class="sk-032f62-99ffe4"> https://relay-cloudflare.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop-header</span><span class="sk-032f62-99ffe4"> "authorization: Bearer relay-token"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --proxy</span><span class="sk-032f62-99ffe4"> https://gateway.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --header</span><span class="sk-032f62-99ffe4"> "content-type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --data</span><span class="sk-032f62-99ffe4"> '{"test":1}'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    https://target.ohttp.info/anything</span></span></code></pre>
+</div>
+<p>Similarly, we’ve also had cases where we wanted to authenticate to the relay with <a href="https://www.cloudflare.com/learning/access-management/what-is-mutual-tls" target="_blank" rel="noopener noreferrer"><u>mTLS</u></a>, to ensure that the correct client is talking with the correct relay. To do that, you can use <code>--first-hop-client</code> and <code>--first-hop-key</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pvcli</span><span class="sk-005cc5-99ffe4"> -vvv</span><span class="sk-005cc5-99ffe4"> --ohttp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop</span><span class="sk-032f62-99ffe4"> https://relay-cloudflare.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop-client</span><span class="sk-032f62-99ffe4"> ./relay-client.pem</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --first-hop-key</span><span class="sk-032f62-99ffe4"> ./relay-client.key</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --proxy</span><span class="sk-032f62-99ffe4"> https://gateway.ohttp.info</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --header</span><span class="sk-032f62-99ffe4"> "content-type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --data</span><span class="sk-032f62-99ffe4"> '{"test":1}'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    https://target.ohttp.info/anything</span></span></code></pre>
+</div>
+<p>And it just works. Need to test a full Oblivious HTTP request with a relay, a gateway, arbitrary headers, and mTLS? Or perhaps only request through a gateway? Or maybe you just want to see the OHTTP key configuration? pvcli can do it with a single command, debugging included.</p>
+<h3>Why build our own tool?</h3>
+<p>There are some great tools for OHTTP that already exist. Martin Thomson’s <a href="https://github.com/martinthomson/ohttp" target="_blank" rel="noopener noreferrer"><u>Rust implementation</u></a> and Chris Wood’s <a href="https://github.com/chris-wood/ohttp-go" target="_blank" rel="noopener noreferrer"><u>Go implementation</u></a> were incredibly helpful when we built out our original OHTTP implementation a few years ago. But pvcli is not only focused on OHTTP. We’re looking to add as many privacy-preserving protocols as we can to the tool. So while there are other OSS tools out there for debugging OHTTP, nothing combines OHTTP, CONNECT proxying, MASQUE and Privacy Pass (coming soon) all in one place.</p>
+<h3>Contribute to pvcli</h3>
+<p>Oblivious HTTP is an amazing protocol, and we would love to see you use it. We hope that this tool helps people debug OHTTP and write their own OHTTP implementations.&nbsp;</p>
+<p>We are accepting contributions! To get started, clone the repo at <a href="https://github.com/cloudflareresearch/pvcli" target="_blank" rel="noopener noreferrer"><u>https://github.com/cloudflareresearch/pvcli</u></a>, and submit a pull request.&nbsp;</p>
+<p>If you're looking for ways to contribute, here are some things on our to-do list. For MASQUE, we plan to add support for proxying TCP over HTTP/3, and UDP and/or IP over HTTP/2 and HTTP/3. For OHTTP, we plan to support post-quantum cryptography, add timing/latency information, support Chunked OHTTP, and improve logging.</p>
+<p><a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank" rel="noopener noreferrer"><u>Contact us</u></a> if you are interested in using Cloudflare’s OHTTP Relays and Gateways.</p>

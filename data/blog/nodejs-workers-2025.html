@@ -1,132 +1,87 @@
 <p>We've been busy.</p>
 <p>Compatibility with the broad JavaScript developer ecosystem has always been a key strategic investment for us. We believe in open standards and an open web. We want you to see <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> as a powerful extension of your development platform with the ability to just drop code in that Just Works. To deliver on this goal, the Cloudflare Workers team has spent the past year significantly expanding compatibility with the Node.js ecosystem, enabling hundreds (if not thousands) of popular <a href="https://npmjs.com" target="_blank" rel="noopener noreferrer"><u>npm</u></a> modules to now work seamlessly, including the ever popular <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>express</u></a> framework.</p>
 <p>We have implemented a <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>substantial subset of the Node.js standard library</u></a>, focusing on the most commonly used, and asked for, APIs. These include:</p>
-<div id="html-block-ki" class="html-block">
-	<style>
-		#html-block-ki .tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			margin: 0px auto;
-		}
-
-		#html-block-ki .tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-ki .tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-ki .tg .tg-fgy3 {
-			font-family: "Courier New", Courier, monospace;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-ki .tg .tg-akbm {
-			font-weight: bold;
-			text-align: left;
-			text-decoration: underline;
-			vertical-align: top
-		}
-
-		#html-block-ki .tg .tg-z2pc {
-			background-color: #0FF;
-			font-family: "Courier New", Courier, monospace;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-ki .tg .tg-wu3h {
-			background-color: #0FF;
-			color: #15C;
-			text-align: left;
-			text-decoration: underline;
-			vertical-align: top
-		}
-
-		#html-block-ki .tg .tg-zb5k {
-			color: #15C;
-			text-align: left;
-			text-decoration: underline;
-			vertical-align: top
-		}
-	</style>
-	<div class="tg-wrap">
-		<table class="tg">
-			<colgroup>
-				<col style="width:140.88889px">
-				<col style="width:317.88889px">
-			</colgroup>
-			<thead>
-				<tr>
-					<th class="tg-akbm"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#000;background-color:transparent">Module</span></th>
-					<th class="tg-akbm"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#000;background-color:transparent">API documentation</span></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:console</span></td>
-					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/console.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/console.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:crypto</span></td>
-					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/crypto.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/crypto.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:dns</span></td>
-					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/dns.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/dns.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:fs</span></td>
-					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/fs.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/fs.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:http</span></td>
-					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/http.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/http.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:https</span></td>
-					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/https.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/https.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:net</span></td>
-					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/net.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/net.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:process</span></td>
-					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/process.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/process.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:timers</span></td>
-					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/timers.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/timers.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:tls</span></td>
-					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/tls.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/tls.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:zlib</span></td>
-					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/zlib.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/zlib.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div id="html-block-e0snuekds" class="html-block">
+	<table>
+		<colgroup>
+			<col style="width:140.88889px">
+			<col style="width:317.88889px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>Module</th>
+				<th>API documentation</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="font-mono">node:console</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/console.html">https://nodejs.org/docs/latest/api/console.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:crypto</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/crypto.html">https://nodejs.org/docs/latest/api/crypto.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:dns</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/dns.html">https://nodejs.org/docs/latest/api/dns.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:fs</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/fs.html">https://nodejs.org/docs/latest/api/fs.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:http</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/http.html">https://nodejs.org/docs/latest/api/http.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:https</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/https.html">https://nodejs.org/docs/latest/api/https.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:net</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/net.html">https://nodejs.org/docs/latest/api/net.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:process</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/process.html">https://nodejs.org/docs/latest/api/process.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:timers</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/timers.html">https://nodejs.org/docs/latest/api/timers.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:tls</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/tls.html">https://nodejs.org/docs/latest/api/tls.html</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="font-mono">node:zlib</td>
+				<td>
+					<a href="https://nodejs.org/docs/latest/api/zlib.html">https://nodejs.org/docs/latest/api/zlib.html</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <p>Each of these has been carefully implemented to approximate Node.js' behavior as closely as possible where feasible. Where matching <a href="http://nodejs.org" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a>' behavior is not possible, our implementations will throw a clear error when called, rather than silently failing or not being present at all. This ensures that packages that check for the presence of these APIs will not break, even if the functionality is not available.</p>
 <p>In some cases, we had to implement entirely new capabilities within the runtime in order to provide the necessary functionality. For <code>node:fs</code>, we added a new virtual file system within the Workers environment. In other cases, such as with <code>node:net</code>, <code>node:tls</code>, and <code>node:http</code>, we wrapped the new Node.js APIs around existing Workers capabilities such as the <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer"><u>Sockets API</u></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code><u>fetch</u></code></a>.</p>
@@ -432,112 +387,58 @@
 </div>
 <p><strong>The compatibility date here is key! Update that to the most current date, and you'll always be able to take advantage of the latest and greatest features.</strong></p>
 <p>The <code>nodejs_compat</code> flag is an umbrella flag that enables all the Node.js compatibility features at once. This is the recommended way to enable Node.js compatibility, as it ensures that all features are available and work together seamlessly. However, if you prefer, you can also enable or disable some features individually via their own compatibility flags:</p>
-<div id="html-block-kd0" class="html-block">
-	<style>
-		#html-block-kd0 .tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			margin: 0px auto;
-		}
-
-		#html-block-kd0 .tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-kd0 .tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-kd0 .tg .tg-fgy3 {
-			font-family: "Courier New", Courier, monospace;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-kd0 .tg .tg-u0qz {
-			font-family: Arial, Helvetica, sans-serif;
-			font-size: x-large;
-			font-weight: bold;
-			text-align: left;
-			text-decoration: underline;
-			vertical-align: top
-		}
-
-		#html-block-kd0 .tg .tg-z2pc {
-			background-color: #0FF;
-			font-family: "Courier New", Courier, monospace;
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<div class="tg-wrap">
-		<table class="tg">
-			<thead>
-				<tr>
-					<th class="tg-u0qz"><span style="font-style:normal;color:#000;background-color:transparent">Module</span></th>
-					<th class="tg-u0qz"><span style="font-style:normal;color:#000;background-color:transparent">Enable Flag (default)</span></th>
-					<th class="tg-u0qz"><span style="font-style:normal;color:#000;background-color:transparent">Disable Flag</span></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:console</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_console_module</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_console_module</span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:fs</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_fs_module</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_fs_module</span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:http (client)</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_http_modules</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_http_modules</span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:http (server)</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_http_server_modules</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_http_server_modules</span></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:os</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_os_module</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_os_module</span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:process</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_process_v2</span></td>
-					<td class="tg-fgy3"></td>
-				</tr>
-				<tr>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:zlib</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nodejs_zlib</span></td>
-					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no_nodejs_zlib</span></td>
-				</tr>
-				<tr>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">process.env</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nodejs_compat_populate_process_env</span></td>
-					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nodejs_compat_do_not_populate_process_env</span></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div id="html-block-5euclphqw" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Module</th>
+				<th>Enable Flag (default)</th>
+				<th>Disable Flag</th>
+			</tr>
+		</thead>
+		<tbody class="font-mono">
+			<tr>
+				<td>node:console</td>
+				<td>enable_nodejs_console_module</td>
+				<td>disable_nodejs_console_module</td>
+			</tr>
+			<tr>
+				<td>node:fs</td>
+				<td>enable_nodejs_fs_module</td>
+				<td>disable_nodejs_fs_module</td>
+			</tr>
+			<tr>
+				<td>node:http (client)</td>
+				<td>enable_nodejs_http_modules</td>
+				<td>disable_nodejs_http_modules</td>
+			</tr>
+			<tr>
+				<td>node:http (server)</td>
+				<td>enable_nodejs_http_server_modules</td>
+				<td>disable_nodejs_http_server_modules</td>
+			</tr>
+			<tr>
+				<td>node:os</td>
+				<td>enable_nodejs_os_module</td>
+				<td>disable_nodejs_os_module</td>
+			</tr>
+			<tr>
+				<td>node:process</td>
+				<td>enable_nodejs_process_v2</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>node:zlib</td>
+				<td>nodejs_zlib</td>
+				<td>no_nodejs_zlib</td>
+			</tr>
+			<tr>
+				<td>process.env</td>
+				<td>nodejs_compat_populate_process_env</td>
+				<td>nodejs_compat_do_not_populate_process_env</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <p>By separating these features, you can have more granular control over which Node.js APIs are available in your Workers. At first, we had started rolling out these features under the one <code>nodejs_compat</code> flag, but we quickly realized that some users perform feature detection based on the presence of certain modules and APIs and that by enabling everything all at once we were risking breaking some existing Workers. Users who are checking for the existence of these APIs manually can ensure new changes don’t break their workers by opting out of specific APIs:</p>
 <div class="emdash-code">
@@ -581,146 +482,65 @@
 <p>If you look at the date for <code>remove_nodejs_compat_eol_v23</code> you'll notice that it is the same as the date for <code>remove_nodejs_compat_eol_v24</code>. That is not a typo! Node.js v23 is not an LTS release, and as such it has a very short support window. It was released in October 2023 and reached EOL in May 2024. Accordingly, we have decided to group the end-of-life handling of non-LTS releases into the next LTS release. This means that when you set your compatibility date to a date after the EOL date for Node.js v24, you will also be opting out of the APIs that reached EOL in Node.js v23. Importantly, these flags will not be automatically enabled until your compatibility date is set to a date after the relevant Node.js version's EOL date, ensuring that existing Workers will have plenty of time to migrate before any APIs are removed, or can choose to just simply keep using the older APIs indefinitely by using the reverse compatibility flags like <code>add_nodejs_compat_eol_v24</code>.</p>
 <h2>Giving back</h2>
 <p>One other important bit of work that we have been doing is expanding Cloudflare's investment back into the Node.js ecosystem as a whole. There are now five members of the Workers runtime team (plus one summer intern) that are actively contributing to the <a href="https://github.com/nodejs/node" target="_blank" rel="noopener noreferrer"><u>Node.js project</u></a> on GitHub, two of which are members of Node.js' Technical Steering Committee. While we have made a number of new feature contributions such as an implementation of the Web Platform Standard <a href="https://blog.cloudflare.com/improving-web-standards-urlpattern" target="_blank" rel="noopener noreferrer"><u>URLPattern</u></a> API and improved implementation of <a href="https://github.com/nodejs/ncrypto" target="_blank" rel="noopener noreferrer"><u>crypto</u></a> operations, our primary focus has been on improving the ability for other runtimes to interoperate and be compatible with Node.js, fixing critical bugs, and improving performance. As we continue to grow our efforts around Node.js compatibility we will also grow our contributions back to the project and ecosystem as a whole.</p>
-<div id="html-block-kew" class="html-block">
-	<style>
-		#html-block-kew .tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-			margin: 0px auto;
-		}
-
-		#html-block-kew .tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-kew .tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-kew .tg .tg-1wig {
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-kew .tg .tg-12li {
-			background-color: #0FF;
-			font-size: 100%;
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-kew .tg .tg-t978 {
-			background-color: #0FF;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-kew .tg .tg-wu3h {
-			background-color: #0FF;
-			color: #15C;
-			text-align: left;
-			text-decoration: underline;
-			vertical-align: top
-		}
-
-		#html-block-kew .tg .tg-0lax {
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-kew .tg .tg-zb5k {
-			color: #15C;
-			text-align: left;
-			text-decoration: underline;
-			vertical-align: top
-		}
-
-		#html-block-kew .tg .tg-lvtv {
-			background-color: #0FF;
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<div class="tg-wrap">
-		<table class="tg">
-			<thead>
-				<tr>
-					<th class="tg-12li" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aaron Snell</span></th>
-					<th class="tg-t978" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 Summer Intern, Cloudflare Containers</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js Web Infrastructure Team</span></th>
-					<th class="tg-t978" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/2ud1DF6HOI3ha2ySAhPOve/803132cf224695a48698afb806bf147b/Aaron.png?h=250" alt="Image" width="85" height="85"></th>
-				</tr>
-				<tr>
-					<th class="tg-t978"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></th>
-					<th class="tg-wu3h"><a href="https://github.com/flakey5"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">flakey5</span></a></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="tg-1wig" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dario Piotrowicz</span></td>
-					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Senior System Engineer</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js Collaborator</span></td>
-					<td class="tg-0lax" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4K17bsjek1z4u2KRTtZ8uS/d7058dea515cb057a1727bcd01a0f5d2/Dario.png?h=250" alt="Image" width="85" height="85"></td>
-				</tr>
-				<tr>
-					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
-					<td class="tg-zb5k"><a href="https://github.com/dario-piotrowicz"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">dario-piotrowicz</span></a></td>
-				</tr>
-				<tr>
-					<td class="tg-lvtv" colspan="2"><span style="font-weight:700;font-style:normal">Guy Bedford</span></td>
-					<td class="tg-t978" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Principal Systems Engineer</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js Collaborator</span></td>
-					<td class="tg-t978" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/iYM8oWWSK89MesmQwctfc/4d86847238b1f10e18717771e2ad5ee8/Guy.png?h=250" alt="Image" width="85" height="85"></td>
-				</tr>
-				<tr>
-					<td class="tg-t978"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
-					<td class="tg-wu3h"><a href="https://github.com/guybedford"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">guybedford</span></a></td>
-				</tr>
-				<tr>
-					<td class="tg-1wig" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">James Snell</span></td>
-					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Principal Systems Engineer</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js TSC</span></td>
-					<td class="tg-0lax" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4vN2YAqsEBlSnWtXRM0pTT/5e9130753ed71933fc94bc2c634425f3/James.png?h=250" width="85" height="85" alt=""></td>
-				</tr>
-				<tr>
-					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
-					<td class="tg-zb5k"><a href="https://github.com/jasnell"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">jasnell</span></a></td>
-				</tr>
-				<tr>
-					<td class="tg-lvtv" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nicholas Paun</span></td>
-					<td class="tg-t978" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Systems Engineer</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js Contributor</span></td>
-					<td class="tg-t978" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4ePtfLAzk4pKYi4hU4dRLX/e4dcdfe86a4e54c4d02e356e2078d214/Nicholas.png?h=250" width="85" height="85" alt=""></td>
-				</tr>
-				<tr>
-					<td class="tg-t978"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
-					<td class="tg-wu3h"><a href="https://github.com/npaun"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">npaun</span></a></td>
-				</tr>
-				<tr>
-					<td class="tg-1wig" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yagiz Nizipli</span></td>
-					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Principal Systems Engineer</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js TSC</span></td>
-					<td class="tg-0lax" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nvpEqU0VHi3Se9fxJ5vE8/0f5628bc1756c7e3e363760be9c493ae/Yagiz.png?h=250" width="85" height="85" alt=""></td>
-				</tr>
-				<tr>
-					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
-					<td class="tg-zb5k"><a href="https://github.com/anonrig"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">anonrig</span></a></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div id="html-block-7pnm4e1y3" class="html-block">
+	<table>
+		<tbody>
+			<tr>
+				<th colspan="2">Aaron Snell</th>
+				<th rowspan="2">2025 Summer Intern, Cloudflare Containers<br>Node.js Web Infrastructure Team</th>
+				<th rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/2ud1DF6HOI3ha2ySAhPOve/803132cf224695a48698afb806bf147b/Aaron.png?h=250" alt="Image" width="85" height="85"></th>
+			</tr>
+			<tr>
+				<th><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></th>
+				<th><a href="https://github.com/flakey5">flakey5</a></th>
+			</tr>
+			<tr>
+				<td colspan="2">Dario Piotrowicz</td>
+				<td rowspan="2">Senior System Engineer#15C<br>Node.js Collaborator</td>
+				<td rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4K17bsjek1z4u2KRTtZ8uS/d7058dea515cb057a1727bcd01a0f5d2/Dario.png?h=250" alt="Image" width="85" height="85"></td>
+			</tr>
+			<tr>
+				<td><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
+				<td><a href="https://github.com/dario-piotrowicz">dario-piotrowicz</a></td>
+			</tr>
+			<tr>
+				<td colspan="2">Guy Bedford</td>
+				<td rowspan="2">Principal Systems Engineer<br>Node.js Collaborator</td>
+				<td rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/iYM8oWWSK89MesmQwctfc/4d86847238b1f10e18717771e2ad5ee8/Guy.png?h=250" alt="Image" width="85" height="85"></td>
+			</tr>
+			<tr>
+				<td><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
+				<td><a href="https://github.com/guybedford">guybedford</a></td>
+			</tr>
+			<tr>
+				<td colspan="2">James Snell</td>
+				<td rowspan="2">Principal Systems Engineer<br>Node.js TSC</td>
+				<td rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4vN2YAqsEBlSnWtXRM0pTT/5e9130753ed71933fc94bc2c634425f3/James.png?h=250" width="85" height="85" alt=""></td>
+			</tr>
+			<tr>
+				<td><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
+				<td><a href="https://github.com/jasnell">jasnell</a></td>
+			</tr>
+			<tr>
+				<td colspan="2">Nicholas Paun</td>
+				<td rowspan="2">Systems Engineer<br>Node.js Contributor</td>
+				<td rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4ePtfLAzk4pKYi4hU4dRLX/e4dcdfe86a4e54c4d02e356e2078d214/Nicholas.png?h=250" width="85" height="85" alt=""></td>
+			</tr>
+			<tr>
+				<td><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
+				<td><a href="https://github.com/npaun">npaun</a></td>
+			</tr>
+			<tr>
+				<td colspan="2">Yagiz Nizipli</td>
+				<td rowspan="2">Principal Systems Engineer<br>Node.js TSC</td>
+				<td rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nvpEqU0VHi3Se9fxJ5vE8/0f5628bc1756c7e3e363760be9c493ae/Yagiz.png?h=250" width="85" height="85" alt=""></td>
+			</tr>
+			<tr>
+				<td><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="Image" width="25" height="25"></td>
+				<td><a href="https://github.com/anonrig">anonrig</a></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <p>Cloudflare is also proud to continue supporting critical infrastructure for the Node.js project through its <a href="https://openjsf.org/blog/openjs-cloudflare-partnership" target="_blank" rel="noopener noreferrer"><u>ongoing strategic partnership</u></a> with the OpenJS Foundation, providing free access to the project to services such as Workers, R2, DNS, and more.</p>
 <h2>Give it a try!</h2>

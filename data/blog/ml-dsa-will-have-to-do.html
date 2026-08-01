@@ -8,14 +8,14 @@
 <p>Let’s have a look at the signature algorithms in detail. After that we’ll look at the timeline for their availability, and the reasons why we still need them.</p>
 <h2>The signature algorithms</h2>
 <p>In the table below, we compare the candidate signature algorithms that progressed to the third round (marked by 🤔), with classical algorithms vulnerable to quantum attack (marked by ❌), and the post-quantum algorithms that are already standardized ( ✅) or soon will be (📝). Each candidate proposes several variants. We list the most relevant variants to TLS, the protocol used to secure connections on the Internet. To explore all variants, check out <a href="https://thomwiggers.nl" target="_blank" rel="noopener noreferrer"><u>Thom Wigger</u></a>s' <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>signatures zoo</u></a>.</p>
-<div id="html-block-cr9srbh1k" class="html-block">
+<div id="html-block-bs67vc6ig" class="html-block">
 	<style>
-		#html-block-cr9srbh1k .tg {
+		#html-block-bs67vc6ig .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		#html-block-cr9srbh1k .tg td {
+		#html-block-bs67vc6ig .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -26,7 +26,7 @@
 			word-break: normal;
 		}
 
-		#html-block-cr9srbh1k .tg th {
+		#html-block-bs67vc6ig .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -38,57 +38,57 @@
 			word-break: normal;
 		}
 
-		#html-block-cr9srbh1k .tg .tg-9ojm {
+		#html-block-bs67vc6ig .tg .tg-9ojm {
 			background-color: #0F0;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-2z78 {
+		#html-block-bs67vc6ig .tg .tg-2z78 {
 			background-color: #0F0;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-y2nm {
+		#html-block-bs67vc6ig .tg .tg-y2nm {
 			background-color: #FFE400;
 			border-color: inherit;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-baqh {
+		#html-block-bs67vc6ig .tg .tg-baqh {
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-dov9 {
+		#html-block-bs67vc6ig .tg .tg-dov9 {
 			background-color: #FFE400;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-cvqw {
+		#html-block-bs67vc6ig .tg .tg-cvqw {
 			background-color: #F00;
 			color: #FFF;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-c3ow {
+		#html-block-bs67vc6ig .tg .tg-c3ow {
 			border-color: inherit;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-nbj5 {
+		#html-block-bs67vc6ig .tg .tg-nbj5 {
 			background-color: #FFF;
 			border-color: inherit;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-nq8s {
+		#html-block-bs67vc6ig .tg .tg-nq8s {
 			background-color: #ffffff;
 			border-color: inherit;
 			font-size: 16px;
@@ -97,66 +97,66 @@
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-7btt {
+		#html-block-bs67vc6ig .tg .tg-7btt {
 			border-color: inherit;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-amwm {
+		#html-block-bs67vc6ig .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-ocy3 {
+		#html-block-bs67vc6ig .tg .tg-ocy3 {
 			background-color: #0F0;
 			border-color: inherit;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-gdr6 {
+		#html-block-bs67vc6ig .tg .tg-gdr6 {
 			background-color: #FF0;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-w5hb {
+		#html-block-bs67vc6ig .tg .tg-w5hb {
 			background-color: #F90;
 			color: #FFF;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-ezr1 {
+		#html-block-bs67vc6ig .tg .tg-ezr1 {
 			background-color: #0F0;
 			border-color: inherit;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-hw7o {
+		#html-block-bs67vc6ig .tg .tg-hw7o {
 			background-color: #FF0;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-ez01 {
+		#html-block-bs67vc6ig .tg .tg-ez01 {
 			background-color: #F90;
 			color: #FFF;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-fcih {
+		#html-block-bs67vc6ig .tg .tg-fcih {
 			background-color: #C0FF00;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-cr9srbh1k .tg .tg-7yig {
+		#html-block-bs67vc6ig .tg .tg-7yig {
 			background-color: #FFF;
 			text-align: center;
 			vertical-align: top
@@ -668,7 +668,7 @@
 		</table>
 	</figure>
 </div>
-<p>A few more remarks on this table: Most candidates have multiple variants in every security level. We show the most relevant variants for TLS at the 128-bit security level, the gold standard for security. CPU times are taken from the <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>signatures zoo</u></a> in June 2026, which collected them from the round two submission documents and later advances. Candidates are allowed to make changes for the third round, which will influence these numbers. Some will improve (both in compute and size), whereas others will regress to counter new attacks. Check out the zoo for the latest numbers. We marked FN-DSA and SQIsign signing with a&nbsp; ⚠️️, as both are hard to implement in a fast and <a href="https://blog.cloudflare.com/kyber-isnt-broken/#side-channel-attacks" target="_blank" rel="noopener noreferrer"><u>timing side-channel secure</u></a> manner. LMS signing has a ⚠️, as secure LMS signing requires keeping state across signatures, and the listed signing time assumes a 32MB cache. The 128-24 variant of SLH-DSA is marked with a ⚠️️ as it’s meant to create fewer than 224 signatures.</p>
+<p>A few more remarks on this table: Most candidates have multiple variants in every security level. We show the most relevant variants for TLS at the 128-bit security level, the gold standard for security. CPU times are taken from the <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>signatures zoo</u></a> in June 2026, which collected them from the round two submission documents and later advances. Candidates are allowed to make changes for the third round, which will influence these numbers. Some will improve (both in compute and size), whereas others will regress to counter new attacks. Check out the zoo for the latest numbers. We marked FN-DSA and SQIsign signing with a&nbsp; ⚠️️, as both are hard to implement in a fast and <a href="https://blog.cloudflare.com/kyber-isnt-broken/#side-channel-attacks" target="_blank" rel="noopener noreferrer"><u>timing side-channel secure</u></a> manner. LMS signing has a ⚠️, as secure LMS signing requires keeping state across signatures, and the listed signing time assumes a 32MB cache. The 128-24 variant of SLH-DSA is marked with a ⚠️️ as it’s meant to create fewer than 2^24 signatures.</p>
 <h2>No "all-star" algorithm</h2>
 <p>One thing that stands out immediately is that the quantum-vulnerable elliptic curves signature algorithm Ed25519 is by far the best all-around choice (ignoring its quantum vulnerability): it has the best numbers in almost every single metric, including public key size, signature size, and signing time. It’s only beaten on verification time, but it’s more than fast enough for the vast majority of applications.</p>
 <p>This is quite different than the roster of post-quantum algorithms. Instead of a single "all-star" algorithm, we have roughly two categories of schemes: the "specialists" that approach our trusty elliptic curve signatures on some metrics, but are problematic on others, which make them great in the right deployment scenario. Then there are the “generalists”, such as ML-DSA, which don’t perform as well as elliptic curves on all metrics, but so far as downsides go, are pretty balanced.</p>
@@ -689,11 +689,13 @@
 <h3>UOV: tiny signatures / huge public keys</h3>
 <p><strong>UOV</strong> (unbalanced oil and vinegar) is a classic multivariate signature algorithm originally proposed in 1999. It has tiny signatures: only 96 bytes. The trade-off? A huge public key: 66kB. That wouldn’t help for a TLS server certificate, whose public key is transmitted over the wire when setting up a connection, but it would be a help for cases where the public key is predistributed.</p>
 <p>Let’s take the WebPKI as an example. A typical browser trusts about a hundred root certificates and 30 certificate transparency logs, whose public keys would add up to about 8MB when using UOV.</p>
-<figure class="emdash-image" data-astro-cid-cqt3p7qg=""><img src="/_emdash/api/media/file/undefined" alt="" loading="lazy" decoding="async" data-astro-cid-cqt3p7qg=""></figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////+vr48vPy7vHx7fP07PLz6+7v////////+fj48fDw7vDw7/T08PT07vDw////////+vf48O7v7/Dw8/b19Pf28fLy////////+/j58u/w8/Ly+Pn4+fv59fb1/////////vr79fHy9/b2/f79/f/++Pn4//////////7++vb2/fv7////////+/v6/////////////vr5//7//////////P38//////////////v7/////////////f39" alt="" width="715" height="779" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=715&amp;h=779&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=640&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=715&amp;h=779&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=750&amp;h=817&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=828&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1080&amp;h=1177&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1280&amp;h=1395&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1430&amp;h=1558&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The public keys and signatures in a typical TLS connection." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E2RMBD4SKQV2T6BTFFAV.png&amp;w=1164&amp;h=1268&amp;f=webp" data-lightbox-width="1164" data-lightbox-height="1268" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="779" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">The public keys and signatures in a typical TLS connection.</figcaption>
+</figure>
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
-<p><em>The public keys and signatures in a typical TLS connection.</em></p>
 <p>Since the root certificate is transmitted to clients out of band, one idea is to use a UOV signature there. But this is not a slam dunk; because of its size, a UOV root certificate would be impractical to be cross-signed where the root is used as an intermediate. At the same time, cross signs and intermediates become less attractive anyway with any larger post-quantum signatures. This encourages more root certificates to be included directly with clients. This would again favor UOV, but to a point: if the number of root certificates grows above a thousand, we’d be dealing with more than 66MB of key material, which would make up a substantial portion of the browsers’ download size (e.g., 90MB for Firefox 151.)</p>
-<h4>Multivariate security</h4>
+<p><strong>Multivariate security</strong></p>
 <p>What about the security? Over the years, many variants of UOV have been proposed that use some extra mathematical structure to reduce the size of the public key. These <em>structured multivariate</em> schemes have had a spotty track record with schemes such as <a href="https://eprint.iacr.org/2022/214" target="_blank" rel="noopener noreferrer"><u>Rainbow</u></a> and <a href="https://eprint.iacr.org/2021/1677" target="_blank" rel="noopener noreferrer"><u>GeMMS</u></a> being broken quite badly. It is important to distinguish these from UOV itself, whose security track record is much better, but not perfect.</p>
 <p>As with many cryptographic schemes, there were growing pains in the early years, as basic attacks and parametrization pitfalls were discovered. In fact, the “U” in UOV is a remnant of that: it stands for <em>unbalanced</em>, which is a fix to a parameter-setting mistake in the 1997 oil-and-vinegar scheme on which UOV is based: the original scheme had an equal number of <em>oil</em> and <em>vinegar </em>variables in the quadratic system of equations used as the public key, which turns out to allow for <a href="https://weizmann.elsevierpure.com/en/publications/cryptanalysis-of-the-oil-and-vinegar-signature-scheme-2" target="_blank" rel="noopener noreferrer"><u>an attack</u></a>. In case you’re curious about the colorful name: the system of equations contains vinegar x vinegar and oil x vinegar, but no oil x oil terms. It’s like vinaigrette with small separate oil droplets. Back to the history: from 2005 to 2020 was a quiet period for multivariate signatures: understanding of UOV grew, but there weren’t any new attacks on typical parameters.</p>
 <p>This changed in 2020 with the <a href="https://eprint.iacr.org/2020/1343.pdf" target="_blank" rel="noopener noreferrer"><u>discovery</u></a> of the <em>intersection attack</em> which built on the ideas of the original attack on balanced oil-and-vinegar. The intersection attack removes about 30 bits of security from a then-proposed 128-bit parameter set. A considerable blow, but not fatal: slightly adjusting parameters mitigates the attack completely, with minor increase in key and signature size.</p>
@@ -705,17 +707,17 @@
 <p>With respect to security, QR-UOV is the only multivariate scheme that did not have to adjust its original (round one) parameters in response to new attacks. This is somewhat surprising as any attack on UOV can also be applied to QR-UOV. The explanation is that the attacks do apply, but the natural parameters for QR-UOV happen to make them ineffective. On the other hand, there were already several attacks known that use the specific extra structure that QR-UOV adds: indeed, for some of the parameter sets, the structure-specific attacks are the best attacks. This should be contrasted with MAYO, where there is no known attack against the extra structure MAYO adds. (We’ll get back to MAYO and SNOVA later in this post.)</p>
 <p>Compared to last round, QR-UOV signing and verification time improved significantly, but it is still comparatively slow. All in all, QR-UOV is a hard sell: it adds exploitable structure to UOV without pushing key sizes down to general-purpose sizes.</p>
 <h3>Hash-based signatures</h3>
-<h4>Stateful hash-based signatures</h4>
+<p><strong>Stateful hash-based signatures</strong></p>
 <p>The very first standardized post-quantum signature algorithms are the stateful hash-based <a href="https://www.rfc-editor.org/rfc/rfc8554.html" target="_blank" rel="noopener noreferrer"><u>LMS, HSS</u></a> and <a href="https://datatracker.ietf.org/doc/html/rfc8391" target="_blank" rel="noopener noreferrer"><u>XMSS(MT)</u></a>. They have very small public keys, and for many parameter sets the signatures are much smaller than those of ML-DSA-44. To boot, their security is based on that of hashes, which are well-understood and already a cornerstone of cryptography. That makes hash-based signature algorithms a very conservative choice, and there is no need to hedge with higher security levels.</p>
 <p>So, what’s the catch?</p>
 <p>There are two. The big one is keeping the eponymous state. These stateful hash-based signature schemes are built out of one-time-signature keys which are collected into Merkle trees. The signer has to keep track of which one-time-signature keys have been used, which can be as simple as just a counter. If the signer mucks it up, though, and accidentally uses the same one-time-signature key twice on a different message, then anyone can <a href="https://eprint.iacr.org/2016/1042" target="_blank" rel="noopener noreferrer"><u>likely</u></a> use those two signatures to create their own signature on any message. You have to keep a lot in mind to keep the state correctly. Some considerations: you want to make sure that updates are written to storage before handing out the signature; you don’t want the old state to be restored from a backup; and you can’t export/import a private key from one place to another without agreeing on how to split or keep the state. The state is, as Adam Langley <a href="https://www.imperialviolet.org/2013/07/18/hashsig.html" target="_blank" rel="noopener noreferrer"><u>pointed out</u></a> several years ago, a huge foot-cannon.</p>
 <p>Another downside is that the most competitive parameter sets can only create a modest number of signatures. The 1,112 byte signatures (as listed in the table above) can only be used to create about a million signatures. You can explore the trade-offs with this <a href="https://westerbaan.name/~bas/hashcalc" target="_blank" rel="noopener noreferrer"><u>calculator</u></a>.</p>
 <p>Together this leaves a very small niche for stateful hash-based signatures: signers have to be able to keep state; signature size has to be a real concern; and signers have to be OK with a hard limit on the number of signatures.</p>
-<h4>SLH-DSA: conservative security / large and slow</h4>
+<p><strong>SLH-DSA: conservative security / large and slow</strong></p>
 <p><strong>SLH-DSA</strong> is a hash-based signature that doesn’t have the low signature limit and avoids the problem of keeping the state. The basic idea is to make the number of one-time-signature keys so large that you can pick one at random without having to worry about using the same one twice, since the chance of picking the same one twice is diminishingly small. SLH-DSA is a bit more efficient than that, by replacing the one-time-signature key as a building block with a few-time-signature key, where security degrades gracefully if keys are occasionally reused. It still comes at a cost. SLH-DSA has two variants, one that optimizes for small signature size, and one that optimizes for fast signing. The size-optimized one is not small at all at 8kB, and the signing-optimized one is even slower than SQIsign.</p>
-<h5>Fewer signature variants of SLH-DSA</h5>
+<p><strong>Fewer signature variants of SLH-DSA</strong></p>
 <p>NIST has <a href="https://csrc.nist.gov/pubs/sp/800/230/ipd" target="_blank" rel="noopener noreferrer"><u>proposed</u></a> to standardize an additional parameter set for SLH-DSA with much smaller signatures, but that can only be used to create about 16 million signatures before security reduces. At 3.8kB the signatures are still larger than those of ML-DSA-44, but the combined public key and signature size is very close. The parameter set was chosen to make signature verification fast at the cost of signing time. The signing time is very bad indeed.</p>
-<h5>Use cases</h5>
+<p><strong>Use cases</strong></p>
 <p>So why ever use SLH-DSA? The selling point is the conservative security. For a long-term trusted key that is hard to replace, it could make sense if the application can stomach the large signature and slow verification of the standardized variants or the slow signing time of the newly proposed one. There are two more caveats to add. First, it’s better to set things up so that key algorithms are not burned-in and can be replaced after the fact. And secondly, in most cases systems (such as secure connections with TLS) do not just depend on signatures, but also on key agreement. There is no hash-based key agreement mechanism, so we end up needing to trust something less conservative, like lattices, anyway.</p>
 <h3>FN-DSA: small key and signatures / subtle signing</h3>
 <p>Comparing the numbers, FN-DSA-512 (née Falcon) looks much better than ML-DSA-44 on almost every metric: faster verification, smaller public key, and much smaller signatures at 666 bytes. Signing is three times slower, but it’s still 25x faster than RSA-2048. To boot it’s already picked to become FIPS 206. So why don’t we consider FN-DSA to be a general-purpose algorithm?</p>
@@ -750,7 +752,9 @@
 <p>So what’s the difference except for the chosen hard problem? These schemes started off quite differently, but have been improving and converging since the first round. The proof system in MQOM is a bit simpler than FAEST, but it also does not perform as well: <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a> (FAEST+MQ) outperforms MQOM.</p>
 <p>Talking about performance, let’s start with a comparison to SLH-DSA. All three schemes have variants that outperform any standardised SLH-DSA parameter set and often by a good margin. SLH-DSA does have one distinct advantage: the verification routine is simpler to implement.</p>
 <p>Against ML-DSA-44 the comparison is more interesting. All schemes have a smooth trade-off between runtime and signature size. To illustrate, here are trade-offs <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>reported</u></a> for KuMQuat (FAEST+MQ.) Verification times are close to signing times.</p>
-<figure class="emdash-image" data-astro-cid-cqt3p7qg=""><img src="/_emdash/api/media/file/undefined" alt="" loading="lazy" decoding="async" data-astro-cid-cqt3p7qg=""></figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////9/j38/Px9PTy9vXz8fDv6Ojn////////+Pj38/Py9fXz+Pf29PTy6uvq////////+vn49fTz9/b1+vr59vf27u/u/////////Pv69/X1+fj3/Pz7+fr58fLx//////////79+fj3+/r5/f39+vv68/Tz/////////////Pv6/Pv7/v39+/v69PXz/////////////f38/fz8/v39+/r69PTz/////////////v79/v38/v39+/r59PTz" alt="" width="715" height="683" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=715&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=640&amp;h=611&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=715&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=750&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=828&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=1080&amp;h=1032&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=1280&amp;h=1223&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=1430&amp;h=1366&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXDA9RWV414GRFVJ1Y3TBY1Q.png&amp;w=764&amp;h=730&amp;f=webp" data-lightbox-width="764" data-lightbox-height="730" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="683" class="pt-portable-image-media"></div>
+</figure>
 <p>KuMQuat can be parametrized to have somewhat smaller signatures than ML-DSA-44 at the cost of long signing (and verification) runtime. At the other end, it can have similar signing time as ML-DSA-44, at the cost of larger signatures, although the public key+signature size is still similar.</p>
 <p>These schemes have improved quite a bit over the years, and we expect some improvements still. Although they won’t improve upon ML-DSA as dramatically as some of the other schemes considered, their conservative security and especially their potential for broader applications like anonymous credentials make them very appealing. To showcase the flexibility of the underlying zero-knowledge proof system, we’d like each scheme in this category to present numbers on how well they’d perform with a different underlying hard problem.</p>
 <h3>Structured multivariate: MAYO versus SNOVA</h3>

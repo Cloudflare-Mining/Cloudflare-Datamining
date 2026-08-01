@@ -45,139 +45,41 @@
 <h2>Performance improvements</h2>
 <p>After completing a large upgrade like this, it is always rewarding and illuminating to look at some broad metrics about the impact. We gathered additional metrics during the database migrations, and observed considerable performance improvements after the upgrade was complete.</p>
 <h3>Database</h3>
-<div id="html-block-k2q" class="html-block">
-	<style>
-		#html-block-k2q .tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		#html-block-k2q .tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-k2q .tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-k2q .tg .tg-1wig {
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-k2q .tg .tg-9uby {
-			background-color: #ffffff;
-			border-color: inherit;
-			font-size: 16px;
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-k2q .tg .tg-0lax {
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<table class="tg">
+<div id="html-block-6q8oxud04" class="html-block">
+	<table>
 		<colgroup>
 			<col style="width:350px">
 			<col style="width:350px">
 		</colgroup>
 		<thead>
 			<tr>
-				<th class="tg-9uby"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
-				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Approx. Value</span></th>
+				<th>Metric</th>
+				<th>Approx. Value</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rows updated</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">132.5M</span></td>
+				<td>Rows updated</td>
+				<td>132.5M</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rows inserted</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">114.7M</span></td>
+				<td>Rows inserted</td>
+				<td>114.7M</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Temp bytes</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">136.97GB</span></td>
+				<td>Temp bytes</td>
+				<td>136.97GB</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Transaction commits</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">22.2k</span></td>
+				<td>Transaction commits</td>
+				<td>22.2k</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
 <h3>Hydra performance</h3>
-<div id="html-block-k2t" class="html-block">
-	<style>
-		#html-block-k2t .tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		#html-block-k2t .tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-k2t .tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-k2t .tg .tg-1wig {
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-k2t .tg .tg-9uby {
-			background-color: #ffffff;
-			border-color: inherit;
-			font-size: 16px;
-			font-weight: bold;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-k2t .tg .tg-0lax {
-			text-align: left;
-			vertical-align: top
-		}
-	</style>
-	<table class="tg">
+<div id="html-block-x5dmywyy9" class="html-block">
+	<table>
 		<colgroup>
 			<col style="width:250px">
 			<col style="width:150px">
@@ -186,42 +88,42 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th class="tg-9uby"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric (avg)</span></th>
-				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Before</span></th>
-				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">After</span></th>
-				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Change</span></th>
+				<th>Metric (avg)</th>
+				<th>Before</th>
+				<th>After</th>
+				<th>Change</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">API P95</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">185ms</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">101ms</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-45%</span></td>
+				<td>API P95</td>
+				<td>185ms</td>
+				<td>101ms</td>
+				<td>-45%</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSS memory</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">888MB</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">763MB</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-14%</span></td>
+				<td>RSS memory</td>
+				<td>888MB</td>
+				<td>763MB</td>
+				<td>-14%</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Go heap alloc</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">449MB</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">271MB</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-40%</span></td>
+				<td>Go heap alloc</td>
+				<td>449MB</td>
+				<td>271MB</td>
+				<td>-40%</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Goroutines</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4015</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3076</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-23%</span></td>
+				<td>Goroutines</td>
+				<td>4015</td>
+				<td>3076</td>
+				<td>-23%</td>
 			</tr>
 			<tr>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CPU</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.07 cores</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.67 cores</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-37%</span></td>
+				<td>CPU</td>
+				<td>1.07 cores</td>
+				<td>0.67 cores</td>
+				<td>-37%37%</td>
 			</tr>
 		</tbody>
 	</table>
