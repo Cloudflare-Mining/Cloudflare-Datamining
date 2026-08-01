@@ -5,11 +5,20 @@ import Layout from '../layouts/Layout.astro';
 
 const importFiles = await Astro.glob('../../../data/registrar/_list.json');
 const registrar = importFiles[0].default;
-const formatter = new Intl.NumberFormat('en-US', {
-	style: 'currency',
-	currency: 'USD',
-	minimumFractionDigits: 2,
-});
+
+const formatters = new Map<string, Intl.NumberFormat>();
+const formatPrice = (value: number, currency: string) => {
+	let formatter = formatters.get(currency);
+	if (!formatter) {
+		formatter = new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency,
+			minimumFractionDigits: 2,
+		});
+		formatters.set(currency, formatter);
+	}
+	return formatter.format(value);
+};
 ---
 <Layout
 	title="Registrar - Cloudflare Datamining"
@@ -21,8 +30,8 @@ const formatter = new Intl.NumberFormat('en-US', {
 		data = {Object.keys(registrar).map(tld => (
 			[
 				tld,
-				formatter.format(registrar[tld].price),
-				formatter.format(registrar[tld].renewal),
+				formatPrice(registrar[tld].registration_cost, registrar[tld].currency),
+				formatPrice(registrar[tld].renewal_cost, registrar[tld].currency),
 			]
 		))}
 	></Table>

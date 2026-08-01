@@ -1,353 +1,409 @@
-| TLD           | ICANN fee | Price   | Renewal |
-| ------------- | --------- | ------- | ------- |
-| academy       |           | 25.18   | 25.18   |
-| accountant    |           | 20.16   | 20.16   |
-| accountants   |           | 75.18   | 75.18   |
-| actor         |           | 29.18   | 29.18   |
-| agency        |           | 18.18   | 18.18   |
-| apartments    |           | 40.18   | 40.18   |
-| app           |           | 12.18   | 12.18   |
-| associates    |           | 26.18   | 26.18   |
-| attorney      |           | 40.18   | 40.18   |
-| auction       |           | 23.18   | 23.18   |
-| band          |           | 20.18   | 20.18   |
-| bar           |           | 50.18   | 50.18   |
-| bargains      |           | 23.18   | 23.18   |
-| beer          |           | 22.18   | 22.18   |
-| bet           |           | 17.18   | 17.18   |
-| bid           |           | 4.16    | 5.16    |
-| bike          |           | 25.18   | 25.18   |
-| bingo         |           | 38.18   | 38.18   |
-| biz           |           | 15.18   | 15.18   |
-| black         |           | 42.68   | 42.68   |
-| blog          |           | 20.18   | 20.18   |
-| blue          |           | 15.18   | 15.18   |
-| boo           |           | 8.18    | 8.18    |
-| boston        |           | 10.18   | 10.18   |
-| boutique      |           | 23.18   | 23.18   |
-| broker        |           | 22.18   | 22.18   |
-| builders      |           | 25.18   | 25.18   |
-| business      |           | 9.18    | 9.18    |
-| cab           |           | 21.68   | 21.68   |
-| cafe          |           | 28.18   | 28.18   |
-| cam           |           | 14.18   | 14.18   |
-| camera        |           | 40.18   | 40.18   |
-| camp          |           | 38.18   | 38.18   |
-| capital       |           | 46.18   | 46.18   |
-| cards         |           | 25.18   | 25.18   |
-| care          |           | 27.18   | 27.18   |
-| careers       |           | 46.18   | 46.18   |
-| casa          |           | 7.68    | 7.68    |
-| cash          |           | 23.18   | 23.18   |
-| casino        |           | 110.18  | 110.18  |
-| catering      |           | 25.18   | 25.18   |
-| cc            |           | 8       | 8       |
-| center        |           | 17.18   | 17.18   |
-| ceo           |           | 70.18   | 70.18   |
-| channel       | 0.18      | 8       | 8       |
-| chat          |           | 25.18   | 25.18   |
-| cheap         |           | 23.18   | 23.18   |
-| church        |           | 28.18   | 28.18   |
-| city          |           | 17.18   | 17.18   |
-| claims        |           | 46.18   | 46.18   |
-| cleaning      |           | 42.18   | 42.18   |
-| clinic        |           | 42.18   | 42.18   |
-| clothing      |           | 23.18   | 23.18   |
-| cloud         |           | 15.18   | 15.18   |
-| club          |           | 12.18   | 12.18   |
-| co            |           | 24      | 24      |
-| co.uk         |           | 4.94    | 4.94    |
-| coach         |           | 42.18   | 42.18   |
-| codes         |           | 42.18   | 42.18   |
-| coffee        |           | 25.18   | 25.18   |
-| college       |           | 45.18   | 45.18   |
-| com.co        |           | 8       | 8       |
-| com           |           | 9.77    | 9.77    |
-| community     |           | 25.18   | 25.18   |
-| company       |           | 10.18   | 10.18   |
-| compare       |           | 22.18   | 22.18   |
-| computer      |           | 25.18   | 25.18   |
-| condos        |           | 38.18   | 38.18   |
-| construction  |           | 25.18   | 25.18   |
-| consulting    |           | 30.18   | 30.18   |
-| contact       |           | 9.18    | 9.18    |
-| contractors   |           | 23.18   | 23.18   |
-| cooking       |           | 22.18   | 22.18   |
-| cool          |           | 25.18   | 25.18   |
-| coupons       |           | 38.18   | 38.18   |
-| credit        |           | 75.18   | 75.18   |
-| creditcard    |           | 125.18  | 125.18  |
-| cricket       |           | 20.16   | 20.16   |
-| cruises       |           | 38.18   | 38.18   |
-| dad           |           | 10.18   | 10.18   |
-| dance         |           | 18.18   | 18.18   |
-| date          |           | 4.16    | 5.16    |
-| dating        |           | 42.18   | 42.18   |
-| day           |           | 8.18    | 8.18    |
-| deals         |           | 25.18   | 25.18   |
-| degree        |           | 32.18   | 32.18   |
-| delivery      |           | 38.18   | 38.18   |
-| democrat      |           | 23.18   | 23.18   |
-| dental        |           | 45.18   | 45.18   |
-| dentist       |           | 40.18   | 40.18   |
-| design        |           | 40.18   | 40.18   |
-| dev           |           | 10.18   | 10.18   |
-| diamonds      |           | 38.18   | 38.18   |
-| digital       |           | 27.18   | 27.18   |
-| direct        |           | 25.18   | 25.18   |
-| directory     |           | 17.18   | 17.18   |
-| discount      |           | 21.68   | 21.68   |
-| doctor        |           | 80.18   | 80.18   |
-| dog           |           | 41.18   | 41.18   |
-| domains       |           | 28.18   | 28.18   |
-| download      |           | 4.16    | 5.16    |
-| education     |           | 21.68   | 21.68   |
-| email         |           | 19.18   | 19.18   |
-| energy        |           | 75.18   | 75.18   |
-| engineer      |           | 25.18   | 25.18   |
-| engineering   |           | 42.18   | 42.18   |
-| enterprises   |           | 25.18   | 25.18   |
-| equipment     |           | 16.18   | 16.18   |
-| esq           |           | 20.18   | 20.18   |
-| estate        |           | 25.18   | 25.18   |
-| events        |           | 25.18   | 25.18   |
-| exchange      |           | 25.18   | 25.18   |
-| expert        |           | 42.18   | 42.18   |
-| exposed       |           | 14.18   | 14.18   |
-| express       |           | 25.18   | 25.18   |
-| fail          |           | 25.18   | 25.18   |
-| faith         |           | 10.16   | 10.16   |
-| family        |           | 23.18   | 23.18   |
-| fans          |           | 50.18   | 50.18   |
-| farm          |           | 25.18   | 25.18   |
-| fashion       |           | 22.18   | 22.18   |
-| finance       |           | 41.18   | 41.18   |
-| financial     |           | 38.18   | 38.18   |
-| fish          |           | 28.18   | 28.18   |
-| fishing       |           | 22.18   | 22.18   |
-| fit           |           | 22.18   | 22.18   |
-| fitness       |           | 25.18   | 25.18   |
-| flights       |           | 38.18   | 38.18   |
-| florist       |           | 23.18   | 23.18   |
-| fm            |           | 85      | 85      |
-| foo           |           | 10.18   | 10.18   |
-| football      |           | 17.18   | 17.18   |
-| forex         |           | 30.18   | 30.18   |
-| forsale       |           | 23.18   | 23.18   |
-| foundation    |           | 21.68   | 21.68   |
-| fun           |           | 25.18   | 25.18   |
-| fund          |           | 42.18   | 42.18   |
-| furniture     |           | 80.18   | 80.18   |
-| futbol        |           | 9.18    | 9.18    |
-| fyi           |           | 15.18   | 15.18   |
-| gallery       |           | 17.18   | 17.18   |
-| games         |           | 20.18   | 20.18   |
-| garden        |           | 22.18   | 22.18   |
-| gifts         |           | 23.18   | 23.18   |
-| gives         |           | 21.68   | 21.68   |
-| glass         |           | 41.18   | 41.18   |
-| gmbh          |           | 25.18   | 25.18   |
-| gold          |           | 75.18   | 75.18   |
-| golf          |           | 42.18   | 42.18   |
-| graphics      |           | 17.18   | 17.18   |
-| gratis        |           | 14.18   | 14.18   |
-| green         |           | 52.68   | 52.68   |
-| gripe         |           | 21.68   | 21.68   |
-| group         |           | 14.18   | 14.18   |
-| guide         |           | 25.18   | 25.18   |
-| guru          |           | 27.18   | 27.18   |
-| haus          |           | 21.68   | 21.68   |
-| health        |           | 50.18   | 50.18   |
-| healthcare    |           | 46.18   | 46.18   |
-| hockey        |           | 38.18   | 38.18   |
-| holdings      |           | 42.18   | 42.18   |
-| holiday       |           | 41.18   | 41.18   |
-| horse         |           | 22.18   | 22.18   |
-| hospital      |           | 41.18   | 41.18   |
-| host          |           | 65.18   | 65.18   |
-| house         |           | 28.18   | 28.18   |
-| how           |           | 20.18   | 20.18   |
-| immo          |           | 21.68   | 21.68   |
-| immobilien    |           | 21.68   | 21.68   |
-| industries    |           | 28.18   | 28.18   |
-| info          |           | 17.68   | 17.68   |
-| ink           |           | 19.18   | 19.18   |
-| institute     |           | 18.18   | 18.18   |
-| insure        |           | 41.18   | 41.18   |
-| international |           | 20.18   | 20.18   |
-| investments   |           | 80.18   | 80.18   |
-| io            |           | 45      | 45      |
-| irish         |           | 14.18   | 14.18   |
-| jetzt         |           | 14.18   | 14.18   |
-| jewelry       |           | 42.18   | 42.18   |
-| kaufen        |           | 23.18   | 23.18   |
-| kim           |           | 15.18   | 15.18   |
-| kitchen       |           | 41.18   | 41.18   |
-| land          |           | 25.18   | 25.18   |
-| lawyer        |           | 40.18   | 40.18   |
-| lease         |           | 38.18   | 38.18   |
-| legal         |           | 45.18   | 45.18   |
-| lgbt          |           | 43.18   | 43.18   |
-| life          |           | 24.18   | 24.18   |
-| lighting      |           | 17.18   | 17.18   |
-| limited       |           | 23.18   | 23.18   |
-| limo          |           | 38.18   | 38.18   |
-| live          |           | 21.18   | 21.18   |
-| loan          |           | 4.16    | 5.16    |
-| loans         |           | 75.18   | 75.18   |
-| love          |           | 20.18   | 20.18   |
-| ltd           |           | 19.18   | 19.18   |
-| luxe          |           | 15.18   | 15.18   |
-| maison        |           | 38.18   | 38.18   |
-| management    |           | 16.18   | 16.18   |
-| market        |           | 28.18   | 28.18   |
-| marketing     |           | 28.18   | 28.18   |
-| markets       |           | 11.18   | 11.18   |
-| mba           |           | 25.18   | 25.18   |
-| me            |           | 14.19   | 14.19   |
-| me.uk         |           | 4.94    | 4.94    |
-| media         |           | 28.18   | 28.18   |
-| memorial      |           | 35.68   | 35.68   |
-| men           |           | 4.16    | 5.16    |
-| miami         |           | 12.18   | 12.18   |
-| mobi          |           | 22.18   | 22.18   |
-| moda          |           | 21.68   | 21.68   |
-| money         |           | 25.18   | 25.18   |
-| mortgage      |           | 40.18   | 40.18   |
-| mov           |           | 10.18   | 10.18   |
-| movie         |           | 215.18  | 215.18  |
-| net.co        |           | 8       | 8       |
-| net           |           | 11.84   | 11.84   |
-| net.uk        | 0         | 4.76    | 4.76    |
-| network       |           | 21.68   | 21.68   |
-| new           |           | 400.18  | 400.18  |
-| news          |           | 21.18   | 21.18   |
-| nexus         |           | 10.18   | 10.18   |
-| ninja         |           | 21.18   | 21.18   |
-| nom.co        |           | 8       | 8       |
-| observer      |           | 9.18    | 9.18    |
-| online        |           | 25.18   | 25.18   |
-| org           |           | 7.5     | 10.11   |
-| org.uk        |           | 4.94    | 4.94    |
-| page          |           | 8.18    | 8.18    |
-| partners      |           | 46.18   | 46.18   |
-| parts         |           | 25.18   | 25.18   |
-| party         |           | 4.16    | 5.16    |
-| pet           |           | 16.18   | 16.18   |
-| phd           |           | 20.18   | 20.18   |
-| photography   |           | 23.18   | 23.18   |
-| photos        |           | 17.18   | 17.18   |
-| pictures      |           | 9.18    | 9.18    |
-| pink          |           | 15.18   | 15.18   |
-| pizza         |           | 42.18   | 42.18   |
-| place         |           | 14.18   | 14.18   |
-| plumbing      |           | 38.18   | 38.18   |
-| plus          |           | 25.18   | 25.18   |
-| press         |           | 49.18   | 49.18   |
-| pro           |           | 17.68   | 17.68   |
-| productions   |           | 25.18   | 25.18   |
-| prof          |           | 20.18   | 20.18   |
-| promo         |           | 16.18   | 16.18   |
-| properties    |           | 25.18   | 25.18   |
-| pub           |           | 25.18   | 25.18   |
-| racing        |           | 10.16   | 10.16   |
-| realty        |           | 280.18  | 280.18  |
-| recipes       |           | 42.18   | 42.18   |
-| red           |           | 15.18   | 15.18   |
-| rehab         |           | 25.18   | 25.18   |
-| reise         |           | 66.18   | 66.18   |
-| reisen        |           | 14.18   | 14.18   |
-| rent          |           | 45.18   | 45.18   |
-| rentals       |           | 25.18   | 25.18   |
-| repair        |           | 25.18   | 25.18   |
-| report        |           | 16.18   | 16.18   |
-| republican    |           | 25.18   | 25.18   |
-| rest          |           | 25.18   | 25.18   |
-| restaurant    |           | 41.18   | 41.18   |
-| review        |           | 10.16   | 10.16   |
-| reviews       |           | 40.18   | 40.18   |
-| rip           |           | 15.18   | 15.18   |
-| rocks         |           | 13.18   | 13.18   |
-| rodeo         |           | 7.18    | 7.18    |
-| rsvp          |           | 8.18    | 8.18    |
-| run           |           | 17.18   | 17.18   |
-| sale          |           | 25.18   | 25.18   |
-| salon         |           | 41.18   | 41.18   |
-| sarl          |           | 21.68   | 21.68   |
-| school        |           | 25.18   | 25.18   |
-| schule        |           | 16.18   | 16.18   |
-| science       |           | 10.16   | 10.16   |
-| security      |           | 2000.18 | 2000.18 |
-| select        |           | 22.18   | 22.18   |
-| services      |           | 25.18   | 25.18   |
-| shoes         |           | 41.18   | 41.18   |
-| shopping      |           | 23.18   | 23.18   |
-| show          |           | 28.18   | 28.18   |
-| singles       |           | 23.18   | 23.18   |
-| site          |           | 25.18   | 25.18   |
-| soccer        |           | 16.18   | 16.18   |
-| social        |           | 25.18   | 25.18   |
-| software      |           | 25.18   | 25.18   |
-| solar         |           | 40.18   | 40.18   |
-| solutions     |           | 20.18   | 20.18   |
-| soy           |           | 18.18   | 18.18   |
-| space         |           | 20.18   | 20.18   |
-| storage       |           | 500.18  | 500.18  |
-| store         |           | 40.18   | 40.18   |
-| stream        |           | 4.16    | 5.16    |
-| studio        |           | 24.18   | 24.18   |
-| style         |           | 25.18   | 25.18   |
-| supplies      |           | 16.18   | 16.18   |
-| supply        |           | 16.18   | 16.18   |
-| support       |           | 18.18   | 18.18   |
-| surf          |           | 22.18   | 22.18   |
-| surgery       |           | 35.68   | 35.68   |
-| systems       |           | 21.18   | 21.18   |
-| tax           |           | 46.18   | 46.18   |
-| taxi          |           | 42.18   | 42.18   |
-| team          |           | 23.18   | 23.18   |
-| tech          |           | 40.18   | 40.18   |
-| technology    |           | 20.18   | 20.18   |
-| tennis        |           | 43.18   | 43.18   |
-| theater       |           | 41.18   | 41.18   |
-| theatre       |           | 500.18  | 500.18  |
-| tienda        |           | 41.18   | 41.18   |
-| tips          |           | 21.18   | 21.18   |
-| tires         |           | 70.18   | 70.18   |
-| today         |           | 18.18   | 18.18   |
-| tools         |           | 23.18   | 23.18   |
-| tours         |           | 41.18   | 41.18   |
-| town          |           | 23.18   | 23.18   |
-| toys          |           | 41.18   | 41.18   |
-| trade         |           | 4.16    | 5.16    |
-| trading       |           | 13.18   | 13.18   |
-| training      |           | 25.18   | 25.18   |
-| tv            |           | 25      | 25      |
-| uk            |           | 4.94    | 4.94    |
-| university    |           | 40.18   | 40.18   |
-| us            |           | 6.5     | 6.5     |
-| vacations     |           | 25.18   | 25.18   |
-| ventures      |           | 38.18   | 38.18   |
-| vet           |           | 27.18   | 27.18   |
-| viajes        |           | 35.18   | 35.18   |
-| video         |           | 25.18   | 25.18   |
-| villas        |           | 35.68   | 35.68   |
-| vin           |           | 41.18   | 41.18   |
-| vip           |           | 12.18   | 12.18   |
-| vision        |           | 25.18   | 25.18   |
-| vodka         |           | 22.18   | 22.18   |
-| voyage        |           | 38.18   | 38.18   |
-| watch         |           | 28.18   | 28.18   |
-| webcam        |           | 10.16   | 10.16   |
-| website       |           | 20.18   | 20.18   |
-| wedding       |           | 22.18   | 22.18   |
-| wiki          |           | 19.18   | 19.18   |
-| win           |           | 4.16    | 5.16    |
-| wine          |           | 38.18   | 38.18   |
-| work          |           | 7.18    | 7.18    |
-| works         |           | 25.18   | 25.18   |
-| world         |           | 25.18   | 25.18   |
-| wtf           |           | 23.18   | 23.18   |
-| xyz           |           | 10.18   | 10.18   |
-| yoga          |           | 22.18   | 22.18   |
-| zone          |           | 25.18   | 25.18   |
+| TLD           | Currency | Registration | Renewal |
+| ------------- | -------- | ------------ | ------- |
+| ac            | USD      | 45           | 45      |
+| academy       | USD      | 36           | 36      |
+| accountant    | USD      | 19.98        | 19.98   |
+| accountants   | USD      | 90           | 90      |
+| actor         | USD      | 34           | 34      |
+| adult         | USD      | 95           | 95      |
+| agency        | USD      | 24           | 24      |
+| ai            | USD      | 80           | 80      |
+| airforce      | USD      | 80           | 80      |
+| apartments    | USD      | 44           | 44      |
+| app           | USD      | 14           | 14      |
+| army          | USD      | 30           | 30      |
+| associates    | USD      | 30           | 30      |
+| attorney      | USD      | 48           | 48      |
+| auction       | USD      | 28           | 28      |
+| audio         | USD      | 100          | 100     |
+| baby          | USD      | 50           | 50      |
+| band          | USD      | 24           | 24      |
+| bar           | USD      | 50           | 50      |
+| bargains      | USD      | 23           | 23      |
+| beer          | USD      | 25           | 25      |
+| bet           | USD      | 20           | 20      |
+| bid           | USD      | 3.98         | 4.98    |
+| bike          | USD      | 30           | 30      |
+| bingo         | USD      | 41           | 41      |
+| biz           | USD      | 18           | 18      |
+| black         | USD      | 50           | 50      |
+| blog          | USD      | 20           | 20      |
+| blue          | USD      | 19           | 19      |
+| boo           | USD      | 10           | 10      |
+| boston        | USD      | 18           | 18      |
+| boutique      | USD      | 25           | 25      |
+| broker        | USD      | 28           | 28      |
+| build         | USD      | 25           | 25      |
+| builders      | USD      | 27           | 27      |
+| business      | USD      | 15           | 15      |
+| ca            | CAD      | 12.54        | 12.54   |
+| cab           | USD      | 25           | 25      |
+| cafe          | USD      | 40           | 40      |
+| cam           | USD      | 14           | 14      |
+| camera        | USD      | 45           | 45      |
+| camp          | USD      | 48           | 48      |
+| capital       | USD      | 55           | 55      |
+| cards         | USD      | 30           | 30      |
+| care          | USD      | 34           | 34      |
+| careers       | USD      | 55           | 55      |
+| casa          | USD      | 10           | 10      |
+| cash          | USD      | 30           | 30      |
+| casino        | USD      | 125          | 125     |
+| catering      | USD      | 30           | 30      |
+| cc            | USD      | 8            | 8       |
+| center        | USD      | 25           | 25      |
+| ceo           | USD      | 85           | 70      |
+| charity       | USD      | 21.5         | 21.5    |
+| chat          | USD      | 35           | 35      |
+| cheap         | USD      | 28           | 28      |
+| christmas     | USD      | 30           | 30      |
+| church        | USD      | 45           | 45      |
+| city          | USD      | 22           | 22      |
+| claims        | USD      | 50           | 50      |
+| cleaning      | USD      | 58           | 58      |
+| clinic        | USD      | 50           | 50      |
+| clothing      | USD      | 25           | 25      |
+| cloud         | USD      | 20           | 20      |
+| club          | USD      | 15           | 15      |
+| co            | USD      | 26           | 26      |
+| co.nz         | NZD      | 25.96        | 25.96   |
+| co.uk         | GBP      | 3.9          | 3.9     |
+| coach         | USD      | 60           | 60      |
+| codes         | USD      | 55           | 55      |
+| coffee        | USD      | 33           | 33      |
+| college       | USD      | 45           | 45      |
+| com           | USD      | 10.26        | 10.26   |
+| com.ai        | USD      | 80           | 80      |
+| com.co        | USD      | 10           | 10      |
+| com.mx        | USD      | 16.75        | 16.75   |
+| community     | USD      | 35           | 35      |
+| company       | USD      | 16           | 16      |
+| compare       | USD      | 25           | 25      |
+| computer      | USD      | 30           | 30      |
+| condos        | USD      | 45           | 45      |
+| construction  | USD      | 30           | 30      |
+| consulting    | USD      | 42           | 42      |
+| contact       | USD      | 11           | 11      |
+| contractors   | USD      | 27           | 27      |
+| cooking       | USD      | 25           | 25      |
+| cool          | USD      | 35           | 35      |
+| coupons       | USD      | 42           | 42      |
+| credit        | USD      | 80           | 80      |
+| creditcard    | USD      | 125          | 125     |
+| cricket       | USD      | 19.98        | 19.98   |
+| cruises       | USD      | 43           | 43      |
+| dad           | USD      | 10           | 10      |
+| dance         | USD      | 21           | 21      |
+| date          | USD      | 3.98         | 4.98    |
+| dating        | USD      | 50           | 50      |
+| day           | USD      | 10           | 10      |
+| dealer        | USD      | 2000         | 2000    |
+| deals         | USD      | 30           | 30      |
+| degree        | USD      | 40           | 40      |
+| delivery      | USD      | 48           | 48      |
+| democrat      | USD      | 25           | 25      |
+| dental        | USD      | 60           | 60      |
+| dentist       | USD      | 50           | 50      |
+| design        | USD      | 45           | 45      |
+| dev           | USD      | 12           | 12      |
+| diamonds      | USD      | 42           | 42      |
+| diet          | USD      | 100          | 100     |
+| digital       | USD      | 32           | 32      |
+| direct        | USD      | 32           | 32      |
+| directory     | USD      | 21           | 21      |
+| discount      | USD      | 23           | 23      |
+| doctor        | USD      | 90           | 90      |
+| dog           | USD      | 50           | 50      |
+| domains       | USD      | 33           | 33      |
+| download      | USD      | 3.98         | 4.98    |
+| education     | USD      | 27           | 27      |
+| email         | USD      | 24           | 24      |
+| energy        | USD      | 90           | 90      |
+| engineer      | USD      | 30           | 30      |
+| engineering   | USD      | 50           | 50      |
+| enterprises   | USD      | 27           | 27      |
+| equipment     | USD      | 22           | 22      |
+| esq           | USD      | 20           | 20      |
+| estate        | USD      | 30           | 30      |
+| events        | USD      | 35           | 35      |
+| exchange      | USD      | 30           | 30      |
+| expert        | USD      | 48           | 48      |
+| exposed       | USD      | 17           | 17      |
+| express       | USD      | 30           | 30      |
+| fail          | USD      | 30           | 30      |
+| faith         | USD      | 9.98         | 9.98    |
+| family        | USD      | 30           | 30      |
+| fan           | USD      | 42           | 42      |
+| fans          | USD      | 8            | 8       |
+| farm          | USD      | 30           | 30      |
+| fashion       | USD      | 25           | 25      |
+| feedback      | USD      | 300          | 300     |
+| finance       | USD      | 50           | 50      |
+| financial     | USD      | 45           | 45      |
+| fish          | USD      | 34           | 34      |
+| fishing       | USD      | 25           | 25      |
+| fit           | USD      | 25           | 25      |
+| fitness       | USD      | 32           | 32      |
+| flights       | USD      | 45           | 45      |
+| florist       | USD      | 25           | 25      |
+| flowers       | USD      | 100          | 100     |
+| fm            | USD      | 85           | 85      |
+| foo           | USD      | 10           | 10      |
+| football      | USD      | 20           | 20      |
+| forex         | USD      | 80           | 80      |
+| forsale       | USD      | 28           | 28      |
+| forum         | USD      | 30           | 30      |
+| foundation    | USD      | 21.5         | 21.5    |
+| fun           | USD      | 30           | 30      |
+| fund          | USD      | 55           | 55      |
+| furniture     | USD      | 80           | 80      |
+| futbol        | USD      | 13           | 13      |
+| fyi           | USD      | 5            | 5       |
+| gallery       | USD      | 22           | 22      |
+| game          | USD      | 300          | 300     |
+| games         | USD      | 26           | 26      |
+| garden        | USD      | 25           | 25      |
+| geek.nz       | NZD      | 25.96        | 25.96   |
+| gifts         | USD      | 28           | 28      |
+| gives         | USD      | 21.5         | 21.5    |
+| giving        | USD      | 21.5         | 21.5    |
+| glass         | USD      | 56           | 56      |
+| global        | USD      | 75           | 75      |
+| gmbh          | USD      | 35           | 35      |
+| gold          | USD      | 80           | 80      |
+| golf          | USD      | 50           | 50      |
+| graphics      | USD      | 18           | 18      |
+| gratis        | USD      | 18           | 18      |
+| green         | USD      | 62           | 62      |
+| gripe         | USD      | 5            | 5       |
+| group         | USD      | 20           | 20      |
+| guide         | USD      | 32           | 32      |
+| guitars       | USD      | 100          | 100     |
+| guru          | USD      | 33           | 33      |
+| haus          | USD      | 26           | 26      |
+| health        | USD      | 60           | 60      |
+| healthcare    | USD      | 68           | 68      |
+| help          | USD      | 22           | 22      |
+| hockey        | USD      | 46           | 46      |
+| holdings      | USD      | 50           | 50      |
+| holiday       | USD      | 50           | 50      |
+| horse         | USD      | 25           | 25      |
+| hospital      | USD      | 44           | 44      |
+| host          | USD      | 79           | 79      |
+| hosting       | USD      | 300          | 300     |
+| house         | USD      | 34           | 34      |
+| how           | USD      | 20           | 20      |
+| icu           | USD      | 15           | 15      |
+| immo          | USD      | 27           | 27      |
+| immobilien    | USD      | 29           | 29      |
+| inc           | USD      | 2000         | 2000    |
+| industries    | USD      | 35           | 35      |
+| info          | USD      | 21           | 21      |
+| ing           | USD      | 10           | 10      |
+| ink           | USD      | 25           | 25      |
+| institute     | USD      | 21           | 21      |
+| insure        | USD      | 56           | 56      |
+| international | USD      | 24           | 24      |
+| investments   | USD      | 100          | 100     |
+| io            | USD      | 50           | 50      |
+| irish         | USD      | 17           | 17      |
+| jetzt         | USD      | 18           | 18      |
+| jewelry       | USD      | 50           | 50      |
+| kaufen        | USD      | 23           | 23      |
+| kim           | USD      | 18           | 18      |
+| kitchen       | USD      | 50           | 50      |
+| land          | USD      | 32           | 32      |
+| lawyer        | USD      | 48           | 48      |
+| lease         | USD      | 43           | 43      |
+| legal         | USD      | 55           | 55      |
+| lgbt          | USD      | 62           | 62      |
+| life          | USD      | 28           | 28      |
+| lighting      | USD      | 18           | 18      |
+| limited       | USD      | 28           | 28      |
+| limo          | USD      | 42           | 42      |
+| link          | USD      | 7            | 7       |
+| live          | USD      | 25           | 25      |
+| loan          | USD      | 3.98         | 4.98    |
+| loans         | USD      | 90           | 90      |
+| lol           | USD      | 25           | 20      |
+| love          | USD      | 20           | 20      |
+| ltd           | USD      | 24           | 24      |
+| luxe          | USD      | 15           | 15      |
+| maison        | USD      | 44           | 44      |
+| management    | USD      | 20           | 20      |
+| market        | USD      | 34           | 34      |
+| marketing     | USD      | 32           | 32      |
+| markets       | USD      | 15           | 15      |
+| mba           | USD      | 30           | 30      |
+| me            | EUR      | 14           | 14      |
+| me.uk         | GBP      | 3.9          | 3.9     |
+| media         | USD      | 35           | 35      |
+| meme          | USD      | 10           | 10      |
+| memorial      | USD      | 40           | 40      |
+| men           | USD      | 3.98         | 4.98    |
+| miami         | USD      | 18           | 18      |
+| mobi          | USD      | 40           | 40      |
+| moda          | USD      | 32           | 32      |
+| mom           | USD      | 25           | 25      |
+| money         | USD      | 27           | 27      |
+| monster       | USD      | 12.1         | 10      |
+| mortgage      | USD      | 48           | 48      |
+| mov           | USD      | 10           | 10      |
+| movie         | USD      | 270          | 270     |
+| mx            | USD      | 30.7         | 30.7    |
+| navy          | USD      | 32           | 32      |
+| net           | USD      | 11.66        | 11.66   |
+| net.ai        | USD      | 80           | 80      |
+| net.co        | USD      | 10           | 10      |
+| net.nz        | NZD      | 25.96        | 25.96   |
+| net.uk        | GBP      | 3.9          | 3.9     |
+| network       | USD      | 27           | 27      |
+| new           | USD      | 400          | 400     |
+| news          | USD      | 25           | 25      |
+| nexus         | USD      | 10           | 10      |
+| ngo           | USD      | 15           | 15      |
+| ninja         | USD      | 24           | 24      |
+| nom.co        | USD      | 10           | 10      |
+| nz            | NZD      | 25.96        | 25.96   |
+| observer      | USD      | 9            | 9       |
+| off.ai        | USD      | 80           | 80      |
+| ong           | USD      | 15           | 15      |
+| online        | USD      | 27.5         | 27.5    |
+| org           | USD      | 7.3          | 9.93    |
+| org.ai        | USD      | 80           | 80      |
+| org.mx        | USD      | 15.15        | 15.15   |
+| org.nz        | NZD      | 25.96        | 25.96   |
+| org.uk        | GBP      | 3.9          | 3.9     |
+| organic       | USD      | 66           | 66      |
+| page          | USD      | 10           | 10      |
+| partners      | USD      | 55           | 55      |
+| parts         | USD      | 32           | 32      |
+| party         | USD      | 3.98         | 4.98    |
+| pet           | USD      | 20           | 20      |
+| phd           | USD      | 20           | 20      |
+| photography   | USD      | 28           | 28      |
+| photos        | USD      | 23           | 23      |
+| pics          | USD      | 25           | 20      |
+| pictures      | USD      | 12           | 12      |
+| pink          | USD      | 20           | 20      |
+| pizza         | USD      | 50           | 50      |
+| place         | USD      | 17           | 17      |
+| plumbing      | USD      | 56           | 56      |
+| plus          | USD      | 42           | 42      |
+| porn          | USD      | 95           | 95      |
+| press         | USD      | 62           | 62      |
+| pro           | USD      | 21           | 21      |
+| productions   | USD      | 31           | 31      |
+| prof          | USD      | 20           | 20      |
+| promo         | USD      | 19           | 19      |
+| properties    | USD      | 30           | 30      |
+| protection    | USD      | 2000         | 2000    |
+| pub           | USD      | 31           | 31      |
+| racing        | USD      | 9.98         | 9.98    |
+| realty        | USD      | 280          | 280     |
+| recipes       | USD      | 60           | 60      |
+| red           | USD      | 18           | 18      |
+| rehab         | USD      | 28           | 28      |
+| reise         | USD      | 75           | 75      |
+| reisen        | USD      | 16           | 16      |
+| rent          | USD      | 45           | 45      |
+| rentals       | USD      | 34           | 34      |
+| repair        | USD      | 28           | 28      |
+| report        | USD      | 19           | 19      |
+| republican    | USD      | 25           | 25      |
+| rest          | USD      | 25           | 25      |
+| restaurant    | USD      | 50           | 50      |
+| review        | USD      | 9.98         | 9.98    |
+| reviews       | USD      | 48           | 48      |
+| rip           | USD      | 18           | 18      |
+| rocks         | USD      | 17           | 17      |
+| rodeo         | USD      | 10           | 10      |
+| rsvp          | USD      | 10           | 10      |
+| run           | USD      | 21           | 21      |
+| sale          | USD      | 30           | 30      |
+| salon         | USD      | 44           | 44      |
+| sarl          | USD      | 5            | 5       |
+| school        | USD      | 28           | 28      |
+| schule        | USD      | 22           | 22      |
+| science       | USD      | 9.98         | 9.98    |
+| security      | USD      | 2000         | 2000    |
+| select        | USD      | 25           | 25      |
+| services      | USD      | 30           | 30      |
+| sex           | USD      | 95           | 95      |
+| sh            | USD      | 45           | 45      |
+| shoes         | USD      | 50           | 50      |
+| shop          | USD      | 30           | 30      |
+| shopping      | USD      | 23           | 23      |
+| show          | USD      | 34           | 34      |
+| singles       | USD      | 26           | 26      |
+| site          | USD      | 27.5         | 27.5    |
+| ski           | USD      | 50           | 50      |
+| soccer        | USD      | 20           | 20      |
+| social        | USD      | 32           | 32      |
+| software      | USD      | 32           | 32      |
+| solar         | USD      | 50           | 50      |
+| solutions     | USD      | 24           | 24      |
+| soy           | USD      | 18           | 18      |
+| space         | USD      | 25           | 25      |
+| storage       | USD      | 500          | 500     |
+| store         | USD      | 42           | 42      |
+| stream        | USD      | 3.98         | 4.98    |
+| studio        | USD      | 31           | 31      |
+| style         | USD      | 30           | 30      |
+| supplies      | USD      | 19           | 19      |
+| supply        | USD      | 20           | 20      |
+| support       | USD      | 21           | 21      |
+| surf          | USD      | 25           | 25      |
+| surgery       | USD      | 42           | 42      |
+| systems       | USD      | 27           | 27      |
+| tax           | USD      | 52           | 52      |
+| taxi          | USD      | 48           | 48      |
+| team          | USD      | 28           | 28      |
+| tech          | USD      | 49           | 49      |
+| technology    | USD      | 22           | 22      |
+| tennis        | USD      | 50           | 50      |
+| theater       | USD      | 50           | 50      |
+| theatre       | USD      | 500          | 500     |
+| tienda        | USD      | 46           | 46      |
+| tips          | USD      | 24           | 24      |
+| tires         | USD      | 70           | 70      |
+| today         | USD      | 22           | 22      |
+| tools         | USD      | 28           | 28      |
+| tours         | USD      | 48           | 48      |
+| town          | USD      | 28           | 28      |
+| toys          | USD      | 50           | 50      |
+| trade         | USD      | 3.98         | 4.98    |
+| trading       | USD      | 16           | 16      |
+| training      | USD      | 32           | 32      |
+| travel        | USD      | 115          | 115     |
+| tv            | USD      | 25           | 25      |
+| uk            | GBP      | 3.9          | 3.9     |
+| university    | USD      | 48           | 48      |
+| uno           | USD      | 20           | 20      |
+| us            | USD      | 6.5          | 6.5     |
+| vacations     | USD      | 30           | 30      |
+| ventures      | USD      | 46           | 46      |
+| vet           | USD      | 32           | 32      |
+| viajes        | USD      | 35           | 35      |
+| video         | USD      | 28           | 28      |
+| villas        | USD      | 46           | 46      |
+| vin           | USD      | 46           | 46      |
+| vip           | USD      | 15           | 15      |
+| vision        | USD      | 35           | 35      |
+| vodka         | USD      | 25           | 25      |
+| voyage        | USD      | 45           | 45      |
+| watch         | USD      | 34           | 34      |
+| webcam        | USD      | 9.98         | 9.98    |
+| website       | USD      | 20           | 20      |
+| wedding       | USD      | 25           | 25      |
+| wiki          | USD      | 25           | 25      |
+| win           | USD      | 3.98         | 4.98    |
+| wine          | USD      | 46           | 46      |
+| work          | USD      | 10           | 10      |
+| works         | USD      | 30           | 30      |
+| world         | USD      | 32           | 32      |
+| wtf           | USD      | 28           | 28      |
+| xxx           | USD      | 95           | 95      |
+| xyz           | USD      | 12.1         | 11      |
+| yoga          | USD      | 25           | 25      |
+| zone          | USD      | 30           | 30      |
