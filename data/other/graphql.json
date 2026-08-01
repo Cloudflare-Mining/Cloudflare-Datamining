@@ -4676,9 +4676,6 @@
 		"dstIpContinent": "Continent code of the session destination IP address",
 		"dstIpCountry": "Country code of the session destination IP address",
 		"email": "The email address of the gateway user who initiated the session",
-		"isIsolated": "Indicates whether this session was made through an isolated link",
-		"offramp": "The egress offramp type for the session",
-		"onramp": "The ingress onramp type for the session",
 		"proxyEndpoint": "The proxy endpoint used on this session",
 		"ruleId": "The ID of the Gateway rule (policy) that matched the session, if any",
 		"sessionId": "The network session unique identifier",
@@ -4817,12 +4814,9 @@
 		"dstIpContinent": "Continent code of the request destination IP address",
 		"dstIpCountry": "Country code of the request destination IP address",
 		"email": "The email address of the gateway user who made the request",
-		"experimentalIsMcp": "Whether the request was made via MCP. Experimental feature, may change within a three-month period",
 		"httpHost": "The destination host for the request",
 		"httpStatusCode": "HTTP status code gateway returned to the user. 0 if nothing was returned(e.g client disconnected)",
 		"isIsolated": "Indicates whether this request was made through an isolated link",
-		"offramp": "The egress offramp type for the request",
-		"onramp": "The ingress onramp type for the request",
 		"privateAppAUD": "Access private app AUD",
 		"proxyEndpoint": "The proxy endpoint used on this request",
 		"quarantined": "Indicates if the request content was quarantined",
@@ -6068,61 +6062,6 @@
 	},
 	"AccountKvStorageAdaptiveGroupsOrderBy": {
 		"__description": ""
-	},
-	"AccountLbHealthEntitiesGroups": {
-		"__description": "Distinct pools and origins seen in LB health events, account-scoped",
-		"count": "Number of health events for this pool/origin combination",
-		"dimensions": "List of dimensions to group by"
-	},
-	"AccountLbHealthEntitiesGroupsDimensions": {
-		"__description": "",
-		"date": "The date when the event was generated",
-		"datetime": "The datetime when the event was generated",
-		"originName": "Name of the origin within the pool",
-		"poolId": "Unique identifier for the pool",
-		"poolName": "Name of the pool"
-	},
-	"AccountLbHealthEntitiesGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountLbHealthEntitiesGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountLbHealthEvents": {
-		"__description": "Raw LB health state-change events with geographic scope support, account-scoped",
-		"changedOriginHealth": "Health status of the origin that triggered the health change event (unknown = health state unknown, healthy = origin healthy, critical = origin critical)",
-		"changedOriginName": "Name of the origin that triggered the health change event (empty if no origin health changed)",
-		"date": "The date when the event was generated",
-		"eventId": "Unique identifier for this event",
-		"expectedResponseCodes": "Expected HTTP response codes for the pool health checks, comma-separated",
-		"originHealthChanged": "1 if an origin health changed at this event, 0 otherwise",
-		"origins": "All origins in the pool at event time",
-		"poolCriticalOriginCount": "Count of origins in the pool with critical status",
-		"poolHealth": "Health status of the pool at event time. Values: unknown (health state unknown), critical (pool critical), degraded (pool has one or more critical origins), healthy (all origins healthy)",
-		"poolHealthChanged": "1 if the pool health changed at this event, 0 otherwise",
-		"poolId": "Unique identifier for the pool (a group of servers that can serve traffic for the load balancer)",
-		"poolMinimumHealthyOrigins": "Minimum number of healthy origins required for the pool to be considered healthy",
-		"poolName": "Name of the pool (a group of origin servers that can serve traffic for the load balancer)",
-		"region": "Geographic region code where the load balancing event originated (e.g., WNAM, ENAM, WEU, EEU), or 'GLOBAL' for globally-scoped events.",
-		"scope": "Geographic scope of the health event. Values: global (aggregated view across all regions), regional (per-region health status), unknown (unclassified events).",
-		"timestamp": "The timestamp when the event was generated"
-	},
-	"AccountLbHealthEventsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountLbHealthEventsOrderBy": {
-		"__description": ""
-	},
-	"AccountLbHealthEventsOriginsElem": {
-		"__description": "",
-		"enabled": "1 if the origin is enabled, 0 otherwise",
-		"failureReason": "Reason the origin failed its health check (e.g., noFailure, httpTimeout, tcpFailure, codeMismatch, tlsHandshakeFailure)",
-		"fqdn": "Fully qualified domain name of the origin",
-		"health": "Health status of the origin (unknown = health state unknown, healthy = origin healthy, critical = origin critical)",
-		"healthChanged": "1 if this origin's health changed at this event, 0 otherwise",
-		"ip": "IP address of the origin",
-		"originName": "Origin name",
-		"responseCode": "HTTP response code returned by the origin during its health check"
 	},
 	"AccountLiveInputEventsAdaptive": {
 		"__description": "Live input events with adaptive sampling",
@@ -10407,8 +10346,6 @@
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "",
 		"kvOperationsAdaptiveGroups": "",
 		"kvStorageAdaptiveGroups": "",
-		"lbHealthEntitiesGroups": "",
-		"lbHealthEvents": "",
 		"liveInputEventsAdaptive": "",
 		"liveInputEventsAdaptiveGroups": "",
 		"logExplorerIngestionAdaptiveGroups": "",
@@ -15888,8 +15825,6 @@
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "Image unique transformations accumulated since start of month",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
 		"kvStorageAdaptiveGroups": "KV stored data with adaptive sampling",
-		"lbHealthEntitiesGroups": "Distinct pools and origins seen in LB health events, account-scoped",
-		"lbHealthEvents": "Raw LB health state-change events with geographic scope support, account-scoped",
 		"liveInputEventsAdaptive": "Live input events with adaptive sampling",
 		"liveInputEventsAdaptiveGroups": "Aggregated live input events with adaptive sampling",
 		"logExplorerIngestionAdaptiveGroups": "Ingestion metrics for Log Explorer",
