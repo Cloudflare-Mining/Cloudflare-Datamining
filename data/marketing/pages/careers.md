@@ -134,9 +134,9 @@ Cloudflare employees come from all walks of life. Our team is energized by a **c
 
 We want to empower and inspire our team members to do their best work every day - making sure they feel happy, healthy and fulfilled both inside and outside of the workplace.
 
-**Competitive pay & AI stipend** 
+**Competitive pay** 
 
-We offer a competitive total rewards package, where every employee is an owner of our stock. You'll also receive a generous AI credits stipend to keep your toolkit sharp and your workflow modern. 
+We offer a competitive total rewards package, where every employee is an owner of our stock. 
 
 **Take-what-you-need vacation** 
 
