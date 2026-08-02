@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 2, 2026[Welcome to Agents Week](https://blog.cloudflare.com/agents-week-welcome/)
+
+Agents Week explores how cloud infrastructure must evolve to serve autonomous agents rather than human browsers. Join us as we unpack the storage, execution, and security primitives needed for an agent-native web.
+
+![Rita Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4775C0A7PYM3T9XKH4PH9J.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Rita Kozlov](https://blog.cloudflare.com/author/rita/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYZCTHV0HVXSBJZRXX2RZA64.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/agents-week-welcome/)
+
 July 31, 2026[An API for MoQ: provision your own isolated relays](https://blog.cloudflare.com/moq-relays/)
 
 Last year we made every Cloudflare server a Media over QUIC (MoQ) relay. Now the new provisioning API lets you create your own isolated relay and control who can publish and who can only watch.
@@ -13,8 +23,6 @@ Last year we made every Cloudflare server a Media over QUIC (MoQ) relay. Now the
 ![Jacob Curtis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYWTSMKPNBYED7CGRDERCH1G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Manish Pandit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYVX7C6NS9762W5KTANHJ704.webp&w=64&h=64&f=webp&fit=cover&position=center)![Mike English](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456AKXY6NZWXBX72F7RG6T.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jacob Curtis](https://blog.cloudflare.com/author/jacob-curtis/), [Manish Pandit](https://blog.cloudflare.com/author/manish-pandit/), and [Mike English](https://blog.cloudflare.com/author/mike-english/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYVQE39B1KP2WVG5CB9PGEV3.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/moq-relays/)
 
 July 30, 2026[Dogfooding at scale: migrating cdnjs to Cloudflare's Developer Platform](https://blog.cloudflare.com/cdnjs-dev-platform-migration/)
 
@@ -151,14 +159,6 @@ Cloudflare's new Attribution Business Insights dashboard helps website owners un
 ![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Oliver Payne](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AC0A90AS7JQ9KWA8Q85Z.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Oliver Payne](https://blog.cloudflare.com/author/oliver-payne/)
-
-July 1, 2026[Making AI search smarter](https://blog.cloudflare.com/making-ai-search-smarter/)
-
-Search is how we find nearly everything on the web — creators, merchants, answers. AI is rewriting the rules, leaving creators caught between staying discoverable in an agentic era and getting paid for their work. Today we're launching two initiatives to help.
-
-![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
 
 Load more
 
