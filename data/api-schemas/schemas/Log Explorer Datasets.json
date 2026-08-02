@@ -1,4 +1,848 @@
 {
+	"DELETE /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
+		"operationId": "accounts-logs-explorer-datasets-delete",
+		"summary": "Delete an account dataset",
+		"description": "Deletes a Log Explorer dataset for the account. Dataset deletion must not\nbe protected.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"description": "Log Explorer dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"202": {
+				"description": "Dataset deletion accepted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"type": "string",
+													"format": "date-time",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"type": "string",
+													"pattern": "^[a-f0-9]{32}$",
+													"x-auditable": true
+												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"type": "string",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"type": "string",
+													"format": "date-time",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled",
+												"deletion_protection"
+											]
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														]
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request, unsupported dataset, or invalid field configuration.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The caller lacks permission or entitlement to access this resource.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The requested resource does not exist.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "A dataset of this type already exists for this account or zone.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": true
+	},
+	"DELETE /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
+		"operationId": "zones-logs-explorer-datasets-delete",
+		"summary": "Delete a zone dataset",
+		"description": "Deletes a Log Explorer dataset for the zone. Dataset deletion must not\nbe protected.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare zone ID.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"description": "Log Explorer dataset ID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"202": {
+				"description": "Dataset deletion accepted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"allOf": [
+										{
+											"description": "A Log Explorer dataset summary. List endpoints return this type and omit\nfield configuration; use the single-dataset endpoint to retrieve it.\n",
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"description": "RFC3339 timestamp recording when the API created this dataset.",
+													"type": "string",
+													"format": "date-time",
+													"x-auditable": true
+												},
+												"dataset": {
+													"description": "Dataset type name (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												},
+												"dataset_id": {
+													"description": "Unique dataset ID.",
+													"type": "string",
+													"pattern": "^[a-f0-9]{32}$",
+													"x-auditable": true
+												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether log ingest is currently active for this dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"object_id": {
+													"description": "Public ID of the account or zone that owns this dataset.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"object_type": {
+													"description": "Whether this dataset belongs to an account or a zone.",
+													"type": "string",
+													"enum": [
+														"account",
+														"zone"
+													],
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
+													"type": "string",
+													"format": "date-time",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset",
+												"object_type",
+												"object_id",
+												"created_at",
+												"updated_at",
+												"dataset_id",
+												"enabled",
+												"deletion_protection"
+											]
+										},
+										{
+											"properties": {
+												"fields": {
+													"description": "The field configuration for this dataset.\n",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"description": "Whether the API includes this field in log ingest.",
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Field name in lowercase.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"enabled"
+														]
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request, unsupported dataset, or invalid field configuration.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The caller lacks permission or entitlement to access this resource.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The requested resource does not exist.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "A dataset of this type already exists for this account or zone.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"format": "int32",
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"additionalProperties": true,
+									"nullable": true,
+									"x-auditable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Log Explorer Datasets"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logexplorer.datasets",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": true
+	},
 	"GET /accounts/{account_id}/logs/explorer/datasets": {
 		"operationId": "accounts-logs-explorer-datasets-list",
 		"summary": "List account datasets",
@@ -81,6 +925,11 @@
 												"pattern": "^[a-f0-9]{32}$",
 												"x-auditable": true
 											},
+											"deletion_protection": {
+												"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+												"type": "boolean",
+												"x-auditable": true
+											},
 											"enabled": {
 												"description": "Whether log ingest is currently active for this dataset.",
 												"type": "boolean",
@@ -114,7 +963,8 @@
 											"created_at",
 											"updated_at",
 											"dataset_id",
-											"enabled"
+											"enabled",
+											"deletion_protection"
 										]
 									},
 									"nullable": true
@@ -412,6 +1262,11 @@
 													"pattern": "^[a-f0-9]{32}$",
 													"x-auditable": true
 												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
@@ -445,7 +1300,8 @@
 												"created_at",
 												"updated_at",
 												"dataset_id",
-												"enabled"
+												"enabled",
+												"deletion_protection"
 											]
 										},
 										{
@@ -1073,6 +1929,11 @@
 												"pattern": "^[a-f0-9]{32}$",
 												"x-auditable": true
 											},
+											"deletion_protection": {
+												"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+												"type": "boolean",
+												"x-auditable": true
+											},
 											"enabled": {
 												"description": "Whether log ingest is currently active for this dataset.",
 												"type": "boolean",
@@ -1106,7 +1967,8 @@
 											"created_at",
 											"updated_at",
 											"dataset_id",
-											"enabled"
+											"enabled",
+											"deletion_protection"
 										]
 									},
 									"nullable": true
@@ -1404,6 +2266,11 @@
 													"pattern": "^[a-f0-9]{32}$",
 													"x-auditable": true
 												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
@@ -1437,7 +2304,8 @@
 												"created_at",
 												"updated_at",
 												"dataset_id",
-												"enabled"
+												"enabled",
+												"deletion_protection"
 											]
 										},
 										{
@@ -2041,6 +2909,11 @@
 										"enabled"
 									]
 								}
+							},
+							"filter": {
+								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nIf provided, replaces the dataset's default filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2109,6 +2982,11 @@
 													"pattern": "^[a-f0-9]{32}$",
 													"x-auditable": true
 												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
@@ -2142,7 +3020,8 @@
 												"created_at",
 												"updated_at",
 												"dataset_id",
-												"enabled"
+												"enabled",
+												"deletion_protection"
 											]
 										},
 										{
@@ -2492,6 +3371,11 @@
 										"enabled"
 									]
 								}
+							},
+							"filter": {
+								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nIf provided, replaces the dataset's default filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2560,6 +3444,11 @@
 													"pattern": "^[a-f0-9]{32}$",
 													"x-auditable": true
 												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
@@ -2593,7 +3482,8 @@
 												"created_at",
 												"updated_at",
 												"dataset_id",
-												"enabled"
+												"enabled",
+												"deletion_protection"
 											]
 										},
 										{
@@ -2926,6 +3816,11 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"deletion_protection": {
+								"description": "Set to `false` to allow deletion of this dataset.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"enabled": {
 								"description": "Whether to enable or disable log ingest for this dataset.",
 								"type": "boolean",
@@ -3021,6 +3916,11 @@
 													"pattern": "^[a-f0-9]{32}$",
 													"x-auditable": true
 												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
@@ -3054,7 +3954,8 @@
 												"created_at",
 												"updated_at",
 												"dataset_id",
-												"enabled"
+												"enabled",
+												"deletion_protection"
 											]
 										},
 										{
@@ -3328,6 +4229,11 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"deletion_protection": {
+								"description": "Set to `false` to allow deletion of this dataset.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"enabled": {
 								"description": "Whether to enable or disable log ingest for this dataset.",
 								"type": "boolean",
@@ -3423,6 +4329,11 @@
 													"pattern": "^[a-f0-9]{32}$",
 													"x-auditable": true
 												},
+												"deletion_protection": {
+													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
@@ -3456,7 +4367,8 @@
 												"created_at",
 												"updated_at",
 												"dataset_id",
-												"enabled"
+												"enabled",
+												"deletion_protection"
 											]
 										},
 										{

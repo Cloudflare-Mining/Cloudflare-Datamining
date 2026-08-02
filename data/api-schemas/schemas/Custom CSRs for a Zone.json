@@ -405,7 +405,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-csrs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_csrs": {
 		"operationId": "custom-csrs-for-a-zone-list-custom-csrs",
@@ -1052,7 +1056,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-csrs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_csrs/{custom_csr_id}": {
 		"operationId": "custom-csrs-for-a-zone-custom-csr-details",
@@ -1615,7 +1623,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-csrs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/custom_csrs": {
 		"operationId": "custom-csrs-for-a-zone-create-custom-csr",
@@ -2240,6 +2252,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-csrs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

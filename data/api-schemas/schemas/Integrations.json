@@ -328,153 +328,180 @@
 											}
 										]
 									},
-									"result_info": {
-										"count": 1,
-										"next": null,
-										"page": 1,
-										"per_page": 1,
-										"previous": null,
-										"total_count": 1
-									},
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Serializer for v2 integration detail response with use cases.",
 							"type": "object",
 							"properties": {
-								"application": {
-									"type": "object",
-									"additionalProperties": {
-										"nullable": true,
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
 										"type": "string"
 									},
-									"readOnly": true
+									"default": []
 								},
-								"auth_method": {
-									"description": "The integration's authentication method.",
-									"type": "object",
-									"additionalProperties": {
-										"type": "string"
-									},
-									"nullable": true,
-									"readOnly": true
-								},
-								"authorization_link": {
-									"description": "Authorization link for the integration.",
-									"type": "object",
-									"nullable": true,
-									"properties": {
-										"components": {
-											"additionalProperties": {},
-											"nullable": true,
-											"type": "object"
-										},
-										"link": {
-											"type": "string",
-											"nullable": true
+								"result": {
+									"description": "The requested item.",
+									"allOf": [
+										{
+											"description": "Serializer for v2 integration detail response with use cases.",
+											"type": "object",
+											"properties": {
+												"application": {
+													"type": "object",
+													"additionalProperties": {
+														"nullable": true,
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"auth_method": {
+													"description": "The integration's authentication method.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"readOnly": true
+												},
+												"authorization_link": {
+													"description": "Authorization link for the integration.",
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"components": {
+															"additionalProperties": {},
+															"nullable": true,
+															"type": "object"
+														},
+														"link": {
+															"type": "string",
+															"nullable": true
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"components",
+														"link"
+													]
+												},
+												"created": {
+													"description": "When the integration was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"credentials_expiry": {
+													"description": "Credentials expiry time.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"dlp_profiles": {
+													"description": "DLP Profiles enabled for the integration.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"health_details": {
+													"description": "Health details with remediation hints.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												},
+												"id": {
+													"description": "Integration ID.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"is_paused": {
+													"description": "Whether the user paused the integration.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"last_hydrated": {
+													"description": "Last time the integration was hydrated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"name": {
+													"description": "Name of the integration.",
+													"type": "string",
+													"readOnly": true
+												},
+												"organization_id": {
+													"description": "Organization ID.",
+													"type": "integer",
+													"readOnly": true
+												},
+												"status": {
+													"description": "Integration status.",
+													"type": "string"
+												},
+												"updated": {
+													"description": "When the integration was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"use_cases": {
+													"description": "Use cases enabled for the integration.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"application",
+												"auth_method",
+												"authorization_link",
+												"created",
+												"credentials_expiry",
+												"dlp_profiles",
+												"health_details",
+												"id",
+												"is_paused",
+												"last_hydrated",
+												"name",
+												"organization_id",
+												"status",
+												"updated",
+												"use_cases"
+											]
 										}
-									},
-									"readOnly": true,
-									"required": [
-										"components",
-										"link"
 									]
 								},
-								"created": {
-									"description": "When the integration was created.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"credentials_expiry": {
-									"description": "Credentials expiry time.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"dlp_profiles": {
-									"description": "DLP Profiles enabled for the integration.",
-									"type": "array",
-									"items": {
-										"format": "uuid",
-										"type": "string"
-									},
-									"readOnly": true
-								},
-								"health_details": {
-									"description": "Health details with remediation hints.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
-								},
-								"id": {
-									"description": "Integration ID.",
-									"type": "string",
-									"format": "uuid",
-									"readOnly": true
-								},
-								"is_paused": {
-									"description": "Whether the user paused the integration.",
-									"type": "boolean",
-									"readOnly": true
-								},
-								"last_hydrated": {
-									"description": "Last time the integration was hydrated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"name": {
-									"description": "Name of the integration.",
-									"type": "string",
-									"readOnly": true
-								},
-								"organization_id": {
-									"description": "Organization ID.",
-									"type": "integer",
-									"readOnly": true
-								},
-								"status": {
-									"description": "Integration status.",
-									"type": "string"
-								},
-								"updated": {
-									"description": "When the integration was last updated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"use_cases": {
-									"description": "Use cases enabled for the integration.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"application",
-								"auth_method",
-								"authorization_link",
-								"created",
-								"credentials_expiry",
-								"dlp_profiles",
-								"health_details",
-								"id",
-								"is_paused",
-								"last_hydrated",
-								"name",
-								"organization_id",
-								"status",
-								"updated",
-								"use_cases"
+								"result",
+								"success"
 							]
 						}
 					}
@@ -823,153 +850,180 @@
 											}
 										]
 									},
-									"result_info": {
-										"count": 1,
-										"next": null,
-										"page": 1,
-										"per_page": 1,
-										"previous": null,
-										"total_count": 1
-									},
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Serializer for v2 integration detail response with use cases.",
 							"type": "object",
 							"properties": {
-								"application": {
-									"type": "object",
-									"additionalProperties": {
-										"nullable": true,
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
 										"type": "string"
 									},
-									"readOnly": true
+									"default": []
 								},
-								"auth_method": {
-									"description": "The integration's authentication method.",
-									"type": "object",
-									"additionalProperties": {
-										"type": "string"
-									},
-									"nullable": true,
-									"readOnly": true
-								},
-								"authorization_link": {
-									"description": "Authorization link for the integration.",
-									"type": "object",
-									"nullable": true,
-									"properties": {
-										"components": {
-											"additionalProperties": {},
-											"nullable": true,
-											"type": "object"
-										},
-										"link": {
-											"type": "string",
-											"nullable": true
+								"result": {
+									"description": "The requested item.",
+									"allOf": [
+										{
+											"description": "Serializer for v2 integration detail response with use cases.",
+											"type": "object",
+											"properties": {
+												"application": {
+													"type": "object",
+													"additionalProperties": {
+														"nullable": true,
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"auth_method": {
+													"description": "The integration's authentication method.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"readOnly": true
+												},
+												"authorization_link": {
+													"description": "Authorization link for the integration.",
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"components": {
+															"additionalProperties": {},
+															"nullable": true,
+															"type": "object"
+														},
+														"link": {
+															"type": "string",
+															"nullable": true
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"components",
+														"link"
+													]
+												},
+												"created": {
+													"description": "When the integration was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"credentials_expiry": {
+													"description": "Credentials expiry time.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"dlp_profiles": {
+													"description": "DLP Profiles enabled for the integration.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"health_details": {
+													"description": "Health details with remediation hints.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												},
+												"id": {
+													"description": "Integration ID.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"is_paused": {
+													"description": "Whether the user paused the integration.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"last_hydrated": {
+													"description": "Last time the integration was hydrated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"name": {
+													"description": "Name of the integration.",
+													"type": "string",
+													"readOnly": true
+												},
+												"organization_id": {
+													"description": "Organization ID.",
+													"type": "integer",
+													"readOnly": true
+												},
+												"status": {
+													"description": "Integration status.",
+													"type": "string"
+												},
+												"updated": {
+													"description": "When the integration was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"use_cases": {
+													"description": "Use cases enabled for the integration.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"application",
+												"auth_method",
+												"authorization_link",
+												"created",
+												"credentials_expiry",
+												"dlp_profiles",
+												"health_details",
+												"id",
+												"is_paused",
+												"last_hydrated",
+												"name",
+												"organization_id",
+												"status",
+												"updated",
+												"use_cases"
+											]
 										}
-									},
-									"readOnly": true,
-									"required": [
-										"components",
-										"link"
 									]
 								},
-								"created": {
-									"description": "When the integration was created.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"credentials_expiry": {
-									"description": "Credentials expiry time.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"dlp_profiles": {
-									"description": "DLP Profiles enabled for the integration.",
-									"type": "array",
-									"items": {
-										"format": "uuid",
-										"type": "string"
-									},
-									"readOnly": true
-								},
-								"health_details": {
-									"description": "Health details with remediation hints.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
-								},
-								"id": {
-									"description": "Integration ID.",
-									"type": "string",
-									"format": "uuid",
-									"readOnly": true
-								},
-								"is_paused": {
-									"description": "Whether the user paused the integration.",
-									"type": "boolean",
-									"readOnly": true
-								},
-								"last_hydrated": {
-									"description": "Last time the integration was hydrated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"name": {
-									"description": "Name of the integration.",
-									"type": "string",
-									"readOnly": true
-								},
-								"organization_id": {
-									"description": "Organization ID.",
-									"type": "integer",
-									"readOnly": true
-								},
-								"status": {
-									"description": "Integration status.",
-									"type": "string"
-								},
-								"updated": {
-									"description": "When the integration was last updated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"use_cases": {
-									"description": "Use cases enabled for the integration.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"application",
-								"auth_method",
-								"authorization_link",
-								"created",
-								"credentials_expiry",
-								"dlp_profiles",
-								"health_details",
-								"id",
-								"is_paused",
-								"last_hydrated",
-								"name",
-								"organization_id",
-								"status",
-								"updated",
-								"use_cases"
+								"result",
+								"success"
 							]
 						}
 					}
@@ -1045,22 +1099,26 @@
 						"type": "object",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
 								"type": "string",
 								"enum": [
 									"ANTHROPIC",
+									"AWS",
 									"BITBUCKET",
 									"BOX",
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
+									"GITLAB",
 									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
 									"MICROSOFT_INTERNAL",
 									"OPENAI",
 									"SALESFORCE",
-									"SLACK"
+									"SERVICENOW",
+									"SLACK",
+									"ZOOM"
 								]
 							},
 							"auth_method": {
@@ -1147,22 +1205,26 @@
 						"type": "object",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
 								"type": "string",
 								"enum": [
 									"ANTHROPIC",
+									"AWS",
 									"BITBUCKET",
 									"BOX",
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
+									"GITLAB",
 									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
 									"MICROSOFT_INTERNAL",
 									"OPENAI",
 									"SALESFORCE",
-									"SLACK"
+									"SERVICENOW",
+									"SLACK",
+									"ZOOM"
 								]
 							},
 							"auth_method": {
@@ -1226,22 +1288,26 @@
 						"type": "object",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
 								"type": "string",
 								"enum": [
 									"ANTHROPIC",
+									"AWS",
 									"BITBUCKET",
 									"BOX",
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
+									"GITLAB",
 									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
 									"MICROSOFT_INTERNAL",
 									"OPENAI",
 									"SALESFORCE",
-									"SLACK"
+									"SERVICENOW",
+									"SLACK",
+									"ZOOM"
 								]
 							},
 							"auth_method": {
@@ -1386,153 +1452,180 @@
 											}
 										]
 									},
-									"result_info": {
-										"count": 1,
-										"next": null,
-										"page": 1,
-										"per_page": 1,
-										"previous": null,
-										"total_count": 1
-									},
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Serializer for v2 integration detail response with use cases.",
 							"type": "object",
 							"properties": {
-								"application": {
-									"type": "object",
-									"additionalProperties": {
-										"nullable": true,
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
 										"type": "string"
 									},
-									"readOnly": true
+									"default": []
 								},
-								"auth_method": {
-									"description": "The integration's authentication method.",
-									"type": "object",
-									"additionalProperties": {
-										"type": "string"
-									},
-									"nullable": true,
-									"readOnly": true
-								},
-								"authorization_link": {
-									"description": "Authorization link for the integration.",
-									"type": "object",
-									"nullable": true,
-									"properties": {
-										"components": {
-											"additionalProperties": {},
-											"nullable": true,
-											"type": "object"
-										},
-										"link": {
-											"type": "string",
-											"nullable": true
+								"result": {
+									"description": "The requested item.",
+									"allOf": [
+										{
+											"description": "Serializer for v2 integration detail response with use cases.",
+											"type": "object",
+											"properties": {
+												"application": {
+													"type": "object",
+													"additionalProperties": {
+														"nullable": true,
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"auth_method": {
+													"description": "The integration's authentication method.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"readOnly": true
+												},
+												"authorization_link": {
+													"description": "Authorization link for the integration.",
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"components": {
+															"additionalProperties": {},
+															"nullable": true,
+															"type": "object"
+														},
+														"link": {
+															"type": "string",
+															"nullable": true
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"components",
+														"link"
+													]
+												},
+												"created": {
+													"description": "When the integration was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"credentials_expiry": {
+													"description": "Credentials expiry time.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"dlp_profiles": {
+													"description": "DLP Profiles enabled for the integration.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"health_details": {
+													"description": "Health details with remediation hints.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												},
+												"id": {
+													"description": "Integration ID.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"is_paused": {
+													"description": "Whether the user paused the integration.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"last_hydrated": {
+													"description": "Last time the integration was hydrated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"name": {
+													"description": "Name of the integration.",
+													"type": "string",
+													"readOnly": true
+												},
+												"organization_id": {
+													"description": "Organization ID.",
+													"type": "integer",
+													"readOnly": true
+												},
+												"status": {
+													"description": "Integration status.",
+													"type": "string"
+												},
+												"updated": {
+													"description": "When the integration was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"use_cases": {
+													"description": "Use cases enabled for the integration.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"application",
+												"auth_method",
+												"authorization_link",
+												"created",
+												"credentials_expiry",
+												"dlp_profiles",
+												"health_details",
+												"id",
+												"is_paused",
+												"last_hydrated",
+												"name",
+												"organization_id",
+												"status",
+												"updated",
+												"use_cases"
+											]
 										}
-									},
-									"readOnly": true,
-									"required": [
-										"components",
-										"link"
 									]
 								},
-								"created": {
-									"description": "When the integration was created.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"credentials_expiry": {
-									"description": "Credentials expiry time.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"dlp_profiles": {
-									"description": "DLP Profiles enabled for the integration.",
-									"type": "array",
-									"items": {
-										"format": "uuid",
-										"type": "string"
-									},
-									"readOnly": true
-								},
-								"health_details": {
-									"description": "Health details with remediation hints.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
-								},
-								"id": {
-									"description": "Integration ID.",
-									"type": "string",
-									"format": "uuid",
-									"readOnly": true
-								},
-								"is_paused": {
-									"description": "Whether the user paused the integration.",
-									"type": "boolean",
-									"readOnly": true
-								},
-								"last_hydrated": {
-									"description": "Last time the integration was hydrated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"name": {
-									"description": "Name of the integration.",
-									"type": "string",
-									"readOnly": true
-								},
-								"organization_id": {
-									"description": "Organization ID.",
-									"type": "integer",
-									"readOnly": true
-								},
-								"status": {
-									"description": "Integration status.",
-									"type": "string"
-								},
-								"updated": {
-									"description": "When the integration was last updated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"use_cases": {
-									"description": "Use cases enabled for the integration.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"application",
-								"auth_method",
-								"authorization_link",
-								"created",
-								"credentials_expiry",
-								"dlp_profiles",
-								"health_details",
-								"id",
-								"is_paused",
-								"last_hydrated",
-								"name",
-								"organization_id",
-								"status",
-								"updated",
-								"use_cases"
+								"result",
+								"success"
 							]
 						}
 					}
@@ -1670,153 +1763,180 @@
 											}
 										]
 									},
-									"result_info": {
-										"count": 1,
-										"next": null,
-										"page": 1,
-										"per_page": 1,
-										"previous": null,
-										"total_count": 1
-									},
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Serializer for v2 integration detail response with use cases.",
 							"type": "object",
 							"properties": {
-								"application": {
-									"type": "object",
-									"additionalProperties": {
-										"nullable": true,
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
 										"type": "string"
 									},
-									"readOnly": true
+									"default": []
 								},
-								"auth_method": {
-									"description": "The integration's authentication method.",
-									"type": "object",
-									"additionalProperties": {
-										"type": "string"
-									},
-									"nullable": true,
-									"readOnly": true
-								},
-								"authorization_link": {
-									"description": "Authorization link for the integration.",
-									"type": "object",
-									"nullable": true,
-									"properties": {
-										"components": {
-											"additionalProperties": {},
-											"nullable": true,
-											"type": "object"
-										},
-										"link": {
-											"type": "string",
-											"nullable": true
+								"result": {
+									"description": "The requested item.",
+									"allOf": [
+										{
+											"description": "Serializer for v2 integration detail response with use cases.",
+											"type": "object",
+											"properties": {
+												"application": {
+													"type": "object",
+													"additionalProperties": {
+														"nullable": true,
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"auth_method": {
+													"description": "The integration's authentication method.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"readOnly": true
+												},
+												"authorization_link": {
+													"description": "Authorization link for the integration.",
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"components": {
+															"additionalProperties": {},
+															"nullable": true,
+															"type": "object"
+														},
+														"link": {
+															"type": "string",
+															"nullable": true
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"components",
+														"link"
+													]
+												},
+												"created": {
+													"description": "When the integration was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"credentials_expiry": {
+													"description": "Credentials expiry time.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"dlp_profiles": {
+													"description": "DLP Profiles enabled for the integration.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"health_details": {
+													"description": "Health details with remediation hints.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												},
+												"id": {
+													"description": "Integration ID.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"is_paused": {
+													"description": "Whether the user paused the integration.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"last_hydrated": {
+													"description": "Last time the integration was hydrated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"name": {
+													"description": "Name of the integration.",
+													"type": "string",
+													"readOnly": true
+												},
+												"organization_id": {
+													"description": "Organization ID.",
+													"type": "integer",
+													"readOnly": true
+												},
+												"status": {
+													"description": "Integration status.",
+													"type": "string"
+												},
+												"updated": {
+													"description": "When the integration was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"use_cases": {
+													"description": "Use cases enabled for the integration.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"application",
+												"auth_method",
+												"authorization_link",
+												"created",
+												"credentials_expiry",
+												"dlp_profiles",
+												"health_details",
+												"id",
+												"is_paused",
+												"last_hydrated",
+												"name",
+												"organization_id",
+												"status",
+												"updated",
+												"use_cases"
+											]
 										}
-									},
-									"readOnly": true,
-									"required": [
-										"components",
-										"link"
 									]
 								},
-								"created": {
-									"description": "When the integration was created.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"credentials_expiry": {
-									"description": "Credentials expiry time.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"dlp_profiles": {
-									"description": "DLP Profiles enabled for the integration.",
-									"type": "array",
-									"items": {
-										"format": "uuid",
-										"type": "string"
-									},
-									"readOnly": true
-								},
-								"health_details": {
-									"description": "Health details with remediation hints.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
-								},
-								"id": {
-									"description": "Integration ID.",
-									"type": "string",
-									"format": "uuid",
-									"readOnly": true
-								},
-								"is_paused": {
-									"description": "Whether the user paused the integration.",
-									"type": "boolean",
-									"readOnly": true
-								},
-								"last_hydrated": {
-									"description": "Last time the integration was hydrated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"name": {
-									"description": "Name of the integration.",
-									"type": "string",
-									"readOnly": true
-								},
-								"organization_id": {
-									"description": "Organization ID.",
-									"type": "integer",
-									"readOnly": true
-								},
-								"status": {
-									"description": "Integration status.",
-									"type": "string"
-								},
-								"updated": {
-									"description": "When the integration was last updated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"use_cases": {
-									"description": "Use cases enabled for the integration.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"application",
-								"auth_method",
-								"authorization_link",
-								"created",
-								"credentials_expiry",
-								"dlp_profiles",
-								"health_details",
-								"id",
-								"is_paused",
-								"last_hydrated",
-								"name",
-								"organization_id",
-								"status",
-								"updated",
-								"use_cases"
+								"result",
+								"success"
 							]
 						}
 					}
@@ -1954,153 +2074,180 @@
 											}
 										]
 									},
-									"result_info": {
-										"count": 1,
-										"next": null,
-										"page": 1,
-										"per_page": 1,
-										"previous": null,
-										"total_count": 1
-									},
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Serializer for v2 integration detail response with use cases.",
 							"type": "object",
 							"properties": {
-								"application": {
-									"type": "object",
-									"additionalProperties": {
-										"nullable": true,
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": {},
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
 										"type": "string"
 									},
-									"readOnly": true
+									"default": []
 								},
-								"auth_method": {
-									"description": "The integration's authentication method.",
-									"type": "object",
-									"additionalProperties": {
-										"type": "string"
-									},
-									"nullable": true,
-									"readOnly": true
-								},
-								"authorization_link": {
-									"description": "Authorization link for the integration.",
-									"type": "object",
-									"nullable": true,
-									"properties": {
-										"components": {
-											"additionalProperties": {},
-											"nullable": true,
-											"type": "object"
-										},
-										"link": {
-											"type": "string",
-											"nullable": true
+								"result": {
+									"description": "The requested item.",
+									"allOf": [
+										{
+											"description": "Serializer for v2 integration detail response with use cases.",
+											"type": "object",
+											"properties": {
+												"application": {
+													"type": "object",
+													"additionalProperties": {
+														"nullable": true,
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"auth_method": {
+													"description": "The integration's authentication method.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													},
+													"nullable": true,
+													"readOnly": true
+												},
+												"authorization_link": {
+													"description": "Authorization link for the integration.",
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"components": {
+															"additionalProperties": {},
+															"nullable": true,
+															"type": "object"
+														},
+														"link": {
+															"type": "string",
+															"nullable": true
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"components",
+														"link"
+													]
+												},
+												"created": {
+													"description": "When the integration was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"credentials_expiry": {
+													"description": "Credentials expiry time.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"dlp_profiles": {
+													"description": "DLP Profiles enabled for the integration.",
+													"type": "array",
+													"items": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"readOnly": true
+												},
+												"health_details": {
+													"description": "Health details with remediation hints.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												},
+												"id": {
+													"description": "Integration ID.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"is_paused": {
+													"description": "Whether the user paused the integration.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"last_hydrated": {
+													"description": "Last time the integration was hydrated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"name": {
+													"description": "Name of the integration.",
+													"type": "string",
+													"readOnly": true
+												},
+												"organization_id": {
+													"description": "Organization ID.",
+													"type": "integer",
+													"readOnly": true
+												},
+												"status": {
+													"description": "Integration status.",
+													"type": "string"
+												},
+												"updated": {
+													"description": "When the integration was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"use_cases": {
+													"description": "Use cases enabled for the integration.",
+													"type": "array",
+													"items": {
+														"additionalProperties": {},
+														"type": "object"
+													},
+													"readOnly": true
+												}
+											},
+											"required": [
+												"application",
+												"auth_method",
+												"authorization_link",
+												"created",
+												"credentials_expiry",
+												"dlp_profiles",
+												"health_details",
+												"id",
+												"is_paused",
+												"last_hydrated",
+												"name",
+												"organization_id",
+												"status",
+												"updated",
+												"use_cases"
+											]
 										}
-									},
-									"readOnly": true,
-									"required": [
-										"components",
-										"link"
 									]
 								},
-								"created": {
-									"description": "When the integration was created.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"credentials_expiry": {
-									"description": "Credentials expiry time.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"dlp_profiles": {
-									"description": "DLP Profiles enabled for the integration.",
-									"type": "array",
-									"items": {
-										"format": "uuid",
-										"type": "string"
-									},
-									"readOnly": true
-								},
-								"health_details": {
-									"description": "Health details with remediation hints.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
-								},
-								"id": {
-									"description": "Integration ID.",
-									"type": "string",
-									"format": "uuid",
-									"readOnly": true
-								},
-								"is_paused": {
-									"description": "Whether the user paused the integration.",
-									"type": "boolean",
-									"readOnly": true
-								},
-								"last_hydrated": {
-									"description": "Last time the integration was hydrated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"name": {
-									"description": "Name of the integration.",
-									"type": "string",
-									"readOnly": true
-								},
-								"organization_id": {
-									"description": "Organization ID.",
-									"type": "integer",
-									"readOnly": true
-								},
-								"status": {
-									"description": "Integration status.",
-									"type": "string"
-								},
-								"updated": {
-									"description": "When the integration was last updated.",
-									"type": "string",
-									"format": "date-time",
-									"readOnly": true
-								},
-								"use_cases": {
-									"description": "Use cases enabled for the integration.",
-									"type": "array",
-									"items": {
-										"additionalProperties": {},
-										"type": "object"
-									},
-									"readOnly": true
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"application",
-								"auth_method",
-								"authorization_link",
-								"created",
-								"credentials_expiry",
-								"dlp_profiles",
-								"health_details",
-								"id",
-								"is_paused",
-								"last_hydrated",
-								"name",
-								"organization_id",
-								"status",
-								"updated",
-								"use_cases"
+								"result",
+								"success"
 							]
 						}
 					}

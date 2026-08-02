@@ -495,7 +495,8 @@
 																"description": "Identifier",
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32
+																"maxLength": 32,
+																"x-auditable": true
 															},
 															"name": {
 																"description": "The name of the account.",
@@ -534,7 +535,8 @@
 														"description": "Identifier",
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32
+														"maxLength": 32,
+														"x-auditable": true
 													},
 													"meta": {
 														"description": "Metadata about the zone.",
@@ -1024,7 +1026,8 @@
 															"description": "Identifier",
 															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32
+															"maxLength": 32,
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the account.",
@@ -1063,7 +1066,8 @@
 													"description": "Identifier",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32
+													"maxLength": 32,
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "Metadata about the zone.",
@@ -1659,7 +1663,8 @@
 															"description": "Identifier",
 															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32
+															"maxLength": 32,
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the account.",
@@ -1698,7 +1703,8 @@
 													"description": "Identifier",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32
+													"maxLength": 32,
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "Metadata about the zone.",
@@ -2228,7 +2234,8 @@
 															"description": "Identifier",
 															"type": "string",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32
+															"maxLength": 32,
+															"x-auditable": true
 														},
 														"name": {
 															"description": "The name of the account.",
@@ -2267,7 +2274,8 @@
 													"description": "Identifier",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32
+													"maxLength": 32,
+													"x-auditable": true
 												},
 												"meta": {
 													"description": "Metadata about the zone.",
@@ -3919,7 +3927,7 @@
 			"Zone Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "zones.activation-check",
-		"x-fern-sdk-method-name": "trigger"
+		"x-fern-sdk-group-name": "zone",
+		"x-fern-sdk-method-name": "activate"
 	}
 }

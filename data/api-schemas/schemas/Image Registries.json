@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/containers/registries/{domain}": {
 		"operationId": "deleteImageRegistry",
 		"summary": "Delete a registry from the account",
-		"description": "Delete a registry from the account, this will make Cloudchamber unable to pull images from the registry",
+		"description": "Delete a registry from the account, this will prevent Containers from pulling images from the registry",
 		"parameters": [
 			{
 				"name": "domain",
@@ -103,6 +103,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Result of deleting an image registry from a Containers account.",
 											"type": "object",
 											"properties": {
 												"domain": {
@@ -110,7 +111,8 @@
 													"type": "string",
 													"example": "docker.io"
 												},
-												"secret_store_ref": {
+												"secrets_store_ref": {
+													"description": "Reference to credentials in Secrets Store that are no longer used by another\nregistry and can be removed. The value has the form `<store_id>:<secret_name>`.\n",
 													"type": "string"
 												}
 											},
@@ -738,7 +740,7 @@
 														]
 													},
 													"public_key": {
-														"description": "A base64 representation of the public key that you can set to configure the registry. If null, the registry is public and doesn't have authentication setup with Cloudchamber",
+														"description": "Public component of the registry credentials. For managed registries this is\na base64-encoded public key; for external registries the format depends on\nthe registry provider.\n",
 														"type": "string"
 													}
 												},
@@ -889,13 +891,13 @@
 	"POST /accounts/{account_id}/containers/registries": {
 		"operationId": "createImageRegistry",
 		"summary": "Add a new image registry configuration",
-		"description": "Add a new image registry into your account, so then Cloudflare can pull docker images with public key JWT authentication",
+		"description": "Add an authenticated external image registry to the account so Containers can pull images from it.",
 		"requestBody": {
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Request body for creating a new image registry configuration",
+						"description": "Request body for adding an authenticated external registry to a Containers account.",
 						"type": "object",
 						"properties": {
 							"auth": {
@@ -952,8 +954,11 @@
 								"example": "docker.io"
 							},
 							"is_public": {
-								"description": "If you own the registry and is private, this should be false or not defined. If it's a public registry like docker.io, you should set this to true",
-								"type": "boolean"
+								"description": "Containers only supports authenticated external registries. If provided, this must be false.",
+								"type": "boolean",
+								"enum": [
+									false
+								]
 							},
 							"kind": {
 								"description": "The type of external registry that is being configured.",
@@ -967,7 +972,9 @@
 							}
 						},
 						"required": [
-							"domain"
+							"domain",
+							"auth",
+							"kind"
 						]
 					}
 				}
@@ -1123,7 +1130,7 @@
 													]
 												},
 												"public_key": {
-													"description": "A base64 representation of the public key that you can set to configure the registry. If null, the registry is public and doesn't have authentication setup with Cloudchamber",
+													"description": "Public component of the registry credentials. For managed registries this is\na base64-encoded public key; for external registries the format depends on\nthe registry provider.\n",
 													"type": "string"
 												}
 											},
@@ -1599,7 +1606,7 @@
 	"POST /accounts/{account_id}/containers/registries/{domain}/credentials": {
 		"operationId": "generateImageRegistryCredentials",
 		"summary": "Generate a JWT to interact with the specified image registry.",
-		"description": "Generates temporary credentials for accessing Cloudflare's container image registry. Used for pulling and pushing container images.",
+		"description": "Generates credentials for accessing a configured container image registry.",
 		"parameters": [
 			{
 				"name": "domain",
@@ -1632,8 +1639,7 @@
 									"type": "string",
 									"enum": [
 										"pull",
-										"push",
-										"library_push"
+										"push"
 									]
 								}
 							}
@@ -1735,7 +1741,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Credentials that can be used to interact with the requested image registry.",
+											"description": "Credentials returned for an authenticated registry configured on a Containers account.",
 											"type": "object",
 											"properties": {
 												"account_id": {
@@ -1758,7 +1764,8 @@
 											"required": [
 												"account_id",
 												"registry_host",
-												"username"
+												"username",
+												"password"
 											]
 										}
 									},

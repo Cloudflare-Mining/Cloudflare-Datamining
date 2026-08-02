@@ -127,7 +127,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}": {
 		"operationId": "deleteDnsProtectionRule",
@@ -383,7 +387,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules.delete.protection",
+		"x-fern-sdk-method-name": "rule",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
 		"operationId": "deleteAllowlistPrefixesForAccount",
@@ -626,7 +634,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.allowlist.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
 		"operationId": "deleteAllowlistPrefix",
@@ -882,7 +894,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.allowlist.delete.allowlist",
+		"x-fern-sdk-method-name": "prefix",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes": {
 		"operationId": "deletePrefixesForAccount",
@@ -1125,7 +1141,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}": {
 		"operationId": "deletePrefix",
@@ -1624,7 +1644,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}": {
 		"operationId": "deleteSynProtectionFilter",
@@ -1880,7 +1904,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters.delete.protection",
+		"x-fern-sdk-method-name": "filter",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
 		"operationId": "deleteSynProtectionRulesForAccount",
@@ -2123,7 +2151,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
 		"operationId": "deleteSynProtectionRule",
@@ -2379,7 +2411,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules.delete.protection",
+		"x-fern-sdk-method-name": "rule",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
 		"operationId": "deleteTcpFlowProtectionFiltersForAccount",
@@ -2622,7 +2658,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
 		"operationId": "deleteTcpFlowProtectionFilter",
@@ -2878,7 +2918,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters.delete.protection",
+		"x-fern-sdk-method-name": "filter",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
 		"operationId": "deleteTcpFlowProtectionRulesForAccount",
@@ -3121,7 +3165,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules.delete.for",
+		"x-fern-sdk-method-name": "account",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
 		"operationId": "deleteTcpFlowProtectionRule",
@@ -3377,7 +3425,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules.delete.protection",
+		"x-fern-sdk-method-name": "rule",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules": {
 		"operationId": "listDnsProtectionRulesForAccount",
@@ -3784,7 +3836,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}": {
 		"operationId": "getDnsProtectionRule",
@@ -4119,7 +4175,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
 		"operationId": "listAllowlistPrefixesForAccount",
@@ -4501,7 +4561,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.allowlist",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
 		"operationId": "getAllowlistPrefix",
@@ -4812,7 +4876,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.allowlist",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes": {
 		"operationId": "listPrefixesForAccount",
@@ -5196,7 +5264,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}": {
 		"operationId": "getPrefix",
@@ -5508,7 +5580,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters": {
 		"operationId": "listSynProtectionFiltersForAccount",
@@ -5896,7 +5972,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}": {
 		"operationId": "getSynProtectionFilter",
@@ -6202,7 +6282,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
 		"operationId": "listSynProtectionRulesForAccount",
@@ -6603,7 +6687,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
 		"operationId": "getSynProtectionRule",
@@ -6932,7 +7020,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
 		"operationId": "listTcpFlowProtectionFiltersForAccount",
@@ -7320,7 +7412,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
 		"operationId": "getTcpFlowProtectionFilter",
@@ -7626,7 +7722,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
 		"operationId": "listTcpFlowProtectionRulesForAccount",
@@ -8021,7 +8121,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
 		"operationId": "getTcpFlowProtectionRule",
@@ -8344,7 +8448,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status": {
 		"operationId": "getProtectionStatus",
@@ -8609,7 +8717,11 @@
 		"x-api-token-group": [
 			"DDoS Protection Write",
 			"DDoS Protection Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.protection.status",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules/{rule_id}": {
 		"operationId": "updateDnsProtectionRule",
@@ -8982,7 +9094,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefix_id}": {
 		"operationId": "updateAllowlistPrefix",
@@ -9316,7 +9432,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.allowlist",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefix_id}": {
 		"operationId": "updatePrefix",
@@ -9651,7 +9771,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filter_id}": {
 		"operationId": "updateSynProtectionFilter",
@@ -9981,7 +10105,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{rule_id}": {
 		"operationId": "updateSynProtectionRule",
@@ -10343,7 +10471,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filter_id}": {
 		"operationId": "updateTcpFlowProtectionFilter",
@@ -10673,7 +10805,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{rule_id}": {
 		"operationId": "updateTcpFlowProtectionRule",
@@ -11024,7 +11160,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status": {
 		"operationId": "updateProtectionStatus",
@@ -11310,7 +11450,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.protection.status",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_dns_protection/configs/dns_protection/rules": {
 		"operationId": "createDnsProtectionRule",
@@ -11688,7 +11832,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-dns-protection.configs.dns.protection.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist": {
 		"operationId": "createAllowlistedPrefix",
@@ -12019,7 +12167,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.allowlist",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes": {
 		"operationId": "createPrefix",
@@ -12352,7 +12504,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk": {
 		"operationId": "bulkCreatePrefixes",
@@ -12731,7 +12887,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.prefixes.bulk",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters": {
 		"operationId": "createSynProtectionFilter",
@@ -13052,7 +13212,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.filters",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules": {
 		"operationId": "createSynProtectionRule",
@@ -13418,7 +13582,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.syn.protection.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters": {
 		"operationId": "createTcpFlowProtectionFilter",
@@ -13739,7 +13907,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.filters",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules": {
 		"operationId": "createTcpFlowProtectionRule",
@@ -14094,6 +14266,10 @@
 		],
 		"x-api-token-group": [
 			"DDoS Protection Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.advanced-tcp-protection.configs.tcp.flow.protection.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

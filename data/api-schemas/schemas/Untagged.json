@@ -480,6 +480,64 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1
+			}
+		},
+		{
+			"name": "query_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"type": "integer",
+				"minimum": 0
+			}
+		},
+		{
+			"name": "domain_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"type": "integer",
+				"minimum": 0
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": [
+		{
+			"name": "account_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"minLength": 1
+			}
+		},
+		{
+			"name": "query_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"type": "integer",
+				"minimum": 0
+			}
+		},
+		{
+			"name": "domain_id",
+			"in": "path",
+			"required": true,
+			"schema": {
+				"type": "integer",
+				"minimum": 0
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/queries/bulk": [
 		{
 			"name": "account_id",
@@ -765,54 +823,6 @@
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}/exec": [
-		{
-			"description": "Account identifier.",
-			"in": "path",
-			"name": "account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"example": "account-123"
-			}
-		}
-	],
-	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}/fetch": [
 		{
 			"description": "Account identifier.",
 			"in": "path",

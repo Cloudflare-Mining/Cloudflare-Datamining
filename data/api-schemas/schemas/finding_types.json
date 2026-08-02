@@ -29,6 +29,39 @@
 				"schema": {
 					"type": "integer"
 				}
+			},
+			{
+				"description": "Filter finding types by vendor. Supports multiple comma-separated values.",
+				"explode": false,
+				"in": "query",
+				"name": "vendors",
+				"schema": {
+					"type": "array",
+					"items": {
+						"description": "Supported vendor types for integrations.",
+						"type": "string",
+						"example": "GOOGLE_WORKSPACE",
+						"enum": [
+							"ANTHROPIC",
+							"AWS",
+							"BITBUCKET",
+							"BOX",
+							"CONFLUENCE",
+							"DROPBOX",
+							"GITHUB",
+							"GOOGLE_CLOUD_PLATFORM",
+							"GOOGLE_WORKSPACE",
+							"JIRA",
+							"MICROSOFT",
+							"MICROSOFT_INTERNAL",
+							"OPENAI",
+							"SALESFORCE",
+							"SERVICENOW",
+							"SLACK"
+						]
+					}
+				},
+				"style": "form"
 			}
 		],
 		"responses": {

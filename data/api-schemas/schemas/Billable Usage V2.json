@@ -297,6 +297,11 @@
 												"type": "string",
 												"example": "Developer"
 											},
+											"x_ProductFamilyId": {
+												"description": "The unique identifier for the product family in the Cloudflare catalog. Cloudflare extension; replaces FOCUS ServiceId.",
+												"type": "string",
+												"example": "workers"
+											},
 											"x_ProductFamilyName": {
 												"description": "The product family the charge belongs to (e.g., \"R2\", \"Workers\"). Cloudflare extension; replaces FOCUS ServiceName.",
 												"type": "string",
@@ -732,6 +737,11 @@
 												"description": "The product category the charge belongs to (e.g., \"Developer\", \"Cloudflare One\"). Cloudflare extension; replaces FOCUS ServiceCategory.",
 												"type": "string",
 												"example": "Developer"
+											},
+											"x_ProductFamilyId": {
+												"description": "The unique identifier for the product family in the Cloudflare catalog. Cloudflare extension; replaces FOCUS ServiceId.",
+												"type": "string",
+												"example": "workers"
 											},
 											"x_ProductFamilyName": {
 												"description": "The product family the charge belongs to (e.g., \"R2\", \"Workers\"). Cloudflare extension; replaces FOCUS ServiceName.",

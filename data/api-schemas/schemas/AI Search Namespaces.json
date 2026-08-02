@@ -244,6 +244,123 @@
 												"type": "string",
 												"example": "production",
 												"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+											},
+											"public_endpoint_id": {
+												"type": "string",
+												"nullable": true,
+												"readOnly": true
+											},
+											"public_endpoint_params": {
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"authorized_hosts": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"chat_completions_endpoint": {
+														"type": "object",
+														"properties": {
+															"disabled": {
+																"description": "Disable chat completions endpoint for this public endpoint",
+																"type": "boolean",
+																"default": false
+															}
+														}
+													},
+													"custom_domains": {
+														"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
+														"type": "array",
+														"items": {
+															"description": "Custom domain hostname (must be a Verified zone on this account).",
+															"example": "search.example.com",
+															"maxLength": 253,
+															"minLength": 1,
+															"type": "string"
+														},
+														"maxItems": 1,
+														"nullable": true,
+														"x-auditable": true
+													},
+													"default_domain_enabled": {
+														"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+														"type": "boolean",
+														"default": true,
+														"x-auditable": true
+													},
+													"enabled": {
+														"type": "boolean",
+														"default": false
+													},
+													"instances_allowed": {
+														"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+														"type": "array",
+														"items": {
+															"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+															"example": "my-ai-search",
+															"maxLength": 64,
+															"minLength": 1,
+															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+															"type": "string",
+															"x-auditable": true
+														},
+														"example": [
+															"docs",
+															"blog"
+														],
+														"default": [],
+														"maxItems": 10,
+														"x-auditable": true
+													},
+													"mcp": {
+														"type": "object",
+														"properties": {
+															"description": {
+																"type": "string",
+																"default": "Finds exactly what you're looking for"
+															},
+															"disabled": {
+																"description": "Disable MCP endpoint for this public endpoint",
+																"type": "boolean",
+																"default": false
+															}
+														}
+													},
+													"rate_limit": {
+														"type": "object",
+														"properties": {
+															"period_ms": {
+																"type": "integer",
+																"maximum": 3600000,
+																"minimum": 60000
+															},
+															"requests": {
+																"type": "integer",
+																"minimum": 1
+															},
+															"technique": {
+																"type": "string",
+																"enum": [
+																	"fixed",
+																	"sliding"
+																]
+															}
+														}
+													},
+													"search_endpoint": {
+														"type": "object",
+														"properties": {
+															"disabled": {
+																"description": "Disable search endpoint for this public endpoint",
+																"type": "boolean",
+																"default": false
+															}
+														}
+													}
+												},
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -418,6 +535,123 @@
 											"type": "string",
 											"example": "production",
 											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+										},
+										"public_endpoint_id": {
+											"type": "string",
+											"nullable": true,
+											"readOnly": true
+										},
+										"public_endpoint_params": {
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"authorized_hosts": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"chat_completions_endpoint": {
+													"type": "object",
+													"properties": {
+														"disabled": {
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												},
+												"custom_domains": {
+													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
+													"type": "array",
+													"items": {
+														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"example": "search.example.com",
+														"maxLength": 253,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 1,
+													"nullable": true,
+													"x-auditable": true
+												},
+												"default_domain_enabled": {
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"default": true,
+													"x-auditable": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"default": false
+												},
+												"instances_allowed": {
+													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+													"type": "array",
+													"items": {
+														"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+														"example": "my-ai-search",
+														"maxLength": 64,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"docs",
+														"blog"
+													],
+													"default": [],
+													"maxItems": 10,
+													"x-auditable": true
+												},
+												"mcp": {
+													"type": "object",
+													"properties": {
+														"description": {
+															"type": "string",
+															"default": "Finds exactly what you're looking for"
+														},
+														"disabled": {
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												},
+												"rate_limit": {
+													"type": "object",
+													"properties": {
+														"period_ms": {
+															"type": "integer",
+															"maximum": 3600000,
+															"minimum": 60000
+														},
+														"requests": {
+															"type": "integer",
+															"minimum": 1
+														},
+														"technique": {
+															"type": "string",
+															"enum": [
+																"fixed",
+																"sliding"
+															]
+														}
+													}
+												},
+												"search_endpoint": {
+													"type": "object",
+													"properties": {
+														"disabled": {
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												}
+											},
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -752,6 +986,116 @@
 							"name": {
 								"type": "string",
 								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+							},
+							"public_endpoint_params": {
+								"type": "object",
+								"properties": {
+									"authorized_hosts": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"chat_completions_endpoint": {
+										"type": "object",
+										"properties": {
+											"disabled": {
+												"description": "Disable chat completions endpoint for this public endpoint",
+												"type": "boolean",
+												"default": false
+											}
+										}
+									},
+									"custom_domains": {
+										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
+										"type": "array",
+										"items": {
+											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"example": "search.example.com",
+											"maxLength": 253,
+											"minLength": 1,
+											"type": "string"
+										},
+										"maxItems": 1,
+										"nullable": true,
+										"x-auditable": true
+									},
+									"default_domain_enabled": {
+										"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+										"type": "boolean",
+										"default": true,
+										"x-auditable": true
+									},
+									"enabled": {
+										"type": "boolean",
+										"default": false
+									},
+									"instances_allowed": {
+										"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+										"type": "array",
+										"items": {
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+											"example": "my-ai-search",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"docs",
+											"blog"
+										],
+										"default": [],
+										"maxItems": 10,
+										"x-auditable": true
+									},
+									"mcp": {
+										"type": "object",
+										"properties": {
+											"description": {
+												"type": "string",
+												"default": "Finds exactly what you're looking for"
+											},
+											"disabled": {
+												"description": "Disable MCP endpoint for this public endpoint",
+												"type": "boolean",
+												"default": false
+											}
+										}
+									},
+									"rate_limit": {
+										"type": "object",
+										"properties": {
+											"period_ms": {
+												"type": "integer",
+												"maximum": 3600000,
+												"minimum": 60000
+											},
+											"requests": {
+												"type": "integer",
+												"minimum": 1
+											},
+											"technique": {
+												"type": "string",
+												"enum": [
+													"fixed",
+													"sliding"
+												]
+											}
+										}
+									},
+									"search_endpoint": {
+										"type": "object",
+										"properties": {
+											"disabled": {
+												"description": "Disable search endpoint for this public endpoint",
+												"type": "boolean",
+												"default": false
+											}
+										}
+									}
+								}
 							}
 						},
 						"required": [
@@ -788,6 +1132,123 @@
 											"type": "string",
 											"example": "production",
 											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+										},
+										"public_endpoint_id": {
+											"type": "string",
+											"nullable": true,
+											"readOnly": true
+										},
+										"public_endpoint_params": {
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"authorized_hosts": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"chat_completions_endpoint": {
+													"type": "object",
+													"properties": {
+														"disabled": {
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												},
+												"custom_domains": {
+													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
+													"type": "array",
+													"items": {
+														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"example": "search.example.com",
+														"maxLength": 253,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 1,
+													"nullable": true,
+													"x-auditable": true
+												},
+												"default_domain_enabled": {
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"default": true,
+													"x-auditable": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"default": false
+												},
+												"instances_allowed": {
+													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+													"type": "array",
+													"items": {
+														"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+														"example": "my-ai-search",
+														"maxLength": 64,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"docs",
+														"blog"
+													],
+													"default": [],
+													"maxItems": 10,
+													"x-auditable": true
+												},
+												"mcp": {
+													"type": "object",
+													"properties": {
+														"description": {
+															"type": "string",
+															"default": "Finds exactly what you're looking for"
+														},
+														"disabled": {
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												},
+												"rate_limit": {
+													"type": "object",
+													"properties": {
+														"period_ms": {
+															"type": "integer",
+															"maximum": 3600000,
+															"minimum": 60000
+														},
+														"requests": {
+															"type": "integer",
+															"minimum": 1
+														},
+														"technique": {
+															"type": "string",
+															"enum": [
+																"fixed",
+																"sliding"
+															]
+														}
+													}
+												},
+												"search_endpoint": {
+													"type": "object",
+													"properties": {
+														"disabled": {
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												}
+											},
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -811,7 +1272,7 @@
 				}
 			},
 			"400": {
-				"description": "Input Validation Error",
+				"description": "Instances allowed contains unknown instances.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -826,18 +1287,11 @@
 											},
 											"message": {
 												"type": "string"
-											},
-											"path": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
 											}
 										},
 										"required": [
 											"code",
-											"message",
-											"path"
+											"message"
 										],
 										"type": "object"
 									}
@@ -975,7 +1429,7 @@
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}": {
 		"operationId": "ai-search-update-namespace",
 		"summary": "Update a namespace",
-		"description": "Update the description of an existing namespace. The default namespace cannot be modified.",
+		"description": "Update the description and/or the public endpoint configuration of an existing namespace. The default namespace's description cannot be modified, but its public endpoint can.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1008,6 +1462,117 @@
 								"example": "Production environment",
 								"maxLength": 256,
 								"nullable": true
+							},
+							"public_endpoint_params": {
+								"type": "object",
+								"nullable": true,
+								"properties": {
+									"authorized_hosts": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"chat_completions_endpoint": {
+										"type": "object",
+										"properties": {
+											"disabled": {
+												"description": "Disable chat completions endpoint for this public endpoint",
+												"type": "boolean",
+												"default": false
+											}
+										}
+									},
+									"custom_domains": {
+										"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
+										"type": "array",
+										"items": {
+											"description": "Custom domain hostname (must be a Verified zone on this account).",
+											"example": "search.example.com",
+											"maxLength": 253,
+											"minLength": 1,
+											"type": "string"
+										},
+										"maxItems": 1,
+										"nullable": true,
+										"x-auditable": true
+									},
+									"default_domain_enabled": {
+										"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+										"type": "boolean",
+										"default": true,
+										"x-auditable": true
+									},
+									"enabled": {
+										"type": "boolean",
+										"default": false
+									},
+									"instances_allowed": {
+										"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+										"type": "array",
+										"items": {
+											"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+											"example": "my-ai-search",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"docs",
+											"blog"
+										],
+										"default": [],
+										"maxItems": 10,
+										"x-auditable": true
+									},
+									"mcp": {
+										"type": "object",
+										"properties": {
+											"description": {
+												"type": "string",
+												"default": "Finds exactly what you're looking for"
+											},
+											"disabled": {
+												"description": "Disable MCP endpoint for this public endpoint",
+												"type": "boolean",
+												"default": false
+											}
+										}
+									},
+									"rate_limit": {
+										"type": "object",
+										"properties": {
+											"period_ms": {
+												"type": "integer",
+												"maximum": 3600000,
+												"minimum": 60000
+											},
+											"requests": {
+												"type": "integer",
+												"minimum": 1
+											},
+											"technique": {
+												"type": "string",
+												"enum": [
+													"fixed",
+													"sliding"
+												]
+											}
+										}
+									},
+									"search_endpoint": {
+										"type": "object",
+										"properties": {
+											"disabled": {
+												"description": "Disable search endpoint for this public endpoint",
+												"type": "boolean",
+												"default": false
+											}
+										}
+									}
+								}
 							}
 						}
 					}
@@ -1041,6 +1606,123 @@
 											"type": "string",
 											"example": "production",
 											"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$"
+										},
+										"public_endpoint_id": {
+											"type": "string",
+											"nullable": true,
+											"readOnly": true
+										},
+										"public_endpoint_params": {
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"authorized_hosts": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"chat_completions_endpoint": {
+													"type": "object",
+													"properties": {
+														"disabled": {
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												},
+												"custom_domains": {
+													"description": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).",
+													"type": "array",
+													"items": {
+														"description": "Custom domain hostname (must be a Verified zone on this account).",
+														"example": "search.example.com",
+														"maxLength": 253,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 1,
+													"nullable": true,
+													"x-auditable": true
+												},
+												"default_domain_enabled": {
+													"description": "When false, the instance is reachable only via a registered custom domain and the default <public_endpoint_id>.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off — omitting it resets to true.",
+													"type": "boolean",
+													"default": true,
+													"x-auditable": true
+												},
+												"enabled": {
+													"type": "boolean",
+													"default": false
+												},
+												"instances_allowed": {
+													"description": "Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.",
+													"type": "array",
+													"items": {
+														"description": "AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.",
+														"example": "my-ai-search",
+														"maxLength": 64,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"docs",
+														"blog"
+													],
+													"default": [],
+													"maxItems": 10,
+													"x-auditable": true
+												},
+												"mcp": {
+													"type": "object",
+													"properties": {
+														"description": {
+															"type": "string",
+															"default": "Finds exactly what you're looking for"
+														},
+														"disabled": {
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												},
+												"rate_limit": {
+													"type": "object",
+													"properties": {
+														"period_ms": {
+															"type": "integer",
+															"maximum": 3600000,
+															"minimum": 60000
+														},
+														"requests": {
+															"type": "integer",
+															"minimum": 1
+														},
+														"technique": {
+															"type": "string",
+															"enum": [
+																"fixed",
+																"sliding"
+															]
+														}
+													}
+												},
+												"search_endpoint": {
+													"type": "object",
+													"properties": {
+														"disabled": {
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean",
+															"default": false
+														}
+													}
+												}
+											},
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1064,7 +1746,7 @@
 				}
 			},
 			"400": {
-				"description": "Cannot modify default namespace.",
+				"description": "Instances allowed contains unknown instances.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1105,6 +1787,46 @@
 			},
 			"404": {
 				"description": "Namespace not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Namespace modified concurrently please retry.",
 				"content": {
 					"application/json": {
 						"schema": {

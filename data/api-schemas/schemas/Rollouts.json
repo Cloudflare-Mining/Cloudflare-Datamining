@@ -91,7 +91,7 @@
 								]
 							},
 							"target_configuration": {
-								"description": "Properties required to modify a cloudchamber deployment specified by the user.",
+								"description": "Container configuration changes specified by the user.",
 								"type": "object",
 								"properties": {
 									"authorized_keys": {
@@ -269,19 +269,6 @@
 										"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
 										"type": "integer"
 									},
-									"metadata_service": {
-										"description": "Configuration for enabling the container metadata service.",
-										"type": "object",
-										"properties": {
-											"enabled": {
-												"description": "Whether the metadata service should be enabled for the deployment.",
-												"type": "boolean"
-											}
-										},
-										"required": [
-											"enabled"
-										]
-									},
 									"observability": {
 										"description": "Settings for deployment observability such as logging.",
 										"type": "object",
@@ -296,44 +283,6 @@
 													}
 												}
 											}
-										}
-									},
-									"secrets": {
-										"description": "A list of objects with secret names and the their access types from the account",
-										"type": "array",
-										"items": {
-											"description": "Specifies how secrets are accessed in containers, defining the name of the secret within the container and the corresponding account secret name.",
-											"type": "object",
-											"properties": {
-												"name": {
-													"description": "The name of the secret within the container",
-													"type": "string"
-												},
-												"secret": {
-													"description": "Corresponding secret name from the account",
-													"type": "string"
-												},
-												"type": {
-													"description": "The secret access type denotes how a secret is made available within a container. Available Options are \"env\".",
-													"type": "string",
-													"enum": [
-														"env"
-													]
-												}
-											},
-											"required": [
-												"name",
-												"type",
-												"secret"
-											]
-										}
-									},
-									"ssh_public_key_ids": {
-										"description": "A list of SSH public key IDs from the account",
-										"type": "array",
-										"items": {
-											"description": "An SSH public key ID. One can map an ssh public key to a deployment using this ID.",
-											"type": "string"
 										}
 									},
 									"trusted_user_ca_keys": {
@@ -485,7 +434,7 @@
 													"example": "2021-04-01T12:32:41.488Z"
 												},
 												"current_configuration": {
-													"description": "Properties required to modify a cloudchamber deployment specified by the user.",
+													"description": "Container configuration changes specified by the user.",
 													"type": "object",
 													"properties": {
 														"authorized_keys": {
@@ -663,19 +612,6 @@
 															"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
 															"type": "integer"
 														},
-														"metadata_service": {
-															"description": "Configuration for enabling the container metadata service.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"description": "Whether the metadata service should be enabled for the deployment.",
-																	"type": "boolean"
-																}
-															},
-															"required": [
-																"enabled"
-															]
-														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
 															"type": "object",
@@ -690,44 +626,6 @@
 																		}
 																	}
 																}
-															}
-														},
-														"secrets": {
-															"description": "A list of objects with secret names and the their access types from the account",
-															"type": "array",
-															"items": {
-																"description": "Specifies how secrets are accessed in containers, defining the name of the secret within the container and the corresponding account secret name.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "The name of the secret within the container",
-																		"type": "string"
-																	},
-																	"secret": {
-																		"description": "Corresponding secret name from the account",
-																		"type": "string"
-																	},
-																	"type": {
-																		"description": "The secret access type denotes how a secret is made available within a container. Available Options are \"env\".",
-																		"type": "string",
-																		"enum": [
-																			"env"
-																		]
-																	}
-																},
-																"required": [
-																	"name",
-																	"type",
-																	"secret"
-																]
-															}
-														},
-														"ssh_public_key_ids": {
-															"description": "A list of SSH public key IDs from the account",
-															"type": "array",
-															"items": {
-																"description": "An SSH public key ID. One can map an ssh public key to a deployment using this ID.",
-																"type": "string"
 															}
 														},
 														"trusted_user_ca_keys": {
@@ -801,7 +699,7 @@
 																				"type": "string"
 																			},
 																			"name": {
-																				"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a Cloudchamber placement. It happens when the runtime was able to retrieve deployment resources and start verify everything is correct.\n  - NetworkingIPAssigned: It's sent when the Cloudchamber runtime has mapped the IP to the container.\n  - VMStarted: It's sent when the Cloudchamber runtime has started the VM. However, it does not mean that the container is healthy.\n  - ImagePulled: It's sent when the Cloudchamber runtime has pulled the image successfully.\n  - ImagePullError: It's sent when the Cloudchamber runtime is having issues pulling image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Cloudchamber runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM has finally exited.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime had an internal error.\n  - SSHStarted: It's sent when the container has gained network connectivity and has opened the SSH port. This event is only sent when SSH keys are configured.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container has started running.\n",
+																				"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a container placement. It happens when the Containers runtime was able to retrieve deployment resources and start verifying everything is correct.\n  - NetworkingIPAssigned: It's sent when the Containers runtime has mapped the IP to the container.\n  - VMStarted: It's sent when the Containers runtime has started the VM. However, it does not mean that the container is healthy.\n  - ImagePulled: It's sent when the Containers runtime has pulled the image successfully.\n  - ImagePullError: It's sent when the Containers runtime is having issues pulling the image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Containers runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM has finally exited.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime had an internal error.\n  - SSHStarted: It's sent when the container has gained network connectivity and has opened the SSH port. This event is only sent when SSH keys are configured.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container has started running.\n",
 																				"type": "string",
 																				"enum": [
 																					"SchedulerPlaced",
@@ -1055,7 +953,7 @@
 													]
 												},
 												"target_configuration": {
-													"description": "Properties required to modify a cloudchamber deployment specified by the user.",
+													"description": "Container configuration changes specified by the user.",
 													"type": "object",
 													"properties": {
 														"authorized_keys": {
@@ -1233,19 +1131,6 @@
 															"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
 															"type": "integer"
 														},
-														"metadata_service": {
-															"description": "Configuration for enabling the container metadata service.",
-															"type": "object",
-															"properties": {
-																"enabled": {
-																	"description": "Whether the metadata service should be enabled for the deployment.",
-																	"type": "boolean"
-																}
-															},
-															"required": [
-																"enabled"
-															]
-														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
 															"type": "object",
@@ -1260,44 +1145,6 @@
 																		}
 																	}
 																}
-															}
-														},
-														"secrets": {
-															"description": "A list of objects with secret names and the their access types from the account",
-															"type": "array",
-															"items": {
-																"description": "Specifies how secrets are accessed in containers, defining the name of the secret within the container and the corresponding account secret name.",
-																"type": "object",
-																"properties": {
-																	"name": {
-																		"description": "The name of the secret within the container",
-																		"type": "string"
-																	},
-																	"secret": {
-																		"description": "Corresponding secret name from the account",
-																		"type": "string"
-																	},
-																	"type": {
-																		"description": "The secret access type denotes how a secret is made available within a container. Available Options are \"env\".",
-																		"type": "string",
-																		"enum": [
-																			"env"
-																		]
-																	}
-																},
-																"required": [
-																	"name",
-																	"type",
-																	"secret"
-																]
-															}
-														},
-														"ssh_public_key_ids": {
-															"description": "A list of SSH public key IDs from the account",
-															"type": "array",
-															"items": {
-																"description": "An SSH public key ID. One can map an ssh public key to a deployment using this ID.",
-																"type": "string"
 															}
 														},
 														"trusted_user_ca_keys": {

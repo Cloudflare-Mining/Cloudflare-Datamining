@@ -1341,13 +1341,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1407,13 +1408,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1482,13 +1484,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1542,13 +1545,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1602,13 +1606,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1662,13 +1667,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1722,13 +1728,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1782,13 +1789,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1842,13 +1850,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1916,13 +1925,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -1976,13 +1986,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2050,13 +2061,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2124,13 +2136,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2184,13 +2197,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2258,13 +2272,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2318,13 +2333,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2378,13 +2394,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2438,13 +2455,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2512,13 +2530,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2572,13 +2591,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2632,13 +2652,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2692,13 +2713,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2766,13 +2788,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2826,13 +2849,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2886,13 +2910,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -2960,13 +2985,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3020,13 +3046,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3080,13 +3107,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3140,13 +3168,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3200,13 +3229,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3260,13 +3290,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3320,13 +3351,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3380,13 +3412,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3440,13 +3473,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3514,13 +3548,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3580,13 +3615,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -3654,13 +3690,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -4658,13 +4695,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -4724,13 +4762,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -4799,13 +4838,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -4859,13 +4899,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -4919,13 +4960,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -4979,13 +5021,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5039,13 +5082,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5099,13 +5143,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5159,13 +5204,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5233,13 +5279,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5293,13 +5340,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5367,13 +5415,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5441,13 +5490,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5501,13 +5551,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5575,13 +5626,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5635,13 +5687,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5695,13 +5748,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5755,13 +5809,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5829,13 +5884,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5889,13 +5945,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -5949,13 +6006,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6009,13 +6067,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6083,13 +6142,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6143,13 +6203,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6203,13 +6264,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6277,13 +6339,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6337,13 +6400,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6397,13 +6461,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6457,13 +6522,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6517,13 +6583,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6577,13 +6644,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6637,13 +6705,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6697,13 +6766,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6757,13 +6827,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6831,13 +6902,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6897,13 +6969,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -6971,13 +7044,14 @@
 																		"example": "my-worker-script"
 																	},
 																	"tags": {
-																		"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																		"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																		"type": "object",
 																		"example": {
 																			"environment": "production",
 																			"team": "engineering"
 																		},
 																		"additionalProperties": {
+																			"maxLength": 1024,
 																			"type": "string"
 																		},
 																		"x-auditable": true
@@ -8423,13 +8497,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8489,13 +8564,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8564,13 +8640,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8624,13 +8701,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8684,13 +8762,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8744,13 +8823,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8804,13 +8884,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8864,13 +8945,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8924,13 +9006,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -8998,13 +9081,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9058,13 +9142,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9132,13 +9217,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9206,13 +9292,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9266,13 +9353,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9340,13 +9428,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9400,13 +9489,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9460,13 +9550,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9520,13 +9611,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9594,13 +9686,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9654,13 +9747,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9714,13 +9808,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9774,13 +9869,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9848,13 +9944,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9908,13 +10005,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -9968,13 +10066,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10042,13 +10141,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10102,13 +10202,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10162,13 +10263,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10222,13 +10324,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10282,13 +10385,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10342,13 +10446,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10402,13 +10507,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10462,13 +10568,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10522,13 +10629,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10596,13 +10704,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10662,13 +10771,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -10736,13 +10846,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11178,13 +11289,14 @@
 									{
 										"properties": {
 											"tags": {
-												"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+												"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 												"type": "object",
 												"example": {
 													"environment": "production",
 													"team": "engineering"
 												},
 												"additionalProperties": {
+													"maxLength": 1024,
 													"type": "string"
 												},
 												"x-auditable": true
@@ -11248,13 +11360,14 @@
 									{
 										"properties": {
 											"tags": {
-												"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+												"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 												"type": "object",
 												"example": {
 													"environment": "production",
 													"team": "engineering"
 												},
 												"additionalProperties": {
+													"maxLength": 1024,
 													"type": "string"
 												},
 												"x-auditable": true
@@ -11442,13 +11555,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11508,13 +11622,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11583,13 +11698,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11643,13 +11759,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11703,13 +11820,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11763,13 +11881,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11823,13 +11942,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11883,13 +12003,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -11943,13 +12064,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12017,13 +12139,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12077,13 +12200,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12151,13 +12275,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12225,13 +12350,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12285,13 +12411,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12359,13 +12486,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12419,13 +12547,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12479,13 +12608,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12539,13 +12669,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12613,13 +12744,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12673,13 +12805,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12733,13 +12866,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12793,13 +12927,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12867,13 +13002,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12927,13 +13063,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -12987,13 +13124,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13061,13 +13199,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13121,13 +13260,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13181,13 +13321,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13241,13 +13382,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13301,13 +13443,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13361,13 +13504,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13421,13 +13565,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13481,13 +13626,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13541,13 +13687,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13615,13 +13762,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13681,13 +13829,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -13755,13 +13904,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14255,13 +14405,14 @@
 									{
 										"properties": {
 											"tags": {
-												"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+												"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 												"type": "object",
 												"example": {
 													"environment": "production",
 													"team": "engineering"
 												},
 												"additionalProperties": {
+													"maxLength": 1024,
 													"type": "string"
 												},
 												"x-auditable": true
@@ -14337,13 +14488,14 @@
 									{
 										"properties": {
 											"tags": {
-												"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+												"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 												"type": "object",
 												"example": {
 													"environment": "production",
 													"team": "engineering"
 												},
 												"additionalProperties": {
+													"maxLength": 1024,
 													"type": "string"
 												},
 												"x-auditable": true
@@ -14531,13 +14683,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14597,13 +14750,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14672,13 +14826,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14732,13 +14887,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14792,13 +14948,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14852,13 +15009,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14912,13 +15070,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -14972,13 +15131,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15032,13 +15192,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15106,13 +15267,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15166,13 +15328,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15240,13 +15403,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15314,13 +15478,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15374,13 +15539,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15448,13 +15614,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15508,13 +15675,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15568,13 +15736,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15628,13 +15797,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15702,13 +15872,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15762,13 +15933,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15822,13 +15994,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15882,13 +16055,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -15956,13 +16130,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16016,13 +16191,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16076,13 +16252,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16150,13 +16327,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16210,13 +16388,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16270,13 +16449,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16330,13 +16510,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16390,13 +16571,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16450,13 +16632,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16510,13 +16693,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16570,13 +16754,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16630,13 +16815,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16704,13 +16890,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16770,13 +16957,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true
@@ -16844,13 +17032,14 @@
 																	"example": "my-worker-script"
 																},
 																"tags": {
-																	"description": "Contains key-value pairs of tags. Values may be empty strings for key-only tags.",
+																	"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
 																	"type": "object",
 																	"example": {
 																		"environment": "production",
 																		"team": "engineering"
 																	},
 																	"additionalProperties": {
+																		"maxLength": 1024,
 																		"type": "string"
 																	},
 																	"x-auditable": true

@@ -203,7 +203,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"operationId": "notification-webhooks-list-webhooks",
@@ -618,7 +622,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-get-a-webhook",
@@ -1049,7 +1057,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"operationId": "notification-webhooks-create-a-webhook",
@@ -1383,7 +1395,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-update-a-webhook",
@@ -1729,6 +1745,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

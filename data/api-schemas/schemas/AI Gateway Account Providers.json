@@ -82,7 +82,8 @@
 											"type": "integer"
 										},
 										"slug": {
-											"type": "string"
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
@@ -289,7 +290,8 @@
 												"type": "integer"
 											},
 											"slug": {
-												"type": "string"
+												"type": "string",
+												"pattern": "^[a-zA-Z0-9_-]+$"
 											}
 										},
 										"required": [
@@ -465,7 +467,8 @@
 											"type": "integer"
 										},
 										"slug": {
-											"type": "string"
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
@@ -623,7 +626,8 @@
 								"type": "integer"
 							},
 							"slug": {
-								"type": "string"
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						}
 					}
@@ -689,7 +693,8 @@
 											"type": "integer"
 										},
 										"slug": {
-											"type": "string"
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [
@@ -881,7 +886,8 @@
 								"type": "integer"
 							},
 							"slug": {
-								"type": "string"
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9_-]+$"
 							}
 						},
 						"required": [
@@ -952,7 +958,8 @@
 											"type": "integer"
 										},
 										"slug": {
-											"type": "string"
+											"type": "string",
+											"pattern": "^[a-zA-Z0-9_-]+$"
 										}
 									},
 									"required": [

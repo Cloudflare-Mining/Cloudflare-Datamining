@@ -2,6 +2,7 @@
 	"DELETE /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-delete",
 		"summary": "Delete Workers VPC connectivity service",
+		"description": "Removes a single Workers VPC connectivity service by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -23,10 +24,10 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully deleted Workers VPC connectivity service"
+				"description": "Successfully deleted Workers VPC connectivity service."
 			},
 			"4XX": {
-				"description": "Failed to delete Workers VPC connectivity service",
+				"description": "Failed to delete Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -148,11 +149,16 @@
 		],
 		"tags": [
 			"Connectivity Services"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services": {
 		"operationId": "connectivity-services-list",
 		"summary": "List Workers VPC connectivity services",
+		"description": "Lists the Workers VPC connectivity services in the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -209,7 +215,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully retrieved Workers VPC connectivity services",
+				"description": "Successfully retrieved Workers VPC connectivity services.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -846,7 +852,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to retrieve Workers VPC connectivity services",
+				"description": "Failed to retrieve Workers VPC connectivity services.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -968,11 +974,16 @@
 		],
 		"tags": [
 			"Connectivity Services"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-get",
 		"summary": "Get Workers VPC connectivity service",
+		"description": "Fetches a single Workers VPC connectivity service by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -994,7 +1005,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully retrieved Workers VPC connectivity service",
+				"description": "Successfully retrieved Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1593,7 +1604,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to retrieve Workers VPC connectivity service",
+				"description": "Failed to retrieve Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1715,11 +1726,16 @@
 		],
 		"tags": [
 			"Connectivity Services"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/connectivity/directory/services": {
 		"operationId": "connectivity-services-post",
 		"summary": "Create Workers VPC connectivity service",
+		"description": "Creates a new Workers VPC connectivity service in the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2316,7 +2332,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully created Workers VPC connectivity service",
+				"description": "Successfully created Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -2960,7 +2976,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to create Workers VPC connectivity service",
+				"description": "Failed to create Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3082,11 +3098,16 @@
 		],
 		"tags": [
 			"Connectivity Services"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-put",
 		"summary": "Update Workers VPC connectivity service",
+		"description": "Updates an existing Workers VPC connectivity service by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3642,7 +3663,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully updated Workers VPC connectivity service",
+				"description": "Successfully updated Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4241,7 +4262,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to update Workers VPC connectivity service",
+				"description": "Failed to update Workers VPC connectivity service.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4363,6 +4384,10 @@
 		],
 		"tags": [
 			"Connectivity Services"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "directory.services",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

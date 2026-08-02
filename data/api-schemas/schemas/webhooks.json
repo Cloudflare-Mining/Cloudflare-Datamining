@@ -3371,11 +3371,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Request body for creating webhook jobs",
+						"description": "Request body for creating up to 100 webhook jobs. The number of jobs is the product of webhook_ids and finding_instance_ids.",
 						"type": "object",
 						"properties": {
 							"finding_instance_ids": {
-								"description": "Array of finding instance IDs to send to the webhooks",
+								"description": "Array of finding instance IDs to send to the webhooks.",
 								"type": "array",
 								"items": {
 									"format": "uuid",
@@ -3387,7 +3387,7 @@
 								]
 							},
 							"webhook_ids": {
-								"description": "Array of webhook IDs to trigger jobs for",
+								"description": "Array of webhook IDs to trigger jobs for.",
 								"type": "array",
 								"items": {
 									"format": "uuid",

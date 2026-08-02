@@ -5426,28 +5426,7 @@
 													"json_schema": {
 														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
 														"type": "object",
-														"additionalProperties": {
-															"anyOf": [
-																{
-																	"type": "string"
-																},
-																{
-																	"type": "number"
-																},
-																{
-																	"type": "boolean"
-																},
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
-															]
-														},
+														"additionalProperties": {},
 														"nullable": true
 													},
 													"type": {
@@ -5866,28 +5845,7 @@
 													"json_schema": {
 														"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
 														"type": "object",
-														"additionalProperties": {
-															"anyOf": [
-																{
-																	"type": "string"
-																},
-																{
-																	"type": "number"
-																},
-																{
-																	"type": "boolean"
-																},
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
-																}
-															]
-														},
+														"additionalProperties": {},
 														"nullable": true
 													},
 													"type": {
@@ -6978,28 +6936,7 @@
 									"json_schema": {
 										"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
 										"type": "object",
-										"additionalProperties": {
-											"anyOf": [
-												{
-													"type": "string"
-												},
-												{
-													"type": "number"
-												},
-												{
-													"type": "boolean"
-												},
-												{
-													"type": "object"
-												},
-												{
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												}
-											]
-										},
+										"additionalProperties": {},
 										"nullable": true
 									},
 									"type": {
@@ -10899,6 +10836,9 @@
 									"html"
 								]
 							}
+						],
+						"required": [
+							"elements"
 						]
 					}
 				}

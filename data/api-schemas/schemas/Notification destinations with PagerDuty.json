@@ -185,7 +185,11 @@
 		"x-api-token-group": [
 			"Notifications Write",
 			"Account Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/pagerduty": {
 		"operationId": "notification-destinations-with-pager-duty-list-pager-duty-services",
@@ -411,7 +415,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{token_id}": {
 		"operationId": "notification-destinations-with-pager-duty-connect-pager-duty-token",
@@ -719,7 +727,11 @@
 		"x-api-token-group": [
 			"Notifications Write",
 			"Account Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
+		"x-fern-sdk-method-name": "link",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect": {
 		"operationId": "notification-destinations-with-pager-duty-connect-pager-duty",
@@ -1015,6 +1027,10 @@
 		"x-api-token-group": [
 			"Notifications Write",
 			"Account Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

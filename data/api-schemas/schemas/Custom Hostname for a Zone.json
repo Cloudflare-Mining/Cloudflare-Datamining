@@ -5144,7 +5144,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-hostnames",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
 		"operationId": "custom-hostname-for-a-zone-edit-custom-hostname",

@@ -3180,7 +3180,7 @@
 	"POST /accounts/{account_id}/ai-gateway/billing/topup": {
 		"operationId": "aig-billing-create-topup",
 		"summary": "Create a top-up",
-		"description": "Create a credit top-up via Stripe PaymentIntent for the given account.",
+		"description": "Create a credit top-up for the given account, charged to the account's default payment method.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3331,6 +3331,51 @@
 			},
 			"400": {
 				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"402": {
+				"description": "Payment required — the payment method was declined.",
 				"content": {
 					"application/json": {
 						"schema": {

@@ -7934,6 +7934,328 @@
 		"x-fern-sdk-group-name": "workflows.instances.batch",
 		"x-fern-sdk-method-name": "create"
 	},
+	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/delete": {
+		"operationId": "wor-batch-delete-workflow-instances",
+		"summary": "Batch delete instances of a workflow",
+		"description": "Deletes multiple workflow instances in a single batch operation.",
+		"parameters": [
+			{
+				"name": "workflow_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"instances": {
+								"type": "array",
+								"items": {
+									"maxLength": 100,
+									"minLength": 1,
+									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+									"type": "string"
+								},
+								"maxItems": 100,
+								"minItems": 1
+							}
+						},
+						"required": [
+							"instances"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns deleted instances and any per-instance errors.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"deleted": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id"
+												],
+												"type": "object"
+											}
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number"
+													},
+													"id": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"deleted",
+										"errors"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Input Validation Error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Workflow Name not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-ignore": true
+	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
 		"operationId": "wor-batch-terminate-workflow-instances",
 		"summary": "Batch terminate instances of a workflow",

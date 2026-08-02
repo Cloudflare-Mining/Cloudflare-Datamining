@@ -4214,99 +4214,199 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
 							"allOf": [
 								{
 									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000,
-														"x-auditable": true
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string",
-														"x-auditable": true
-													}
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000,
-														"x-auditable": true
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string",
-														"x-auditable": true
-													}
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
 												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													],
+													"x-auditable": true
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											],
-											"x-auditable": true
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									]
 								},
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"type": "object"
+											"type": "object",
+											"properties": {
+												"conflictBehaviour": {
+													"description": "How to handle objects that already exist at the destination.",
+													"type": "string",
+													"default": "skip",
+													"enum": [
+														"skip",
+														"overwrite"
+													]
 												},
-												{
-													"type": "string"
+												"createdAt": {
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"endedAt": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"excludedContentTypes": {
+													"description": "Content types to skip during migration.",
+													"type": "array",
+													"items": {
+														"description": "A MIME type that can be excluded from migration.",
+														"type": "string",
+														"enum": [
+															"image/jpeg",
+															"image/png",
+															"image/webp",
+															"image/gif",
+															"image/avif",
+															"image/heic",
+															"image/svg+xml"
+														]
+													},
+													"nullable": true
+												},
+												"id": {
+													"description": "Migration unique identifier.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"imagesPathPrefix": {
+													"description": "Alias for pathPrefix (deprecated).",
+													"type": "string",
+													"nullable": true
+												},
+												"logStopped": {
+													"description": "Whether logging was stopped due to excessive log volume.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"pathPrefix": {
+													"description": "Prefix to prepend to image custom IDs.",
+													"type": "string",
+													"nullable": true
+												},
+												"rootDirectory": {
+													"description": "Only import objects under this prefix in the source bucket.",
+													"type": "string",
+													"nullable": true
+												},
+												"sourceId": {
+													"description": "The source this migration imports from.",
+													"type": "string",
+													"format": "uuid",
+													"nullable": true
+												},
+												"startedAt": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"status": {
+													"description": "Current status of the migration.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"processing",
+														"success",
+														"error",
+														"aborted"
+													]
 												}
-											]
+											}
 										}
 									}
 								}
@@ -4468,99 +4568,199 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"type": "object",
 							"allOf": [
 								{
 									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000,
-														"x-auditable": true
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string",
-														"x-auditable": true
-													}
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000,
-														"x-auditable": true
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000,
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
-													"message": {
-														"type": "string",
-														"x-auditable": true
-													}
+													"example": []
 												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
 												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													],
+													"x-auditable": true
 												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
 											]
 										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											],
-											"x-auditable": true
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									]
 								},
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"type": "object"
+											"type": "object",
+											"properties": {
+												"conflictBehaviour": {
+													"description": "How to handle objects that already exist at the destination.",
+													"type": "string",
+													"default": "skip",
+													"enum": [
+														"skip",
+														"overwrite"
+													]
 												},
-												{
-													"type": "string"
+												"createdAt": {
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"endedAt": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"excludedContentTypes": {
+													"description": "Content types to skip during migration.",
+													"type": "array",
+													"items": {
+														"description": "A MIME type that can be excluded from migration.",
+														"type": "string",
+														"enum": [
+															"image/jpeg",
+															"image/png",
+															"image/webp",
+															"image/gif",
+															"image/avif",
+															"image/heic",
+															"image/svg+xml"
+														]
+													},
+													"nullable": true
+												},
+												"id": {
+													"description": "Migration unique identifier.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"imagesPathPrefix": {
+													"description": "Alias for pathPrefix (deprecated).",
+													"type": "string",
+													"nullable": true
+												},
+												"logStopped": {
+													"description": "Whether logging was stopped due to excessive log volume.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"pathPrefix": {
+													"description": "Prefix to prepend to image custom IDs.",
+													"type": "string",
+													"nullable": true
+												},
+												"rootDirectory": {
+													"description": "Only import objects under this prefix in the source bucket.",
+													"type": "string",
+													"nullable": true
+												},
+												"sourceId": {
+													"description": "The source this migration imports from.",
+													"type": "string",
+													"format": "uuid",
+													"nullable": true
+												},
+												"startedAt": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"status": {
+													"description": "Current status of the migration.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"processing",
+														"success",
+														"error",
+														"aborted"
+													]
 												}
-											]
+											}
 										}
 									}
 								}
@@ -4849,11 +5049,49 @@
 										"result": {
 											"type": "object",
 											"properties": {
+												"bucket": {
+													"description": "The name of the storage bucket.",
+													"type": "string",
+													"example": "my-images-bucket"
+												},
+												"createdAt": {
+													"description": "When the source was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
 												"id": {
-													"description": "The identifier of the updated source.",
+													"description": "Source unique identifier.",
 													"type": "string",
 													"format": "uuid",
-													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265"
+													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+													"readOnly": true
+												},
+												"name": {
+													"description": "A human-readable name for the source.",
+													"type": "string",
+													"example": "my-s3-bucket"
+												},
+												"region": {
+													"description": "The region of the storage bucket (S3 sources only).",
+													"type": "string",
+													"example": "us-east-1",
+													"nullable": true
+												},
+												"updatedAt": {
+													"description": "When the source was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"vendor": {
+													"description": "The cloud storage vendor of the source bucket.",
+													"type": "string",
+													"example": "s3",
+													"enum": [
+														"s3",
+														"r2"
+													]
 												}
 											}
 										}
@@ -4976,11 +5214,49 @@
 												"result": {
 													"type": "object",
 													"properties": {
+														"bucket": {
+															"description": "The name of the storage bucket.",
+															"type": "string",
+															"example": "my-images-bucket"
+														},
+														"createdAt": {
+															"description": "When the source was created.",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true
+														},
 														"id": {
-															"description": "The identifier of the updated source.",
+															"description": "Source unique identifier.",
 															"type": "string",
 															"format": "uuid",
-															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265"
+															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+															"readOnly": true
+														},
+														"name": {
+															"description": "A human-readable name for the source.",
+															"type": "string",
+															"example": "my-s3-bucket"
+														},
+														"region": {
+															"description": "The region of the storage bucket (S3 sources only).",
+															"type": "string",
+															"example": "us-east-1",
+															"nullable": true
+														},
+														"updatedAt": {
+															"description": "When the source was last updated.",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true
+														},
+														"vendor": {
+															"description": "The cloud storage vendor of the source bucket.",
+															"type": "string",
+															"example": "s3",
+															"enum": [
+																"s3",
+																"r2"
+															]
 														}
 													}
 												}
@@ -5291,10 +5567,92 @@
 										"result": {
 											"type": "object",
 											"properties": {
-												"id": {
-													"description": "The identifier of the created migration.",
+												"conflictBehaviour": {
+													"description": "How to handle objects that already exist at the destination.",
 													"type": "string",
-													"format": "uuid"
+													"default": "skip",
+													"enum": [
+														"skip",
+														"overwrite"
+													]
+												},
+												"createdAt": {
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"endedAt": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"excludedContentTypes": {
+													"description": "Content types to skip during migration.",
+													"type": "array",
+													"items": {
+														"description": "A MIME type that can be excluded from migration.",
+														"type": "string",
+														"enum": [
+															"image/jpeg",
+															"image/png",
+															"image/webp",
+															"image/gif",
+															"image/avif",
+															"image/heic",
+															"image/svg+xml"
+														]
+													},
+													"nullable": true
+												},
+												"id": {
+													"description": "Migration unique identifier.",
+													"type": "string",
+													"format": "uuid",
+													"readOnly": true
+												},
+												"imagesPathPrefix": {
+													"description": "Alias for pathPrefix (deprecated).",
+													"type": "string",
+													"nullable": true
+												},
+												"logStopped": {
+													"description": "Whether logging was stopped due to excessive log volume.",
+													"type": "boolean",
+													"readOnly": true
+												},
+												"pathPrefix": {
+													"description": "Prefix to prepend to image custom IDs.",
+													"type": "string",
+													"nullable": true
+												},
+												"rootDirectory": {
+													"description": "Only import objects under this prefix in the source bucket.",
+													"type": "string",
+													"nullable": true
+												},
+												"sourceId": {
+													"description": "The source this migration imports from.",
+													"type": "string",
+													"format": "uuid",
+													"nullable": true
+												},
+												"startedAt": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true
+												},
+												"status": {
+													"description": "Current status of the migration.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"processing",
+														"success",
+														"error",
+														"aborted"
+													]
 												}
 											}
 										}
@@ -5417,10 +5775,92 @@
 												"result": {
 													"type": "object",
 													"properties": {
-														"id": {
-															"description": "The identifier of the created migration.",
+														"conflictBehaviour": {
+															"description": "How to handle objects that already exist at the destination.",
 															"type": "string",
-															"format": "uuid"
+															"default": "skip",
+															"enum": [
+																"skip",
+																"overwrite"
+															]
+														},
+														"createdAt": {
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true
+														},
+														"endedAt": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true
+														},
+														"excludedContentTypes": {
+															"description": "Content types to skip during migration.",
+															"type": "array",
+															"items": {
+																"description": "A MIME type that can be excluded from migration.",
+																"type": "string",
+																"enum": [
+																	"image/jpeg",
+																	"image/png",
+																	"image/webp",
+																	"image/gif",
+																	"image/avif",
+																	"image/heic",
+																	"image/svg+xml"
+																]
+															},
+															"nullable": true
+														},
+														"id": {
+															"description": "Migration unique identifier.",
+															"type": "string",
+															"format": "uuid",
+															"readOnly": true
+														},
+														"imagesPathPrefix": {
+															"description": "Alias for pathPrefix (deprecated).",
+															"type": "string",
+															"nullable": true
+														},
+														"logStopped": {
+															"description": "Whether logging was stopped due to excessive log volume.",
+															"type": "boolean",
+															"readOnly": true
+														},
+														"pathPrefix": {
+															"description": "Prefix to prepend to image custom IDs.",
+															"type": "string",
+															"nullable": true
+														},
+														"rootDirectory": {
+															"description": "Only import objects under this prefix in the source bucket.",
+															"type": "string",
+															"nullable": true
+														},
+														"sourceId": {
+															"description": "The source this migration imports from.",
+															"type": "string",
+															"format": "uuid",
+															"nullable": true
+														},
+														"startedAt": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true
+														},
+														"status": {
+															"description": "Current status of the migration.",
+															"type": "string",
+															"enum": [
+																"pending",
+																"processing",
+																"success",
+																"error",
+																"aborted"
+															]
 														}
 													}
 												}
@@ -5723,11 +6163,49 @@
 										"result": {
 											"type": "object",
 											"properties": {
+												"bucket": {
+													"description": "The name of the storage bucket.",
+													"type": "string",
+													"example": "my-images-bucket"
+												},
+												"createdAt": {
+													"description": "When the source was created.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
 												"id": {
-													"description": "The identifier of the created source.",
+													"description": "Source unique identifier.",
 													"type": "string",
 													"format": "uuid",
-													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265"
+													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+													"readOnly": true
+												},
+												"name": {
+													"description": "A human-readable name for the source.",
+													"type": "string",
+													"example": "my-s3-bucket"
+												},
+												"region": {
+													"description": "The region of the storage bucket (S3 sources only).",
+													"type": "string",
+													"example": "us-east-1",
+													"nullable": true
+												},
+												"updatedAt": {
+													"description": "When the source was last updated.",
+													"type": "string",
+													"format": "date-time",
+													"readOnly": true
+												},
+												"vendor": {
+													"description": "The cloud storage vendor of the source bucket.",
+													"type": "string",
+													"example": "s3",
+													"enum": [
+														"s3",
+														"r2"
+													]
 												}
 											}
 										}
@@ -5850,11 +6328,49 @@
 												"result": {
 													"type": "object",
 													"properties": {
+														"bucket": {
+															"description": "The name of the storage bucket.",
+															"type": "string",
+															"example": "my-images-bucket"
+														},
+														"createdAt": {
+															"description": "When the source was created.",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true
+														},
 														"id": {
-															"description": "The identifier of the created source.",
+															"description": "Source unique identifier.",
 															"type": "string",
 															"format": "uuid",
-															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265"
+															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+															"readOnly": true
+														},
+														"name": {
+															"description": "A human-readable name for the source.",
+															"type": "string",
+															"example": "my-s3-bucket"
+														},
+														"region": {
+															"description": "The region of the storage bucket (S3 sources only).",
+															"type": "string",
+															"example": "us-east-1",
+															"nullable": true
+														},
+														"updatedAt": {
+															"description": "When the source was last updated.",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true
+														},
+														"vendor": {
+															"description": "The cloud storage vendor of the source bucket.",
+															"type": "string",
+															"example": "s3",
+															"enum": [
+																"s3",
+																"r2"
+															]
 														}
 													}
 												}

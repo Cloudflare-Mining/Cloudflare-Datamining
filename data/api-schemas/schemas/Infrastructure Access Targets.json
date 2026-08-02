@@ -2,6 +2,7 @@
 	"DELETE /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-delete",
 		"summary": "Delete target",
+		"description": "Removes a single infrastructure access target by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -32,10 +33,10 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully deleted the target"
+				"description": "Successfully deleted the target."
 			},
 			"4XX": {
-				"description": "Failed to delete the target",
+				"description": "Failed to delete the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -157,7 +158,11 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/infrastructure/targets/batch": {
 		"operationId": "infra-targets-delete-batch",
@@ -207,10 +212,10 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully deleted the targets"
+				"description": "Successfully deleted the targets."
 			},
 			"4XX": {
-				"description": "Failed to delete the targets",
+				"description": "Failed to delete the targets.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -333,12 +338,16 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/infrastructure/targets": {
 		"operationId": "infra-targets-list",
 		"summary": "List all targets",
-		"description": "Lists and sorts an account’s targets. Filters are optional and are ANDed\ntogether.",
+		"description": "Lists and sorts an account's targets. Filters are optional and are ANDed\ntogether.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -560,7 +569,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully retrieved all targets in the account",
+				"description": "Successfully retrieved all targets in the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -785,7 +794,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to retrieve all targets in the account",
+				"description": "Failed to retrieve all targets in the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -907,11 +916,16 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-get",
 		"summary": "Get target",
+		"description": "Fetches a single infrastructure access target by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -942,7 +956,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successfully retrieved the target",
+				"description": "Successfully retrieved the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1129,7 +1143,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to retrieve the target",
+				"description": "Failed to retrieve the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1251,11 +1265,16 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/infrastructure/targets": {
 		"operationId": "infra-targets-post",
 		"summary": "Create new target",
+		"description": "Creates a new infrastructure access target in the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1340,7 +1359,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully created the target",
+				"description": "Successfully created the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1527,7 +1546,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to create the target",
+				"description": "Failed to create the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1649,7 +1668,11 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/infrastructure/targets/batch_delete": {
 		"operationId": "infra-targets-delete-batch-post",
@@ -1699,10 +1722,10 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully deleted the targets"
+				"description": "Successfully deleted the targets."
 			},
 			"4XX": {
-				"description": "Failed to delete the targets",
+				"description": "Failed to delete the targets.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1824,11 +1847,16 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "bulk-delete-v2",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/{target_id}": {
 		"operationId": "infra-targets-put",
 		"summary": "Update target",
+		"description": "Updates an existing infrastructure access target by its ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1927,7 +1955,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully updated the target",
+				"description": "Successfully updated the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2114,7 +2142,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to update the target",
+				"description": "Failed to update the target.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2236,7 +2264,11 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/infrastructure/targets/batch": {
 		"operationId": "infra-targets-put-batch",
@@ -2329,7 +2361,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successfully created the targets",
+				"description": "Successfully created the targets.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2519,7 +2551,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to create the targets",
+				"description": "Failed to create the targets.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2641,6 +2673,10 @@
 		],
 		"tags": [
 			"Infrastructure Access Targets"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "access.infrastructure.targets",
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-hidden": true
 	}
 }

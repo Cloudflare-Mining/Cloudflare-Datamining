@@ -732,7 +732,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "audit-logs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/audit": {
 		"operationId": "audit-logs-v2-get-account-audit-logs",
@@ -1735,7 +1739,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.logs.audit",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-account-audit-log-history",
@@ -3288,7 +3295,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.logs.audit",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-organization-audit-log-history",
@@ -4504,6 +4515,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.audit-logs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

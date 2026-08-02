@@ -1112,7 +1112,17 @@
 													"type": "object"
 												},
 												"properties": {
-													"flags": {
+													"hierarchy_tags": {
+														"description": "Ordered chain of organization tags from the root organization down to\n(and including) this organization itself. Root organizations return a\nsingle-element array containing their own tag; sub-organizations return\n`[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for\nconstructing authorization scopes that need to cover every ancestor\nin the hierarchy.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"managed_by": {
+														"type": "string"
+													},
+													"tenant_flags": {
 														"allOf": [
 															{
 																"description": "Enable features for Organizations.",
@@ -1130,6 +1140,12 @@
 																	"account_mobility": {
 																		"type": "string"
 																	},
+																	"enterprise_capability": {
+																		"type": "string"
+																	},
+																	"member_management": {
+																		"type": "string"
+																	},
 																	"sub_org_creation": {
 																		"type": "string"
 																	}
@@ -1139,20 +1155,12 @@
 																	"account_deletion",
 																	"account_migration",
 																	"account_mobility",
+																	"enterprise_capability",
+																	"member_management",
 																	"sub_org_creation"
 																]
 															}
 														]
-													},
-													"hierarchy_tags": {
-														"description": "Ordered chain of organization tags from the root organization down to\n(and including) this organization itself. Root organizations return a\nsingle-element array containing their own tag; sub-organizations return\n`[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for\nconstructing authorization scopes that need to cover every ancestor\nin the hierarchy.",
-														"type": "array",
-														"items": {
-															"type": "string"
-														}
-													},
-													"managed_by": {
-														"type": "string"
 													}
 												},
 												"readOnly": true

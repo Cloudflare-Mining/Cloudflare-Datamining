@@ -513,7 +513,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "91d7032e",
+																"default": "45029544",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -672,11 +672,12 @@
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 											"type": "string",
 											"default": "postpaid",
 											"enum": [
-												"postpaid"
+												"postpaid",
+												"unified"
 											],
 											"x-auditable": true
 										},
@@ -1303,7 +1304,7 @@
 																},
 																"id": {
 																	"type": "string",
-																	"default": "42c0089f",
+																	"default": "f5685738",
 																	"minLength": 1,
 																	"pattern": "^[a-zA-Z0-9_-]+$"
 																},
@@ -1462,11 +1463,12 @@
 												"x-auditable": true
 											},
 											"workers_ai_billing_mode": {
-												"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+												"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 												"type": "string",
 												"default": "postpaid",
 												"enum": [
-													"postpaid"
+													"postpaid",
+													"unified"
 												],
 												"x-auditable": true
 											},
@@ -2213,7 +2215,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "2fda3fa3",
+																"default": "17a2f2ea",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -2372,11 +2374,12 @@
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 											"type": "string",
 											"default": "postpaid",
 											"enum": [
-												"postpaid"
+												"postpaid",
+												"unified"
 											],
 											"x-auditable": true
 										},
@@ -2599,12 +2602,17 @@
 								"nullable": true,
 								"x-auditable": true
 							},
+							"store_id": {
+								"type": "string",
+								"nullable": true
+							},
 							"workers_ai_billing_mode": {
-								"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+								"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 								"type": "string",
 								"default": "postpaid",
 								"enum": [
-									"postpaid"
+									"postpaid",
+									"unified"
 								],
 								"x-auditable": true
 							},
@@ -3110,7 +3118,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "413b5296",
+																"default": "3a12c697",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -3269,11 +3277,12 @@
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 											"type": "string",
 											"default": "postpaid",
 											"enum": [
-												"postpaid"
+												"postpaid",
+												"unified"
 											],
 											"x-auditable": true
 										},
@@ -3868,7 +3877,7 @@
 												},
 												"id": {
 													"type": "string",
-													"default": "6092b66a",
+													"default": "ca1c1add",
 													"minLength": 1,
 													"pattern": "^[a-zA-Z0-9_-]+$"
 												},
@@ -4027,11 +4036,12 @@
 								"x-auditable": true
 							},
 							"workers_ai_billing_mode": {
-								"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+								"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 								"type": "string",
 								"default": "postpaid",
 								"enum": [
-									"postpaid"
+									"postpaid",
+									"unified"
 								],
 								"x-auditable": true
 							},
@@ -4536,7 +4546,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "71833846",
+																"default": "26812342",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -4695,11 +4705,12 @@
 											"x-auditable": true
 										},
 										"workers_ai_billing_mode": {
-											"description": "Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.",
 											"type": "string",
 											"default": "postpaid",
 											"enum": [
-												"postpaid"
+												"postpaid",
+												"unified"
 											],
 											"x-auditable": true
 										},

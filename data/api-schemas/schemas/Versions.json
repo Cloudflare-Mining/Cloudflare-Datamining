@@ -552,6 +552,7 @@
 																	"json": "#/components/schemas/workers_binding_kind_json",
 																	"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																	"media": "#/components/schemas/workers_binding_kind_media",
+																	"messaging": "#/components/schemas/workers_binding_kind_messaging",
 																	"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																	"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																	"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -653,6 +654,36 @@
 																			"type": "string",
 																			"enum": [
 																				"ai_search_namespace"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"type",
+																		"namespace"
+																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"name": {
+																			"description": "A JavaScript variable name for the binding.",
+																			"type": "string",
+																			"example": "myBinding",
+																			"x-auditable": true
+																		},
+																		"namespace": {
+																			"description": "The Messaging namespace to bind to.",
+																			"type": "string",
+																			"example": "production",
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"enum": [
+																				"messaging"
 																			],
 																			"x-auditable": true
 																		}
@@ -3441,6 +3472,7 @@
 																"json": "#/components/schemas/workers_binding_kind_json",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
+																"messaging": "#/components/schemas/workers_binding_kind_messaging",
 																"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -3542,6 +3574,36 @@
 																		"type": "string",
 																		"enum": [
 																			"ai_search_namespace"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"namespace"
+																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"namespace": {
+																		"description": "The Messaging namespace to bind to.",
+																		"type": "string",
+																		"example": "production",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"messaging"
 																		],
 																		"x-auditable": true
 																	}
@@ -6232,6 +6294,7 @@
 													"json": "#/components/schemas/workers_binding_kind_json",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 													"media": "#/components/schemas/workers_binding_kind_media",
+													"messaging": "#/components/schemas/workers_binding_kind_messaging",
 													"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 													"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 													"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -6333,6 +6396,36 @@
 															"type": "string",
 															"enum": [
 																"ai_search_namespace"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"namespace"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"type": "string",
+															"example": "myBinding",
+															"x-auditable": true
+														},
+														"namespace": {
+															"description": "The Messaging namespace to bind to.",
+															"type": "string",
+															"example": "production",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"type": "string",
+															"enum": [
+																"messaging"
 															],
 															"x-auditable": true
 														}
@@ -8844,6 +8937,7 @@
 													"json": "#/components/schemas/workers_binding_kind_json",
 													"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 													"media": "#/components/schemas/workers_binding_kind_media",
+													"messaging": "#/components/schemas/workers_binding_kind_messaging",
 													"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 													"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 													"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -8945,6 +9039,36 @@
 															"type": "string",
 															"enum": [
 																"ai_search_namespace"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"namespace"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"type": "string",
+															"example": "myBinding",
+															"x-auditable": true
+														},
+														"namespace": {
+															"description": "The Messaging namespace to bind to.",
+															"type": "string",
+															"example": "production",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"type": "string",
+															"enum": [
+																"messaging"
 															],
 															"x-auditable": true
 														}
@@ -11546,6 +11670,7 @@
 																"json": "#/components/schemas/workers_binding_kind_json",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
+																"messaging": "#/components/schemas/workers_binding_kind_messaging",
 																"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -11647,6 +11772,36 @@
 																		"type": "string",
 																		"enum": [
 																			"ai_search_namespace"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"namespace"
+																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"namespace": {
+																		"description": "The Messaging namespace to bind to.",
+																		"type": "string",
+																		"example": "production",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"messaging"
 																		],
 																		"x-auditable": true
 																	}
@@ -14471,6 +14626,7 @@
 											"json": "#/components/schemas/workers_binding_kind_json",
 											"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 											"media": "#/components/schemas/workers_binding_kind_media",
+											"messaging": "#/components/schemas/workers_binding_kind_messaging",
 											"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 											"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 											"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -14572,6 +14728,36 @@
 													"type": "string",
 													"enum": [
 														"ai_search_namespace"
+													],
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"type",
+												"namespace"
+											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"name": {
+													"description": "A JavaScript variable name for the binding.",
+													"type": "string",
+													"example": "myBinding",
+													"x-auditable": true
+												},
+												"namespace": {
+													"description": "The Messaging namespace to bind to.",
+													"type": "string",
+													"example": "production",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "The kind of resource that the binding provides.",
+													"type": "string",
+													"enum": [
+														"messaging"
 													],
 													"x-auditable": true
 												}
@@ -17168,6 +17354,7 @@
 																"json": "#/components/schemas/workers_binding_kind_json",
 																"kv_namespace": "#/components/schemas/workers_binding_kind_kv_namespace",
 																"media": "#/components/schemas/workers_binding_kind_media",
+																"messaging": "#/components/schemas/workers_binding_kind_messaging",
 																"mtls_certificate": "#/components/schemas/workers_binding_kind_mtls_certificate",
 																"pipelines": "#/components/schemas/workers_binding_kind_pipelines",
 																"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
@@ -17269,6 +17456,36 @@
 																		"type": "string",
 																		"enum": [
 																			"ai_search_namespace"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"namespace"
+																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"namespace": {
+																		"description": "The Messaging namespace to bind to.",
+																		"type": "string",
+																		"example": "production",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"messaging"
 																		],
 																		"x-auditable": true
 																	}

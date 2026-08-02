@@ -137,6 +137,13 @@
 				"schema": {
 					"type": "boolean"
 				}
+			},
+			{
+				"name": "include_dismissed",
+				"in": "query",
+				"schema": {
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -266,6 +273,13 @@
 			},
 			{
 				"name": "include_domain_id",
+				"in": "query",
+				"schema": {
+					"type": "boolean"
+				}
+			},
+			{
+				"name": "include_dismissed",
 				"in": "query",
 				"schema": {
 					"type": "boolean"
@@ -702,6 +716,108 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queries",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": {
+		"operationId": "postAccountsAccountIdBrandProtectionQueriesQueryIdMatchesDomainIdDismiss",
+		"summary": "Dismiss a match for a saved string query",
+		"description": "Hide a matched domain from the default view of a saved query's results. Dismissal is scoped to the calling account.",
+		"responses": {
+			"default": {
+				"description": "Default error response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors",
+									"type": "object",
+									"additionalProperties": {}
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries.matches",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": {
+		"operationId": "postAccountsAccountIdBrandProtectionQueriesQueryIdMatchesDomainIdUndismiss",
+		"summary": "Undismiss a match for a saved string query",
+		"description": "Restore a previously dismissed matched domain to the default view. Dismissal is scoped to the calling account.",
+		"responses": {
+			"default": {
+				"description": "Default error response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"code": {
+									"description": "Error code",
+									"type": "integer"
+								},
+								"errors": {
+									"description": "Errors",
+									"type": "object",
+									"additionalProperties": {}
+								},
+								"message": {
+									"description": "Error message",
+									"type": "string"
+								},
+								"status": {
+									"description": "Error name",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"domain_search"
+		],
+		"x-api-token-group": [
+			"Intel Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queries.matches",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},

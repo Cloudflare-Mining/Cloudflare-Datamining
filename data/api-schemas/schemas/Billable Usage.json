@@ -1,8 +1,8 @@
 {
-	"GET /accounts/{account_id}/paygo-usage": {
-		"operationId": "billable-usage-get-paygo-account-usage",
-		"summary": "Get PayGo Account Billable Usage (Version 1, Alpha)",
-		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\n",
+	"GET /accounts/{account_id}/billable-usage": {
+		"operationId": "billable-usage-get-v1-account-usage",
+		"summary": "Get Account Billable Usage (Version 1, Alpha)",
+		"description": "Returns billable usage data for the account.\nWhen no query parameters are provided, returns usage for the current\nbilling period.\n",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account.",
@@ -18,7 +18,7 @@
 				}
 			},
 			{
-				"description": "Start date for the usage query (ISO 8601). The provided time range must include the subscription billing cycle anchor day, otherwise no usage data is returned. Subscription anchor days are provided on the response of the /accounts/{account_id}/paygo-usage-info endpoint.",
+				"description": "Start date for the usage query (ISO 8601). The provided time range must include the subscription billing cycle anchor day, otherwise no usage data is returned. Use the info endpoint to retrieve the subscription anchor day.",
 				"in": "query",
 				"name": "from",
 				"schema": {
@@ -40,7 +40,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Indicates PayGo account usage data was successfully retrieved.",
+				"description": "Indicates account usage data was successfully retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -95,19 +95,54 @@
 									"description": "Contains the array of billable usage records.",
 									"type": "array",
 									"items": {
-										"description": "Represents a single billable usage record.",
+										"description": "Represents a single billable usage record.\n\nThis schema carries 19 of the 21 columns FOCUS 1.3 marks as mandatory. Mandatory columns are always present, using an explicit null when the value is unknown, so consumers can distinguish \"unknown\" from \"not provided\".\n\nKnown gap 1: `ServiceCategory` (FOCUS 1.3 section 3.1.55) is not yet implemented and does not appear in this schema. Cloudflare's product catalog does not yet have a stakeholder-approved mapping from product family to a FOCUS ServiceCategory value, so the column is omitted entirely rather than shipping unapproved values. It will be added once that mapping exists.\n\nKnown gap 2: `BillingPeriodEnd` (FOCUS 1.3 section 3.1.4) is not yet implemented and does not appear in this schema, because no authoritative source for it exists today. Deriving it by calendar arithmetic drifts for billing cycle anchors on day 29-31, and the billing provider's current period end describes only the current period, so it is wrong for backdated records. `BillingPeriodStart` is correctly sourced and is still reported, so records carry a billing period start with no corresponding end until an authoritative end date is available.\n\nPer FOCUS 1.3 section 4.1.4.1, the columns that are not part of FOCUS (`ServiceFamilyName`, `CumulatedPricingQuantity`, `CumulatedContractedCost`, `ZoneId`, `ZoneName` and `SubscriptionId`) would normally carry an `x_` prefix. They are kept unprefixed here to avoid a breaking change for existing consumers.",
 										"type": "object",
 										"properties": {
+											"BilledCost": {
+												"description": "The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost.",
+												"type": "number",
+												"example": 0.75
+											},
+											"BillingAccountId": {
+												"description": "The identifier of the account the charge is billed to (account tag).",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353"
+											},
+											"BillingAccountName": {
+												"description": "The display name of the billing account. Null when the name could not be resolved.",
+												"type": "string",
+												"example": "Example Account",
+												"nullable": true
+											},
 											"BillingCurrency": {
 												"description": "Specifies the billing currency code (ISO 4217).",
 												"type": "string",
 												"example": "USD"
 											},
 											"BillingPeriodStart": {
-												"description": "Indicates the start of the billing period.",
+												"description": "Indicates the start of the billing period. There is no `BillingPeriodEnd` counterpart; see the known gaps described on this schema.",
 												"type": "string",
 												"format": "date-time",
 												"example": "2025-02-01T00:00:00Z"
+											},
+											"ChargeCategory": {
+												"description": "Describes the nature of the charge. Always \"Usage\" for this endpoint, which only returns metered usage.",
+												"type": "string",
+												"example": "Usage",
+												"enum": [
+													"Usage"
+												]
+											},
+											"ChargeClass": {
+												"description": "Indicates whether the row corrects a previously invoiced billing period. Always null for this endpoint, which does not return corrections.",
+												"type": "string",
+												"nullable": true
+											},
+											"ChargeDescription": {
+												"description": "A human-readable summary of the charge.",
+												"type": "string",
+												"example": "Workers Standard usage measured in Count",
+												"nullable": true
 											},
 											"ChargePeriodEnd": {
 												"description": "Indicates the end of the charge period.",
@@ -146,10 +181,35 @@
 												"type": "integer",
 												"example": 4500000
 											},
+											"EffectiveCost": {
+												"description": "The amortized cost of the charge. PayGo has no upfront commitments, so this equals ContractedCost.",
+												"type": "number",
+												"example": 0.75
+											},
+											"HostProviderName": {
+												"description": "The provider that hosts the infrastructure or platform the service runs on.",
+												"type": "string",
+												"example": "Cloudflare, Inc."
+											},
+											"InvoiceIssuerName": {
+												"description": "The entity that issues the invoice for this charge.",
+												"type": "string",
+												"example": "Cloudflare, Inc."
+											},
+											"ListCost": {
+												"description": "The cost at published list prices, before any discount. PayGo has no commitment discounts, so this equals ContractedCost.",
+												"type": "number",
+												"example": 0.75
+											},
 											"PricingQuantity": {
 												"description": "Specifies the pricing quantity for this charge period.",
 												"type": "integer",
 												"example": 150000
+											},
+											"PricingUnit": {
+												"description": "The unit that PricingQuantity is expressed in. Unlike ConsumedUnit this is never empty; it falls back to \"Count\" when the service has no explicit unit.",
+												"type": "string",
+												"example": "Count"
 											},
 											"ServiceFamilyName": {
 												"description": "Identifies the product family for the Cloudflare service.",
@@ -160,6 +220,11 @@
 												"description": "Identifies the Cloudflare service.",
 												"type": "string",
 												"example": "Workers Standard"
+											},
+											"ServiceProviderName": {
+												"description": "The provider of the purchased service.",
+												"type": "string",
+												"example": "Cloudflare, Inc."
 											},
 											"SubscriptionId": {
 												"description": "The identifier for the Cloudflare subscription.",
@@ -181,17 +246,29 @@
 											}
 										},
 										"required": [
+											"ServiceProviderName",
+											"InvoiceIssuerName",
+											"HostProviderName",
+											"BillingAccountId",
+											"BillingAccountName",
+											"ServiceName",
+											"ChargeCategory",
+											"ChargeClass",
+											"ChargeDescription",
 											"ChargePeriodStart",
 											"ChargePeriodEnd",
 											"BillingPeriodStart",
-											"ServiceName",
+											"BillingCurrency",
 											"ConsumedQuantity",
 											"ConsumedUnit",
 											"PricingQuantity",
+											"PricingUnit",
 											"CumulatedPricingQuantity",
+											"ListCost",
 											"ContractedCost",
-											"CumulatedContractedCost",
-											"BillingCurrency"
+											"EffectiveCost",
+											"BilledCost",
+											"CumulatedContractedCost"
 										]
 									}
 								},
@@ -309,14 +386,6 @@
 		"tags": [
 			"Billable Usage"
 		],
-		"x-api-token-group": [
-			"Billing Read"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#billing:read"
-			]
-		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": false,
@@ -325,12 +394,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "paygo",
+		"x-fern-sdk-method-name": "get_v1",
 		"x-forge-hidden": true
 	},
-	"GET /accounts/{account_id}/paygo-usage-info": {
-		"operationId": "billable-usage-get-paygo-account-usage-info",
-		"summary": "Get PayGo Account Billable Usage Info (Version 1, Alpha)",
+	"GET /accounts/{account_id}/billable-usage/info": {
+		"operationId": "billable-usage-get-v1-account-usage-info",
+		"summary": "Get Account Billable Usage Info (Version 1, Alpha)",
 		"description": "Returns high-level usage information for the account, including coverage,\nand subscription metadata.\n",
 		"parameters": [
 			{
@@ -349,7 +418,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Indicates PayGo account usage data was successfully retrieved.",
+				"description": "Indicates account usage data was successfully retrieved.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -401,7 +470,7 @@
 									"nullable": true
 								},
 								"result": {
-									"description": "Contains the paygo usage info.",
+									"description": "Contains the usage info.",
 									"type": "object",
 									"properties": {
 										"covered": {
@@ -566,9 +635,6 @@
 		"tags": [
 			"Billable Usage"
 		],
-		"x-api-token-group": [
-			"Billing Read"
-		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": false,
@@ -577,7 +643,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "paygo_info",
+		"x-fern-sdk-method-name": "get_info_v1",
 		"x-forge-hidden": true
 	}
 }

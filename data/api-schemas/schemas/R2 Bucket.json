@@ -3368,6 +3368,638 @@
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs": {
+		"operationId": "r2-list-bucket-jobs",
+		"summary": "List Bucket Jobs",
+		"description": "Lists background jobs for an R2 bucket. Use this endpoint to poll jobs returned by\nasynchronous operations such as deleting objects by prefix or emptying a bucket.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "cf-r2-jurisdiction",
+				"in": "header",
+				"schema": {
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
+				}
+			},
+			{
+				"name": "jobType",
+				"in": "query",
+				"description": "Restricts results to jobs of the specified type.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"prefixDelete"
+					]
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"description": "Restricts results to jobs with the specified status. `jobType` is required when this parameter is provided.",
+				"schema": {
+					"description": "Lifecycle status of a bucket background job.",
+					"type": "string",
+					"enum": [
+						"ENQUEUED",
+						"RUNNING",
+						"COMPLETED",
+						"FAILED",
+						"CANCELLED"
+					]
+				}
+			},
+			{
+				"name": "maxKeys",
+				"in": "query",
+				"description": "Maximum number of jobs to return.",
+				"schema": {
+					"type": "integer",
+					"maximum": 1000,
+					"minimum": 0
+				}
+			},
+			{
+				"name": "continuationToken",
+				"in": "query",
+				"description": "Pagination token received as `nextContinuationToken` in the previous response.",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List Bucket Jobs response.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"running-job": {
+								"summary": "A bucket-emptying job is still running",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"jobs": [
+											{
+												"id": "7f24658b-31d7-4b91-9a12-cb5a2c99b294",
+												"jobType": "prefixDelete",
+												"prefixDelete": {
+													"deletedObjects": 1350,
+													"isBucketClear": true,
+													"prefix": ""
+												},
+												"startTime": "2026-07-20T12:00:00.000Z",
+												"status": "RUNNING"
+											}
+										],
+										"nextContinuationToken": "eyJ2IjoxLCJzdGFydEFmdGVyIjoiLi4uIn0="
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"jobs": {
+													"description": "Bucket jobs in the current page.",
+													"type": "array",
+													"items": {
+														"description": "Descriptor of a bucket background job. Returned when the delete-objects endpoint is\ninvoked with a `prefix` query parameter, and by the Get Bucket Job and List Bucket Jobs\nendpoints. An empty prefix indicates an Empty Bucket job. A small operation can already\nbe `COMPLETED` when it is returned.\n",
+														"type": "object",
+														"properties": {
+															"endTime": {
+																"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+																"type": "string",
+																"format": "date-time"
+															},
+															"id": {
+																"description": "Unique identifier used to poll the job.",
+																"type": "string"
+															},
+															"jobType": {
+																"description": "The job kind. Always `prefixDelete` for this endpoint.",
+																"type": "string",
+																"enum": [
+																	"prefixDelete"
+																]
+															},
+															"prefixDelete": {
+																"description": "Details specific to the prefix-delete job.",
+																"type": "object",
+																"properties": {
+																	"deletedObjects": {
+																		"description": "Number of objects deleted by the job so far.",
+																		"type": "integer",
+																		"example": 0
+																	},
+																	"isBucketClear": {
+																		"description": "True when the job was created to clear the entire bucket. This field can be absent\non jobs created before Empty Bucket job tracking was introduced.\n",
+																		"type": "boolean"
+																	},
+																	"prefix": {
+																		"description": "The prefix matched against object keys. An empty string means the entire bucket.",
+																		"type": "string",
+																		"example": "path/to/"
+																	}
+																},
+																"required": [
+																	"prefix",
+																	"deletedObjects"
+																]
+															},
+															"startTime": {
+																"description": "When the job was created.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"status": {
+																"description": "Lifecycle status of a bucket background job.",
+																"type": "string",
+																"enum": [
+																	"ENQUEUED",
+																	"RUNNING",
+																	"COMPLETED",
+																	"FAILED",
+																	"CANCELLED"
+																]
+															}
+														},
+														"required": [
+															"id",
+															"jobType",
+															"status",
+															"startTime",
+															"prefixDelete"
+														]
+													}
+												},
+												"nextContinuationToken": {
+													"description": "Token to pass as `continuationToken` to retrieve the next page.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"jobs"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List Bucket Jobs response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.read"
+			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.jobs",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs/{job_id}": {
+		"operationId": "r2-get-bucket-job",
+		"summary": "Get Bucket Job",
+		"description": "Gets the current status of a background job for an R2 bucket. Poll this endpoint with\nthe job identifier returned when the operation was submitted until the status is\n`COMPLETED`, `FAILED`, or `CANCELLED`.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "job_id",
+				"in": "path",
+				"description": "Identifier returned when the background job was submitted.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "cf-r2-jurisdiction",
+				"in": "header",
+				"schema": {
+					"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"fedramp"
+					],
+					"x-auditable": true,
+					"x-stainless-param": "jurisdiction"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Bucket Job response.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"completed-empty-bucket": {
+								"summary": "A bucket-emptying job has completed",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"endTime": "2026-07-20T12:14:31.000Z",
+										"id": "7f24658b-31d7-4b91-9a12-cb5a2c99b294",
+										"jobType": "prefixDelete",
+										"prefixDelete": {
+											"deletedObjects": 2481,
+											"isBucketClear": true,
+											"prefix": ""
+										},
+										"startTime": "2026-07-20T12:00:00.000Z",
+										"status": "COMPLETED"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Descriptor of a bucket background job. Returned when the delete-objects endpoint is\ninvoked with a `prefix` query parameter, and by the Get Bucket Job and List Bucket Jobs\nendpoints. An empty prefix indicates an Empty Bucket job. A small operation can already\nbe `COMPLETED` when it is returned.\n",
+											"type": "object",
+											"properties": {
+												"endTime": {
+													"description": "When the job finished. Absent while the job is still `ENQUEUED` or `RUNNING`.\n",
+													"type": "string",
+													"format": "date-time"
+												},
+												"id": {
+													"description": "Unique identifier used to poll the job.",
+													"type": "string"
+												},
+												"jobType": {
+													"description": "The job kind. Always `prefixDelete` for this endpoint.",
+													"type": "string",
+													"enum": [
+														"prefixDelete"
+													]
+												},
+												"prefixDelete": {
+													"description": "Details specific to the prefix-delete job.",
+													"type": "object",
+													"properties": {
+														"deletedObjects": {
+															"description": "Number of objects deleted by the job so far.",
+															"type": "integer",
+															"example": 0
+														},
+														"isBucketClear": {
+															"description": "True when the job was created to clear the entire bucket. This field can be absent\non jobs created before Empty Bucket job tracking was introduced.\n",
+															"type": "boolean"
+														},
+														"prefix": {
+															"description": "The prefix matched against object keys. An empty string means the entire bucket.",
+															"type": "string",
+															"example": "path/to/"
+														}
+													},
+													"required": [
+														"prefix",
+														"deletedObjects"
+													]
+												},
+												"startTime": {
+													"description": "When the job was created.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"status": {
+													"description": "Lifecycle status of a bucket background job.",
+													"type": "string",
+													"enum": [
+														"ENQUEUED",
+														"RUNNING",
+														"COMPLETED",
+														"FAILED",
+														"CANCELLED"
+													]
+												}
+											},
+											"required": [
+												"id",
+												"jobType",
+												"status",
+												"startTime",
+												"prefixDelete"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Bucket Job response failure. The bucket or job may not exist, or the caller may not be authorized to access it.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.read"
+			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.jobs",
+		"x-fern-sdk-method-name": "get"
+	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
 		"operationId": "r2-get-bucket-lifecycle-configuration",
 		"summary": "Get Object Lifecycle Rules",
