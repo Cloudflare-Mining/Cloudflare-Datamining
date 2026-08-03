@@ -6,6 +6,48 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 3, 2026[Your agent needs a computer, not a container — introducing @cloudflare/computer](https://blog.cloudflare.com/cloudflare-computer/)
+
+Agents need more than just a container to scale. We're introducing @cloudflare/computer, an agent runtime that dynamically orchestrates between fast, efficient isolates and full Linux containers to give every agent a computer of its own.
+
+![Matt Carey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BHQSGCBKVGAAVQVS4V3E.png&w=64&h=64&f=webp&fit=cover&position=center)![Aron Carroll](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ0QBKB6JZ26WGQW2DHCS5M4.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matt Carey](https://blog.cloudflare.com/author/matt-carey/) and [Aron Carroll](https://blog.cloudflare.com/author/aron-carroll/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ0Q510F63VHS6DFGP9SAV3H.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cloudflare-computer/)
+
+August 3, 2026[Cloudflare Workers and Containers now support inbound TCP connections and gRPC](https://blog.cloudflare.com/grpc-workers/)
+
+Cloudflare Workers now support inbound TCP connections via Spectrum, allowing direct socket forwarding to Durable Objects and Containers. Developers can run full-duplex gRPC applications or leverage automatic gRPC-to-gRPC-web translation directly within Workers.
+
+![Mar Witek](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ235CPB4AH0E1QF256SHBFJ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Thomas Rubini](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ23W8FJDE19KMKKPMZSP5PP.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Mar Witek](https://blog.cloudflare.com/author/mar-witek/) and [Thomas Rubini](https://blog.cloudflare.com/author/thomas-rubini/)
+
+August 3, 2026[Introducing the Billable Usage API: programmatic cost visibility for Cloudflare](https://blog.cloudflare.com/billable-usage-api/)
+
+Cloudflare has launched a new Billable Usage API for accounts, giving developers and FinOps teams single-endpoint programmatic visibility into cost and usage across all self-serve products. Built around the FOCUS specification, spend can now be tracked seamlessly alongside the rest of your cloud stack.
+
+![Ryan Noel](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X993V2NQBSHZCEDTSYH99.webp&w=64&h=64&f=webp&fit=cover&position=center)![Zunayed Ali](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X7VHNGDVK1WPDK7WS7DWR.webp&w=64&h=64&f=webp&fit=cover&position=center)![Filipa Nóbrega](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X62NSE3TRWSABF7J6JR84.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ryan Noel](https://blog.cloudflare.com/author/ryan-noel/), [Zunayed Ali](https://blog.cloudflare.com/author/zunayed-ali/), and [Filipa Nóbrega](https://blog.cloudflare.com/author/filipa-nobrega/)
+
+August 3, 2026[Smaller, faster, safer: running Kimi and GLM at scale](https://blog.cloudflare.com/smaller-faster-safer-models/)
+
+Serving frontier models like Kimi and GLM means fighting for GPU memory. Here's how we quantize KV caches, compress model weights, and add integrity checks to serve them faster, cheaper, and safely.
+
+![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)![Chi McIsaac](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1QJYZF8GBATHV6TF6MD5KE.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/), and [Chi McIsaac](https://blog.cloudflare.com/author/chi-mcisaac/)
+
+August 3, 2026[Workers RPC now works across Python and JavaScript](https://blog.cloudflare.com/python-workers-rpc/)
+
+One coding agent can write a Python Worker and another can write a JavaScript Worker. At runtime, those Workers can exchange references to live objects and call their methods without defining APIs, schemas, or serialization code
+
+![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Gyeongjae Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1GVVH6V865W8Z5B63CYZT.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Dominik Picheta](https://blog.cloudflare.com/author/dominik/) and [Gyeongjae Choi](https://blog.cloudflare.com/author/gyeongjae-choi/)
+
 August 2, 2026[Welcome to Agents Week](https://blog.cloudflare.com/agents-week-welcome/)
 
 Agents Week explores how cloud infrastructure must evolve to serve autonomous agents rather than human browsers. Join us as we unpack the storage, execution, and security primitives needed for an agent-native web.
@@ -13,8 +55,6 @@ Agents Week explores how cloud infrastructure must evolve to serve autonomous ag
 ![Rita Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4775C0A7PYM3T9XKH4PH9J.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Rita Kozlov](https://blog.cloudflare.com/author/rita/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYZCTHV0HVXSBJZRXX2RZA64.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/agents-week-welcome/)
 
 July 31, 2026[An API for MoQ: provision your own isolated relays](https://blog.cloudflare.com/moq-relays/)
 
@@ -119,46 +159,6 @@ Smart Tiered Cache allows for precise upper tier selection for origins hosted on
 ![Chenxi Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJM6F0PHPE4PQMNC0W1H579.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Chenxi Zhang](https://blog.cloudflare.com/author/chenxi-zhang/)
-
-July 9, 2026[Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
-
-NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We take a closer look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best currently available. 
-
-![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Bas Westerbaan](https://blog.cloudflare.com/author/bas/) and [Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/)
-
-July 8, 2026[Introducing Meerkat: an experiment in global consensus](https://blog.cloudflare.com/meerkat-introduction/)
-
-Cloudflare Research is building a global consensus service called Meerkat that uses a new consensus algorithm called QuePaxa. We plan to use Meerkat to build a strongly consistent, fault-tolerant key-value store, and other applications.
-
-![James Larisch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9J5HQA4MAD7AN1K285E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![ Bob Halley](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJFYHRZYTBR06JDENDTQ12N.jpg&w=64&h=64&f=webp&fit=cover&position=center)![João Pedro Leite](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q3HR5NWBDTW5N6DCXWKT.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[James Larisch](https://blog.cloudflare.com/author/james-larisch/), [ Bob Halley](https://blog.cloudflare.com/author/bob-halley/), and [João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/)
-
-July 7, 2026[Cloudflare proudly joins the UK government's Cyber Resilience Pledge](https://blog.cloudflare.com/cloudflare-joins-uk-cyber-resilience-pledge/)
-
-The pledge is a voluntary framework inviting organizations to commit to foundational cyber security governance, board-level accountability, and supply chain rigor. For over a decade, Cloudflare has pioneered the core pillars of this framework: democratizing security, leadership accountability, and radical transparency.
-
-![Ling Wu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467KF763JFZEBQ3XWDEM6N.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Katie Visser](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJNTKKMP1NE3Z3NQENZHHMY.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Ling Wu](https://blog.cloudflare.com/author/ling/) and [Katie Visser](https://blog.cloudflare.com/author/katie-visser/)
-
-July 6, 2026[Your Worker can now have its own cache in front of it](https://blog.cloudflare.com/workers-cache/)
-
-We are launching Workers Cache, a regionally tiered cache that sits directly in front of your Worker entrypoints. Infinitely composable, configured via standard HTTP headers
-
-![Dan Lapid](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J56Y8QNB56HN77FKK7EM.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Connor Harwood](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PA3429BFXAR99YP0Z2ZX.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Dan Lapid](https://blog.cloudflare.com/author/dan-lapid/) and [Connor Harwood](https://blog.cloudflare.com/author/connor-harwood/)
-
-July 1, 2026[Unmasking the crawls with Attribution Business Insights](https://blog.cloudflare.com/attribution-business-insights/)
-
-Cloudflare's new Attribution Business Insights dashboard helps website owners understand crawler behavior, appetite, and potential value, fueling business-level conversations around crawl compensation.
-
-![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Oliver Payne](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AC0A90AS7JQ9KWA8Q85Z.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Oliver Payne](https://blog.cloudflare.com/author/oliver-payne/)
 
 Load more
 
