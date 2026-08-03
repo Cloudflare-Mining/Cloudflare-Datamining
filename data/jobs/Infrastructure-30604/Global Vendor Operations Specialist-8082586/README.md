@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>Available Locations: </strong>Austin, Denver, Seattle, Atlanta, Washington D.C.</p>
 <h4><strong>About the role</strong></h4>
 <p>The Global Vendor Operations Specialist is a hands-on operational role responsible for the day-to-day execution of vendor management activities across Cloudflare's global infrastructure operations. Working closely with the Global Vendor Manager, this role ensures vendors are properly onboarded, performing to agreed standards, and continuously improving through data-driven performance management.</p>
 <p>This position serves as the primary operational liaison between Cloudflare and external service providers, translating strategic vendor relationships into tactical execution excellence.</p>
