@@ -65,6 +65,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -76,7 +77,9 @@
 		],
 		"tags": [
 			"Email Routing suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
 		"operationId": "delete_publicDeleteSuppressionZoneRouting",
@@ -144,6 +147,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -155,7 +159,9 @@
 		],
 		"tags": [
 			"Email Routing suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/suppression": {
 		"operationId": "get_publicListSuppressionRouting",
@@ -316,6 +322,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -327,7 +334,9 @@
 		],
 		"tags": [
 			"Email Routing suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/routing/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionRouting",
@@ -433,6 +442,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -444,7 +454,9 @@
 		],
 		"tags": [
 			"Email Routing suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/suppression": {
 		"operationId": "get_publicListSuppressionZoneRouting",
@@ -605,6 +617,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -620,7 +633,9 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionZoneRouting",
@@ -726,6 +741,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -741,7 +757,9 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/routing/suppression": {
 		"operationId": "post_publicNewSuppressionRouting",
@@ -836,6 +854,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -847,7 +866,9 @@
 		],
 		"tags": [
 			"Email Routing suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/email/routing/suppression": {
 		"operationId": "post_publicNewSuppressionZoneRouting",
@@ -942,6 +963,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -953,6 +975,8 @@
 		],
 		"tags": [
 			"Email Routing suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	}
 }

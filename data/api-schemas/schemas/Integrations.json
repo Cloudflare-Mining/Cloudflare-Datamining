@@ -192,7 +192,131 @@
 								}
 							}
 						},
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"default": []
+								},
+								"result": {
+									"description": "List of items.",
+									"type": "array",
+									"items": {
+										"description": "Serializer for v2 integration list responses.",
+										"type": "object",
+										"properties": {
+											"application": {
+												"type": "object",
+												"additionalProperties": {
+													"nullable": true,
+													"type": "string"
+												},
+												"readOnly": true
+											},
+											"created": {
+												"description": "When the integration was created.",
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											},
+											"id": {
+												"description": "Integration ID.",
+												"type": "string",
+												"format": "uuid",
+												"readOnly": true
+											},
+											"is_paused": {
+												"description": "Whether the user paused the integration.",
+												"type": "boolean",
+												"readOnly": true
+											},
+											"name": {
+												"description": "Name of the integration.",
+												"type": "string",
+												"readOnly": true
+											},
+											"status": {
+												"description": "Integration status.",
+												"type": "string"
+											},
+											"updated": {
+												"description": "When the integration was last updated.",
+												"type": "string",
+												"format": "date-time",
+												"readOnly": true
+											}
+										},
+										"required": [
+											"application",
+											"created",
+											"id",
+											"is_paused",
+											"name",
+											"status",
+											"updated"
+										]
+									}
+								},
+								"result_info": {
+									"description": "Pagination metadata.",
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of items in current page.",
+											"type": "integer"
+										},
+										"next": {
+											"description": "URL for next page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"page": {
+											"description": "Current page number.",
+											"type": "integer"
+										},
+										"per_page": {
+											"description": "Number of items per page.",
+											"type": "integer"
+										},
+										"previous": {
+											"description": "URL for previous page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"total_count": {
+											"description": "Total number of items.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages",
+								"result_info"
+							]
+						}
 					}
 				}
 			},
@@ -1099,7 +1223,7 @@
 						"type": "object",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
 								"type": "string",
 								"enum": [
 									"ANTHROPIC",
@@ -1109,7 +1233,6 @@
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
-									"GITLAB",
 									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
@@ -1117,8 +1240,7 @@
 									"OPENAI",
 									"SALESFORCE",
 									"SERVICENOW",
-									"SLACK",
-									"ZOOM"
+									"SLACK"
 								]
 							},
 							"auth_method": {
@@ -1205,7 +1327,7 @@
 						"type": "object",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
 								"type": "string",
 								"enum": [
 									"ANTHROPIC",
@@ -1215,7 +1337,6 @@
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
-									"GITLAB",
 									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
@@ -1223,8 +1344,7 @@
 									"OPENAI",
 									"SALESFORCE",
 									"SERVICENOW",
-									"SLACK",
-									"ZOOM"
+									"SLACK"
 								]
 							},
 							"auth_method": {
@@ -1288,7 +1408,7 @@
 						"type": "object",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
 								"type": "string",
 								"enum": [
 									"ANTHROPIC",
@@ -1298,7 +1418,6 @@
 									"CONFLUENCE",
 									"DROPBOX",
 									"GITHUB",
-									"GITLAB",
 									"GOOGLE_CLOUD_PLATFORM",
 									"GOOGLE_WORKSPACE",
 									"JIRA",
@@ -1306,8 +1425,7 @@
 									"OPENAI",
 									"SALESFORCE",
 									"SERVICENOW",
-									"SLACK",
-									"ZOOM"
+									"SLACK"
 								]
 							},
 							"auth_method": {

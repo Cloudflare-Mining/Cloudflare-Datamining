@@ -65,6 +65,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -76,12 +77,14 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "delete_publicDeleteSendingSuppression",
 		"summary": "Delete account Email Sending suppression",
-		"description": "Delete account Email Sending suppression",
+		"description": "Deletes an account-level Email Sending suppression, allowing future delivery attempts to the address.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -252,7 +255,11 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.suppressions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation removes an Email Sending suppression and may allow email delivery to resume for the address."
 	},
 	"DELETE /zones/{zone_id}/email/sending/suppression/{suppression_id}": {
 		"operationId": "delete_publicDeleteSuppressionZoneSending",
@@ -320,6 +327,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -331,7 +339,9 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/suppression": {
 		"operationId": "get_publicListSuppressionSending",
@@ -492,6 +502,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -503,7 +514,9 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionSending",
@@ -609,6 +622,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -620,12 +634,14 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "get_publicListSendingSuppressions",
 		"summary": "List account Email Sending suppressions",
-		"description": "List account Email Sending suppressions",
+		"description": "Lists account-level Email Sending suppressions with cursor pagination and optional email or reason filters.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -850,12 +866,15 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.suppressions",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "get_publicGetSendingSuppression",
 		"summary": "Get account Email Sending suppression",
-		"description": "Get account Email Sending suppression",
+		"description": "Gets an account-level Email Sending suppression by its identifier.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1003,7 +1022,10 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.suppressions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/sending/suppression": {
 		"operationId": "get_publicListSuppressionZoneSending",
@@ -1164,6 +1186,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1175,7 +1198,9 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/sending/suppression/{suppression_id}": {
 		"operationId": "get_publicGetSuppressionZoneSending",
@@ -1281,6 +1306,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1292,7 +1318,9 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/sending/suppression": {
 		"operationId": "post_publicNewSuppressionSending",
@@ -1387,6 +1415,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1398,12 +1427,14 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "post_publicCreateSendingSuppression",
 		"summary": "Create account Email Sending suppression",
-		"description": "Create account Email Sending suppression",
+		"description": "Prevents Email Sending from delivering to an address until the suppression expires or is deleted.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1593,12 +1624,15 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.suppressions",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/email/sending/suppressions/bulk": {
 		"operationId": "post_publicBulkCreateSendingSuppressions",
 		"summary": "Bulk import account Email Sending suppressions",
-		"description": "Bulk import account Email Sending suppressions",
+		"description": "Imports up to 1,000 account-level Email Sending suppressions in one request.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1813,7 +1847,10 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-sending.suppressions",
+		"x-fern-sdk-method-name": "import"
 	},
 	"POST /zones/{zone_id}/email/sending/suppression": {
 		"operationId": "post_publicNewSuppressionZoneSending",
@@ -1908,6 +1945,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1919,6 +1957,8 @@
 		],
 		"tags": [
 			"Email Sending suppressions"
-		]
+		],
+		"x-fern-ignore": true,
+		"x-forge-hidden": true
 	}
 }

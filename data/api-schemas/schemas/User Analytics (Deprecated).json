@@ -486,6 +486,9 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "user.analytics.dashboard",
+		"x-fern-sdk-method-name": "get",
 		"x-stainless-deprecation-message": "This endpoint is deprecated and will be removed in a future version. Please use the GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/ It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/\n"
 	}
 }

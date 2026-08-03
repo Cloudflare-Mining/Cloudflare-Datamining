@@ -435,9 +435,305 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing",
+		"x-fern-sdk-group-name": "share",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
+	},
+	"DELETE /accounts/{account_id}/shares/{share_id}/excluded-recipients/{excluded_recipient_id}": {
+		"operationId": "share-excluded-recipient-delete",
+		"summary": "Delete a share excluded recipient",
+		"description": "Removes a single account from a share's excluded-recipient list. The account becomes eligible to receive the share again on the next reconciliation cycle.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "share_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"type": "string",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "excluded_recipient_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share Excluded Recipient identifier tag.",
+					"type": "string",
+					"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Share excluded recipient deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"created": {
+													"description": "When the share was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Share Excluded Recipient identifier tag.",
+													"type": "string",
+													"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"created",
+												"modified"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete share excluded recipient failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Delete share excluded recipient failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"operationId": "share-recipient-delete",
@@ -781,9 +1077,9 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.recipients",
+		"x-fern-sdk-group-name": "share.recipient",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"operationId": "share-resource-delete",
@@ -1122,9 +1418,9 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.resources",
+		"x-fern-sdk-group-name": "share.resource",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/shares": {
 		"operationId": "shares-list",
@@ -1743,9 +2039,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}": {
 		"operationId": "shares-get-by-id",
@@ -2201,9 +2496,660 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
+		"operationId": "share-excluded-recipients-list",
+		"summary": "List share excluded recipients by share ID",
+		"description": "Lists the accounts excluded from an organization-targeted share. Only valid for shares with `target_type=organization`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "share_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"type": "string",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"example": 2,
+					"default": 1,
+					"minimum": 1,
+					"multipleOf": 1
+				}
+			},
+			{
+				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"example": 20,
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"multipleOf": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List share excluded recipients response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"required": [
+												"success",
+												"errors"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "Total number of pages using the given per page.",
+															"type": "number",
+															"example": 50
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"account_id": {
+														"description": "Account identifier.",
+														"type": "string",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"x-auditable": true
+													},
+													"created": {
+														"description": "When the share was created.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Share Excluded Recipient identifier tag.",
+														"type": "string",
+														"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
+														"maxLength": 32,
+														"x-auditable": true
+													},
+													"modified": {
+														"description": "When the share was modified.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2023-09-21T18:56:32.624632Z",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"account_id",
+													"created",
+													"modified"
+												]
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List share excluded recipients response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "List share excluded recipients response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients/{excluded_recipient_id}": {
+		"operationId": "share-excluded-recipients-get-by-id",
+		"summary": "Get share excluded recipient by ID",
+		"description": "Gets a single excluded recipient of a share by its identifier tag.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "share_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"type": "string",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "excluded_recipient_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share Excluded Recipient identifier tag.",
+					"type": "string",
+					"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get share excluded recipient response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"created": {
+													"description": "When the share was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Share Excluded Recipient identifier tag.",
+													"type": "string",
+													"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"created",
+												"modified"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get share excluded recipient response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Get share excluded recipient response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipients-list",
@@ -2616,9 +3562,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"operationId": "share-recipients-get-by-id",
@@ -2971,9 +3916,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources": {
 		"operationId": "share-resources-list",
@@ -3405,9 +4349,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"operationId": "share-resources-get-by-id",
@@ -3746,9 +4689,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/shares": {
 		"operationId": "organization-shares-list",
@@ -4332,9 +5274,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.shares",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "organization.share",
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/shares": {
 		"operationId": "share-create",
@@ -4873,9 +5814,319 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
+		"operationId": "share-excluded-recipient-create",
+		"summary": "Create a new share excluded recipient",
+		"description": "Excludes a single account from an organization-targeted share. The share continues to target the entire organization, but the excluded account is skipped during reconciliation.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "share_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"type": "string",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"account_id": {
+								"description": "The account to exclude from the organization-targeted share.",
+								"allOf": [
+									{
+										"description": "Account identifier.",
+										"type": "string",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"x-auditable": true
+									}
+								]
+							}
+						},
+						"required": [
+							"account_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Share excluded recipient created.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"account_id": {
+													"description": "Account identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"created": {
+													"description": "When the share was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Share Excluded Recipient identifier tag.",
+													"type": "string",
+													"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"modified": {
+													"description": "When the share was modified.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2023-09-21T18:56:32.624632Z",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"created",
+												"modified"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create share excluded recipient failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Create share excluded recipient failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipient-create",
@@ -5256,9 +6507,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/resources": {
 		"operationId": "share-resource-create",
@@ -5634,9 +6884,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}": {
 		"operationId": "share-update",
@@ -6094,9 +7343,222 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share",
+		"x-fern-sdk-method-name": "update"
+	},
+	"PUT /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
+		"operationId": "share-excluded-recipients-update",
+		"summary": "Update a share's excluded recipients",
+		"description": "Reconciles a share's excluded recipients to match the given list. Only valid for shares with `target_type=organization`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "share_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Share identifier tag.",
+					"type": "string",
+					"example": "3fd85f74b32742f1bff64a85009dda07",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"account_id": {
+									"description": "The account to exclude from the organization-targeted share.",
+									"allOf": [
+										{
+											"description": "Account identifier.",
+											"type": "string",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"x-auditable": true
+										}
+									]
+								}
+							},
+							"required": [
+								"account_id"
+							]
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"204": {
+				"description": "Empty body"
+			},
+			"4XX": {
+				"description": "Update share excluded recipients failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "Update share excluded recipients failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Resource Sharing"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.excluded_recipients",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipients-update",
@@ -6331,9 +7793,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.recipient",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"operationId": "share-resource-update",
@@ -6690,8 +8151,7 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "share.resource",
+		"x-fern-sdk-method-name": "update"
 	}
 }

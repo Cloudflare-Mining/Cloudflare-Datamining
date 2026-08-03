@@ -408,7 +408,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "deleteZoneSnippetRules",
@@ -866,7 +869,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets.rules",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/snippets": {
 		"operationId": "listZoneSnippets",
@@ -1380,7 +1386,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "getZoneSnippet",
@@ -1820,7 +1829,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/snippets/{snippet_name}/content": {
 		"operationId": "getZoneSnippetContent",
@@ -2146,7 +2158,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets.content",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "listZoneSnippetRules",
@@ -2605,7 +2620,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets.rules",
+		"x-fern-sdk-method-name": "list"
 	},
 	"PUT /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "updateZoneSnippet",
@@ -3093,7 +3111,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "updateZoneSnippetRules",
@@ -3636,6 +3657,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "snippets.rules",
+		"x-fern-sdk-method-name": "update"
 	}
 }

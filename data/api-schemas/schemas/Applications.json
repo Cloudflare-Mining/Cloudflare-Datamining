@@ -3103,7 +3103,220 @@
 								}
 							}
 						},
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"default": []
+								},
+								"result": {
+									"description": "List of items.",
+									"type": "array",
+									"items": {
+										"description": "Application item in list response.",
+										"type": "object",
+										"properties": {
+											"auth_methods": {
+												"description": "Available auth methods.",
+												"type": "array",
+												"items": {
+													"description": "Auth method summary for list endpoint.",
+													"type": "object",
+													"properties": {
+														"display_name": {
+															"description": "Human-readable auth method name.",
+															"type": "string"
+														},
+														"id": {
+															"description": "Auth method identifier.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"display_name",
+														"id"
+													]
+												}
+											},
+											"category": {
+												"description": "Vendor category (e.g. Productivity, AI).",
+												"type": "string"
+											},
+											"description": {
+												"description": "Brief description of the integration.",
+												"type": "string"
+											},
+											"display_name": {
+												"description": "Human-readable vendor name.",
+												"type": "string"
+											},
+											"dlp_enabled": {
+												"description": "Whether DLP scanning is supported.",
+												"type": "boolean"
+											},
+											"id": {
+												"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
+												"type": "string",
+												"enum": [
+													"ANTHROPIC",
+													"AWS",
+													"BITBUCKET",
+													"BOX",
+													"CONFLUENCE",
+													"DROPBOX",
+													"GITHUB",
+													"GOOGLE_CLOUD_PLATFORM",
+													"GOOGLE_WORKSPACE",
+													"JIRA",
+													"MICROSOFT_INTERNAL",
+													"OPENAI",
+													"SALESFORCE",
+													"SERVICENOW",
+													"SLACK"
+												]
+											},
+											"logo": {
+												"description": "Logo path.",
+												"type": "string",
+												"nullable": true
+											},
+											"permissions": {
+												"description": "All permissions with severity.",
+												"type": "array",
+												"items": {
+													"description": "Permission/scope with severity for display.",
+													"type": "object",
+													"properties": {
+														"display_name": {
+															"description": "Human-readable permission name.",
+															"type": "string"
+														},
+														"scope": {
+															"description": "Vendor-native scope identifier.",
+															"type": "string"
+														},
+														"severity": {
+															"description": "Permission sensitivity level.\n\n* `low` - low\n* `medium` - medium\n* `high` - high\n* `critical` - critical",
+															"type": "string",
+															"enum": [
+																"low",
+																"medium",
+																"high",
+																"critical"
+															]
+														}
+													},
+													"required": [
+														"display_name",
+														"scope",
+														"severity"
+													]
+												}
+											},
+											"supported_environments": {
+												"description": "Environments this vendor supports (standard, fedramp).",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"use_cases": {
+												"description": "Supported use cases.",
+												"type": "array",
+												"items": {
+													"description": "Lightweight use case for list endpoint.",
+													"type": "object",
+													"properties": {
+														"display_name": {
+															"description": "Human-readable use case name.",
+															"type": "string"
+														},
+														"id": {
+															"description": "Use case identifier (e.g. casb, ces).",
+															"type": "string"
+														}
+													},
+													"required": [
+														"display_name",
+														"id"
+													]
+												}
+											}
+										},
+										"required": [
+											"auth_methods",
+											"category",
+											"description",
+											"display_name",
+											"dlp_enabled",
+											"id",
+											"logo",
+											"permissions",
+											"supported_environments",
+											"use_cases"
+										]
+									}
+								},
+								"result_info": {
+									"description": "Pagination metadata.",
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of items in current page.",
+											"type": "integer"
+										},
+										"next": {
+											"description": "URL for next page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"page": {
+											"description": "Current page number.",
+											"type": "integer"
+										},
+										"per_page": {
+											"description": "Number of items per page.",
+											"type": "integer"
+										},
+										"previous": {
+											"description": "URL for previous page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"total_count": {
+											"description": "Total number of items.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages",
+								"result_info"
+							]
+						}
 					}
 				}
 			},
@@ -3159,7 +3372,6 @@
 						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
-						"GITLAB",
 						"GOOGLE_CLOUD_PLATFORM",
 						"GOOGLE_WORKSPACE",
 						"JIRA",
@@ -3167,8 +3379,7 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK",
-						"ZOOM"
+						"SLACK"
 					]
 				}
 			}
@@ -3320,7 +3531,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"description": "Vendor identifier.\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GITLAB` - GITLAB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK\n* `ZOOM` - ZOOM",
+													"description": "Vendor identifier.\n\n* `ANTHROPIC` - ANTHROPIC\n* `AWS` - AWS\n* `BITBUCKET` - BITBUCKET\n* `BOX` - BOX\n* `CONFLUENCE` - CONFLUENCE\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_CLOUD_PLATFORM` - GOOGLE_CLOUD_PLATFORM\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `JIRA` - JIRA\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `OPENAI` - OPENAI\n* `SALESFORCE` - SALESFORCE\n* `SERVICENOW` - SERVICENOW\n* `SLACK` - SLACK",
 													"type": "string",
 													"enum": [
 														"ANTHROPIC",
@@ -3330,7 +3541,6 @@
 														"CONFLUENCE",
 														"DROPBOX",
 														"GITHUB",
-														"GITLAB",
 														"GOOGLE_CLOUD_PLATFORM",
 														"GOOGLE_WORKSPACE",
 														"JIRA",
@@ -3338,8 +3548,7 @@
 														"OPENAI",
 														"SALESFORCE",
 														"SERVICENOW",
-														"SLACK",
-														"ZOOM"
+														"SLACK"
 													]
 												},
 												"instructions": {
@@ -3555,7 +3764,6 @@
 						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
-						"GITLAB",
 						"GOOGLE_CLOUD_PLATFORM",
 						"GOOGLE_WORKSPACE",
 						"JIRA",
@@ -3563,8 +3771,7 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK",
-						"ZOOM"
+						"SLACK"
 					]
 				}
 			},
@@ -3634,7 +3841,138 @@
 								}
 							}
 						},
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"default": []
+								},
+								"result": {
+									"description": "List of items.",
+									"type": "array",
+									"items": {
+										"description": "Detailed auth method info including credentials schema and instructions.",
+										"type": "object",
+										"properties": {
+											"display_name": {
+												"description": "Human-readable auth method name.",
+												"type": "string"
+											},
+											"human_interaction_required": {
+												"description": "Whether setup requires human interaction or integration can be created purely using API (e.g., For OAuth can not be created without user interaction).",
+												"type": "boolean"
+											},
+											"id": {
+												"description": "Auth method identifier.",
+												"type": "string"
+											},
+											"instructions": {
+												"description": "Step-by-step instructions for obtaining credentials.",
+												"allOf": [
+													{
+														"description": "Instructions for obtaining credentials.",
+														"type": "object",
+														"properties": {
+															"markdown": {
+																"description": "Detailed instructions in markdown format.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"markdown"
+														]
+													}
+												]
+											},
+											"payload_example": {
+												"description": "Example credentials payload with placeholder values.",
+												"type": "object",
+												"additionalProperties": {},
+												"nullable": true
+											},
+											"payload_schema": {
+												"description": "JSON Schema for the credentials object in POST /v2/integrations request.",
+												"type": "object",
+												"additionalProperties": {},
+												"nullable": true
+											},
+											"redirect_url": {
+												"description": "OAuth redirect URL for vendors requiring human interaction.",
+												"type": "string",
+												"nullable": true
+											}
+										},
+										"required": [
+											"display_name",
+											"human_interaction_required",
+											"id",
+											"instructions",
+											"payload_example",
+											"payload_schema",
+											"redirect_url"
+										]
+									}
+								},
+								"result_info": {
+									"description": "Pagination metadata.",
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of items in current page.",
+											"type": "integer"
+										},
+										"next": {
+											"description": "URL for next page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"page": {
+											"description": "Current page number.",
+											"type": "integer"
+										},
+										"per_page": {
+											"description": "Number of items per page.",
+											"type": "integer"
+										},
+										"previous": {
+											"description": "URL for previous page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"total_count": {
+											"description": "Total number of items.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages",
+								"result_info"
+							]
+						}
 					}
 				}
 			},
@@ -3690,7 +4028,6 @@
 						"CONFLUENCE",
 						"DROPBOX",
 						"GITHUB",
-						"GITLAB",
 						"GOOGLE_CLOUD_PLATFORM",
 						"GOOGLE_WORKSPACE",
 						"JIRA",
@@ -3698,8 +4035,7 @@
 						"OPENAI",
 						"SALESFORCE",
 						"SERVICENOW",
-						"SLACK",
-						"ZOOM"
+						"SLACK"
 					]
 				}
 			},
@@ -3797,7 +4133,298 @@
 								}
 							}
 						},
-						"schema": {}
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"default": []
+								},
+								"messages": {
+									"description": "List of messages.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"default": []
+								},
+								"result": {
+									"description": "List of items.",
+									"type": "array",
+									"items": {
+										"description": "Setup flow for an application auth method.",
+										"type": "object",
+										"properties": {
+											"auth_config": {
+												"description": "OAuth configuration (present for OAuth-based flows).",
+												"allOf": [
+													{
+														"description": "OAuth configuration for setup flows that use OAuth.",
+														"type": "object",
+														"properties": {
+															"authorization_url": {
+																"description": "Full OAuth authorization URL with query parameters.",
+																"type": "string",
+																"nullable": true
+															},
+															"client_id": {
+																"description": "OAuth client ID.",
+																"type": "string",
+																"nullable": true
+															},
+															"requires_pkce": {
+																"description": "Whether PKCE is required.",
+																"type": "boolean"
+															},
+															"scopes": {
+																"description": "OAuth scopes to request.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"url_placeholders": {
+																"description": "Placeholders in authorization URL that frontend must fill.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															}
+														},
+														"required": [
+															"authorization_url",
+															"client_id",
+															"requires_pkce",
+															"scopes",
+															"url_placeholders"
+														]
+													}
+												]
+											},
+											"default": {
+												"description": "Whether this is the default auth method.",
+												"type": "boolean"
+											},
+											"description": {
+												"description": "Flow description.",
+												"type": "string"
+											},
+											"id": {
+												"description": "Setup flow identifier.",
+												"type": "string"
+											},
+											"name": {
+												"description": "Human-readable flow name.",
+												"type": "string"
+											},
+											"steps": {
+												"description": "Ordered list of setup steps.",
+												"type": "array",
+												"items": {
+													"description": "A single step in the setup flow. Polymorphic based on type.",
+													"type": "object",
+													"properties": {
+														"component_id": {
+															"description": "Component identifier (for component type).",
+															"type": "string",
+															"nullable": true
+														},
+														"description": {
+															"description": "Step description with markdown support.",
+															"type": "string",
+															"nullable": true
+														},
+														"dynamic_content": {
+															"description": "Dynamic content blocks (for instruction/form_input).",
+															"type": "array",
+															"items": {
+																"description": "Dynamic content for instruction/form_input steps.",
+																"type": "object",
+																"properties": {
+																	"label": {
+																		"description": "Display label.",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Content type.\n\n* `copy_block` - copy_block\n* `external_link` - external_link",
+																		"type": "string",
+																		"enum": [
+																			"copy_block",
+																			"external_link"
+																		]
+																	},
+																	"url_template": {
+																		"description": "URL template with {{ variable }} interpolation (for external_link).",
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"value_from": {
+																		"description": "Field path to get value from (for copy_block).",
+																		"type": "string",
+																		"nullable": true
+																	}
+																},
+																"required": [
+																	"label",
+																	"type"
+																]
+															},
+															"nullable": true
+														},
+														"form_fields": {
+															"description": "Form fields (for form_input).",
+															"type": "array",
+															"items": {
+																"description": "A form field within a form_input step.",
+																"type": "object",
+																"properties": {
+																	"label": {
+																		"description": "Human-readable field label.",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Field identifier (maps to credentials key).",
+																		"type": "string"
+																	},
+																	"placeholder": {
+																		"description": "Placeholder text.",
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"required": {
+																		"description": "Whether field is required.",
+																		"type": "boolean"
+																	},
+																	"supported_file_types": {
+																		"description": "Allowed file extensions for file_upload type.",
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true
+																	},
+																	"type": {
+																		"description": "Field input type.\n\n* `text` - text\n* `password` - password\n* `email` - email\n* `file_upload` - file_upload",
+																		"type": "string",
+																		"enum": [
+																			"text",
+																			"password",
+																			"email",
+																			"file_upload"
+																		]
+																	}
+																},
+																"required": [
+																	"label",
+																	"name",
+																	"placeholder",
+																	"required",
+																	"supported_file_types",
+																	"type"
+																]
+															}
+														},
+														"is_required": {
+															"description": "Whether step is required (for form_input).",
+															"type": "boolean"
+														},
+														"parameters": {
+															"description": "Component parameters (for component type).",
+															"additionalProperties": {
+																"type": "string"
+															},
+															"nullable": true,
+															"type": "object"
+														},
+														"title": {
+															"description": "Step title (for instruction/form_input/oauth_redirect).",
+															"type": "string"
+														},
+														"type": {
+															"description": "Step type.\n\n* `component` - component\n* `instruction` - instruction\n* `form_input` - form_input\n* `oauth_redirect` - oauth_redirect",
+															"type": "string",
+															"enum": [
+																"component",
+																"instruction",
+																"form_input",
+																"oauth_redirect"
+															]
+														}
+													},
+													"required": [
+														"type"
+													]
+												}
+											},
+											"supported_environments": {
+												"description": "Environments this auth method supports (standard, fedramp).",
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"default",
+											"description",
+											"id",
+											"name",
+											"steps",
+											"supported_environments"
+										]
+									}
+								},
+								"result_info": {
+									"description": "Pagination metadata.",
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of items in current page.",
+											"type": "integer"
+										},
+										"next": {
+											"description": "URL for next page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"page": {
+											"description": "Current page number.",
+											"type": "integer"
+										},
+										"per_page": {
+											"description": "Number of items per page.",
+											"type": "integer"
+										},
+										"previous": {
+											"description": "URL for previous page.",
+											"type": "string",
+											"format": "uri",
+											"nullable": true
+										},
+										"total_count": {
+											"description": "Total number of items.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"description": "Whether the request succeeded.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages",
+								"result_info"
+							]
+						}
 					}
 				}
 			},

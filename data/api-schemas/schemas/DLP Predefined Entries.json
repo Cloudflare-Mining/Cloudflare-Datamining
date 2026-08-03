@@ -419,6 +419,12 @@
 														"ai_context_available"
 													]
 												},
+												"deprecated": {
+													"description": "Whether this entry is deprecated for new use. This is computed from the static catalog and\nemitted only when true.",
+													"type": "boolean",
+													"default": false,
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"enabled": {
 													"type": "boolean"
 												},

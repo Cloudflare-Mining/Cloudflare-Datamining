@@ -3557,5 +3557,18 @@
 				]
 			}
 		}
-	]
+	],
+	"X-FORGE-COMMANDS /zones/{zone_id}/snippets/{snippet_name}/content": {
+		"snippets": {
+			"description": "Lightweight JavaScript snippets that run on requests before Workers — for quick header modifications and redirects",
+			"groups": {
+				"content": {
+					"description": "Raw JavaScript source code content of individual snippets"
+				},
+				"rules": {
+					"description": "Rules that determine which requests trigger specific snippets based on URL patterns"
+				}
+			}
+		}
+	}
 }

@@ -59,12 +59,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "delete",
+		"x-fern-sdk-method-name": "legacy-delete",
 		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}": {
 		"operationId": "deleteV4AccountsByAccount_idPipelinesV1PipelinesByPipeline_id",
-		"summary": "Delete Pipelines",
+		"summary": "Delete Pipeline",
 		"description": "Delete Pipeline in Account.",
 		"parameters": [
 			{
@@ -139,13 +139,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "delete-v1",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": false
 	},
 	"DELETE /accounts/{account_id}/pipelines/v1/sinks/{sink_id}": {
 		"operationId": "deleteV4AccountsByAccount_idPipelinesV1SinksBySink_id",
 		"summary": "Delete Sink",
-		"description": "Delete Pipeline in Account.",
+		"description": "Delete Sink in Account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -229,7 +229,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.sinks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"DELETE /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
 		"operationId": "deleteV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
@@ -318,7 +318,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.streams",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/pipelines": {
 		"operationId": "getV4AccountsByAccount_idPipelines_deprecated",
@@ -725,7 +725,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "list",
+		"x-fern-sdk-method-name": "legacy-list",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pipelines/{pipeline_name}": {
@@ -1084,7 +1084,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "get",
+		"x-fern-sdk-method-name": "legacy-get",
 		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pipelines/v1/pipelines": {
@@ -1253,13 +1253,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "list-v1",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}": {
 		"operationId": "getV4AccountsByAccount_idPipelinesV1PipelinesByPipeline_id",
 		"summary": "Get Pipeline Details",
-		"description": "Get Pipelines Details.",
+		"description": "Get Pipeline details.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1426,8 +1426,8 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "get-v1",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/pipelines/v1/sinks": {
 		"operationId": "getV4AccountsByAccount_idPipelinesV1Sinks",
@@ -2218,7 +2218,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.sinks",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/pipelines/v1/sinks/{sink_id}": {
 		"operationId": "getV4AccountsByAccount_idPipelinesV1SinksBySink_id",
@@ -2954,7 +2954,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.sinks",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/pipelines/v1/streams": {
 		"operationId": "getV4AccountsByAccount_idPipelinesV1Streams",
@@ -3627,7 +3627,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.streams",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"GET /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
 		"operationId": "getV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
@@ -4241,7 +4241,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.streams",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"PATCH /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
 		"operationId": "patchV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
@@ -4555,7 +4555,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.streams",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"POST /accounts/{account_id}/pipelines": {
 		"operationId": "postV4AccountsByAccount_idPipelines_deprecated",
@@ -5133,7 +5133,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-sdk-method-name": "legacy-create",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pipelines/v1/pipelines": {
@@ -5268,8 +5268,8 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "create-v1",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": false
 	},
 	"POST /accounts/{account_id}/pipelines/v1/sinks": {
 		"operationId": "postV4AccountsByAccount_idPipelinesV1Sinks",
@@ -6700,7 +6700,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.sinks",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"POST /accounts/{account_id}/pipelines/v1/streams": {
 		"operationId": "postV4AccountsByAccount_idPipelinesV1Streams",
@@ -7817,12 +7817,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.streams",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"POST /accounts/{account_id}/pipelines/v1/validate_sql": {
 		"operationId": "postV4AccountsByAccount_idPipelinesV1Validate_sql",
 		"summary": "Validate SQL",
-		"description": "Validate Arroyo SQL.",
+		"description": "Validates that the Pipelines SQL is correct.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -8012,7 +8012,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
 		"x-fern-sdk-method-name": "validate-sql",
-		"x-forge-hidden": true
+		"x-forge-hidden": false
 	},
 	"PUT /accounts/{account_id}/pipelines/{pipeline_name}": {
 		"operationId": "putV4AccountsByAccount_idPipelinesByPipeline_name_deprecated",
@@ -8601,7 +8601,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines",
-		"x-fern-sdk-method-name": "update",
+		"x-fern-sdk-method-name": "legacy-update",
 		"x-forge-hidden": true,
 		"x-forge-params": {
 			"destination.batch.max_bytes": {
