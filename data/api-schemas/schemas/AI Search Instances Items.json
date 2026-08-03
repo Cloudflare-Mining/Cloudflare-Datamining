@@ -1383,6 +1383,46 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Items in this instance were crawled from a public site for search and AI input only. Full page content isn't available for download; use the search endpoint to retrieve cited excerpts.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Item not found.",
 				"content": {

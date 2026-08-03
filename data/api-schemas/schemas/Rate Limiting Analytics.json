@@ -503,6 +503,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -517,6 +518,9 @@
 		],
 		"x-api-token-group": [
 			"Analytics Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "rate-limit-analytics",
+		"x-fern-sdk-method-name": "get"
 	}
 }

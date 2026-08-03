@@ -5476,6 +5476,14 @@
 																"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
 																"type": "string"
 															},
+															"jitter_ms": {
+																"description": "Tunnel round-trip latency variation in milliseconds",
+																"type": "number"
+															},
+															"latency_ms": {
+																"description": "50th percentile tunnel round-trip latency in milliseconds",
+																"type": "number"
+															},
 															"natd_result": {
 																"description": "Public socket address returned by the NAT detector",
 																"type": "string"
@@ -7048,6 +7056,14 @@
 																		"interface_name": {
 																			"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
 																			"type": "string"
+																		},
+																		"jitter_ms": {
+																			"description": "Tunnel round-trip latency variation in milliseconds",
+																			"type": "number"
+																		},
+																		"latency_ms": {
+																			"description": "50th percentile tunnel round-trip latency in milliseconds",
+																			"type": "number"
 																		},
 																		"natd_result": {
 																			"description": "Public socket address returned by the NAT detector",
