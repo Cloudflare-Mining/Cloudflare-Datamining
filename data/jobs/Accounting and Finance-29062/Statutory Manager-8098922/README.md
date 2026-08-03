@@ -5,42 +5,39 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4>Available Locations</h4>
+<p><strong>Available Locations: Lisbon</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Statutory Manager acts as a strategic thought partner; overseeing reporting cycles, ensuring filing readiness and driving regulatory compliance for legal entities located in the Iberia region. This role requires an advanced professional who exercises independent judgment to solve unique, unprecedented accounting issues where guidelines do not exist.</p>
+<p>The successful candidate will blend exceptional technical accounting mastery with strategic process ownership, championing automation and serving as a critical cross-functional collaborator to elevate controls and scale our global financial reporting architecture.</p>
+<p>&nbsp;</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Singapore</li>
+	<li>Advanced Financial Reporting: Review and formally sign off on monthly, quarterly, and annual financial including balance sheets, profit &amp; loss statements, and cash flow reports</li>
+	<li>Strategic Compliance &amp; Audit Leadership: Act as the primary point of contact to lead external audits and resolve highly complex compliance issues that have little or no precedent to guide them. Formulate a long-term view of local regulatory trends and business implications.</li>
+	<li>Cross-functional Stakeholder Coordination: Partner cross-functionally with global legal and corporate tax units and regional business units to ensure local country filings are executed flawlessly, on time and align with broader company objectives.</li>
+	<li>Process &amp; technology improvements: Drive strategic financial system optimization (Oracle/NetSuite) to scale statutory and compliance reporting architectures and actively pioneer the adoption of new automation and technology tools (including AI and advanced data analytics).</li>
 </ul>
-<h4>About the Role</h4>
-<p>As our Director of Talent Acquisition, APAC &amp; Japan (APJC), you will translate our global talent vision into a high-performing regional reality. Your focus will be Go-To-Market (GTM) heavy but you will also maintain operational oversight for our regional R&amp;D and G&amp;A hiring footprint. You are a highly operational leader who knows how to localize a modern, AI-forward recruiting playbook, break down regional hiring constraints, and scale a fast-moving talent engine.</p>
-<h4>Responsibilities</h4>
+<p>&nbsp;</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p>Experience: 10+ years of progressive accounting and tax compliance experience.</p>
+<p>Proven experience acting as a primary reviewer for audited statutory financial statements in a multinational corporate framework</p>
+<p>Extensive progressive accounting and tax compliance experience, with a proven track record of managing highly complex processes, driving strategic initiatives, and navigating ambiguous, precedent-setting financial scenarios.</p>
+<p>Demonstrated capability to analyze unique, significant business issues, evaluate intangibles, and independently formulate creative, effective solutions.</p>
+<p><strong>Language Proficiency: </strong>Professional fluency in Spanish and English is required</p>
+<p><br><br></p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<p>Relevant professional certification such as a CPA, Chartered Accountant (CA), ACCA</p>
+<p>Proficiency with Oracle and NetSuite&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
 <ul>
-	<li><strong>Stakeholder Alignment:</strong> Earn deep trust with APJC leadership through genuine business fluency and talent partnership approach.</li>
-	<li><strong>Market Intelligence:</strong> Bring proactive APJC talent market insights to the table, advising regional leaders on talent pool elasticity, local compensation trends, and competitive landscapes</li>
-	<li><strong>Inspirational Management:</strong> Lead, mentor, and elevate a localized team of recruiters and sourcers based in Singapore and across the region, fostering a culture of high performance and continuous development.</li>
-	<li><strong>GTM High-Growth Engine:</strong> Act as the primary talent partner for our APJC GTM leadership. You will own the strategy for scaling our sales, account management, and field operations across key regional hubs.</li>
-	<li><strong>Hiring Marketplace Experience Obsessed:</strong> Ensure our APJC candidates and hiring managers experience unmatched speed, absolute transparency, and mutual respect. You will adapt global workflows to fit local cultural and market nuances without adding bureaucracy.</li>
-	<li><strong>Outcomes Over Process:</strong> Empower your regional team to be agile and adaptive. Ruthlessly eliminate regional hiring bottlenecks and focus the team on delivering high-quality matches rather than just tracking activities.</li>
-	<li><strong>Data-Driven:</strong> Monitor and optimize the APJC talent funnel across all segments. Track key regional metrics—funnel health, passive-to-active conversion velocity, segment-specific time-to-fill, and quality-of-hire—to continuously tune the regional engine.</li>
-	<li><strong>AI-First Execution:</strong> Successfully implement global AI-driven sourcing, screening, and scheduling tools within your regional team, freeing up your recruiters to focus on deep candidate relationship building and closing.</li>
+	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €52,000 - 65,000</span></li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience</h4>
-<ul>
-	<li><strong>Recruiting Leadership Experience:</strong> High business acumen with proven experience leading talent acquisition teams within a high-growth enterprise SaaS or web infrastructure environments.&nbsp; Previous agency experience is a plus.</li>
-	<li><strong>GTM Recruiting Expertise:</strong> A strong track record of successfully scaling revenue-generating teams (Sales, SEs, Channel, Marketing) across the region, with additional exposure to technical (R&amp;D) and corporate (G&amp;A) hiring.</li>
-	<li><strong>APAC Regional Scope:</strong> Direct experience navigating the talent landscapes of major APAC&nbsp; (Singapore, Japan, China, ANZ, India, etc) markets including a strong working knowledge of regional employment practices and talent mobility.</li>
-	<li><strong>Analytical &amp; Structural Thinking:</strong> Data diagnostics are second nature to you. You have adopted AI to help drive efficiency and productivity for yourself and your team</li>
-	<li><strong>Location:</strong>&nbsp; This position is based in our Singapore location and offers a hybrid working arrangement (2 days in the office a week)</li>
-</ul>
-<h4>Compensation</h4>
-<p>Compensation may be adjusted depending on work location.</p>
-<h4>Equity</h4>
+<p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h4>Benefits</h4>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!</p>
-<h4>Time Off</h4>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

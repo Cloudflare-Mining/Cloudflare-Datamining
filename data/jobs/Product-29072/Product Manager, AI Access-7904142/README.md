@@ -7,8 +7,7 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>New York, US</li>
-	<li>San Francisco, US</li>
+	<li>Lisbon (Hybrid)</li>
 </ul>
 <h2>About the Role</h2>
 <p>AI Access is one of two central pillars of Cloudflare's Act 4 (the other is Agentic Commerce). As bot traffic rises and human traffic declines, publishers and service providers lose the ad and subscription revenue that funds the open web. Without a new model, the economic incentive to create original content may decline or even disappear.</p>
@@ -33,10 +32,7 @@
 	<li><em>*Nice to have*</em> Founder or early-stage operator background.</li>
 	<li><em>*Nice to have*</em> Content licensing, rights, or publishing industry experience.</li>
 </ul>
-<h2>Compensation</h2>
-<p><strong>Compensation may be adjusted depending on work location.</strong></p>
-<p>- For New York City-based and California (excluding Bay Area): Estimated annual salary of $141,000 - $180,000.</p>
-<p>- For Bay Area-based hires: Estimated annual salary of $147,000 - $189,000</p>
+<h2>&nbsp;</h2>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <h3>Benefits</h3>
@@ -52,13 +48,7 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
+<p>&nbsp;</p>
 <h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>

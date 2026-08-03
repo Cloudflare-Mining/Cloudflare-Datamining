@@ -19,7 +19,7 @@
 <p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li><strong>Atlassian Expertise:</strong> 3+ years of experience as a Jira Systems Administrator, with specific experience both in<strong> </strong>On-Prem (Data Center or Server) environments AND cloud migration experience.&nbsp;</li>
+	<li><strong>Atlassian Expertise:</strong> 7+ years of experience as a Jira Systems Administrator, with specific experience both in<strong> </strong>On-Prem (Data Center or Server) environments AND cloud migration experience.&nbsp;</li>
 	<li><strong>Scripting Proficiency:</strong> Advanced knowledge of Groovy and the ScriptRunner plugin. You should be comfortable writing scripts that interact with the Jira API.</li>
 	<li><strong>Infrastructure Knowledge:</strong> Strong understanding of the underlying tech stack: Linux/Windows servers, SQL databases (PostgreSQL/SQL Server), and SSL/Certificate management.</li>
 	<li><strong>Technical Troubleshooting:</strong> Ability to analyze log files (atlassian-jira.log) and thread dumps to identify the root cause of system instability.</li>

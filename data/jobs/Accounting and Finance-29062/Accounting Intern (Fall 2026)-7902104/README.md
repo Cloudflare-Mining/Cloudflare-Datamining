@@ -5,29 +5,47 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: San Francisco, CA<br>Dates: September 14 - December 4</strong></p>
-<p><strong>About the role<br></strong>We are seeking a creative and driven Brand Social Media Intern to help execute an impactful, high-visibility social media strategy. This role will support a major new Cloudflare awareness campaign and a large-scale Out-of-Home (OOH) advertising blitz in the San Francisco Bay Area during Q4.&nbsp;Timed alongside Connect, our global annual user conference, this campaign—titled “Paint the Town Orange”—aims to bridge physical and digital advertising. You will play a key role in extending our local OOH presence into a global social media movement, driving engagement among Cloudflare’s customers, prospects, and tech community.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available location: Austin, TX</strong></p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for a highly motivated and tech-savvy <strong>Controllership Operations Accounting Intern</strong> to join our Accounts Payable (AP) team. This isn’t your traditional data-entry internship. While you will gain hands-on experience with core accounting operations, your primary focus will be on the future of finance: <strong>process optimization and AI automation</strong>.</p>
+<p>You will help us modernize our Procure-to-Pay (P2P) lifecycle, acting as a bridge between operational accounting and technological innovation. If you are passionate about finding smarter ways to work and want to see how artificial intelligence is transforming corporate finance, this is the role for you.</p>
+<p>&nbsp;</p>
+<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Process Improvement &amp; P2P Optimization</strong></p>
 <ul>
-	<li><strong>Social Amplification &amp; Experiential Marketing:</strong> Drive digital engagement for our brand awareness campaign and other marketing activations by utilizing and repurposing footage from OOH and live experiential events.</li>
-	<li><strong>Virtual OOH &amp; Content Ideation:</strong> Brainstorm, concept, and help create "Virtual OOH" (CGI/digital-first) social content to maximize online visual impact and virality.</li>
-	<li><strong>Copywriting &amp; Traffic Management:</strong> Develop compelling social ad copy and manage the creation of tracking/destination URLs to support campaign goals.</li>
-	<li><strong>Global Calendar Management:</strong> Oversee a campaign-specific social media calendar, ensuring all platforms across all target languages are synchronized and executed in close partnership with the Corporate Social team.</li>
-	<li><strong>Localization &amp; Distribution:</strong> Coordinate translations and manage distribution specifically for Cloudflare's Japanese social media handles to ensure regional relevance.</li>
-	<li><strong>Campaign Project Management:</strong> Maintain organization, track deadlines, and manage project workflows to keep multi-channel campaign deliverables on schedule.</li>
+	<li>Support analyzing and mapping current Procure-to-Pay (P2P) workflows to identify bottlenecks, manual touchpoints, and inefficiencies.</li>
+	<li>Collaborate with the controllership team to design and implement streamlined processes that reduce cycle times and improve accuracy.</li>
+	<li>Assist in developing standard operating procedures (SOPs) for newly optimized workflows.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p><strong>AI &amp; Automation Projects</strong></p>
 <ul>
-	<li>Currently pursuing a degree or program in Marketing or relevant field to the role.</li>
-	<li>A social media native with a pulse on current Internet culture, emerging digital trends, and visual storytelling.</li>
-	<li>Strong copyediting skills and an eye for creative multimedia content (video, virtual OOH, etc.).</li>
-	<li>Excellent project management and organizational skills, with the ability to manage multi-language calendars.</li>
-	<li>Available for a full-time, 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Support the rollout of AI initiatives within the AP function (e.g., automated invoice data extraction, intelligent workflow routing).</li>
+	<li>Act as a liaison between the accounting team and technical developers, helping to translate business needs into technical requirements.</li>
+	<li>Help test and validate new automation software, ensuring data integrity between our financial systems and new AI tools.</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<p><strong>Core AP &amp; Employee Expense Operations</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
+	<li>Provide ad-hoc support for invoice processing and payment run workflows.</li>
+	<li>Assist with the auditing and compliance of employee Travel &amp; Expense (T&amp;E) transaction reports.</li>
+	<li>Assist with month-end close activities related to AP and general controllership duties.</li>
 </ul>
+<p>&nbsp;</p>
+<h3><strong>Qualifications &amp; Skills</strong></h3>
+<ul>
+	<li><strong>Education:</strong> Currently pursuing a Bachelor’s or Master’s degree in Accounting, Finance, Management Information Systems (MIS), Data Analytics, or a related field.</li>
+	<li><strong>Technical Aptitude:</strong> A strong foundational understanding of technology, data analytics, or AI-related projects is highly preferred. While coding is not required for this role, you should possess the technical fluency to communicate effectively with developers, grasp complex system architectures, and understand how automation is built.</li>
+	<li><strong>Systems Experience:</strong> Familiarity with ERP systems (e.g., SAP, Oracle, NetSuite) or expense management platforms (e.g., Navan) is a plus.</li>
+	<li><strong>Analytical Mindset:</strong> A natural problem-solver who doesn't just ask "how" a process works, but "why" it works that way and how it can be improved through technology.</li>
+	<li><strong>Detail-Oriented:</strong> Ability to maintain high accuracy when dealing with financial data while simultaneously seeing the big picture of process design.</li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>What You Will Learn</strong></h3>
+<ul>
+	<li>How a corporate controllership function operates at scale.</li>
+	<li>Practical, hands-on experience deploying AI and automation tools in a real-world financial environment.</li>
+	<li>Project management and cross-functional communication skills, specifically bridging the gap between business and IT.</li>
+</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
