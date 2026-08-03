@@ -266,7 +266,11 @@
 			"enterprise": false,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts": {
 		"operationId": "accounts-list-accounts",
@@ -1902,7 +1906,10 @@
 			"enterprise": false,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/move": {
 		"operationId": "Accounts_moveAccounts",

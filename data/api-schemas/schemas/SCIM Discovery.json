@@ -222,7 +222,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scim.resource-types",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/scim/v2/ResourceTypes/{resource_type_id}": {
 		"operationId": "scim-resource-types-get",
@@ -425,7 +429,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scim.resource-types",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/scim/v2/Schemas": {
 		"operationId": "scim-schemas-list",
@@ -727,7 +735,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scim.schemas",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/scim/v2/Schemas/{schema_id}": {
 		"operationId": "scim-schemas-get",
@@ -1003,7 +1015,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scim.schemas",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/scim/v2/ServiceProviderConfig": {
 		"operationId": "scim-service-provider-config-get",
@@ -1287,6 +1303,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scim.service-provider-config",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

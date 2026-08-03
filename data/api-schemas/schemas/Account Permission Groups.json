@@ -437,7 +437,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.permission-groups",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/iam/permission_groups/{permission_group_id}": {
 		"operationId": "account-permission-group-details",
@@ -795,6 +799,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.permission-groups",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

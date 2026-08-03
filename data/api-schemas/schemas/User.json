@@ -404,7 +404,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /user/tenants": {
 		"operationId": "User_listUserTenants",
@@ -1135,6 +1139,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

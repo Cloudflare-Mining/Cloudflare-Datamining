@@ -289,7 +289,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.sso",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/sso_connectors": {
 		"operationId": "get-all-sso-connectors",
@@ -650,7 +655,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.sso",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
 		"operationId": "get-sso-connector",
@@ -998,7 +1007,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.sso",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
 		"operationId": "update-sso-connector-state",
@@ -1369,7 +1382,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.sso",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/sso_connectors": {
 		"operationId": "init-new-sso-connector",
@@ -1731,7 +1748,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.sso",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification": {
 		"operationId": "begin-sso-connector-verification",
@@ -2002,6 +2023,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "iam.sso",
+		"x-fern-sdk-method-name": "begin-verification",
+		"x-forge-hidden": true
 	}
 }

@@ -598,6 +598,9 @@
 				"#organization:read"
 			]
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "accounts.roles",
+		"x-fern-sdk-method-name": "list",
 		"x-stainless-deprecation-message": "Use /accounts/{account_id}/iam/permission_groups instead."
 	},
 	"GET /accounts/{account_id}/roles/{role_id}": {
@@ -1158,6 +1161,9 @@
 				"#organization:read"
 			]
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "accounts.roles",
+		"x-fern-sdk-method-name": "get",
 		"x-stainless-deprecation-message": "Use /accounts/{account_id}/iam/permission_groups/{permission_group_id} instead."
 	}
 }

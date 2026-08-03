@@ -294,7 +294,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/tokens": {
 		"operationId": "account-api-tokens-list-tokens",
@@ -893,7 +897,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/tokens/{token_id}": {
 		"operationId": "account-api-tokens-token-details",
@@ -1430,7 +1437,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/tokens/permission_groups": {
 		"operationId": "account-api-tokens-list-permission-groups",
@@ -1854,7 +1864,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens.permission-groups",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/tokens/verify": {
 		"operationId": "account-api-tokens-verify-token",
@@ -2154,7 +2167,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "verify"
 	},
 	"POST /accounts/{account_id}/tokens": {
 		"operationId": "account-api-tokens-create-token",
@@ -2918,7 +2934,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/tokens/{token_id}": {
 		"operationId": "account-api-tokens-update-token",
@@ -3731,7 +3750,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/tokens/{token_id}/value": {
 		"operationId": "account-api-tokens-roll-token",
@@ -4029,6 +4051,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.tokens",
+		"x-fern-sdk-method-name": "roll",
+		"x-forge-require-confirmation": "Rolling this token will invalidate the current secret and generate a new one. Any integrations using the current secret will stop working."
 	}
 }
