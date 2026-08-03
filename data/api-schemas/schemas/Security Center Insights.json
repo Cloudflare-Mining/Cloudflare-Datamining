@@ -255,7 +255,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.attack-surface-report.issue-types",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"operationId": "get-security-center-issues",
@@ -852,7 +856,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
 		"operationId": "get-security-center-issue-counts-by-class",
@@ -1303,7 +1311,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
+		"x-fern-sdk-method-name": "class",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
 		"operationId": "get-security-center-issue-counts-by-severity",
@@ -1754,7 +1766,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
+		"x-fern-sdk-method-name": "severity",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
 		"operationId": "get-security-center-issue-counts-by-type",
@@ -2205,7 +2221,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
+		"x-fern-sdk-method-name": "type",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
 		"operationId": "get-security-center-insights",
@@ -2797,7 +2817,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.insights",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/{issue_id}/context": {
 		"operationId": "get-security-center-insight-context",
@@ -3053,7 +3077,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights.context",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/class": {
 		"operationId": "get-security-center-insight-counts-by-class",
@@ -3499,7 +3527,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.insights.class",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/severity": {
 		"operationId": "get-security-center-insight-counts-by-severity",
@@ -3945,7 +3977,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.insights.severity",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/type": {
 		"operationId": "get-security-center-insight-counts-by-type",
@@ -4391,7 +4427,11 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.insights.type",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights": {
 		"operationId": "get-zone-security-center-insights",
@@ -4987,7 +5027,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/class": {
 		"operationId": "get-zone-security-center-insight-counts-by-class",
@@ -5437,7 +5481,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights.class",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/severity": {
 		"operationId": "get-zone-security-center-insight-counts-by-severity",
@@ -5887,7 +5935,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights.severity",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/type": {
 		"operationId": "get-zone-security-center-insight-counts-by-type",
@@ -6337,7 +6389,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights.type",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/security-center/insights/{issue_id}/classification": {
 		"operationId": "update-security-center-insight-classification",
@@ -6903,7 +6959,7 @@
 			"Security Center Insights"
 		]
 	},
-	"PUT /accounts/{account_id}/intel/attack-surface-report/{issue_id}/dismiss": {
+	"PUT /accounts/{account_id}/intel/attack-surface-report/issues/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight-deprecated",
 		"summary": "Archives Security Center Insight",
 		"description": "Deprecated endpoint for archiving Security Center insights. Use the newer archive-security-center-insight endpoint instead.",
@@ -7171,7 +7227,16 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.attack-surface-report.issues",
+		"x-fern-sdk-method-name": "dismiss",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"dismiss": {
+				"default": null
+			}
+		}
 	},
 	"PUT /accounts/{account_id}/security-center/insights/{issue_id}/dismiss": {
 		"operationId": "archive-security-center-insight",
@@ -7440,7 +7505,16 @@
 		],
 		"tags": [
 			"Security Center Insights"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.insights",
+		"x-fern-sdk-method-name": "dismiss",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"dismiss": {
+				"default": null
+			}
+		}
 	},
 	"PUT /zones/{zone_id}/security-center/insights/{issue_id}/dismiss": {
 		"operationId": "archive-zone-security-center-insight",
@@ -7712,6 +7786,15 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-center.zone-insights.dismiss",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"dismiss": {
+				"default": null
+			}
+		}
 	}
 }
