@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-linux-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260801.1"
+		"latest": "1.20260804.1"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -11433,12 +11433,42 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBqUZ3Y0CejFHJDgE4MQ704zzQ//wDCCNGCx2lj/mI2rAiEAowOuWg0JYXZsTBcpanAtR3kYwdPIKi65Qq2xMQYBLAA="
+						"sig": "MEUCIBqUZ3Y0CejFHJDgE4MQ704zzQ//wDCCNGCx2lj/mI2rAiEAowOuWg0JYXZsTBcpanAtR3kYwdPIKi65Qq2xMQYBLAA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20260801.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 127464693
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260804.1": {
+			"name": "@cloudflare/workerd-linux-64",
+			"version": "1.20260804.1",
+			"dist": {
+				"shasum": "b924fb8e298f63533a18a14981a057f258d39b02",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20260804.1.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-KBCjxBIlN2jucfQGaTK4EgmPsWzQgYR/zYhPfi3mkWwdoTyG1dgrt2aizKps/SYse85ci/SOxojKk0/K7vstPw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDF62Dcx47HftVvkBpChaQv+aSX18/q+etVzL71d8XKoQIgQV/AR+A/lumA34TCgWz8gGPwT/h774KOfVPnmYU56fY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCICxi+HhXeSp8kdPAsCthyXpWslScFBHJQJs5nWWjSWROAiBMj7aSJggc1iVzkbJEgmssUaVdnxE7dldZJdxGryk/vw=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20260804.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
