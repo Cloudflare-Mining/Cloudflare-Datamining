@@ -1,0 +1,199 @@
+<p>Agents Week is about the shift already underway: agents write code, deploy Workers, and provision infrastructure on your behalf. That shift changes what you need to see. If a program is spending money in your Cloudflare account, you need to know what it's spending; throughout the day, per product, in a shape another program can consume. The dashboard is the right answer for humans. It's not the right answer for automation.</p>
+<p>So we're launching a new <strong>Billable Usage API</strong> for self-serve accounts: a single endpoint that returns your account's usage and cost, broken down by product and by service period. It covers every usage-based Cloudflare product on the account, including Workers, R2, D1, Workers AI, Vectorize, Images, and Stream, all with one call. And if you already work in a FinOps toolchain, the column names should look familiar.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage?from=2026-02-01&amp;to=2026-02-15"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre>
+</div>
+<p>You'll get back an <code>HTTP 200 OK</code> with <code>Content-Type: application</code>/<code>json</code> and the usage rows in the response body. Today, usage and cost data are updated daily while we work towards providing more real time data.&nbsp;</p>
+<h2>What comes back</h2>
+<p>Each row in the response is one charge period for one product on your account.</p>
+<ul>
+	<li><code>ServiceName</code> and <code>ServiceFamilyName</code> — which product ("Workers Standard" under the "Workers" family, "R2 Storage" under "R2", etc.).</li>
+	<li><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code> — the window this row covers.</li>
+	<li><code>PricingQuantity</code> and <code>ConsumedUnit</code> — how much you used, in the unit of measure we bill on (GB-months, GB-seconds, requests, etc.).</li>
+	<li><code>ContractedCost</code> — what that period cost, in <code>BillingCurrency</code>.</li>
+	<li><code>CumulatedPricingQuantity</code> and <code>CumulatedContractedCost</code> — running totals for the billing period.</li>
+	<li><code>ZoneId</code> / <code>ZoneName</code> — when the usage is attributed to a specific zone.</li>
+</ul>
+<p>Most of these map directly to columns in the <a href="https://focus.finops.org" target="_blank" rel="noopener noreferrer"><u>FinOps Open Cost and Usage Specification (FOCUS)</u></a>, so if your team is already ingesting FOCUS data from another provider, the names and semantics should be familiar:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Cloudflare field</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>FOCUS column</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Notes</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceFamilyName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(close to <code>ServiceCategory</code>)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare-native grouping; FOCUS uses a controlled vocabulary.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>CumulatedContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(derived)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Convenience field — FOCUS treats cumulation as a query concern.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ZoneId</code> / <code>ZoneName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(close to <code>ResourceId</code> / <code>ResourceName</code>)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zone-scoped identifier where applicable.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Responses use the standard Cloudflare API envelope — <code>result</code> is an array of rows, one per product per charge period, alongside <code>success</code>, <code>errors</code>, and <code>messages</code>.</p>
+<p></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingCurrency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingPeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodEnd"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-28T23:59:59Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers Standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceFamilyName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedQuantity"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">150000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedUnit"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GB-months"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.75</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "CumulatedContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.25</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Where we are on FOCUS</h2>
+<p>Matching FOCUS naming was a deliberate choice. AWS, Azure, Google Cloud, Oracle, and a growing list of SaaS providers already publish FOCUS formatted exports, and every serious cost-management tool speaks to it. That said, we're not yet claiming full conformance: a handful of columns the spec requires aren't in the payload today. Getting there is on our roadmap. Consider this the first step: familiar shape now, full conformance next.</p>
+<h2>Cloudflare spend, next to the rest of your cloud spend: our partnership with Vantage</h2>
+<p>We've partnered with <a href="https://www.vantage.sh" target="_blank" rel="noopener noreferrer"><u>Vantage</u></a> on a native Cloudflare integration. Vantage is an infrastructure cost management platform that ingests cost and usage data from more than 30 providers, across AI, Cloud and SaaS providers, and brings it into a single view for reporting, allocation, and optimization. With this integration, your usage flows into the same Cost Reports, Budgets, and Cost Alerts you already use for the rest of your infrastructure.</p>
+<p>Vantage connects to Cloudflare using a read-only API token with Billing Read access. Once connected, Vantage pulls your Billable Usage data daily and breaks it down by product (such as Workers and R2), zone, and account, so you can see which products drive your spend and attribute it to the teams and services behind it.</p>
+<p>A few of the workflows this integration supports:</p>
+<ul>
+	<li><strong>Cross-provider allocation.</strong> Group Cloudflare spend by product, zone, and account, then use Virtual Tags to allocate by team or product line alongside your AWS, Azure, and other provider costs, all in a single report.</li>
+	<li><strong>Anomaly detection.</strong> Vantage Cost Alerts monitor every connected provider and notify you via Slack or E-Mail when spend deviates from its baseline, so a change in Workers or R2 spend surfaces the same way it does for any other provider.</li>
+	<li><strong>FinOps agents and MCP.</strong> Ask the in-console Vantage FinOps agent a question such as "What was our biggest cost driver last week across every provider?", or query the same data from Claude or ChatGPT through Vantage's hosted MCP server. Cloudflare spend is included alongside your other connected providers.</li>
+</ul>
+<p>Connect your Cloudflare account in the <a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer"><u>Vantage console</u></a>, and your costs appear next to everything else you run. There are no manual exports, no invoice uploads, and no separate dashboard to maintain.&nbsp;</p>
+<p>This FOCUS standardized API also works with other Fintech tooling.</p>
+<h2>Why we built this</h2>
+<p>Agents do more than write code. They deploy Workers, provision R2 buckets, and manage D1 databases. When you grant programmatic access to your Cloudflare account, you need programmatic visibility into what it's costing you. Not at the end of the month, but throughout the day, by product, in a shape a program can actually consume.</p>
+<p>The Billable Usage API is that shape. And customers have been asking us for programmatic usage for years. Finance teams want to pull spend into their own systems and attribute cost back to internal projects, teams, and even their end customers. Developers want a curl they can drop in a script. Every one of those workflows used to involve a screenshot or a manual export. Now it's an HTTP call, or a configuration in Vantage.</p>
+<h2><strong>What's next</strong></h2>
+<ul>
+	<li><strong>Finer-grained time windows.</strong> Today the API returns charge-period rows, which for most products is daily. We're looking at more real time breakdowns for the products where it makes sense.</li>
+	<li><strong>Forecasting.</strong> <code>CumulatedContractedCost</code> tells you where your spend is in the current billing cycle. We want to help you predict where you're going to end up. And not just at the account level, but the product level.</li>
+	<li><strong>Enterprise coverage.</strong> This first release is self-serve only. An equivalent experience for Enterprise contracts is in the works.</li>
+</ul>
+<h2>Try it</h2>
+<p>The endpoint is live today for all self-serve accounts. Grab an API token with the <em>Billing Read</em> permission, point your curl at it, and you'll get back your current billing period broken down by product. Full reference is available on the Cloudflare API docs. To see it alongside the rest of your cloud spend, connect your Cloudflare account in the <a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer"><u>Vantage console</u></a>.</p>
+<p>Cloudflare has spent years making it easy to run more of your stack on our network. It's time we made it just as easy to see what that's costing you — on Cloudflare, and everywhere else.</p>

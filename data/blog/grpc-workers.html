@@ -1,0 +1,231 @@
+<p>AI is changing how people interact with computers, and voice is becoming an increasingly important part of that shift. Real-time assistants, AI-powered dictation, and other voice interfaces need low-latency communication between clients, models, and supporting services. Many developers use <a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a>, a Remote Procedure Call (RPC) framework built on HTTP/2 and TCP, for this infrastructure.</p>
+<p>Ever since Workers <a href="https://blog.cloudflare.com/introducing-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>launched in 2017</u></a>, we’ve been expanding their capabilities, including adding the ability to <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases" target="_blank" rel="noopener noreferrer"><u>open outbound TCP connections</u></a> and a <a href="https://blog.cloudflare.com/workers-javascript-modules" target="_blank" rel="noopener noreferrer"><u>JavaScript-native RPC system</u></a> built on <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u>Cap’n Proto</u></a>. And so as part of Agents Week, we’re extending Workers in the other direction, supporting inbound TCP connections and adding new ways to run gRPC applications on Cloudflare.</p>
+<p>Today, we’re announcing:</p>
+<ul>
+	<li><strong>connect(socket)</strong> —&nbsp;a new <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers" target="_blank" rel="noopener noreferrer"><u>handler</u></a> in the Workers runtime that lets your Worker directly accept an inbound TCP socket provided by <a href="https://developers.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer"><u>Spectrum</u></a> (Cloudflare’s ingress proxy for non-HTTP traffic)</li>
+	<li><strong>Full-duplex, bi-directional gRPC from Cloudflare Containers</strong> —&nbsp;forward the socket from your Worker to your gRPC server running in a container</li>
+	<li><strong>Workers can serve unary and server-streaming gRPC APIs and call gRPC servers </strong>— you write your code using <a href="https://grpc.io/docs/platforms/web" target="_blank" rel="noopener noreferrer"><u>gRPC-web</u></a>, and Cloudflare automatically converts incoming and outgoing requests to gRPC</li>
+</ul>
+<p>We’re introducing this in private beta — you can sign up <a href="https://forms.gle/Q2SoJLUKjBFGxBgW6" target="_blank" rel="noopener noreferrer"><u>here</u></a>.</p>
+<p>Let’s dig into each of these below.</p>
+<h2>connect(socket) from your Worker to Durable Objects and Containers</h2>
+<p>The Workers runtime now provides a <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers" target="_blank" rel="noopener noreferrer"><u>connect() handler</u></a> that accepts a socket that you can read from and write to:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">socket</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> socket.writable.</span><span class="sk-6f42c1-ffc799">getWriter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">	},</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>You can pass this socket from one Worker to another Worker, or from a Worker to a Durable Object. This lets your Worker control where an incoming TCP connection is routed:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> SocketDurableObject</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> DurableObject</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">socket</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Socket</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Echo bytes from inside the Durable Object</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> socket.readable.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(socket.writable);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">socket</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> stub</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SOCKET_DO</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">getByName</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-server"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> durableObjectSocket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"host:port"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">			socket.readable.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(durableObjectSocket.writable),</span></span>
+<span class="line"><span class="sk-24292e-fff">			durableObjectSocket.readable.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(socket.writable),</span></span>
+<span class="line"><span class="sk-24292e-fff">		]);</span></span>
+<span class="line"><span class="sk-24292e-fff">	},</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+</div>
+<p>You can pass a socket from a Durable Object to <a href="https://developers.cloudflare.com/durable-objects/api/container" target="_blank" rel="noopener noreferrer"><u>its Container</u></a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> SocketContainer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> DurableObject</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectState</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		super</span><span class="sk-24292e-fff">(ctx, env);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.ctx.container</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">socket</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Socket</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> containerSocket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-24292e-fff">			.</span><span class="sk-6f42c1-ffc799">getTcpPort</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">8080</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">			.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"10.0.0.1:8080"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> containerSocket.opened;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">			socket.readable.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(containerSocket.writable),</span></span>
+<span class="line"><span class="sk-24292e-fff">			containerSocket.readable.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(socket.writable),</span></span>
+<span class="line"><span class="sk-24292e-fff">		]);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>And then handle the socket in the container:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># server.py</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> socketserver</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Handler</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">socketserver</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-fff">BaseRequestHandler</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    def</span><span class="sk-6f42c1-ffc799"> handle</span><span class="sk-24292e-fff">(self):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        while</span><span class="sk-24292e-fff"> data </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.request.recv(</span><span class="sk-005cc5-ffc799">64</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">            self</span><span class="sk-24292e-fff">.request.sendall(</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"Echo: "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> data)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Server</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">socketserver</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-fff">ThreadingTCPServer</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-24292e-fff">    allow_reuse_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> True</span></span>
+<span class="line"><span class="sk-24292e-fff">    daemon_threads </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> True</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">with</span><span class="sk-24292e-fff"> Server((</span><span class="sk-032f62-99ffe4">"0.0.0.0"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">8080</span><span class="sk-24292e-fff">), Handler) </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> server:</span></span>
+<span class="line"><span class="sk-24292e-fff">    server.serve_forever()</span></span></code></pre>
+</div>
+<p>This gives you full control over the entire path from client to your server running in a container on Cloudflare, opening the door to full-duplex communication between client and server running any program, in any language, for any TCP-based protocol.</p>
+<p>To expose the raw TCP socket to the client, we’re introducing a new type of <a href="https://developers.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer"><u>Spectrum</u></a> application, where you specify a Worker that you want incoming TCP connections to be routed to. <a href="https://developers.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer"><u>Spectrum</u></a> is Cloudflare’s ingress proxy for non-HTTP traffic, and allows Cloudflare to sit in front of any TCP or UDP application.</p>
+<h2>Bidirectional gRPC from Cloudflare Containers</h2>
+<p><a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a> is a well-established and popular Remote Procedure Call (RPC) framework that was initially released by Google almost 10 years ago, and is now used across mobile apps, distributed systems, and most recently —&nbsp;voice AI applications.</p>
+<p>Real-time voice AI applications demand low-latency, and both client and server to be able to send messages to each other over a single, persistent connection. WebSockets and Durable Objects are excellent fits for this, and the Cloudflare Agents SDK provides <a href="https://developers.cloudflare.com/agents/communication-channels/voice" target="_blank" rel="noopener noreferrer"><u>@cloudflare/voice</u></a> to make this easy. But there is a ton of software out there that uses gRPC for real-time client-server communication.</p>
+<p>Using the APIs described above, you can now deploy gRPC servers to Cloudflare, written in any language, with full support for bidirectional streaming between client and server. This lets you take advantage of Cloudflare’s network of <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>330+ locations</u></a> and handle requests much closer to clients than is possible elsewhere. We’re excited about the doors this opens up for low-latency voice and colocated inference.</p>
+<p>For example, here’s a minimal gRPC server that echoes messages it receives back to the client:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">package</span><span class="sk-6f42c1-ffc799"> main</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">io</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	pb </span><span class="sk-032f62-99ffe4">"</span><span class="sk-6f42c1-ffc799">example/proto</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">google.golang.org/grpc</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> server</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	pb</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">UnimplementedByteStreamServer</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">server</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">Chat</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">stream</span><span class="sk-6f42c1-ffc799"> pb</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">ByteStream_ChatServer</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">error</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> stream.</span><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">pb</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">ByteChunk</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">		Payload: []</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"connected</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">	}); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-24292e-fff"> err</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">		message, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> stream.</span><span class="sk-6f42c1-ffc799">Recv</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> io.EOF {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> stream.</span><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">pb</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">ByteChunk</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">				Payload: []</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"goodbye</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">			})</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> err</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> stream.</span><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">pb</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">ByteChunk</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">			Payload: </span><span class="sk-6f42c1-ffc799">append</span><span class="sk-24292e-fff">([]</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"echo: "</span><span class="sk-24292e-fff">), message.Payload</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">		}); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> err</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">	listener, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> net.</span><span class="sk-6f42c1-ffc799">Listen</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"tcp"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">":50051"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">		log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(err)</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	grpcServer </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> grpc.</span><span class="sk-6f42c1-ffc799">NewServer</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">	pb.</span><span class="sk-6f42c1-ffc799">RegisterByteStreamServer</span><span class="sk-24292e-fff">(grpcServer, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">server</span><span class="sk-24292e-fff">{})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	log.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"gRPC server listening on :50051"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">	log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(grpcServer.</span><span class="sk-6f42c1-ffc799">Serve</span><span class="sk-24292e-fff">(listener))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>With this, there’s pretty much no gRPC-based application that you can’t deploy to Cloudflare, no matter what language it’s in or dependencies it relies on. But what if you need to do something simpler, and just serve a basic gRPC server or connect from a Worker to a gRPC server running somewhere else?</p>
+<h2>Workers as gRPC servers and clients with gRPC to gRPC-web conversion — no container needed</h2>
+<p><a href="https://grpc.io/docs/platforms/web/basics" target="_blank" rel="noopener noreferrer"><u>gRPC-web</u></a> is a browser-compatible version of gRPC. Web browsers don’t expose the lower-level HTTP/2 features that gRPC requires, and there is no raw TCP Socket API built into web browsers — this is why the WebSocket API exists, and why Workers have supported WebSockets <a href="https://blog.cloudflare.com/introducing-websockets-in-workers" target="_blank" rel="noopener noreferrer"><u>since 2021</u></a>.</p>
+<p>HTTP/2 splits each request and response into small binary messages called <a href="https://httpwg.org/specs/rfc7540.html#FramingLayer" target="_blank" rel="noopener noreferrer"><u>frames</u></a>. This is core to how a single HTTP/2 or HTTP/3 connection is able to multiplex —&nbsp;many requests can be interleaved over one connection. Each frame has a stream ID, allowing the receiver to reassemble it into the correct request or response. gRPC depends on this stream-level control for efficient streaming, cancellation, flow control, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Trailer" target="_blank" rel="noopener noreferrer"><u>trailers</u></a>.</p>
+<p>Web platform APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><u>fetch()</u></a> don’t provide this control. So how can we make it simple and easy to use gRPC from Cloudflare Workers — without clients needing to make any changes? We translate incoming gRPC to gRPC-web, and translate outgoing gRPC-web to gRPC.</p>
+<p>We’ve actually used gRPC-web within Cloudflare’s reverse proxy since 2020, when we wrote about the <a href="https://blog.cloudflare.com/road-to-grpc/#converting-to-http11" target="_blank" rel="noopener noreferrer"><u>Road to gRPC</u></a> on the Cloudflare blog. We convert requests to HTTP/1.1 so that messages can be inspected and gRPC apps can benefit from <a href="https://www.cloudflare.com/solutions/security" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s security features</u></a>, like WAF rules and Bot Management.</p>
+<p>Now, in private beta and then rolling out to everyone, we’re extending this so that given a Protocol Buffer (protobuf) definition file like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">syntax </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "proto3"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">package hello;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">service </span><span class="sk-6f42c1-ffc799">Greeter</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  rpc </span><span class="sk-6f42c1-ffc799">SayHello</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">HelloRequest</span><span class="sk-24292e-fff">) returns (</span><span class="sk-6f42c1-ffc799">HelloReply</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">message </span><span class="sk-6f42c1-ffc799">HelloRequest</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  string name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">message </span><span class="sk-6f42c1-ffc799">HelloReply</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  string message </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>You can write a unary gRPC server in a Worker in just a few lines of code, using the <a href="https://connectrpc.com" target="_blank" rel="noopener noreferrer"><u>@connectrpc/connect</u></a> open-source package:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createConnectRouter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@connectrpc/connect"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  universalServerRequestFromFetch,</span></span>
+<span class="line"><span class="sk-24292e-fff">  universalServerResponseToFetch,</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@connectrpc/connect/protocol"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Greeter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./gen/hello_pb"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> router</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createConnectRouter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">router.</span><span class="sk-6f42c1-ffc799">service</span><span class="sk-24292e-fff">(Greeter, {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sayHello</span><span class="sk-24292e-fff">: ({ </span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({ message: </span><span class="sk-032f62-99ffe4">`Hello, ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}!`</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> handlers</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Map</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">  router.handlers.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">handler</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> [handler.requestPath, handler]),</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> handler</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> handlers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url).pathname);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> universalServerResponseToFetch</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-6f42c1-ffc799"> handler</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">universalServerRequestFromFetch</span><span class="sk-24292e-fff">(request, {})),</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>You can make outbound requests to external gRPC servers this way too, by using the client built into <a href="http://connectrpc/connect" target="_blank" rel="noopener noreferrer"><u>@connectrpc/connect</u></a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createClient } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@connectrpc/connect"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createGrpcWebTransport } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@connectrpc/connect-web"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Greeter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./gen/hello_pb"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createClient</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">  Greeter,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  createGrpcWebTransport</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    baseUrl: </span><span class="sk-032f62-99ffe4">"https://grpc.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fetch</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">input</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">init</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      fetch</span><span class="sk-24292e-fff">(input, { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">init, redirect: </span><span class="sk-032f62-99ffe4">"manual"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">  }),</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> reply</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">sayHello</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"Workers"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(reply);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>Your code uses gRPC-web, but when it speaks to the outside world, it is automatically translated into gRPC. This means that clients and servers that you already depend on don’t need to change. For example, you can:</p>
+<ul>
+	<li><strong>Provide gRPC backends to mobile apps that speak gRPC</strong> — Many mobile apps already use gRPC to reduce network payloads, serialize data more efficiently, and generate strongly-typed client libraries. You can now build the backend server for mobile apps on Workers, while still using established gRPC native libraries like <a href="https://www.swift.org/blog/grpc-swift-2" target="_blank" rel="noopener noreferrer"><u>grpc-swift-2</u></a> and <a href="https://grpc.io/docs/languages/kotlin/quickstart" target="_blank" rel="noopener noreferrer"><u>grpc-kotlin</u></a>.</li>
+	<li><strong>Put a Worker in front of an existing gRPC backend</strong> — So many developers already put Workers in front of existing REST APIs to move performance critical work closer to the user, or to incrementally move state into <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>. Now you can do this with existing gRPC backends as well, or build new APIs and services that fetch data from your existing gRPC backend.</li>
+</ul>
+<h2>What’s next for Socket Workers and gRPC on Cloudflare</h2>
+<p>We’re introducing everything from this post in private beta — you can sign up <a href="https://forms.gle/Q2SoJLUKjBFGxBgW6" target="_blank" rel="noopener noreferrer"><u>here</u></a>.</p>
+<p>At Cloudflare, we use <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u>Cap’n Proto</u></a> and <a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library" target="_blank" rel="noopener noreferrer"><u>Cap’n Web</u></a> and the <a href="https://blog.cloudflare.com/javascript-native-rpc" target="_blank" rel="noopener noreferrer"><u>JavaScript-native RPC system that is built into Cloudflare Workers</u></a> instead of gRPC. And when we ship things, we always aim to be using them ourselves. So in this case, we want to first work closely with a smaller set of developers using gRPC, and make sure we’ve nailed it before turning this on for everyone.</p>
+<p>More broadly, we’re excited to continue to push the bounds of what types of traffic the Workers platform can serve, going beyond TCP and into UDP-based protocols. Keep <a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>telling us what you want to build</u></a> on Workers, and we’ll keep pushing the bounds of what is possible.</p>

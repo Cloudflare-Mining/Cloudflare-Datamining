@@ -1,0 +1,495 @@
+<p>Workers AI runs inference for some of the best open models in the world on GPUs in Cloudflare data centers close to your users. Two of the most capable, and most demanding, are Moonshot's Kimi K-series and <a href="http://z.ai" target="_blank" rel="noopener noreferrer">Z.ai</a>'s GLM. They are large, long-context, mixture-of-experts models, and they are wonderful to use. They are also very hard to serve efficiently because of memory constraints.</p>
+<p>We've written before about how we <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>serve large models on Workers AI</u></a> and about separating <a href="https://blog.cloudflare.com/high-performance-llms" target="_blank" rel="noopener noreferrer"><u>the prefill and decode phases</u></a> of inference to get more out of each GPU. This post looks at three techniques we layer on top of that to fit these models into memory and keep them fast: quantizing the KV cache, compressing the model weights, and, because both of those pack more requests onto shared hardware, protecting the cache those requests share. These optimizations enable us to support more customers at lower costs, with no change in model accuracy.</p>
+<p>All our experiments and production traffic are running and benchmarked with <a href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener noreferrer"><u>SGLang</u></a>, an open-source inference serving framework. We found that SGLang offers the best performance in the market, and we work closely with the SGLang team to upstream patches and new features to make our work available to the open-source community.</p>
+<h2>Quantizing the KV cache</h2>
+<p>As a model generates text, it stores the attention keys (K) and values (V) for every token it has already processed in a structure called the KV cache. The cache is what lets the model extend a long conversation without re-reading the entire context on every new token. For a long-context model, it grows quickly, and it is usually the KV cache, not the model's weights, that fills up GPU memory first.</p>
+<p>By default, the cache is stored in 16-bit precision (BF16). We store it in 8-bit floating point instead (FP8, e4m3), which halves its size. On Kimi K2.6, that raises the amount of context we can hold in memory from roughly 686,000 tokens to about 1.37 million, twice as much.</p>
+<p>It's worth being precise about where the benefit comes from, because it isn't raw speed. Quantizing the cache adds a small amount of work per token, since the FP8 attention kernel has to convert values as it reads them. What it changes is how many requests we can keep resident at once. The following measurements are for Kimi K2.6 decoding on a disaggregated H200 deployment, comparing the attention kernels directly:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Concurrent requests</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>BF16 KV cache (tok/s)</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>FP8 KV cache (tok/s)</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>137</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>125</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>731</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>689</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,106</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,028</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>32</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,558</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,489</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>64</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Out of memory</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,192</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>At any single concurrency level, BF16 is a few percent faster per token. But BF16 runs out of cache at 32 concurrent requests and can't admit a 33rd, while FP8 keeps going to 64 and reaches 2,192 tokens per second, about 41% higher than BF16's peak, for roughly 30% less cost per token. Because we run prefill and decode as separate pools, we can apply this where it helps most: prefill is compute-bound rather than memory-bound, so there we leave the cache in BF16 and keep its slightly higher throughput.</p>
+<p>None of this would matter if it changed the model's answers, so we checked. Across our evaluation suite, FP8 and BF16 caches are indistinguishable:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Benchmark</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>BF16 KV</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>FP8 KV</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GSM8K</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>94.24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>94.09</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ARC-Easy</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>89.06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>89.14</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ARC-Challenge</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>66.72</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>67.49</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>MMLU</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>89.11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>89.04</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>MMLU-Pro</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>80.29</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>79.29</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>mcxams (internal benchmark)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>61 / 63</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>61 / 63</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Tool-call validity</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>92.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>92.6%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Compressing the model weights</h2>
+<p>The KV cache is one demand on GPU memory; the model's weights are the other. For GLM 5.2, we compress the weights from 8-bit floating point down to 4-bit integers (INT4) with no loss in accuracy. The checkpoint shrinks from 705 GB to 421 GB, about 40%, and per-GPU memory across an 8-way tensor-parallel deployment drops from roughly 88 GB to 52 GB, which leaves room for around 1.18 million tokens of KV cache on the same hardware.</p>
+<p>Across our evaluation suite, INT4 and FP8 weights are indistinguishable:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Benchmark / Capability</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Metric</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>FP8</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>INT4</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GSM8K</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact match</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>94.39%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>93.56%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GSM8K</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Flexible</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>94.24%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>93.48%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ARC-Easy</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Accuracy</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>86.62%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>86.15%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ARC-Easy</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Acc (norm)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>84.51%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>85.19%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ARC-Challenge</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Accuracy</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>64.93%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>64.85%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ARC-Challenge</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Acc (norm)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>67.24%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>66.64%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>MMLU</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Average</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>86.60%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>86.54%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>MMLU-Pro</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Exact</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>80.80%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>80.47%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>mcxams (internal benchmark)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Passed</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>62 / 63</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>62 / 63</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Smaller weights make the decode phase faster, and for a clear reason: generating each token means streaming the model's weights out of GPU memory, so decode speed is limited by memory bandwidth. Move less data and every token arrives sooner. The effect is largest at low concurrency, where per-request latency matters most:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Concurrent requests</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>GLM FP8 (tok/s)</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>GLM INT4 (tok/s)</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>INT4 gain</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>60</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>92</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+55%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>425</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>513</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+21%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>683</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>825</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+21%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>32</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>994</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,267</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+27%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>64</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,672</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,933</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+16%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Prefill behaves differently. It is compute-bound, and INT4 weights have to be expanded back out before the model can multiply with them, so that extra step makes prefill slower rather than faster, GLM sustains about 10,160 tokens per second of prefill in FP8 versus 8,660 in INT4. As with the KV cache, the disaggregated design turns this into a choice rather than a compromise: we run INT4 for decode, where it wins, and FP8 for prefill, where it wins. Model accuracy stays within 0.8 points of the FP8 model across every benchmark we run, making its quality indistinguishable.</p>
+<h2>Protecting a shared KV cache</h2>
+<p>Both techniques above have the same effect: they let many more requests share one GPU's memory at the same time. That efficiency is the whole point, but it also means hundreds of requests are reading and writing pages of the same physical KV cache. The mechanisms that make this fast, paged attention, continuous batching, cache reuse, all rely on getting the bookkeeping exactly right, and at our request volumes, even a one-in-a-billion mistake would show up regularly.</p>
+<p>So we built KV cache integrity checking as a layer of defense. The idea is straightforward: every physical cache page gets a tag that changes whenever the page is reallocated, and the server records which pages and tags each request expects to use. Before supported decode operations read from the cache, those mappings are checked. If anything doesn't match, the affected request is aborted rather than allowed to return data from the wrong page.</p>
+<p>The question that decides whether a safety check ships is what it costs. We measured it on a mid-sized production model in a two-prefill, two-decode configuration, with 8,192-token inputs and 1,000-token outputs:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Concurrency</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Throughput change</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>p95 latency change</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>−0.53%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0.42%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>−0.38%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0.54%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>−0.79%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0.63%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>−0.43%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0.80%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>The cost is under 1% on both throughput and tail latency, and even the upper bound of the 95% confidence interval stays near 1%. We kept it computationally cheap by running the validation as a separate batch check rather than fusing it into the attention kernel, which would have introduced a race between GPU thread groups. It's enabled per deployment, and the default path uses a no-op tracker with no measurable overhead, so deployments that don't need it pay nothing.</p>
+<h2>What's next</h2>
+<p>Serving frontier models efficiently is a moving target, and this is the ongoing work behind it. We're expanding FP8 KV caches across more of the fleet, validating NVFP4 weights on Blackwell (NVIDIA’s GPU architecture), and working toward making integrity checks something we can leave on everywhere at negligible cost. These optimizations will allow us to continue to support more customers at a lower cost and at the same accuracy.</p>
+<p>If squeezing the best open models onto GPUs and serving them to millions of developers sounds like your kind of problem, <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><u>come work with us</u></a>.</p>

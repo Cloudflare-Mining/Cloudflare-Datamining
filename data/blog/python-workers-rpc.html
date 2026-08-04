@@ -1,0 +1,220 @@
+<p>Two years ago, we introduced <a href="https://blog.cloudflare.com/javascript-native-rpc" target="_blank" rel="noopener noreferrer"><u>Workers RPC</u></a>, built on <a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u>Cap’n Proto RPC</u></a>. This made it possible for Workers to call other Workers and Durable Objects’ methods, return live objects and call their methods, return functions, streams and get all the benefits of a Remote Procedure Call (RPC) system, without defining schemas or adding any dependencies. We called it “JavaScript-native RPC” because it made using RPC feel native to the language.</p>
+<p>Last year, we made this work between web browsers and servers, and <a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library" target="_blank" rel="noopener noreferrer"><u>introduced Cap’n Web</u></a>.</p>
+<p>Now we’re taking it cross-language.</p>
+<p>Normally, getting programs written in different languages to talk to each other is complicated: developers usually have to build custom APIs or adopt language-agnostic serialization formats like <a href="https://protobuf.dev" target="_blank" rel="noopener noreferrer"><u>protobuf</u></a>, so the two systems can understand each other. The RPC system built into Workers is able to translate across JavaScript and Python without any additional work.</p>
+<p>You can now call methods defined in a Python Worker from a JavaScript Worker and vice versa. You can share objects across Python and JavaScript, and call methods on a Python object from TypeScript. It all just works.</p>
+<p>If you define a method <code>add()</code> in a Worker written in TypeScript:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> RpcService</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> add</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">number</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> a </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>…you can simply call it from Python:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> workers </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response, WorkerEntrypoint</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">WorkerEntrypoint</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-d73a49-a0a0a0"> def</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(self, request):</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Get the RPC stub from the TypeScript Worker.</span></span>
+<span class="line"><span class="sk-24292e-fff">        rpc </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">RPC</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Call the TypeScript RPC method.</span></span>
+<span class="line"><span class="sk-24292e-fff">        result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> rpc.add(</span><span class="sk-005cc5-ffc799">42</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">144</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> Response.json({</span><span class="sk-032f62-99ffe4">"result"</span><span class="sk-24292e-fff">: result})</span></span></code></pre>
+</div>
+<p>There are no dependencies needed. All you need to configure is a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Service binding</u>:</a></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"services"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"RPC"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "service"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ts-rpc-server"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "entrypoint"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"RpcService"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<h2>So, what can you do with it?</h2>
+<p>This RPC system allows you to build a complex multi-language system as if you are using a library. Here are some features of cross-language RPC.</p>
+<ul>
+	<li>Cross-language RPC calls behave like ordinary function calls that return promises in JavaScript/TypeScript and futures in Python. Exceptions are propagated and are thrown at the call site of the RPC method.</li>
+	<li>You can pass any <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types" target="_blank" rel="noopener noreferrer"><u>Structured Cloneable types</u></a> as the parameters or a return value of an RPC call. These get converted to the appropriate types in Python: for example, a JS Date is converted to a Python datetime</li>
+	<li>You can pass JavaScript functions to a Python Worker and return them, and vice versa. When the other side calls the function passed to it, they make a new RPC back for you.</li>
+	<li>Typically, RPC to another Worker does not cross a network. The other Worker usually runs in the same thread as the caller. There is near-zero performance overhead compared to running code in the same Worker.</li>
+	<li>The implementation is fully open source as part of <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>workerd</u></a> and <a href="https://github.com/cloudflare/workers-py/blob/4bb01fe72a9af71918746e3851c526335302a3bc/packages/runtime-sdk/src/workers/rpc.py" target="_blank" rel="noopener noreferrer"><u>workers-runtime-sdk</u></a>.</li>
+</ul>
+<h3>But wait, how do you convert types across languages?&nbsp;</h3>
+<p>The main hurdle for making RPC seamless across the JavaScript and Python Workers is bridging their distinct type systems. JavaScript developers expect to work with native JavaScript types, and Python developers expect the same for Python. Bridging two distinct languages with their own type systems required a careful, deliberate type conversion strategy.</p>
+<p>Consider how each language handles function arguments. A typical way to define a complex function in JavaScript is passing an <code>Object</code> as an argument:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> myFunction</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">params</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">key</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">value</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> boolean</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">optional</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff"> }) { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Called like this:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">myFunction</span><span class="sk-24292e-fff">({ key: “myKey”, value: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, optional: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> });</span></span></code></pre>
+</div>
+<p>In contrast, a Python developer would typically define the same function using keyword arguments:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> my_complex_function</span><span class="sk-24292e-fff">(key: </span><span class="sk-005cc5-ffc799">str</span><span class="sk-24292e-fff">, value: </span><span class="sk-005cc5-ffc799">bool</span><span class="sk-24292e-fff">, optional: </span><span class="sk-005cc5-ffc799">int</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-fff"> None</span><span class="sk-24292e-fff">): </span><span class="sk-005cc5-fff">...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Called like this:</span></span>
+<span class="line"><span class="sk-24292e-fff">my_complex_function(“myKey”, </span><span class="sk-005cc5-fff">True</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">optional</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Our goal was to make cross-language RPC completely transparent. Developers should feel like they are writing code for a single-language application without needing to worry about the underlying translation layer. We achieved this by combining Pyodide’s Foreign Function Interface (FFI) with a custom type-conversion layer for Python Workers.</p>
+<h3>Pyodide FFI already translates between Python and JavaScript types</h3>
+<p>Pyodide is the CPython interpreter compiled to WebAssembly, and it has powered <a href="https://blog.cloudflare.com/python-workers/#pyodide-and-the-magic-of-foreign-function-interfaces-ffi" target="_blank" rel="noopener noreferrer"><u>Python Workers from the start</u></a>. It includes a robust FFI that automatically translates types between JavaScript and Python.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+Pb08vHx5+jp4+Xn6Onr7O3u5+jp2d3e+fbz9PHu6ejn5OXm5+rs6u3x5Ojr2Nzf/vn0+fTv7uvo6Ofo6uzw6/D15evw2t7j///6//z29/Lv8O/v8fT38vj97PL44ubr//////////77+/v7/P///v//+f7/7/P3/////////////////////////////v//////////////////////////////////////////////////////////////////" alt="" width="715" height="226" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=715&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=640&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=715&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=750&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=828&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=1080&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=1280&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=1430&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1YP3XQB1NVNJ4C94AQ7G2.png&amp;w=1920&amp;h=607&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="607" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="226" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>When a Python Worker communicates with a JavaScript Worker via Service bindings, Pyodide’s FFI transparently converts objects during the RPC call. Developers on either side don’t need to know which language the other Worker is written in, and everything is handled under the hood.</p>
+<p>Pyodide maps native types between both environments out of the box:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Python Type</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>JavaScript Equivalent</strong></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>int, float</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Number</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>bool</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Boolean</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>dict</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Object</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>list</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Array</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>When direct translation isn’t possible (such as with custom classes or functions), Pyodide creates a <code>Proxy</code> object. This proxy forwards attribute accesses and method calls across the boundary, enabling patterns like passing a Python function directly as a callback to JavaScript handlers.</p>
+<p>Pyodide FFI also maps Python’s keyword arguments directly to JavaScript’s object-style parameters. For example, imagine a JavaScript Worker with a method that takes an optional options object:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key: string, options</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-24292e-fff"> { type: string });</span></span></code></pre>
+</div>
+<p>When calling this JavaScript Worker from Python, you <em>could </em>pass a Python dictionary to represent the JavaScript object:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">JSRPC</span><span class="sk-24292e-fff">.get(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, { </span><span class="sk-032f62-99ffe4">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff"> })</span></span></code></pre>
+</div>
+<p>However, you can also use native Python keyword arguments:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">JSRPC</span><span class="sk-24292e-fff">.get(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">type</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Pyodide FFI translates both calls into the exact structure the JavaScript Worker expects, giving Python developers a clean, natural API experience.</p>
+<p>To explore type translation in more detail, check out the <a href="https://pyodide.org/en/stable/usage/type-conversions.html" target="_blank" rel="noopener noreferrer"><u>Pyodide documentation</u></a>.</p>
+<h3>Handling Cloudflare Workers objects</h3>
+<p>While Pyodide FFI seamlessly converts standard built-in types, it doesn’t automatically understand Web API objects such as <code>Request</code>, <code>Response</code>, <code>Blob</code>, or <code>File</code>. They are commonly used in Cloudflare Workers, but there is no direct built-in equivalent in Python.</p>
+<p>As explained in the previous section, Pyodide, by default, treats these non-standard objects as JavaScript Proxies. Rather than converting them into Python objects, it creates a passthrough proxy for attribute lookups and method calls. While functional, this approach leaks underlying JavaScript implementation details into Python. Python developers would have to constantly remember they are interacting with JavaScript proxies, adding unnecessary mental overhead.</p>
+<p>To fix this, we introduced the <a href="https://github.com/cloudflare/workers-py/blob/4bb01fe72a9af71918746e3851c526335302a3bc/packages/runtime-sdk/src/workers/rpc.py" target="_blank" rel="noopener noreferrer"><u>workers-runtime-sdk Python package</u></a>. This acts as a thin conversion layer built specifically to handle custom Workers types over RPC. When you deploy a Python Worker using <a href="https://developers.cloudflare.com/workers/languages/python/#the-pywrangler-cli-tool" target="_blank" rel="noopener noreferrer"><u>uv run pywrangler deploy</u></a>, this package is included by default. In fact, if you import from the <code>workers</code> namespace, you’re already using it:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> workers </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response</span></span>
+<span class="line"><span class="sk-005cc5-fff">...</span></span></code></pre>
+</div>
+<p>Behind the scenes, this SDK wraps the RPC stubs provided by the bindings. It intercepts objects crossing the language boundary and translates them into native forms that both JavaScript and Python Workers can work with naturally.</p>
+<p>As a result, Python developers can work with familiar, idiomatic Python objects, making cross-language execution feel completely invisible.</p>
+<h2>Use Python packages from your JavaScript Worker</h2>
+<p>Have you ever wanted to use a great Python package, but your app is written in JavaScript? You can do this with Python Workers. Let’s look at an example.</p>
+<p>Pygments is a popular syntax highlighting package, written in Python. To use it from JavaScript, you just need to expose a method from a Python Worker that calls the Pygments package.</p>
+<p></p>
+<p>We can call this method in our JavaScript by accessing the request’s <code>env</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Get the RPC stub from the Python Worker.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> rpc</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">PYTHON_RPC</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Call the Python RPC method.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> rpc.</span><span class="sk-6f42c1-ffc799">highlight_code</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'print(42)'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'python'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now on the Python side, we define a Python Worker with this method like so:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> workers </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> WorkerEntrypoint</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">WorkerEntrypoint</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-d73a49-a0a0a0"> def</span><span class="sk-6f42c1-ffc799"> highlight_code</span><span class="sk-24292e-fff">(self, code: </span><span class="sk-005cc5-ffc799">str</span><span class="sk-24292e-fff">, language: </span><span class="sk-005cc5-ffc799">str</span><span class="sk-24292e-fff">) -&gt; </span><span class="sk-005cc5-ffc799">dict</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Implementation goes here</span></span></code></pre>
+</div>
+<p>Now all that’s left is to write the necessary code to do the highlighting in Python. A simplified version of this looks like so:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> pygments.formatters </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> HtmlFormatter</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> pygments </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> highlight</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> pygments.lexers </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> get_lexer_by_name</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">WorkerEntrypoint</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-d73a49-a0a0a0"> def</span><span class="sk-6f42c1-ffc799"> highlight_code</span><span class="sk-24292e-fff">(self, code: </span><span class="sk-005cc5-ffc799">str</span><span class="sk-24292e-fff">, language: </span><span class="sk-005cc5-ffc799">str</span><span class="sk-24292e-fff">) -&gt; </span><span class="sk-005cc5-ffc799">dict</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Retrieve the lexer for the language specified.</span></span>
+<span class="line"><span class="sk-24292e-fff">        lexer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> get_lexer_by_name(language, </span><span class="sk-e36209-fff">stripall</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff">True</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Create the formatter and run the highlighter on the specified code.</span></span>
+<span class="line"><span class="sk-24292e-fff">        formatter </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> HtmlFormatter(</span><span class="sk-e36209-fff">linenos</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff">True</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">cssclass</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"highlight"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">style</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"monokai"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        highlighted_html </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> highlight(code, lexer, formatter)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Get the CSS for styling.</span></span>
+<span class="line"><span class="sk-24292e-fff">        css </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> formatter.get_style_defs(</span><span class="sk-032f62-99ffe4">".highlight"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "html"</span><span class="sk-24292e-fff">: highlighted_html,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "css"</span><span class="sk-24292e-fff">: css</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span></code></pre>
+</div>
+<p>The JavaScript lives in its own Worker that is separate from the Python Worker. So you also need to define the Service bindings to ensure they can communicate. You can do so by putting this in the JavaScript Worker’s wrangler.jsonc file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"services"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PYTHON_RPC"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "service"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"py-rpc-server"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>The name of the service needs to match the name of your Python Worker here.</p>
+<p>To test these, you can run <code>npx wrangler dev</code> in the JavaScript Worker’s directory and <code>uv run pywrangler dev</code> in the Python Worker’s directory in two separate terminals.</p>
+<p>A full example is <a href="https://github.com/cloudflare/python-workers-examples/tree/main/13-js-api-pygments" target="_blank" rel="noopener noreferrer"><u>available on GitHub</u></a>. You can run it directly by using the following commands:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">git clone git</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">github</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">python</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">workers</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">examples</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">git</span></span>
+<span class="line"><span class="sk-24292e-fff">cd python</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">workers</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">examples</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">13</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">js</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pygments</span><span class="sk-d73a49-a0a0a0">/</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-6f42c1-ffc799">Terminal</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">cd ts</span><span class="sk-d73a49-a0a0a0">/</span></span>
+<span class="line"><span class="sk-24292e-fff">npx wrangler dev</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-6f42c1-ffc799">Terminal</span><span class="sk-005cc5-ffc799"> 2</span></span>
+<span class="line"><span class="sk-24292e-fff">cd py</span><span class="sk-d73a49-a0a0a0">/</span></span>
+<span class="line"><span class="sk-24292e-fff">uv run pywrangler dev</span></span></code></pre>
+</div>
+<h2>Try it now</h2>
+<p>In addition to those above, there are far more examples and information about RPC in <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>our documentation</u></a>.</p>

@@ -1,0 +1,162 @@
+<p>We're bringing together everything you need to deploy and manage hosted agents on Cloudflare, starting with observability.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9fX17+/v4+Pj4eHh6urq8vLy7+/v4uLi+Pj48/Pz6enp5+fn7+/v9vb28vLy5+fn/v7++fn58fHx7+/v9vb2+/v7+Pj47e3t////////+Pj49/f3/f39/////f398/Pz/////////v7+/Pz8////////////9vb2////////////////////////////+Pj4////////////////////////////+fn5////////////////////////////+fn5" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3387 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY57CW84GJ75GZSS8RBE.png&amp;w=1920&amp;h=874&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="874" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We've spent the last nine years building a developer platform, and agents are the perfect use case. They're really just another type of application, but what you need to build them — <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>model access</u></a>, <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>durable runtime</u></a>, <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>orchestration</u></a>, <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>sandboxed execution</u></a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>persistent storage</u></a> — happens to be exactly what we've already built.</p>
+<p>Now, we’re making it even easier to deploy and manage your agents on Cloudflare. Cloudflare Agents brings all of your deployed agent sessions into a single experience, surfacing key information and insights into how your agents perform at scale.</p>
+<h2>First stop: agent tracing</h2>
+<p>We are launching <a href="http://developers.cloudflare.com/agents/runtime/operations/observability/tracing" target="_blank" rel="noopener noreferrer"><strong><u>agent tracing</u></strong></a> for more direct visibility and insight into agent behavior. With agent-aware traces, you can now understand exactly what your agent is doing and what it costs: every model call, tool execution, and token is measured and presented here. Agent tracing launches today with support for OpenTelemetry-compatible agent harnesses including <a href="https://developers.cloudflare.com/agents/harnesses/think" target="_blank" rel="noopener noreferrer"><u>Think</u></a>, <a href="https://flueframework.com/docs/ecosystem/deploy/cloudflare" target="_blank" rel="noopener noreferrer"><u>Flue</u></a>, and <a href="https://ai-sdk.dev" target="_blank" rel="noopener noreferrer"><u>AI SDK</u></a>, and more.</p>
+<p>Agent traces are just the beginning. Once you have observability into your agent’s thought process and real-world behavior, you can start to analyze this data and make real improvements. Plug this data into your <a href="http://blog.cloudflare.com/agent-development-lifecycle" target="_blank" rel="noopener noreferrer"><u>agent development lifecycle</u></a>, and you suddenly have autonomous, self-improving agents. This is the vision for Cloudflare Agents: one place to deploy, observe, and continuously improve every agent you run.</p>
+<h2>Making agents observable</h2>
+<p>An agent can return HTTP 200 and still fail. It may choose the wrong tool, pass stale context to a subagent, or spend tokens in a retry loop. Traditional application telemetry might show the API request or database query, but not the agent behavior that caused it.</p>
+<p>Agent-level telemetry should answer questions such as:</p>
+<ul>
+	<li>Where did the time go: the model, the tool, or the infrastructure?</li>
+	<li>Did the turn pause for approval?</li>
+	<li>Which model did the agent call, and how many tokens did the turn use?</li>
+	<li>Did the agent choose the right tool?</li>
+	<li>When the tool called an external API, did it receive a successful response or time out?</li>
+	<li>Which subagent performed the work, and how did that work affect the final response?</li>
+</ul>
+<p><a href="https://developers.cloudflare.com/workers/observability/traces" target="_blank" rel="noopener noreferrer"><u>Workers tracing</u></a> already covers the infrastructure layer, including fetch calls, KV reads, and D1 queries, but until now, traces for agents running on Workers contained those infrastructure spans without the agent operations surrounding them. Agent tracing closes that gap, adding spans for agent invocations, model calls, tool execution, approval events, and supported subagent calls alongside the Workers data already captured. You also get context such as the model and token usage attached as metadata.&nbsp;</p>
+<p>Starting today, agents built with <a href="https://developers.cloudflare.com/agents/harnesses/think" target="_blank" rel="noopener noreferrer"><u>Think</u></a>, <a href="https://flueframework.com/docs/ecosystem/deploy/cloudflare" target="_blank" rel="noopener noreferrer"><u>Flue</u></a>, and <a href="https://ai-sdk.dev" target="_blank" rel="noopener noreferrer"><u>AI SDK</u></a> will send agent traces to Cloudflare, letting you visualize them in the dashboard or export them to a supported <a href="https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data" target="_blank" rel="noopener noreferrer"><u>OpenTelemetry-compatible destination.</u></a></p>
+<h2>All your agents in one place&nbsp;</h2>
+<p>The Cloudflare dashboard now has a dedicated Agents view that lists observed agents and their traces alongside runs, sessions, instances, and reported token usage.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vj69PP06efp5OLk6Obo7Ozs6Oro3uHe/v3++fj57+3v6ujq7ezt8fHx7e7t4+Xi//////7/9vT28fDx9PP09/f38/Ty6Ovo////////+/r79/X3+fn5/Pz8+Pn47vHu//////////3/+vj6/Pv8/v/++/z78vXy//////////7/+vn6/Pv8/////P389Pf1//////////7/+fj5+/r7/v7+/P389fj2//////////7/+ff4+vn6/v7+/P389vj2" alt="" width="715" height="445" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=715&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=640&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=715&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=750&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=828&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=1080&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=1280&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=1430&amp;h=890&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3387 3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY4GARDCD8QBXHMJXZ7W.png&amp;w=1920&amp;h=1194&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1194" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="445" class="pt-portable-image-media"></div>
+</figure>
+<p>When you open an agent, you can visualize, understand, and debug what it’s doing in two ways:</p>
+<ul>
+	<li><strong>Replay a session</strong> to review captured context across all turns&nbsp;</li>
+	<li><strong>View a trace</strong> to inspect the execution of each turn</li>
+</ul>
+<h3>Replay a session</h3>
+<p>The <strong>Messages</strong> tab assembles the full conversation for a given turn: system instructions, user messages, the model's thinking, tool calls with their arguments and results, and the final response. It's a replay of recorded data, not a re-execution of the agent. This lets you catch a malformed tool argument, see the context available when a tool was selected, understand handoff to subagents, or identify how an earlier turn influenced a later result.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////P7/8/T58PD08/X39/f38+7w6dzj/////v//9fT38u7w9e/v+e/t9efn69nd///////++Pb19O7t+evn/Ojj+OHe7tjY/////////Pn3+PDt/Ovm/+jh/OLc8trX//////////37/PXz//Lt//Dp/+rk9uHe//////////////z7//z5//33//bx+enn///////////////////////////8/PHw/////////////////////////////fPz" alt="" width="715" height="462" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=715&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=715&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=750&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=828&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=1080&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=1280&amp;h=827&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=1430&amp;h=924&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3387 4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGY3V7MFS80WYSPV8SFS9.png&amp;w=1920&amp;h=1242&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1242" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="462" class="pt-portable-image-media"></div>
+</figure>
+<p>In this example, a user asks to plan a two-day trip to Lisbon. You can see the model's reasoning, watch it call <code>destination_researcher</code> twice (it retried), read the tool results, and follow its thinking as it moves on to building the itinerary. If the agent made a bad decision, this is where you find it.</p>
+<p>Exactly what gets recorded depends on your harness or framework. For Think, Flue, and the AI SDK, <code>storeMessages</code> and <code>storeTools</code> control whether message and tool payloads are captured. You can turn <a href="http://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#store-payloads-1" target="_blank" rel="noopener noreferrer"><u>payload recording</u></a> off when that data may contain personal information, secrets, or other sensitive data.</p>
+<h3>Check the trace</h3>
+<p>The Traces tab shows the execution waterfall, where you can determine how time was spent and connect agent operations to Workers infrastructure.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vz69/n38fHv7+zp8evp8+vp8OXj6dza/v//+/z79fX08u/u9O/u9u/u8+vq7OTi////////+fn59vT0+PT0+vX19/Ly8ezs/////////f7++vn5/Pn6//v8/Pn59fPz/////////////Pz8//7+//////7++Pf3/////////////v/+////////////+/f2/////////////v/+/////////////Pf1/////////////v/+/////////////fb0" alt="" width="715" height="426" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=715&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=640&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=715&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=750&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=828&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=1080&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=1280&amp;h=763&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=1430&amp;h=852&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="unnamed (1).png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68BX4H0PZP1A0W8T7JD3GW.png&amp;w=1920&amp;h=1144&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1144" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="426" class="pt-portable-image-media"></div>
+</figure>
+<p>In this trace, a <code>Travel_Planner</code> agent delegates to an <code>itinerary_builder</code> subagent, which calls a model, runs a tool, hits D1, and writes to KV — all visible in a single waterfall:</p>
+<ul>
+	<li><code>invoke_agent TravelPlanner</code><strong>:</strong> The parent agent invocation, 2.72 minutes total. Identifiers for the agent class, conversation, and Durable Object are attached so you can correlate across traces.</li>
+	<li><code>invoke_agent itinerary_builder</code><strong>:</strong> The subagent, nested under the parent, taking 1.83 minutes of that time.</li>
+	<li><code>chat @cf/zai-org/glm-4.7-flash</code><strong>:</strong> Model calls at each level, with duration and provider-reported token usage attached. The first call (17.59s) was the parent's routing decision; the subagent made its own calls underneath.</li>
+	<li><code>execute_tool record_itinerary_builder_execution</code><strong>:</strong> The tool execution, 104ms.</li>
+	<li><code>cloudflare-d1 run d1_run</code><strong>:</strong> A D1 query triggered by the tool, also 104ms.</li>
+	<li><code>execute_tool record_respond_ready</code><strong>:</strong> The tool execution, 232ms.</li>
+	<li><code>cloudflare-kv put kv_put</code><strong>:</strong> A KV write from a later tool, 232ms.</li>
+</ul>
+<p>Workers tracing already instruments bindings such as <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Durable Object, service-binding, and fetch calls, so the Cloudflare infrastructure used by a tool appears under the agent operation that triggered it. Supported subagent calls nest under the parent when child work runs within the active traced context. That lets you follow a turn from the parent agent, through delegated work, to the Cloudflare resources each agent used.</p>
+<h2>How to enable agent tracing</h2>
+<p>First, <a href="https://developers.cloudflare.com/workers/observability/traces" target="_blank" rel="noopener noreferrer"><u>enable tracing</u></a> in <code>wrangler.jsonc</code>, the Worker's project configuration:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  "observability": {</span></span>
+<span class="line"><span>    "traces": {</span></span>
+<span class="line"><span>      "enabled": true,</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>Setup after that depends on the stack</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Stack</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Agent tracing setup</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="http://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#framework-setup" target="_blank" rel="noopener noreferrer"><strong><u>Think and Flue</u></strong></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Emit agent, conversation, turn, model, and tool telemetry through their tracing integrations.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="http://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#ai-sdk" target="_blank" rel="noopener noreferrer"><strong><u>AI SDK&nbsp;</u></strong></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wrap the SDK with Cloudflare's <code>wrapAISDK()</code> adapter.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="http://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#custom-harnesses" target="_blank" rel="noopener noreferrer"><strong><u>Custom Harness&nbsp;</u></strong></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Use our <a href="https://developers.cloudflare.com/workers/observability/traces/custom-spans" target="_blank" rel="noopener noreferrer"><u>custom spans</u></a> API and follow <a href="https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai" target="_blank" rel="noopener noreferrer"><u>OpenTelemetry’s Generative AI semantic conventions</u></a> to instrument your agent.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Soon any OpenTelemetry-compliant toolkit will just work</h3>
+<p>We’re working to support the OpenTelemetry API directly inside Workers. This means frameworks that already emit OpenTelemetry <a href="https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai" target="_blank" rel="noopener noreferrer"><u>Generative AI semantic conventions</u></a> spans will be able to visualize them in the Agents view without waiting for a Cloudflare-specific adapter. When those spans include standard agent and conversation identifiers, the Agents view can group them into agents and sessions just like our built-in integrations. Cloudflare can already export OpenTelemetry data; this adds the other direction by accepting standard telemetry generated inside Workers.</p>
+<h2>Export traces with OpenTelemetry</h2>
+<p>Your agent telemetry isn’t locked into Cloudflare. You can <a href="https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data" target="_blank" rel="noopener noreferrer"><u>export traces to any OTLP-compatible</u></a> provider by configuring a <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fobservability%2Fdestinations" target="_blank" rel="noopener noreferrer"><u>destination</u></a> in your Worker’s Wrangler <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fobservability%2Fdestinations" target="_blank" rel="noopener noreferrer"><u>configuration file</u></a>. Because every trace is structured, the same data that helps you debug agents can also power evaluations, analytics, and token-usage reporting. This means traces aren’t just something you inspect when things break, but also a feedback loop for improving your agent’s quality, performance, and cost.</p>
+<h2>Pricing</h2>
+<p>Agent traces are built on Workers tracing, so pricing is straightforward. The Agents view shows your agent's operations, but the full Worker trace may include additional spans from SDK internals and other Worker-level operations. To see the full trace, click “View in Observability”.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA5uro4eXj193a1NrX2N/c3OHf19nXzMrI8PPy6+7t4uXj3uLh4+fm5+rp4uDf18/N/v//+fr68PDw7e3t8fPz9fX18Orq5dXV//////////z8+/n6//////////X19N3e/////////////////////////////+Xl/////////////////////////////+zr//////////////////////////////Du//////////////////////////////Lv" alt="" width="715" height="131" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=715&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=640&amp;h=117&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=715&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=750&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=828&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=1080&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=1280&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=1430&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3387 7.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4WGXX79HX11A7GKFY8M06B.png&amp;w=1920&amp;h=351&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="351" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="131" class="pt-portable-image-media"></div>
+</figure>
+<p>Every span counts as an observability event, not just the ones visible in the Agents view. All tracing is currently free while in beta. Starting October 1, 2026, tracing pricing will be included as part of existing Workers Observability pricing:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Tier</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Events</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Retention</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Workers Free</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>200,000 per day</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3 days</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Workers Paid</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20 million included per month; $0.60 per additional million events</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7 days</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Get started</h2>
+<p>Tracing is the first piece as we keep building out Cloudflare Agents into the place where you easily deploy, observe, and continuously improve every agent you run.&nbsp;</p>
+<p>Ready to see what your agents are doing? Check out our <a href="http://developers.cloudflare.com/agents/runtime/operations/observability/tracing" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> to enable observability on your agent and head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fagents" target="_blank" rel="noopener noreferrer"><u>Agents dashboard</u></a> to inspect your first trace or replay a session.</p>

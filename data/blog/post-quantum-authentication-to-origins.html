@@ -32,7 +32,6 @@
 <p>1. Generate certificates</p>
 <p>You will need OpenSSL 3.5.0 or later. The private key must be generated in the FIPS 204 seed-only encoding, which is the only format Cloudflare currently accepts on upload.</p>
 <p><strong>Origin server certificate chain for COTS:</strong></p>
-<p></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Create a private ML-DSA-44 CA for the origin server</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> genpkey</span><span class="sk-005cc5-99ffe4"> -algorithm</span><span class="sk-032f62-99ffe4"> mldsa44</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -50,12 +49,15 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> req</span><span class="sk-005cc5-99ffe4"> -new</span><span class="sk-005cc5-99ffe4"> -key</span><span class="sk-032f62-99ffe4"> origin-server.key</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -out</span><span class="sk-032f62-99ffe4"> origin-server.csr</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -subj</span><span class="sk-032f62-99ffe4"> "/CN=origin.example.com"</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -subj</span><span class="sk-032f62-99ffe4"> "/CN=origin.example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -addext</span><span class="sk-032f62-99ffe4"> basicConstraints=CA:FALSE</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -addext</span><span class="sk-032f62-99ffe4"> keyUsage=digitalSignature</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -addext</span><span class="sk-032f62-99ffe4"> subjectAltName=DNS:origin.example.com</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -req</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> origin-server.csr</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -CA</span><span class="sk-032f62-99ffe4"> origin-ca.crt</span><span class="sk-005cc5-99ffe4"> -CAkey</span><span class="sk-032f62-99ffe4"> origin-ca.key</span><span class="sk-005cc5-99ffe4"> -CAcreateserial</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -out</span><span class="sk-032f62-99ffe4"> origin-server.crt</span><span class="sk-005cc5-99ffe4"> -days</span><span class="sk-005cc5-ffc799"> 5475</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -extfile</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-005cc5-ffc799">printf</span><span class="sk-032f62-99ffe4"> "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature\nsubjectAltName=DNS:origin.example.com\n")</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -copy_extensions</span><span class="sk-032f62-99ffe4"> copy</span></span>
 <span class="line"></span></code></pre>
 </div>
 <p><strong>Cloudflare client certificate chain for AOP:</strong></p>
@@ -76,12 +78,15 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> req</span><span class="sk-005cc5-99ffe4"> -new</span><span class="sk-005cc5-99ffe4"> -key</span><span class="sk-032f62-99ffe4"> aop-client.key</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -out</span><span class="sk-032f62-99ffe4"> aop-client.csr</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -subj</span><span class="sk-032f62-99ffe4"> "/CN=cloudflare-aop-client"</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -subj</span><span class="sk-032f62-99ffe4"> "/CN=cloudflare-aop-client"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -addext</span><span class="sk-032f62-99ffe4"> basicConstraints=CA:FALSE</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -addext</span><span class="sk-032f62-99ffe4"> keyUsage=digitalSignature</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -addext</span><span class="sk-032f62-99ffe4"> subjectAltName=DNS:cloudflare-aop-client</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -req</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> aop-client.csr</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -CA</span><span class="sk-032f62-99ffe4"> aop-ca.crt</span><span class="sk-005cc5-99ffe4"> -CAkey</span><span class="sk-032f62-99ffe4"> aop-ca.key</span><span class="sk-005cc5-99ffe4"> -CAcreateserial</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -out</span><span class="sk-032f62-99ffe4"> aop-client.crt</span><span class="sk-005cc5-99ffe4"> -days</span><span class="sk-005cc5-ffc799"> 5475</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -extfile</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-005cc5-ffc799">printf</span><span class="sk-032f62-99ffe4"> "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature\n")</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -copy_extensions</span><span class="sk-032f62-99ffe4"> copy</span></span>
 <span class="line"></span></code></pre>
 </div>
 <p>2. Upload the origin CA to Custom Origin Trust Store</p>
