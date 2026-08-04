@@ -520,6 +520,7 @@
 		"dimensions": "List of dimensions to group by",
 		"max": "Maximum values for AI Gateway request metadata per result group",
 		"min": "Minimum values and first-request metrics for AI Gateway request groups",
+		"quantiles": "Weighted quantiles of AI Gateway request metrics per dimension",
 		"ratio": "Percentage ratios for AI Gateway request metadata coverage and cache efficiency",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": ""
@@ -588,6 +589,23 @@
 	"AccountAiGatewayRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountAiGatewayRequestsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"costP25": "25th percentile request cost",
+		"costP50": "50th percentile request cost",
+		"costP75": "75th percentile request cost",
+		"costP90": "90th percentile request cost",
+		"costP95": "95th percentile request cost",
+		"costP99": "99th percentile request cost",
+		"costP999": "99.9th percentile request cost",
+		"durationMsP25": "25th percentile request duration in milliseconds",
+		"durationMsP50": "50th percentile request duration in milliseconds",
+		"durationMsP75": "75th percentile request duration in milliseconds",
+		"durationMsP90": "90th percentile request duration in milliseconds",
+		"durationMsP95": "95th percentile request duration in milliseconds",
+		"durationMsP99": "99th percentile request duration in milliseconds",
+		"durationMsP999": "99.9th percentile request duration in milliseconds"
+	},
 	"AccountAiGatewayRequestsAdaptiveGroupsRatio": {
 		"__description": "",
 		"cacheHitPct": "Percentage of context tokens read from provider prompt cache",
@@ -641,6 +659,156 @@
 		"uncachedTokensOut": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsUniq": {
+		"__description": "",
+		"sessions": "Approximate count of unique sessions",
+		"users": "Approximate count of unique authenticated users"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroups": {
+		"__description": "AI Gateway Requests (staging)",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of processed requests",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum values for AI Gateway request metadata per result group",
+		"min": "Minimum values and first-request metrics for AI Gateway request groups",
+		"quantiles": "Weighted quantiles of AI Gateway request metrics per dimension",
+		"ratio": "Percentage ratios for AI Gateway request metadata coverage and cache efficiency",
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": ""
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of processed requests, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheReadTokens": "Input tokens read from provider prompt cache",
+		"cacheWriteTokens": "Input tokens written to provider prompt cache",
+		"cached": "Was the response served from cache?: 1 = cache hit, 0 = cache misss",
+		"contextTokens": "Cache read, cache write, and fresh input tokens for this request",
+		"cost": "Cost per request",
+		"date": "The date when trigger was triggered",
+		"datetime": "The date and time the event occurred",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"durationMs": "Request duration in milliseconds",
+		"error": "Was the response an error: 1 , 0 for no error",
+		"freshInputTokens": "Fresh uncached input tokens, falling back to tokens_in when usage metadata is unavailable",
+		"gateway": "Gateway name",
+		"mcpServerCount": "MCP server count from request metadata",
+		"mcpToolCount": "MCP tool count from request metadata",
+		"metadataCommonName": "Access service principal name extracted from request metadata",
+		"metadataKey": "Individual metadata key saved on an AI Gateway request. Selecting this dimension explodes one request into one row per metadata key, enabling common-key discovery; counts are per key occurrence.",
+		"metadataKeys": "Metadata keys saved on ai-gateway request",
+		"metadataRaw": "Metadata saved in on ai-gateway request",
+		"metadataSessionId": "Framework session ID extracted from request metadata (opt-in per gateway)",
+		"metadataUserId": "Access user ID (JWT sub claim) extracted from request metadata",
+		"metadataValue": "Value for a caller-selected metadata key. Use aliases to request or group by specific customer-provided metadata keys. AI Gateway-injected identity keys use the cf.* prefix.",
+		"metadataValues": "Metadata values saved on ai-gateway request",
+		"model": "Which models was the request sent to",
+		"prompts": "Prompts used on ai-gateway request",
+		"promptsIds": "Prompts Ids used on ai-gateway request",
+		"promptsVersions": "Prompts versions used on ai-gateway request",
+		"provider": "Which provider was the request sent to",
+		"rateLimited": "Was the request rate limited?: 1 = rate limit applied, 0 = rate limit not applied",
+		"sampleInterval": "ABR sample interval",
+		"statusCode": "HTTP Status Code of provider response",
+		"tokensIn": "Number of tokens in the request",
+		"tokensOut": "Number of tokens in the response",
+		"usageMetadataRaw": "Raw provider usage metadata saved on the AI Gateway request",
+		"userAgent": "User-Agent header value sent by the calling SDK or client",
+		"wholesale": "Was the request use wholesale: 1 = applied, 0 = not applied"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"mcpServerCount": "Maximum MCP server count",
+		"mcpToolCount": "Maximum MCP tool count"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsMin": {
+		"__description": "",
+		"firstContextTokens": "Context tokens from the first request in the result group",
+		"firstMcpToolCount": "MCP tool count from the first request in the result group",
+		"sessionStart": "Earliest request timestamp in the result group"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"costP25": "25th percentile request cost",
+		"costP50": "50th percentile request cost",
+		"costP75": "75th percentile request cost",
+		"costP90": "90th percentile request cost",
+		"costP95": "95th percentile request cost",
+		"costP99": "99th percentile request cost",
+		"costP999": "99.9th percentile request cost",
+		"durationMsP25": "25th percentile request duration in milliseconds",
+		"durationMsP50": "50th percentile request duration in milliseconds",
+		"durationMsP75": "75th percentile request duration in milliseconds",
+		"durationMsP90": "90th percentile request duration in milliseconds",
+		"durationMsP95": "95th percentile request duration in milliseconds",
+		"durationMsP99": "99th percentile request duration in milliseconds",
+		"durationMsP999": "99.9th percentile request duration in milliseconds"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsRatio": {
+		"__description": "",
+		"cacheHitPct": "Percentage of context tokens read from provider prompt cache",
+		"mcpMetadataCoveragePct": "Percentage of requests with MCP tool or server count metadata present",
+		"rowsWithCacheReadPct": "Percentage of requests with cache read tokens present",
+		"rowsWithCacheWritePct": "Percentage of requests with cache write tokens present",
+		"rowsWithSessionIdPct": "Percentage of requests with a session ID in metadata"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"cacheReadTokens": "Sum of input tokens read from provider prompt cache",
+		"cacheWriteTokens": "Sum of input tokens written to provider prompt cache",
+		"cachedRequests": "Sum of cached requests",
+		"cachedTokensIn": "Sum of cached tokens in",
+		"cachedTokensOut": "Sum of cached tokens out",
+		"contextTokens": "Sum of cache read, cache write, and fresh input tokens",
+		"cost": "Total cost\"",
+		"erroredRequests": "Sum of errored requests",
+		"freshInputTokens": "Sum of fresh uncached input tokens, falling back to tokens_in when usage metadata is unavailable",
+		"freshPlusWriteTokens": "Sum of fresh input tokens plus cache write tokens",
+		"requestsWithCacheRead": "Sum of requests with cache read tokens present",
+		"requestsWithCacheWrite": "Sum of requests with cache write tokens present",
+		"requestsWithMcpCount": "Sum of requests with MCP tool or server count metadata present",
+		"requestsWithSessionId": "Sum of requests with a session ID in metadata",
+		"tokensIn": "Sum of input tokens",
+		"tokensOut": "Sum of output tokens",
+		"totalTokens": "Sum of input and output tokens",
+		"uncachedTokensIn": "Sum of uncached tokens in",
+		"uncachedTokensOut": "Sum of uncached tokens out"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"cacheReadTokens": "Confidence interval for the corresponding point estimate",
+		"cacheWriteTokens": "Confidence interval for the corresponding point estimate",
+		"cachedRequests": "Confidence interval for the corresponding point estimate",
+		"cachedTokensIn": "Confidence interval for the corresponding point estimate",
+		"cachedTokensOut": "Confidence interval for the corresponding point estimate",
+		"contextTokens": "Confidence interval for the corresponding point estimate",
+		"cost": "Confidence interval for the corresponding point estimate",
+		"erroredRequests": "Confidence interval for the corresponding point estimate",
+		"freshInputTokens": "Confidence interval for the corresponding point estimate",
+		"freshPlusWriteTokens": "Confidence interval for the corresponding point estimate",
+		"requestsWithCacheRead": "Confidence interval for the corresponding point estimate",
+		"requestsWithCacheWrite": "Confidence interval for the corresponding point estimate",
+		"requestsWithMcpCount": "Confidence interval for the corresponding point estimate",
+		"requestsWithSessionId": "Confidence interval for the corresponding point estimate",
+		"tokensIn": "Confidence interval for the corresponding point estimate",
+		"tokensOut": "Confidence interval for the corresponding point estimate",
+		"totalTokens": "Confidence interval for the corresponding point estimate",
+		"uncachedTokensIn": "Confidence interval for the corresponding point estimate",
+		"uncachedTokensOut": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAiGatewayRequestsStagingAdaptiveGroupsUniq": {
 		"__description": "",
 		"sessions": "Approximate count of unique sessions",
 		"users": "Approximate count of unique authenticated users"
@@ -1229,6 +1397,46 @@
 	"AccountArtifactsEventsAdaptiveGroupsSumConfidence": {
 		"__description": "",
 		"durationMs": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAuditLogsGroups": {
+		"__description": "Audit log events grouped by account, time, actor, action, and resource dimensions.",
+		"count": "The number of audit log events.",
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
+	},
+	"AccountAuditLogsGroupsDimensions": {
+		"__description": "",
+		"actionDescription": "A product-defined, human-readable description of the audit log action. Values can expand as products add audit events.",
+		"actionResult": "The result of the audit log action. Expected values are success and failure.",
+		"actionType": "The product-defined type of audit log action. Values can expand as products add audit events.",
+		"actorContext": "The context where the actor initiated the action, such as API or dashboard. Values can expand as actor contexts change.",
+		"actorEmail": "The email address of the actor that initiated the action.",
+		"actorId": "The unique Cloudflare identifier of the actor that initiated the action.",
+		"actorTokenId": "The token identifier associated with the actor, when present.",
+		"actorTokenName": "The token name associated with the actor, when present.",
+		"actorType": "The type of actor that initiated the action. Values can expand as actor types change.",
+		"date": "The date the audit log action was initiated.",
+		"datetimeFifteenMinutes": "The date and time the audit log action was initiated, truncated to fifteen minutes.",
+		"datetimeFiveMinutes": "The date and time the audit log action was initiated, truncated to five minutes.",
+		"datetimeHour": "The date and time the audit log action was initiated, truncated to the hour.",
+		"datetimeMinute": "The date and time the audit log action was initiated, truncated to the minute.",
+		"rawMethod": "The raw HTTP method associated with the request, such as GET, POST, PUT, PATCH, or DELETE.",
+		"rawStatusCode": "The raw HTTP status code associated with the request.",
+		"resourceId": "The identifier of the resource affected by the action.",
+		"resourceProduct": "The Cloudflare product associated with the affected resource. Values can expand as products add audit events.",
+		"resourceScope": "The scope of the resource affected by the action. Values can expand as resource scopes change.",
+		"resourceType": "The product-defined type of resource affected by the action. Values can expand as products add audit events."
+	},
+	"AccountAuditLogsGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAuditLogsGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAuditLogsGroupsUniq": {
+		"__description": "",
+		"actors": "The number of unique actors that initiated audit log actions.",
+		"products": "The number of unique Cloudflare products associated with audit log actions."
 	},
 	"AccountAutoRAGConfigAPIAdaptiveGroups": {
 		"__description": "AutoRAG Config API Search Analytics",
@@ -4817,12 +5025,17 @@
 		"dstIpContinent": "Continent code of the request destination IP address",
 		"dstIpCountry": "Country code of the request destination IP address",
 		"email": "The email address of the gateway user who made the request",
-		"experimentalIsMcp": "Whether the request was made via MCP. Experimental feature, may change within a three-month period",
+		"experimentalIsMcp": "Whether the request was made to an MCP server. Experimental feature, may change within a three-month period",
 		"httpHost": "The destination host for the request",
 		"httpStatusCode": "HTTP status code gateway returned to the user. 0 if nothing was returned(e.g client disconnected)",
 		"isIsolated": "Indicates whether this request was made through an isolated link",
 		"offramp": "The egress offramp type for the request",
 		"onramp": "The ingress onramp type for the request",
+		"packageEcosystem": "The package ecosystem identified for the request",
+		"packageName": "The package name identified for the request",
+		"packageNamespace": "The package namespace identified for the request, if any",
+		"packagePURL": "The package URL (PURL) identified for the request",
+		"packageVersion": "The package version identified for the request",
 		"privateAppAUD": "Access private app AUD",
 		"proxyEndpoint": "The proxy endpoint used on this request",
 		"quarantined": "Indicates if the request content was quarantined",
@@ -5431,7 +5644,7 @@
 		"sessionIdHash": "API Security Session ID hash",
 		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
 		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
-		"upperTierColoName": "",
+		"upperTierColoName": "Upper tier data center; empty when no upper tier was used",
 		"userAgent": "visitor's user-agent string",
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent",
@@ -5571,7 +5784,7 @@
 		"sessionIdHash": "API Security Session ID hash",
 		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
 		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
-		"upperTierColoName": "",
+		"upperTierColoName": "Upper tier data center; empty when no upper tier was used",
 		"userAgent": "",
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent",
@@ -5951,6 +6164,54 @@
 		"__description": "",
 		"requests": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountImagesTransformationsAdaptiveGroups": {
+		"__description": "Image transformations grouped by zone, binding request type, worker binding script ID, and transformation string",
+		"avg": "The average value for a metric per dimensions",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Estimated number of requests per specific dimensions using adaptive sampling weights",
+		"dimensions": "List of dimensions to group by",
+		"sum": "Calculates a sum of each field per specific dimensions"
+	},
+	"AccountImagesTransformationsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average adaptive sampling weight"
+	},
+	"AccountImagesTransformationsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of requests per specific dimensions using adaptive sampling weights, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Calculates a sum of each field per specific dimensions, with confidence intervals"
+	},
+	"AccountImagesTransformationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "",
+		"datetime": "",
+		"datetimeFifteenMinutes": "",
+		"datetimeFiveMinutes": "",
+		"datetimeHour": "",
+		"datetimeMinute": "",
+		"isBindingRequest": "1 when the transformation request originates from a Worker binding, otherwise 0",
+		"originHost": "Hostname of the origin image URL",
+		"scriptName": "Worker script name associated with a binding transformation request",
+		"transformation": "Image transformation string",
+		"zoneTag": "Associated zone"
+	},
+	"AccountImagesTransformationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesTransformationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountImagesTransformationsAdaptiveGroupsSum": {
+		"__description": "",
+		"billableEventCount": "Estimated number of billable transformation events using adaptive sampling weights",
+		"requests": "Estimated count of image transformation requests using adaptive sampling weights"
+	},
+	"AccountImagesTransformationsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"billableEventCount": "Confidence interval for the corresponding point estimate",
+		"requests": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountImagesUniqueTransformations": {
 		"__description": "Image unique transfromations per day",
 		"date": "The date uniques are calculated for",
@@ -6093,6 +6354,7 @@
 		"changedOriginHealth": "Health status of the origin that triggered the health change event (unknown = health state unknown, healthy = origin healthy, critical = origin critical)",
 		"changedOriginName": "Name of the origin that triggered the health change event (empty if no origin health changed)",
 		"date": "The date when the event was generated",
+		"datetime": "The date and time when the event was generated",
 		"eventId": "Unique identifier for this event",
 		"expectedResponseCodes": "Expected HTTP response codes for the pool health checks, comma-separated",
 		"originHealthChanged": "1 if an origin health changed at this event, 0 otherwise",
@@ -10319,6 +10581,7 @@
 		"aiGatewayCacheAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
+		"aiGatewayRequestsStagingAdaptiveGroups": "",
 		"aiGatewaySizeAdaptiveGroups": "",
 		"aiGatewaySpendSessionsAdaptiveGroups": "",
 		"aiGatewaySpendUserDailyAdaptiveGroups": "",
@@ -10327,6 +10590,7 @@
 		"aiSearchAPIAdaptiveGroups": "",
 		"aiSearchIngestedItemsAdaptiveGroups": "",
 		"artifactsEventsAdaptiveGroups": "",
+		"auditLogsGroups": "",
 		"autoRAGConfigAPIAdaptiveGroups": "",
 		"autoRAGEngineAdaptiveGroups": "",
 		"browserIsolationSessionsAdaptiveGroups": "",
@@ -10403,6 +10667,7 @@
 		"hyperdrivePoolSizesAdaptiveGroups": "",
 		"hyperdriveQueriesAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
+		"imagesTransformationsAdaptiveGroups": "",
 		"imagesUniqueTransformations": "",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "",
 		"kvOperationsAdaptiveGroups": "",
@@ -12564,7 +12829,7 @@
 		"sessionIdHash": "API Security Session ID hash",
 		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
 		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
-		"upperTierColoName": "",
+		"upperTierColoName": "Upper tier data center; empty when no upper tier was used",
 		"userAgent": "",
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent",
@@ -14224,7 +14489,7 @@
 		"sessionIdHash": "API Security Session ID hash",
 		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
 		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
-		"upperTierColoName": "",
+		"upperTierColoName": "Upper tier data center; empty when no upper tier was used",
 		"userAgent": "visitor's user-agent string",
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent",
@@ -14363,7 +14628,7 @@
 		"sessionIdHash": "API Security Session ID hash",
 		"threatIntelIpDatasets": "Threat Intelligence dataset(s) that matched the visitor IP address (e.g. ddos, waf)",
 		"threatIntelIpEventIds": "UUIDv4 identifiers linking to Threat Intelligence events that matched the visitor IP address",
-		"upperTierColoName": "",
+		"upperTierColoName": "Upper tier data center; empty when no upper tier was used",
 		"userAgent": "",
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent",
@@ -15800,6 +16065,7 @@
 		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
+		"aiGatewayRequestsStagingAdaptiveGroups": "AI Gateway Requests (staging)",
 		"aiGatewaySizeAdaptiveGroups": "AI Gateway Stored Rows",
 		"aiGatewaySpendSessionsAdaptiveGroups": "AI Gateway Spend session-level facts with adaptive sampling",
 		"aiGatewaySpendUserDailyAdaptiveGroups": "AI Gateway Spend user daily facts with adaptive sampling",
@@ -15808,6 +16074,7 @@
 		"aiSearchAPIAdaptiveGroups": "AI Search API Search Analytics",
 		"aiSearchIngestedItemsAdaptiveGroups": "AI Search Ingested Items Analytics",
 		"artifactsEventsAdaptiveGroups": "Artifacts events with adaptive sampling",
+		"auditLogsGroups": "Audit log events grouped by account, time, actor, action, and resource dimensions.",
 		"autoRAGConfigAPIAdaptiveGroups": "AutoRAG Config API Search Analytics",
 		"autoRAGEngineAdaptiveGroups": "AutoRAG Engine Ingestion Analytics",
 		"browserIsolationSessionsAdaptiveGroups": "Aggregated count of Browser Isolation sessions",
@@ -15884,6 +16151,7 @@
 		"hyperdrivePoolSizesAdaptiveGroups": "Hyperdrive connection pool size snapshots with adaptive sampling.",
 		"hyperdriveQueriesAdaptiveGroups": "Hyperdrive query events with adaptive sampling.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
+		"imagesTransformationsAdaptiveGroups": "Image transformations grouped by zone, binding request type, worker binding script ID, and transformation string",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "Image unique transformations accumulated since start of month",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
@@ -16018,7 +16286,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
