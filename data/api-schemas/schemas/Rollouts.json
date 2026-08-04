@@ -338,7 +338,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Application rollout created successfully",
+				"description": "Application rollout created successfully.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -767,11 +767,11 @@
 															"type": "object",
 															"properties": {
 																"active": {
-																	"description": "Number of instances with a running container.",
+																	"description": "Number of instances whose runtime has reported the container as running (container_status = \"running\"). This is a subset of the placements that are up: an instance that is already bound to a Durable Object and serving traffic is counted under \"assigned\" until its container_status catches up to \"running\", so container_status can briefly lag Durable Object attachment under churn. To estimate running, Durable-Object-bound instances, sum \"active\" + \"assigned\" rather than reading \"active\" alone.\n",
 																	"type": "integer"
 																},
 																"assigned": {
-																	"description": "Number of instances assigned to a container, but the container is not yet running.",
+																	"description": "Number of instances bound to a Durable Object with a running placement whose container_status has not yet flipped to \"running\". These are typically live, serving instances; \"active\" + \"assigned\" approximates the running, Durable-Object-bound count.\n",
 																	"type": "integer"
 																}
 															},

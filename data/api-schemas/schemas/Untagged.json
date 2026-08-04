@@ -2319,6 +2319,88 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/booking/{booking_id}": [
+		{
+			"description": "Unique identifier of the booking.",
+			"in": "path",
+			"name": "booking_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"format": "uuid"
+			}
+		}
+	],
+	"PARAMETERS /v1/dash/{internal_user_id}/{internal_account_id}/booking": [
+		{
+			"description": "Internal identifier of the user making the request.",
+			"in": "path",
+			"name": "internal_user_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		},
+		{
+			"description": "Internal identifier of the Cloudflare account.",
+			"in": "path",
+			"name": "internal_account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /v1/dash/{internal_user_id}/{internal_account_id}/booking/{booking_id}": [
+		{
+			"description": "Internal identifier of the user making the request.",
+			"in": "path",
+			"name": "internal_user_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		},
+		{
+			"description": "Internal identifier of the Cloudflare account.",
+			"in": "path",
+			"name": "internal_account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		},
+		{
+			"description": "Unique identifier of the booking.",
+			"in": "path",
+			"name": "booking_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"format": "uuid"
+			}
+		}
+	],
+	"PARAMETERS /v1/dash/{internal_user_id}/{internal_account_id}/booking/availability": [
+		{
+			"description": "Internal identifier of the user making the request.",
+			"in": "path",
+			"name": "internal_user_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		},
+		{
+			"description": "Internal identifier of the Cloudflare account.",
+			"in": "path",
+			"name": "internal_account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/configuration": [
 		{
 			"in": "path",

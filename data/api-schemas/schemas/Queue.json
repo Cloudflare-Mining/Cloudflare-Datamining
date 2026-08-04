@@ -7157,6 +7157,257 @@
 		"x-fern-sdk-method-name": "bulk-push",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/peek": {
+		"operationId": "queues-peek-messages",
+		"summary": "Peek Queue Messages",
+		"description": "Peek messages from a Queue without leasing them. Messages remain available for subsequent peek or pull operations.",
+		"parameters": [
+			{
+				"name": "queue_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"batch_size": {
+								"description": "The maximum number of messages to include in a batch.",
+								"type": "number",
+								"example": 50,
+								"x-auditable": true
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "A batch of peeked messages from the Queue",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
+											"enum": [
+												true
+											],
+											"x-auditable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"attempts": {
+																"type": "number",
+																"example": 1,
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"body": {
+																"type": "string",
+																"example": "hello world",
+																"readOnly": true
+															},
+															"id": {
+																"type": "string",
+																"example": "b01b5594f784d0165c2985833f5660dd",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"metadata": {
+																"type": "object",
+																"example": {
+																	"CF-Content-Type": "text",
+																	"CF-sourceMessageSource": "dash"
+																},
+																"readOnly": true
+															},
+															"ref": {
+																"description": "An opaque reference to a peeked message. You must hold on to this value and use it to purge the message.",
+																"type": "string",
+																"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+																"x-auditable": true
+															},
+															"timestamp_ms": {
+																"type": "number",
+																"example": 1710950954154,
+																"readOnly": true,
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000,
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.peek"
+			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "peek",
+		"x-forge-hidden": true
+	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview": {
 		"operationId": "queues-preview-messages",
 		"summary": "Preview Queue Messages",
@@ -7946,6 +8197,246 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
 		"x-fern-sdk-method-name": "pull",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/purge": {
+		"operationId": "queues-purge-messages",
+		"summary": "Purge Peeked Queue Messages",
+		"description": "Delete peeked messages from a Queue by their ref. Purged messages aren't considered delivered, they are instantly deleted from this queue and do not affect metrics.",
+		"parameters": [
+			{
+				"name": "queue_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"refs": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"ref": {
+											"description": "An opaque reference to a peeked message. You must hold on to this value and use it to purge the message.",
+											"type": "string",
+											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"ref"
+									],
+									"type": "object"
+								}
+							}
+						},
+						"required": [
+							"refs"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Result of purging peeked messages",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
+											"enum": [
+												true
+											],
+											"x-auditable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"errors": {
+													"description": "Errors encountered while purging messages.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"message": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"warnings": {
+													"description": "Map of refs to warning messages encountered during purge.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000,
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.ack"
+			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "purge",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/purge": {

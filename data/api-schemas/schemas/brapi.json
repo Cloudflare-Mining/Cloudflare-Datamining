@@ -8947,7 +8947,7 @@
 									}
 								},
 								"result": {
-									"description": "Markdown content.",
+									"description": "Markdown content. Prefixed with YAML frontmatter (e.g. `title`) when the page provides that metadata.",
 									"type": "string"
 								},
 								"success": {
@@ -13139,7 +13139,7 @@
 											"type": "string"
 										},
 										"markdown": {
-											"description": "Markdown content.",
+											"description": "Markdown content. Prefixed with YAML frontmatter (e.g. `title`) when the page provides that metadata.",
 											"type": "string"
 										},
 										"screenshot": {

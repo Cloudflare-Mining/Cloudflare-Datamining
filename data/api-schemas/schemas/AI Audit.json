@@ -628,7 +628,9 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-sdk-group-name": "ai-audit.robots",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/ai-audit/robots/bulk": {
 		"operationId": "ai-audit-bulk-get-robots",
@@ -1348,6 +1350,8 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-sdk-group-name": "ai-audit.robots",
+		"x-fern-sdk-method-name": "bulk-get"
 	}
 }

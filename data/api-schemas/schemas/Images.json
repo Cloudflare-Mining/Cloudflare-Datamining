@@ -1,0 +1,1936 @@
+{
+	"DELETE /accounts/{accountId}/v1/images/{imageId}": {
+		"operationId": "delete_ImageDelete",
+		"summary": "Delete an image",
+		"description": "Delete an image.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "imageId",
+				"in": "path",
+				"description": "Image identifier.",
+				"required": true,
+				"schema": {
+					"description": "Image identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete image response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete an image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"GET /accounts/{accountId}/v1/images": {
+		"operationId": "get_ImageList",
+		"summary": "Get a list of images",
+		"description": "List images for an account.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page",
+				"schema": {
+					"description": "Number of items per page",
+					"type": "integer",
+					"default": 1000,
+					"maximum": 10000,
+					"minimum": 10
+				}
+			},
+			{
+				"name": "continuation_token",
+				"in": "query",
+				"description": "Continuation token for a next page. List images V2 returns continuation_token",
+				"schema": {
+					"description": "Continuation token for a next page. List images V2 returns continuation_token",
+					"type": "string"
+				}
+			},
+			{
+				"name": "creator",
+				"in": "query",
+				"description": "Internal user ID set within the creator field. Setting to empty string will return images where creator field is not set",
+				"schema": {
+					"description": "Internal user ID set within the creator field. Setting to empty string will return images where creator field is not set",
+					"type": "string"
+				}
+			},
+			{
+				"name": "sort_order",
+				"in": "query",
+				"description": "Sorting order by upload time",
+				"schema": {
+					"description": "Sorting order by upload time",
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Upload an image response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"continuation_token": {
+											"description": "Continuation token for a next page. List images V2 returns continuation_token",
+											"type": "string",
+											"nullable": true
+										},
+										"images": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"creator": {
+														"type": "string"
+													},
+													"filename": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"meta": {
+														"type": "object"
+													},
+													"requireSignedURLs": {
+														"type": "boolean"
+													},
+													"uploaded": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"variants": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"id",
+													"uploaded",
+													"filename",
+													"meta",
+													"requireSignedURLs",
+													"variants"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"images",
+										"continuation_token"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Upload an image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"GET /accounts/{accountId}/v1/images/{imageId}": {
+		"operationId": "get_ImageGet",
+		"summary": "Get an image data",
+		"description": "Get image metadata.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "imageId",
+				"in": "path",
+				"description": "Image identifier.",
+				"required": true,
+				"schema": {
+					"description": "Image identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Image details response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"creator": {
+											"type": "string"
+										},
+										"filename": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"meta": {
+											"type": "object"
+										},
+										"requireSignedURLs": {
+											"type": "boolean"
+										},
+										"uploaded": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"variants": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"required": [
+										"id",
+										"uploaded",
+										"filename",
+										"meta",
+										"requireSignedURLs",
+										"variants"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Image details response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"GET /accounts/{accountId}/v1/images/{imageId}/blob": {
+		"operationId": "get_ImageGetBlob",
+		"summary": "Get an image",
+		"description": "Get image as a blob.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "imageId",
+				"in": "path",
+				"description": "Image identifier.",
+				"required": true,
+				"schema": {
+					"description": "Image identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get image response",
+				"content": {
+					"image/*": {
+						"schema": {
+							"format": "binary"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"GET /accounts/{accountId}/v2/images": {
+		"operationId": "get__accounts_accountId_v2_images",
+		"summary": "Get a list of images",
+		"description": "List images for an account.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of items per page",
+				"schema": {
+					"description": "Number of items per page",
+					"type": "integer",
+					"default": 1000,
+					"maximum": 10000,
+					"minimum": 10
+				}
+			},
+			{
+				"name": "continuation_token",
+				"in": "query",
+				"description": "Continuation token for a next page. List images V2 returns continuation_token",
+				"schema": {
+					"description": "Continuation token for a next page. List images V2 returns continuation_token",
+					"type": "string"
+				}
+			},
+			{
+				"name": "creator",
+				"in": "query",
+				"description": "Internal user ID set within the creator field. Setting to empty string will return images where creator field is not set",
+				"schema": {
+					"description": "Internal user ID set within the creator field. Setting to empty string will return images where creator field is not set",
+					"type": "string"
+				}
+			},
+			{
+				"name": "sort_order",
+				"in": "query",
+				"description": "Sorting order by upload time",
+				"schema": {
+					"description": "Sorting order by upload time",
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Upload an image response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"continuation_token": {
+											"description": "Continuation token for a next page. List images V2 returns continuation_token",
+											"type": "string",
+											"nullable": true
+										},
+										"images": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"creator": {
+														"type": "string"
+													},
+													"filename": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"meta": {
+														"type": "object"
+													},
+													"requireSignedURLs": {
+														"type": "boolean"
+													},
+													"uploaded": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"variants": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"id",
+													"uploaded",
+													"filename",
+													"meta",
+													"requireSignedURLs",
+													"variants"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"images",
+										"continuation_token"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Upload an image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"GET /accounts/{accountId}/zones/{zoneId}/v1/images/flows": {
+		"operationId": "get_FlowsGet",
+		"summary": "Get transformation flows",
+		"description": "Get the current transformation flows configuration for a zone.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "zoneId",
+				"in": "path",
+				"description": "Zone identifier.",
+				"required": true,
+				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get flows config",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"etag": {
+											"type": "string"
+										},
+										"flows": {
+											"type": "array",
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"provider": {
+																"type": "string",
+																"enum": [
+																	"fastly"
+																],
+																"x-auditable": true
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"provider"
+																]
+															},
+															"version": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"enabled",
+															"type",
+															"provider",
+															"version"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"transformations": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"key": {
+																			"type": "string"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"key",
+																		"value"
+																	],
+																	"type": "object"
+																}
+															},
+															"trigger": {
+																"oneOf": [
+																	{
+																		"properties": {
+																			"triggers": {
+																				"type": "array",
+																				"items": {
+																					"nullable": true
+																				},
+																				"minItems": 1
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"and"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"triggers"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"triggers": {
+																				"type": "array",
+																				"items": {
+																					"nullable": true
+																				},
+																				"minItems": 1
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"or"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"triggers"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"paths": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"path"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"paths"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"extensions": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"extension"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"extensions"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"params": {
+																				"type": "array",
+																				"items": {
+																					"properties": {
+																						"key": {
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"value"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"query-param"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"params"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"custom"
+																]
+															}
+														},
+														"required": [
+															"enabled",
+															"type",
+															"name",
+															"trigger",
+															"transformations"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"maxItems": 10
+										},
+										"version": {
+											"type": "number",
+											"enum": [
+												2
+											]
+										}
+									},
+									"required": [
+										"version",
+										"flows"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get flows config failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		],
+		"x-stability": "stable"
+	},
+	"PATCH /accounts/{accountId}/v1/images/{imageId}": {
+		"operationId": "patch_ImageEdit",
+		"summary": "Update an image",
+		"description": "Update an image's metadata.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "imageId",
+				"in": "path",
+				"description": "Image identifier.",
+				"required": true,
+				"schema": {
+					"description": "Image identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"creator": {
+								"description": "Image creator",
+								"type": "string"
+							},
+							"metadata": {
+								"description": "Image metadata",
+								"nullable": true
+							},
+							"requireSignedURLs": {
+								"description": "Required signed url",
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Edit image response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Edit image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"POST /accounts/{accountId}/v1/images": {
+		"operationId": "post_ImageUpload",
+		"summary": "Upload a new Image",
+		"description": "Upload a new image.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"creator": {
+								"description": "Can set the creator field with an internal user ID.",
+								"type": "string"
+							},
+							"file": {
+								"description": "An image binary data. Only needed when type is uploading a file.",
+								"type": "string",
+								"format": "binary"
+							},
+							"id": {
+								"description": "Optional Image Custom ID. Up to 1024 chars. Can include any number of subpaths, and utf8 characters. Cannot start nor end with a / (forward slash). Cannot be a UUID.",
+								"type": "string"
+							},
+							"metadata": {
+								"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images.",
+								"type": "object"
+							},
+							"requireSignedURLs": {
+								"description": "Indicates whether the image requires a signature token for the access.",
+								"type": "boolean",
+								"default": false
+							},
+							"url": {
+								"description": "A URL to fetch an image from origin. Only needed when type is uploading from a URL.",
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Upload an image response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"creator": {
+											"type": "string"
+										},
+										"filename": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"meta": {
+											"type": "object"
+										},
+										"requireSignedURLs": {
+											"type": "boolean"
+										},
+										"uploaded": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"variants": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"required": [
+										"id",
+										"uploaded",
+										"filename",
+										"meta",
+										"requireSignedURLs",
+										"variants"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Upload an image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"POST /accounts/{accountId}/v2/images/direct_upload": {
+		"operationId": "post_DirectUploadLink",
+		"summary": "Create authenticated direct upload URL",
+		"description": "Create an authenticated direct upload URL for an image.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"expiry": {
+								"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes.",
+								"type": "string"
+							},
+							"id": {
+								"description": "Optional Image Custom ID. Up to 1024 chars. Can include any number of subpaths, and utf8 characters. Cannot start nor end with a / (forward slash). Cannot be a UUID.",
+								"type": "string"
+							},
+							"metadata": {
+								"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images.",
+								"type": "object"
+							},
+							"requireSignedURLs": {
+								"description": "Indicates whether the image requires a signature token for the access.",
+								"type": "boolean",
+								"default": false
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create an authenticated direct upload url response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"description": "Image id",
+											"type": "string"
+										},
+										"uploadURL": {
+											"description": "Url a future image should be uploaded to",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"uploadURL"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create an authenticated direct upload url response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"PUT /accounts/{accountId}/v1/images/{imageId}": {
+		"operationId": "put_ImageDirectUpload",
+		"summary": "Direct upload a new Image",
+		"description": "Upload an image to a specific image ID.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "imageId",
+				"in": "path",
+				"description": "Image identifier.",
+				"required": true,
+				"schema": {
+					"description": "Image identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"file": {
+								"description": "An image binary data. Only needed when type is uploading a file.",
+								"type": "string",
+								"format": "binary"
+							},
+							"url": {
+								"description": "A URL to fetch an image from origin. Only needed when type is uploading from a URL.",
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Upload an image response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"creator": {
+											"type": "string"
+										},
+										"filename": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"meta": {
+											"type": "object"
+										},
+										"requireSignedURLs": {
+											"type": "boolean"
+										},
+										"uploaded": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"variants": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"required": [
+										"id",
+										"uploaded",
+										"filename",
+										"meta",
+										"requireSignedURLs",
+										"variants"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Upload an image response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		]
+	},
+	"PUT /accounts/{accountId}/zones/{zoneId}/v1/images/flows": {
+		"operationId": "put_FlowsUpdate",
+		"summary": "Update transformation flows",
+		"description": "Replace the entire transformation flows configuration for a zone.",
+		"parameters": [
+			{
+				"name": "accountId",
+				"in": "path",
+				"description": "Account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "zoneId",
+				"in": "path",
+				"description": "Zone identifier.",
+				"required": true,
+				"schema": {
+					"description": "Zone identifier.",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"etag": {
+								"type": "string"
+							},
+							"flows": {
+								"type": "array",
+								"items": {
+									"oneOf": [
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"provider": {
+													"type": "string",
+													"enum": [
+														"fastly"
+													],
+													"x-auditable": true
+												},
+												"type": {
+													"type": "string",
+													"enum": [
+														"provider"
+													]
+												},
+												"version": {
+													"type": "number"
+												}
+											},
+											"required": [
+												"enabled",
+												"type",
+												"provider",
+												"version"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"enabled": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"name": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"transformations": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"key": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"key",
+															"value"
+														],
+														"type": "object"
+													}
+												},
+												"trigger": {
+													"oneOf": [
+														{
+															"properties": {
+																"triggers": {
+																	"type": "array",
+																	"items": {
+																		"nullable": true
+																	},
+																	"minItems": 1
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"and"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"triggers"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"triggers": {
+																	"type": "array",
+																	"items": {
+																		"nullable": true
+																	},
+																	"minItems": 1
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"or"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"triggers"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"paths": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	}
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"path"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"paths"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"extensions": {
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	}
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"extension"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"extensions"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"params": {
+																	"type": "array",
+																	"items": {
+																		"properties": {
+																			"key": {
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"key",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"query-param"
+																	]
+																}
+															},
+															"required": [
+																"type",
+																"params"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"type": {
+													"type": "string",
+													"enum": [
+														"custom"
+													]
+												}
+											},
+											"required": [
+												"enabled",
+												"type",
+												"name",
+												"trigger",
+												"transformations"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 10
+							},
+							"version": {
+								"type": "number",
+								"enum": [
+									2
+								]
+							}
+						},
+						"required": [
+							"version",
+							"flows"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update flows config",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"etag": {
+											"type": "string"
+										},
+										"flows": {
+											"type": "array",
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"provider": {
+																"type": "string",
+																"enum": [
+																	"fastly"
+																],
+																"x-auditable": true
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"provider"
+																]
+															},
+															"version": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"enabled",
+															"type",
+															"provider",
+															"version"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"transformations": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"key": {
+																			"type": "string"
+																		},
+																		"value": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"key",
+																		"value"
+																	],
+																	"type": "object"
+																}
+															},
+															"trigger": {
+																"oneOf": [
+																	{
+																		"properties": {
+																			"triggers": {
+																				"type": "array",
+																				"items": {
+																					"nullable": true
+																				},
+																				"minItems": 1
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"and"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"triggers"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"triggers": {
+																				"type": "array",
+																				"items": {
+																					"nullable": true
+																				},
+																				"minItems": 1
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"or"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"triggers"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"paths": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"path"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"paths"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"extensions": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				}
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"extension"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"extensions"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"params": {
+																				"type": "array",
+																				"items": {
+																					"properties": {
+																						"key": {
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"value"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"query-param"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"params"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"custom"
+																]
+															}
+														},
+														"required": [
+															"enabled",
+															"type",
+															"name",
+															"trigger",
+															"transformations"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"maxItems": 10
+										},
+										"version": {
+											"type": "number",
+											"enum": [
+												2
+											]
+										}
+									},
+									"required": [
+										"version",
+										"flows"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update flows config failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Images"
+		],
+		"x-stability": "stable"
+	}
+}
