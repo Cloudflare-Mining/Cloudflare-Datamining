@@ -5,36 +5,53 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco, CA</strong></p>
-<p><strong>About the role<br><br></strong>The Technical Marketing team works closely with product teams, sales and marketing to ensure our customers understand the technical details of how our products work. Our goal is to ensure the technical buyer and customer understands how Cloudflare products and solutions work in terms of their business needs. We are highly technical and get to touch every aspect of Cloudflare's technology.<strong><br></strong></p>
-<h4><strong>What you'll do</strong></h4>
-<p>As a Technical Marketing intern, you will help accelerate our plans to improve the content and tools we build for technical sales, partners and customers. You will be tasked with gathering feedback from the field, defining what customers are looking to understand and then helping build the videos, demonstrations and other technical assets. Your work will be key to improving our ability to explain to customers the complex technical details which will lead to an increase in sales. Our team is also looking at ways in which AI agents and MCP servers can be utilized to significantly increase our productivity. You will play a role in evaluating and deploying AI tools to help us build quicker.&nbsp;The ideal candidate has a hands on mindset, a get-it-done attitude and is not afraid of challenging the status quo. You should feel comfortable facing a brand new technology and having to read documentation and being hands on with servers, scripts and APIs.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Location: Austin, TX</strong></p>
+<p><strong>About Cloudflare's Security Team</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>The Security Governance, Risk and Compliance team (GRC) is a sub-team of Security. Our job is to make sure that Cloudflare has the right controls in place to secure our systems and customer data. We work cross-functionally with almost every team at Cloudflare to implement new controls, manage risk, and demonstrate our security posture to auditors and customers.&nbsp;</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
+<p><strong>What you’ll do</strong></p>
+<p>As a GRC intern, you won’t just be checking boxes. Over 12-16 weeks, you will:</p>
 <ul>
-	<li>Gain experience with all of Cloudflare's amazing technology and work with the people that build it.</li>
-	<li>Understand complex technologies and explain them in simple terms and align solutions to customer problems.</li>
-	<li>Explore real world uses of AI tools and understand how to deploy them.</li>
-	<li>Identify inefficiencies and implement automation to reduce the time it takes for technical sales to learn our solutions.</li>
-	<li>Collaborate with cross-functional teams to understand business needs and objectives, ensuring relevant and impactful content.</li>
-	<li>Partner with our Product Management and Special Projects team to improve strategies, products and services.</li>
+	<li>Execute a specialized project that directly improves Cloudflare’s security posture.</li>
+	<li>Improve the maturity of Cloudflare’s Security Compliance program by working on projects like:</li>
+	<ul>
+		<li>Evaluating the efficacy of Cloudflare security controls implemented across the organization.</li>
+		<li>Developing and implementing automated solutions to improve Governance, Risk, and Compliance processes and operations, integrating with existing security, engineering, and AI tools.&nbsp;</li>
+		<li>Supporting the security risk register by triaging and assessing potential risks, proposing mitigation strategies, and presenting key security insights to leadership.</li>
+		<li>Supporting Cloudflare’s security data center audits and assessments.</li>
+	</ul>
+	<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
+	<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Present your security project to the entire company at the end of the internship.</li>
+	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Currently pursuing a degree in Management Information Systems (MIS), Information Technology, Technical Communication, Business Analytics,, Marketing, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Strong communication skills. Ability to explain complex concepts in a manner that's understandable without dumbing down the content.</li>
-	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
-	<li>Strong understanding of AI technologies such as AI agents, MCP servers and LLMs.</li>
-	<li>Proficient in operating systems, networking, Internet technologies (SSL/TLS/HTTP/SSH etc) and ability to write code to solve simple problems.</li>
-	<li>Previous experience in technical &amp; product marketing/product management is a plus.</li>
-	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing.</li>
-	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
+	<li>Working knowledge of industry-standard frameworks such as NIST 800-53, ISO 27001, or SOC 2 principles through coursework or personal study.</li>
+	<li>Understanding of risk management methodologies - identifying threats, assessing impact/likelihood, and suggesting mitigation strategies.</li>
+	<li>Ability to write basic Python scripts to automate repetitive tasks, such as interacting with APIs or data cleaning.&nbsp;</li>
+	<li>Workflow Logic &amp; Orchestration - experience with "if-this-then-that" logic in automation platforms.</li>
+	<li>Understanding how to "instruct" AI models effectively and leverage them to perform day-to-day tasks.</li>
+	<li>Ability to build, deploy a full application</li>
+	<li>Technical writing/documenting</li>
+	<li>Observability and metrics experience</li>
+	<li>“Prompt engineering” or experience using LLM coding</li>
+	<li>Familiarity and previous use of cloudflare products: Workers, Workers AI, R2, D1</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In the office 3-5 days a week in the location of the internship.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
+	<li>Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience&nbsp;</li>
+	<li>You’ve built something with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students</a></li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
