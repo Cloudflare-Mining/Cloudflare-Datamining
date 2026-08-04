@@ -14,13 +14,11 @@
 	<li>Seattle</li>
 </ul>
 <h2><strong>About the Role</strong></h2>
-<p>As a Senior Systems Engineer on the Cloudflare One Appliance team, you will shape and build the Linux-based edge appliance runtime and distributed control plane that connect customer sites to Cloudflare. The Appliance runs as physical hardware, a virtual appliance, and in public cloud environments. It gives customers a Cloudflare-managed way to operate hundreds or thousands of branch sites without building their own platform.</p>
-<p>This is a hands-on role for a product-minded engineer who can move between low-level systems, distributed services, and API design, while providing technical leadership for major initiatives.</p>
-<p>Our architecture follows a "light branch, heavy cloud" philosophy: put policy and intelligence in Cloudflare's network unless locality is required for correctness, survivability, performance, or user experience. The role requires strong technical judgment about that boundary. You will help us build systems that are secure, observable, resilient during partial failures, and safe to operate across a large fleet carrying customer-critical traffic.</p>
+<p>This is a hands-on software engineering role on the Cloudflare One Appliance team. You will shape and build the Linux-based edge runtime and distributed control plane that connect customer sites to Cloudflare.<br><br>As a Senior Systems Engineer, you will work across low-level systems, distributed services, and API design while providing technical leadership for major initiatives.<br><br>Our architecture follows a “light branch, heavy cloud” philosophy: policy and intelligence belong in Cloudflare’s network unless locality is required for correctness, survivability, performance, or user experience. You will use strong technical judgment to decide what belongs to the appliance and what belongs in the Cloudflare's network, building systems that are secure, observable, resilient to partial failures, and safe to operate across a large fleet carrying customer-critical traffic.</p>
 <h2><strong>Responsibilities</strong></h2>
 <ul>
 	<li><strong>Build systems end to end:</strong> Design and implement capabilities spanning the cloud control plane, Linux appliance runtime, telemetry pipeline, and physical, virtual, and cloud deployment environments.</li>
-	<li><strong>Build the Linux-based networking platform:</strong> Develop and harden the appliance dataplane. Build secure, reliable networking capabilities using technologies such as IPsec, MASQUE, eBPF, and Linux kernel networking primitives while keeping the system small, predictable, and secure.</li>
+	<li><strong>Build a Linux-based networking platform:</strong> Develop and harden the appliance dataplane. Build secure, reliable networking capabilities using technologies such as IPsec, MASQUE, eBPF, and Linux kernel networking primitives while keeping the system small, predictable, and secure.</li>
 	<li><strong>Engineer reliable fleet control:</strong> Build distributed control-plane and state-management systems that safely deliver configuration and commands, tolerate intermittent connectivity and partial failures, converge to known-good state, and support zero-touch operation across large device fleets.</li>
 	<li><strong>Secure the device lifecycle:</strong> Improve hardware-backed identity, attestation, secure boot, immutable operating-system images, credential rotation, and staged over-the-air upgrades with safe rollback and recovery.</li>
 	<li><strong>Make operability a product feature:</strong> Design telemetry, diagnostics, synthetic tests, support bundles, and remote operations that help customers and support teams understand the system without treating the appliance as a black box.</li>
@@ -31,26 +29,23 @@
 <h2><strong>Role Requirements</strong></h2>
 <h3><strong>Must-Have Skills</strong></h3>
 <ul>
-	<li>8+ years of professional software engineering experience, or equivalent demonstrated impact, building and operating complex production systems.</li>
-	<li>Strong software engineering skills in at least one of Rust, Go, TypeScript, or a comparable language, with the ability and willingness to work in other parts of the stack when needed.</li>
-	<li>Strong Linux systems and networking knowledge, including routing, TCP/IP, network namespaces, service supervision, firewall, packet and flow debugging, and a tunneling or secure transport technology such as IPsec, WireGuard, GRE, or MASQUE.</li>
-	<li>Experience building both Linux-based systems and cloud services, with the debugging skills to trace customer-visible failures across network, device, tunnel, control-plane, and upstream-service boundaries.</li>
-	<li>Experience designing distributed control planes, reconciliation or desired-state systems, remote configuration, or another system that manages state across a large and intermittently connected fleet.</li>
-	<li>Security judgment appropriate for software deployed inside customer networks, including threat modeling, least privilege, credential and key handling, software supply-chain integrity, and secure lifecycle design.</li>
+	<li>8+ years of professional software engineering experience building complex production systems.</li>
+	<li>Strong software engineering skills in Rust, C/C++, Go, or a comparable system programming language, with the ability to work across the stack, including TypeScript.</li>
+	<li>Strong understanding of Linux networking internals, with experience building against the kernel networking stack using eBPF/XDP, netlink, and network namespaces.</li>
+	<li>Experience designing and implementing distributed control planes, desired-state reconciliation, remote configuration, or similar systems that manage large, intermittently connected fleets.</li>
+	<li>Experience designing secure systems, including threat modeling, least privilege, credential handling, and software supply-chain integrity.</li>
 	<li>A track record of owning ambiguous initiatives from discovery through production, including architecture, implementation, staged deployment, incident response, and failure analysis.</li>
-	<li>Technical leadership and communication skills that let you influence decisions, explain system trade-offs to different audiences, and bring engineers and stakeholders toward a clear outcome.</li>
+	<li>Technical leadership and communication skills that let you influence decisions, explain system trade-offs to different audiences, and bring stakeholders toward a clear outcome.</li>
 	<li>Product judgment grounded in customer evidence, usability, and operational simplicity.</li>
 	<li>Practical experience using AI-assisted engineering tools, coding agents, harnesses, or automation responsibly to improve engineering quality and throughput.</li>
 </ul>
 <h3><strong>Nice-to-Have Skills</strong></h3>
 <ul>
-	<li>Experience with SD-WAN, SASE, network operating systems, enterprise edge devices, or products from vendors such as Cisco Meraki, Cato Networks, Fortinet, Juniper, or Palo Alto Networks.</li>
-	<li>Experience building custom or embedded Linux distributions with Buildroot, Yocto, or a similar system, and operating immutable or image-based systems using RAUC, bootc, OSTree, or equivalent update technology.</li>
-	<li>Experience with UEFI Secure Boot, TPMs, measured boot, hardware-backed identity, or remote attestation.</li>
-	<li>Experience packaging and operating virtual network appliances on VMware, KVM, or deploying appliances and network functions in AWS, Azure, or Google Cloud.</li>
-	<li>Experience with high-availability networking, dynamic routing, multi-WAN failover, traffic steering or shaping, application identification, or local policy enforcement.</li>
-	<li>Experience with Kubernetes or serverless control planes, event-driven systems, and observability platforms such as Prometheus, Grafana, ClickHouse, or OpenTelemetry.</li>
-	<li>Experience designing automated fleet tests, hardware-in-the-loop or network-in-the-loop test environments, safe staged rollouts, and remote diagnostic tooling.</li>
+	<li>Experience building networking products or systems, such as SD-WAN, SASE, SDN platforms, or network operating systems.</li>
+	<li>Experience building custom or embedded Linux distributions with immutable, image-based update systems such as RAUC, bootc, or OSTree.</li>
+	<li>Experience with UEFI Secure Boot, TPMs, hardware-backed identity, or remote attestation.</li>
+	<li>Experience building networking features such as high-availability failover, dynamic routing, multi-WAN, traffic steering or shaping, application identification, or local policy enforcement.</li>
+	<li>Experience building automated fleet tests, hardware-in-the-loop or network-in-the-loop test environments, safe staged rollouts, and remote diagnostic tooling.</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
