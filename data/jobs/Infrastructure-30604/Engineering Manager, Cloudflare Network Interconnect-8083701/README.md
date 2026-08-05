@@ -12,11 +12,11 @@
 <p>As an Engineering Manager on the CNI team you will hire, mentor, and coach a distributed team of Software Engineers. You will play a key role in developing the team and shaping its culture and technical vision.&nbsp;You will work closely with Product Managers and other Engineering leaders to communicate the vision, prioritize the team's roadmap, and achieve cross-functional objectives.&nbsp;You are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Using tools and processes to convey project status and resolve blockages.</li>
-	<li>Understanding the technical implications of work across BGP, physical and virtual interconnect provisioning, and distributed control-plane services in order to influence scope, work across teams, and help unblock projects.</li>
+	<li>Hiring and developing a high-performing team and supporting individual growth.</li>
+	<li>Applying technical experience to evaluate tradeoffs, contribute to design decisions, and help drive resolution to customer-facing issues, while creating the space for engineers within the team to lead design and implementation.</li>
 	<li>Taking responsibility for the team's production services by organizing on-call rotations, handling customer escalations, and overseeing incident response and follow-up.</li>
-	<li>Driving reliability and automation improvements for the provisioning pipeline that turns a customer order into a live, monitored BGP session.</li>
-	<li>Coordinating with Network Operations, Sales Engineering, and Partner teams on interconnect capacity planning, partner onboarding, and cloud provider integrations.</li>
+	<li>Driving reliability and automation improvements across the team's systems and services.</li>
+	<li>Coordinating with partner and stakeholder teams on cross-functional initiatives.</li>
 </ul>
 <h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
@@ -25,7 +25,7 @@
 	<li>Excel at planning and overseeing execution to meet commitments and deliver with predictability.</li>
 	<li>Technical background in IP networking: BGP, Layer 3 routing, physical and virtual interconnect technologies (cross-connects, VLANs, partner fabric integrations).</li>
 	<li>Experience building or operating provisioning/automation systems for network infrastructure.</li>
-	<li>Experience with monitoring, alerting, and debugging distributed systems — ideally services that bridge software and physical network operations.</li>
+	<li>Experience with monitoring, alerting, and debugging distributed systems.</li>
 	<li>Experience participating in and/or managing an on-call rotation for production services with direct customer impact.</li>
 	<li>Willingness to adopt and integrate AI tools and systems into your workflow.</li>
 	<li>Clarity in written and verbal communication.</li>
@@ -37,7 +37,6 @@
 	<li>Experience with cloud provider networking (AWS Direct Connect, GCP Partner Interconnect, Azure ExpressRoute).</li>
 	<li>Knowledge of GRE, VXLAN, or other overlay/tunnel technologies.</li>
 	<li>Systems-level programming experience in Go, Python, Rust, C, or C++.</li>
-	<li>Experience with Kubernetes-based service deployments and CI/CD pipelines.</li>
 	<li>Comfort with customer-facing technical communication (escalation handling, partner engagements).</li>
 	<li>Experience using AI-assisted engineering tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
 </ul>

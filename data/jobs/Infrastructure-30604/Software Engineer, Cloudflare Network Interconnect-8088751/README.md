@@ -8,8 +8,9 @@
 <p><strong>Available Locations: </strong>Austin, TX&nbsp;</p>
 <p><strong>About the Role</strong></p>
 <p>The CNI team builds and operates the systems that let Cloudflare's enterprise customers connect their networks directly to Cloudflare through private, dedicated interconnects — rather than traversing the public Internet. The product, Cloudflare Network Interconnect (CNI), supports various interconnect types across hundreds of locations worldwide. These systems underpin Magic Transit, Cloudflare WAN, Zero Trust, and application security for some of Cloudflare's largest customers.</p>
-<h4><strong>Responsibilities</strong></h4>
+<h4><strong>What You'll Do</strong></h4>
 <p>As a member of the team you will build and extend the systems that provision, monitor, and orchestrate private network interconnects at scale. You will collaborate with Product Management, Network Engineering, and Infrastructure teams on ambitious initiatives to connect enterprise customers directly to Cloudflare's global network.</p>
+<h4><strong>Responsibilities</strong></h4>
 <p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, PostgreSQL, Prometheus, Kubernetes, Linux networking, network operating systems, and BGP routing, among others.</p>
 <p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
 <p>Because you'll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
