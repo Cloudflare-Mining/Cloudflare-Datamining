@@ -6,9 +6,9 @@ image: https://www.cloudflare.com/preview.png
 
 ##  Cloudflare Careers 
 
-#####  We believe that with our talented team, smart technology and engaged users we can join in helping build a better Internet 
+###  We believe that with our talented team, smart technology and engaged users we can join in helping build a better Internet 
 
-[  See Open Positions ](#open-roles) 
+[  See Open Positions ](https://www.cloudflare.com/careers/jobs/) 
 
 ###### 3,800+
 
@@ -30,21 +30,19 @@ Engineering, product, and go-to-market teams — building for the world's larges
 
 The sun never sets on Cloudflare — teams hand off work across every time zone.
 
-######  Principled 
+###  Principled 
 
  Our mission to help build a better Internet is bold, and we take it seriously. We build with a global mindset and democratize sophisticated technology so everyone can benefit. 
 
-######  Curious 
+###  Curious 
 
  We're pioneering innovators who tackle the Internet's toughest challenges with a desire to learn. We stay curious and empathetic to deliver exceptional experiences. 
 
-######  Transparent 
+###  Transparent 
 
  We prioritize clear, open communication and never withhold vital information. We hold ourselves accountable for our actions, whether internal or public-facing. 
 
-Open roles
-
-Help us build a better Internet.
+RoleTeam and locationDate posted
 
 ### Cloudflare Capabilities
 

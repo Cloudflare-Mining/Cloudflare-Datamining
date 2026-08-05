@@ -6,6 +6,48 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 5, 2026[The Agent Access Model](https://blog.cloudflare.com/the-agent-access-model/)
+
+The Agent Access Model proposes a new architecture to secure task-scoped agents using strict identity brokering, continuous mediation, and stateful trust.
+
+![Matt Silverlock](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492M11VMJ0WCWAND287DEN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matt Silverlock](https://blog.cloudflare.com/author/silverlock/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7NYA8BN3XM3K0Y64KJCWP4.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/the-agent-access-model/)
+
+August 5, 2026[How we're rethinking work at Cloudflare with Cloudflare OS](https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os/)
+
+We built Cloudflare OS to equip our teams to safely rethink how they get work done with AI. The platform brings together the best of our technologies, from our Compute primitives to our Zero Trust suite. This post walks through our journey to give our users the best AI tools available.
+
+![Sam Rhea](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B32X8M7A8CXY9C0SX0EQ.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sam Rhea](https://blog.cloudflare.com/author/sam/)
+
+August 5, 2026[Cloudflare OS: an open platform for agents, apps, and work](https://blog.cloudflare.com/cloudflare-os/)
+
+Cloudflare OS is an open-source platform that lets everyone in your company build apps, automate work, and safely access internal systems, shaped around what your organization knows and how it operates
+
+![Phillip Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CA63Q819PPAR7M8DTNQ3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Carter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BJJATPEKV6ZZ0N22HHVH.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Phillip Jones](https://blog.cloudflare.com/author/phillip/) and [Dan Carter](https://blog.cloudflare.com/author/dan-carter/)
+
+August 5, 2026[WriteGuard: fine-grained controls for MCP Servers](https://blog.cloudflare.com/mcp-portal-writeguard-private-beta/)
+
+At Cloudflare, we knew we could not depend on every employee to configure every agent perfectly or watch every tool call. Before expanding write access across our own internal MCP servers, we built WriteGuard. We are now bringing those controls to Cloudflare MCP server portals through a private beta. 
+
+![Scott Roe-Meschke](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46423166S2RP6H2395Z078.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Scott Roe-Meschke](https://blog.cloudflare.com/author/scott-roe-meschke/) and [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
+
+August 5, 2026[Catching rogue AI behavior with identity-aware analytics](https://blog.cloudflare.com/identity-aware-ai-gateway/)
+
+Identity-aware AI Gateway is now in open beta. User Insights turns that traffic into a behavioral baseline for every person and agent, and flags insider risk the moment it appears.
+
+![Ming Lu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449KZ4869TJZZSHHFJXPTB.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Ayush Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449VZTK4C95VB94E47SS8C.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Ming Lu](https://blog.cloudflare.com/author/ming-lu/), [Kenny Johnson](https://blog.cloudflare.com/author/kenny/), and [Ayush Kumar](https://blog.cloudflare.com/author/ayush/)
+
 August 4, 2026[The Agent Development Lifecycle has arrived on Cloudflare](https://blog.cloudflare.com/agent-development-lifecycle/)
 
 Agents can write code faster than teams can review, deploy, and maintain it. Today we're introducing the Agent Development Lifecycle and the Cloudflare primitives that underpin it
@@ -13,8 +55,6 @@ Agents can write code faster than teams can review, deploy, and maintain it. Tod
 ![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A4Q5CY65JFVVYMJCV4AG7.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/agent-development-lifecycle/)
 
 August 4, 2026[Announcing Cloudflare Wallets: the programmable wallet for the agentic Internet](https://blog.cloudflare.com/wallets/)
 
@@ -119,46 +159,6 @@ Last year we made every Cloudflare server a Media over QUIC (MoQ) relay. Now the
 ![Jacob Curtis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYWTSMKPNBYED7CGRDERCH1G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Manish Pandit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYVX7C6NS9762W5KTANHJ704.webp&w=64&h=64&f=webp&fit=cover&position=center)![Mike English](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456AKXY6NZWXBX72F7RG6T.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jacob Curtis](https://blog.cloudflare.com/author/jacob-curtis/), [Manish Pandit](https://blog.cloudflare.com/author/manish-pandit/), and [Mike English](https://blog.cloudflare.com/author/mike-english/)
-
-July 30, 2026[Dogfooding at scale: migrating cdnjs to Cloudflare's Developer Platform](https://blog.cloudflare.com/cdnjs-dev-platform-migration/)
-
-We moved cdnjs, serving 9 billion requests a day, entirely onto Cloudflare's Developer Platform. That means we're running one of the Internet's busiest open-source CDNs on our own building blocks, and we pushed Workflows and Workers limits higher for everyone.
-
-![Simona Badoiu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BY2VVWXQKZQA2SJ3N42J.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Simona Badoiu](https://blog.cloudflare.com/author/simona-badoiu/)
-
-July 29, 2026[Post-quantum authentication to origins is now supported](https://blog.cloudflare.com/post-quantum-authentication-to-origins/)
-
-Cloudflare now supports post-quantum (PQ) authentication when connecting to customer origin servers via Authenticated Origin Pulls and Custom Origin Trust Store. This is the first step towards providing PQ authentication for all Cloudflare products.
-
-![Luke Valenta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455BBR3DXDBC0E9512XF44.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Guthrie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VQ8K1T55ANDEX70V1EEQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Luke Valenta](https://blog.cloudflare.com/author/luke/) and [Kevin Guthrie](https://blog.cloudflare.com/author/kevin-guthrie/)
-
-July 28, 2026[Natural disasters and government interference: examining Q2 2026's major Internet disruption events](https://blog.cloudflare.com/q2-2026-internet-disruption-summary/)
-
-Cloudflare Radar tracked Internet disruptions driven by natural disasters, government-mandated shutdowns, and DNSSEC key rollovers over the last quarter. This post analyzes traffic telemetry to explain how these events impacted global connectivity.
-
-![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-July 27, 2026[We're open-sourcing our privacy proxy CLI](https://blog.cloudflare.com/open-sourcing-our-privacy-proxy-cli/)
-
-pvcli is a curl-like tool designed to simplify the testing of complex privacy protocols like OHTTP.
-
-![Hannah Wang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYHF9MV2X49QE0SXTCSPH1N2.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Ben Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TVKCM4J39JXG32VTCNG.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Fisher Darling](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PVCFZWEEPCE2T84TW2R.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Hannah Wang](https://blog.cloudflare.com/author/hannah-wang/), [Ben Yang](https://blog.cloudflare.com/author/ben-yang/), and [Fisher Darling](https://blog.cloudflare.com/author/fisher/)
-
-July 24, 2026[BGP ORIGIN attribute manipulation and its impact on the Internet](https://blog.cloudflare.com/bgp-origin-attribute/)
-
-By doing in-depth testing, we found nearly 70% of BGP paths experience ORIGIN attribute rewrites by transit providers seeking traffic advantages. We examine the global impact of this practice and argue for deprecating ORIGIN in route selection.
-
-![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=64&h=64&f=webp&fit=cover&position=center)![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/) and [Bryton Herdes](https://blog.cloudflare.com/author/bryton/)
 
 Load more
 

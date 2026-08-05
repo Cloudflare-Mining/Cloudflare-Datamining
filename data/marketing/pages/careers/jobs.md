@@ -12,9 +12,13 @@ image: https://www.cloudflare.com/preview.png
 
 ![Cloudflare employees collaborating](https://cf-assets.www.cloudflare.com/slt3lc6tev37/1jtKoee0b6TGY2PE0ZrAE1/a5c40be9e79d51bbe30e2c99cff92c0f/Untitled_design__10_.png) 
 
-Open roles
+All departments
 
-Help us build a better Internet.
+All locations
+
+Filters & sort
+
+RoleTeam and locationDate posted
 
 ```json
 {"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
