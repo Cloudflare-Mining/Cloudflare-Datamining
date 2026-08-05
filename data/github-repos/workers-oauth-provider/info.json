@@ -21,12 +21,15 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
+		"changeset-release/main",
 		"feat/ema-restructure",
 		"feat/hyperdrive-storage",
 		"feat/mcp-authinfo-bridge",
 		"feat/pluggable-oauth-storage",
-		"fix/cimd-capability-negotiation",
+		"feat/require-canonical-resource",
+		"fix/legacy-client-auth-compatibility",
 		"fix/mcp-redirect-uri-security",
+		"fix/resource-parameter-compatibility",
 		"fix-types-2",
 		"main"
 	]
