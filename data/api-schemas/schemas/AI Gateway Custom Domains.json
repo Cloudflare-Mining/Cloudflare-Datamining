@@ -1,0 +1,791 @@
+{
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains/{hostname}": {
+		"operationId": "aig-config-delete-custom-domain",
+		"summary": "Delete a Custom Domain",
+		"description": "Deletes an AI Gateway dataset.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"type": "string",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "hostname",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "the customer-owned custom hostname",
+					"type": "string",
+					"example": "ai.acme.com",
+					"maxLength": 253,
+					"minLength": 1,
+					"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the Object if it was successfully deleted",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"description": "epoch milliseconds",
+											"type": "integer",
+											"example": 1717459200000
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"type": "string",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"x-auditable": true
+										},
+										"hostname": {
+											"description": "the customer-owned custom hostname",
+											"type": "string",
+											"example": "ai.acme.com",
+											"maxLength": 253,
+											"minLength": 1,
+											"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$",
+											"x-auditable": true
+										},
+										"modified_at": {
+											"description": "epoch milliseconds",
+											"type": "integer",
+											"example": 1717459200000
+										},
+										"ssl_hostname_id": {
+											"type": "string",
+											"nullable": true,
+											"x-auditable": true
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"initializing",
+												"pending_dcv",
+												"active",
+												"error"
+											],
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"hostname",
+										"gateway_id",
+										"ssl_hostname_id",
+										"status",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 7002
+											},
+											"message": {
+												"type": "string",
+												"example": "Not Found"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Custom Domains"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains": {
+		"operationId": "aig-config-list-custom-domain",
+		"summary": "List Custom Domains",
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"type": "string",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"initializing",
+						"pending_dcv",
+						"active",
+						"error"
+					],
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"schema": {
+					"description": "Search by hostname",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List objects",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"created_at": {
+												"description": "epoch milliseconds",
+												"type": "integer",
+												"example": 1717459200000
+											},
+											"gateway_id": {
+												"description": "gateway id",
+												"type": "string",
+												"example": "my-gateway",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"x-auditable": true
+											},
+											"hostname": {
+												"description": "the customer-owned custom hostname",
+												"type": "string",
+												"example": "ai.acme.com",
+												"maxLength": 253,
+												"minLength": 1,
+												"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$",
+												"x-auditable": true
+											},
+											"modified_at": {
+												"description": "epoch milliseconds",
+												"type": "integer",
+												"example": 1717459200000
+											},
+											"ssl_hostname_id": {
+												"type": "string",
+												"nullable": true,
+												"x-auditable": true
+											},
+											"status": {
+												"type": "string",
+												"enum": [
+													"initializing",
+													"pending_dcv",
+													"active",
+													"error"
+												],
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"hostname",
+											"gateway_id",
+											"ssl_hostname_id",
+											"status",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Custom Domains"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains/{hostname}": {
+		"operationId": "aig-config-fetch-custom-domain",
+		"summary": "Fetch a Custom Domain",
+		"description": "Retrieves details for a specific AI Gateway dataset.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"type": "string",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "hostname",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "the customer-owned custom hostname",
+					"type": "string",
+					"example": "ai.acme.com",
+					"maxLength": 253,
+					"minLength": 1,
+					"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns a single object if found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"description": "epoch milliseconds",
+											"type": "integer",
+											"example": 1717459200000
+										},
+										"gateway_id": {
+											"description": "gateway id",
+											"type": "string",
+											"example": "my-gateway",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"x-auditable": true
+										},
+										"hostname": {
+											"description": "the customer-owned custom hostname",
+											"type": "string",
+											"example": "ai.acme.com",
+											"maxLength": 253,
+											"minLength": 1,
+											"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$",
+											"x-auditable": true
+										},
+										"modified_at": {
+											"description": "epoch milliseconds",
+											"type": "integer",
+											"example": 1717459200000
+										},
+										"ssl_hostname_id": {
+											"type": "string",
+											"nullable": true,
+											"x-auditable": true
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"initializing",
+												"pending_dcv",
+												"active",
+												"error"
+											],
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"hostname",
+										"gateway_id",
+										"ssl_hostname_id",
+										"status",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 7002
+											},
+											"message": {
+												"type": "string",
+												"example": "Not Found"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Custom Domains"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains": {
+		"operationId": "aig-config-create-custom-domain",
+		"summary": "Create a custom domain for a gateway",
+		"description": "Provisions a Cloudflare-for-SaaS custom hostname and returns the CNAME target to point DNS at.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "gateway id",
+					"type": "string",
+					"example": "my-gateway",
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"domain": {
+								"description": "the customer-owned custom hostname",
+								"type": "string",
+								"example": "ai.acme.com",
+								"maxLength": 253,
+								"minLength": 1,
+								"pattern": "^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$",
+								"x-auditable": true
+							},
+							"minTLS": {
+								"type": "string",
+								"enum": [
+									"1.0",
+									"1.1",
+									"1.2",
+									"1.3"
+								],
+								"x-auditable": true
+							},
+							"zone_id": {
+								"description": "Cloudflare Zone ID owning the custom hostname",
+								"type": "string",
+								"example": "395566f4c8a5b9d2a5fc0d457b007c44",
+								"pattern": "^[0-9a-f]{32}$",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"domain",
+							"zone_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The created custom domain and the CNAME target to configure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"cname_target": {
+											"type": "string"
+										},
+										"created_at": {
+											"description": "epoch milliseconds",
+											"type": "integer",
+											"example": 1717459200000
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"hostname": {
+											"type": "string"
+										},
+										"modified_at": {
+											"description": "epoch milliseconds",
+											"type": "integer",
+											"example": 1717459200000
+										},
+										"status": {
+											"type": "string",
+											"enum": [
+												"initializing",
+												"pending_dcv",
+												"active",
+												"error"
+											]
+										}
+									},
+									"required": [
+										"hostname",
+										"gateway_id",
+										"status",
+										"cname_target",
+										"created_at",
+										"modified_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Custom Domains"
+		],
+		"x-api-token-group": [
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
