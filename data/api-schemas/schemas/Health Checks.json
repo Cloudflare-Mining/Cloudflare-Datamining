@@ -395,7 +395,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/healthchecks/preview/{healthcheck_id}": {
 		"operationId": "health-checks-delete-preview-health-check",
@@ -793,7 +797,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks.previews",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-delete-health-check",
@@ -2094,7 +2102,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"operationId": "health-checks-health-check-details",
@@ -2947,7 +2959,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/healthchecks/preview/{healthcheck_id}": {
 		"operationId": "health-checks-health-check-preview-details",
@@ -3800,7 +3816,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks.previews",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/smart_shield/healthchecks": {
 		"operationId": "smart-shield-list-health-checks",
@@ -6616,7 +6636,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-patch-health-check",
@@ -8728,7 +8752,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/healthchecks/preview": {
 		"operationId": "health-checks-create-preview-health-check",
@@ -9779,7 +9807,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks.previews",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/smart_shield/healthchecks": {
 		"operationId": "smart-shield-create-health-check",
@@ -11891,7 +11923,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "healthchecks",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-update-health-check",
