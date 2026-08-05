@@ -144,6 +144,56 @@
 																"default": false,
 																"x-auditable": true
 															},
+															"bgp": {
+																"type": "object",
+																"properties": {
+																	"as_no": {
+																		"description": "Deprecated. Use customer_asn.",
+																		"type": "integer",
+																		"format": "int32",
+																		"deprecated": true
+																	},
+																	"cloudflare_endpoint": {
+																		"description": "Read-only for v1.5; derived from interface_address.",
+																		"type": "string",
+																		"format": "ipv4",
+																		"deprecated": true
+																	},
+																	"customer_asn": {
+																		"description": "ASN used on the customer end of the BGP session.",
+																		"type": "integer",
+																		"format": "int32"
+																	},
+																	"customer_endpoint": {
+																		"description": "Read-only for v1.5; derived from interface_address.",
+																		"type": "string",
+																		"format": "ipv4",
+																		"deprecated": true
+																	},
+																	"export_filter_id": {
+																		"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																		"type": "string",
+																		"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																	},
+																	"extra_prefixes": {
+																		"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																		"type": "array",
+																		"items": {
+																			"format": "cidr",
+																			"type": "string"
+																		}
+																	},
+																	"import_filter_id": {
+																		"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																		"type": "string",
+																		"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																	},
+																	"md5_key": {
+																		"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																		"type": "string"
+																	}
+																}
+															},
 															"colo_name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"type": "string",
@@ -425,6 +475,56 @@
 																		"example": true,
 																		"default": false,
 																		"x-auditable": true
+																	},
+																	"bgp": {
+																		"type": "object",
+																		"properties": {
+																			"as_no": {
+																				"description": "Deprecated. Use customer_asn.",
+																				"type": "integer",
+																				"format": "int32",
+																				"deprecated": true
+																			},
+																			"cloudflare_endpoint": {
+																				"description": "Read-only for v1.5; derived from interface_address.",
+																				"type": "string",
+																				"format": "ipv4",
+																				"deprecated": true
+																			},
+																			"customer_asn": {
+																				"description": "ASN used on the customer end of the BGP session.",
+																				"type": "integer",
+																				"format": "int32"
+																			},
+																			"customer_endpoint": {
+																				"description": "Read-only for v1.5; derived from interface_address.",
+																				"type": "string",
+																				"format": "ipv4",
+																				"deprecated": true
+																			},
+																			"export_filter_id": {
+																				"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																				"type": "string",
+																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																			},
+																			"extra_prefixes": {
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"type": "array",
+																				"items": {
+																					"format": "cidr",
+																					"type": "string"
+																				}
+																			},
+																			"import_filter_id": {
+																				"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																				"type": "string",
+																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																			},
+																			"md5_key": {
+																				"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																				"type": "string"
+																			}
+																		}
 																	},
 																	"colo_name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
@@ -858,6 +958,56 @@
 															"default": false,
 															"x-auditable": true
 														},
+														"bgp": {
+															"type": "object",
+															"properties": {
+																"as_no": {
+																	"description": "Deprecated. Use customer_asn.",
+																	"type": "integer",
+																	"format": "int32",
+																	"deprecated": true
+																},
+																"cloudflare_endpoint": {
+																	"description": "Read-only for v1.5; derived from interface_address.",
+																	"type": "string",
+																	"format": "ipv4",
+																	"deprecated": true
+																},
+																"customer_asn": {
+																	"description": "ASN used on the customer end of the BGP session.",
+																	"type": "integer",
+																	"format": "int32"
+																},
+																"customer_endpoint": {
+																	"description": "Read-only for v1.5; derived from interface_address.",
+																	"type": "string",
+																	"format": "ipv4",
+																	"deprecated": true
+																},
+																"export_filter_id": {
+																	"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																	"type": "string",
+																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																},
+																"extra_prefixes": {
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"type": "array",
+																	"items": {
+																		"format": "cidr",
+																		"type": "string"
+																	}
+																},
+																"import_filter_id": {
+																	"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																	"type": "string",
+																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																},
+																"md5_key": {
+																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																	"type": "string"
+																}
+															}
+														},
 														"colo_name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 															"type": "string",
@@ -1137,6 +1287,56 @@
 																	"example": true,
 																	"default": false,
 																	"x-auditable": true
+																},
+																"bgp": {
+																	"type": "object",
+																	"properties": {
+																		"as_no": {
+																			"description": "Deprecated. Use customer_asn.",
+																			"type": "integer",
+																			"format": "int32",
+																			"deprecated": true
+																		},
+																		"cloudflare_endpoint": {
+																			"description": "Read-only for v1.5; derived from interface_address.",
+																			"type": "string",
+																			"format": "ipv4",
+																			"deprecated": true
+																		},
+																		"customer_asn": {
+																			"description": "ASN used on the customer end of the BGP session.",
+																			"type": "integer",
+																			"format": "int32"
+																		},
+																		"customer_endpoint": {
+																			"description": "Read-only for v1.5; derived from interface_address.",
+																			"type": "string",
+																			"format": "ipv4",
+																			"deprecated": true
+																		},
+																		"export_filter_id": {
+																			"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																			"type": "string",
+																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																		},
+																		"extra_prefixes": {
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"type": "array",
+																			"items": {
+																				"format": "cidr",
+																				"type": "string"
+																			}
+																		},
+																		"import_filter_id": {
+																			"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																			"type": "string",
+																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																		},
+																		"md5_key": {
+																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																			"type": "string"
+																		}
+																	}
 																},
 																"colo_name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
@@ -1574,6 +1774,56 @@
 																"default": false,
 																"x-auditable": true
 															},
+															"bgp": {
+																"type": "object",
+																"properties": {
+																	"as_no": {
+																		"description": "Deprecated. Use customer_asn.",
+																		"type": "integer",
+																		"format": "int32",
+																		"deprecated": true
+																	},
+																	"cloudflare_endpoint": {
+																		"description": "Read-only for v1.5; derived from interface_address.",
+																		"type": "string",
+																		"format": "ipv4",
+																		"deprecated": true
+																	},
+																	"customer_asn": {
+																		"description": "ASN used on the customer end of the BGP session.",
+																		"type": "integer",
+																		"format": "int32"
+																	},
+																	"customer_endpoint": {
+																		"description": "Read-only for v1.5; derived from interface_address.",
+																		"type": "string",
+																		"format": "ipv4",
+																		"deprecated": true
+																	},
+																	"export_filter_id": {
+																		"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																		"type": "string",
+																		"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																	},
+																	"extra_prefixes": {
+																		"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																		"type": "array",
+																		"items": {
+																			"format": "cidr",
+																			"type": "string"
+																		}
+																	},
+																	"import_filter_id": {
+																		"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																		"type": "string",
+																		"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																	},
+																	"md5_key": {
+																		"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																		"type": "string"
+																	}
+																}
+															},
 															"colo_name": {
 																"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																"type": "string",
@@ -1859,6 +2109,56 @@
 																		"example": true,
 																		"default": false,
 																		"x-auditable": true
+																	},
+																	"bgp": {
+																		"type": "object",
+																		"properties": {
+																			"as_no": {
+																				"description": "Deprecated. Use customer_asn.",
+																				"type": "integer",
+																				"format": "int32",
+																				"deprecated": true
+																			},
+																			"cloudflare_endpoint": {
+																				"description": "Read-only for v1.5; derived from interface_address.",
+																				"type": "string",
+																				"format": "ipv4",
+																				"deprecated": true
+																			},
+																			"customer_asn": {
+																				"description": "ASN used on the customer end of the BGP session.",
+																				"type": "integer",
+																				"format": "int32"
+																			},
+																			"customer_endpoint": {
+																				"description": "Read-only for v1.5; derived from interface_address.",
+																				"type": "string",
+																				"format": "ipv4",
+																				"deprecated": true
+																			},
+																			"export_filter_id": {
+																				"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																				"type": "string",
+																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																			},
+																			"extra_prefixes": {
+																				"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																				"type": "array",
+																				"items": {
+																					"format": "cidr",
+																					"type": "string"
+																				}
+																			},
+																			"import_filter_id": {
+																				"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																				"type": "string",
+																				"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																			},
+																			"md5_key": {
+																				"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																				"type": "string"
+																			}
+																		}
 																	},
 																	"colo_name": {
 																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
@@ -2186,6 +2486,56 @@
 								"default": false,
 								"x-auditable": true
 							},
+							"bgp": {
+								"type": "object",
+								"properties": {
+									"as_no": {
+										"description": "Deprecated. Use customer_asn.",
+										"type": "integer",
+										"format": "int32",
+										"deprecated": true
+									},
+									"cloudflare_endpoint": {
+										"description": "Read-only for v1.5; derived from interface_address.",
+										"type": "string",
+										"format": "ipv4",
+										"deprecated": true
+									},
+									"customer_asn": {
+										"description": "ASN used on the customer end of the BGP session.",
+										"type": "integer",
+										"format": "int32"
+									},
+									"customer_endpoint": {
+										"description": "Read-only for v1.5; derived from interface_address.",
+										"type": "string",
+										"format": "ipv4",
+										"deprecated": true
+									},
+									"export_filter_id": {
+										"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+										"type": "string",
+										"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+									},
+									"extra_prefixes": {
+										"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+										"type": "array",
+										"items": {
+											"format": "cidr",
+											"type": "string"
+										}
+									},
+									"import_filter_id": {
+										"description": "ID of the BGP filter profile applied to routes received from the customer.",
+										"type": "string",
+										"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+									},
+									"md5_key": {
+										"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+										"type": "string"
+									}
+								}
+							},
 							"description": {
 								"description": "An optional description of the interconnect.",
 								"type": "string",
@@ -2412,6 +2762,56 @@
 															"example": true,
 															"default": false,
 															"x-auditable": true
+														},
+														"bgp": {
+															"type": "object",
+															"properties": {
+																"as_no": {
+																	"description": "Deprecated. Use customer_asn.",
+																	"type": "integer",
+																	"format": "int32",
+																	"deprecated": true
+																},
+																"cloudflare_endpoint": {
+																	"description": "Read-only for v1.5; derived from interface_address.",
+																	"type": "string",
+																	"format": "ipv4",
+																	"deprecated": true
+																},
+																"customer_asn": {
+																	"description": "ASN used on the customer end of the BGP session.",
+																	"type": "integer",
+																	"format": "int32"
+																},
+																"customer_endpoint": {
+																	"description": "Read-only for v1.5; derived from interface_address.",
+																	"type": "string",
+																	"format": "ipv4",
+																	"deprecated": true
+																},
+																"export_filter_id": {
+																	"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																	"type": "string",
+																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																},
+																"extra_prefixes": {
+																	"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																	"type": "array",
+																	"items": {
+																		"format": "cidr",
+																		"type": "string"
+																	}
+																},
+																"import_filter_id": {
+																	"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																	"type": "string",
+																	"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																},
+																"md5_key": {
+																	"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																	"type": "string"
+																}
+															}
 														},
 														"colo_name": {
 															"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
@@ -2696,6 +3096,56 @@
 																	"example": true,
 																	"default": false,
 																	"x-auditable": true
+																},
+																"bgp": {
+																	"type": "object",
+																	"properties": {
+																		"as_no": {
+																			"description": "Deprecated. Use customer_asn.",
+																			"type": "integer",
+																			"format": "int32",
+																			"deprecated": true
+																		},
+																		"cloudflare_endpoint": {
+																			"description": "Read-only for v1.5; derived from interface_address.",
+																			"type": "string",
+																			"format": "ipv4",
+																			"deprecated": true
+																		},
+																		"customer_asn": {
+																			"description": "ASN used on the customer end of the BGP session.",
+																			"type": "integer",
+																			"format": "int32"
+																		},
+																		"customer_endpoint": {
+																			"description": "Read-only for v1.5; derived from interface_address.",
+																			"type": "string",
+																			"format": "ipv4",
+																			"deprecated": true
+																		},
+																		"export_filter_id": {
+																			"description": "ID of the BGP filter profile applied to routes advertised to the customer.",
+																			"type": "string",
+																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																		},
+																		"extra_prefixes": {
+																			"description": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.",
+																			"type": "array",
+																			"items": {
+																				"format": "cidr",
+																				"type": "string"
+																			}
+																		},
+																		"import_filter_id": {
+																			"description": "ID of the BGP filter profile applied to routes received from the customer.",
+																			"type": "string",
+																			"example": "a1b2c3d4e5f647890a1b2c3d4e5f6789"
+																		},
+																		"md5_key": {
+																			"description": "MD5 key to use for session authentication.\n\nNote that *this is not a security measure*. MD5 is not a valid security mechanism, and the\nkey is not treated as a secret value. This is *only* supported for preventing\nmisconfiguration, not for defending against malicious attacks.\n\nThe MD5 key, if set, must be of non-zero length and consist only of the following types of\ncharacter:\n\n* ASCII alphanumerics: `[a-zA-Z0-9]`\n* Special characters in the set `'!@#$%^&*()+[]{}<>/.,;:_-~`= \\|`\n\nIn other words, MD5 keys may contain any printable ASCII character aside from newline (0x0A),\nquotation mark (`\"`), vertical tab (0x0B), carriage return (0x0D), tab (0x09), form feed\n(0x0C), and the question mark (`?`). Requests specifying an MD5 key with one or more of\nthese disallowed characters will be rejected.",
+																			"type": "string"
+																		}
+																	}
 																},
 																"colo_name": {
 																	"description": "The name of the interconnect. The name cannot share a name with other tunnels.",

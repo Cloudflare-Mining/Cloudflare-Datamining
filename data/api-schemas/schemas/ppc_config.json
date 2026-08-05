@@ -1,4 +1,217 @@
 {
+	"GET /zones/{zone_id}/pay-per-crawl/can_be_enabled": {
+		"operationId": "pay-per-crawl.getZoneCanBeEnabled",
+		"summary": "Get pay-per-crawl zone eligibility",
+		"description": "Gets whether pay-per-crawl can be enabled for a zone.",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"description": "zone id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-crawl/can_be_enabled.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /zones/{zone_id}/pay-per-crawl/can_be_enabled.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"enabled": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string"
+										}
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppc_config"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.zones",
+		"x-fern-sdk-method-name": "get-can-be-enabled"
+	},
 	"GET /zones/{zone_id}/pay-per-crawl/configuration": {
 		"operationId": "pay-per-crawl.getConfig",
 		"summary": "Get the pay-per-crawl config",
@@ -218,7 +431,9 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.config",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled": {
 		"operationId": "pay-per-crawl.setZonesCanBeEnabled",
@@ -248,6 +463,9 @@
 									"type": "object",
 									"properties": {
 										"can_be_enabled": {
+											"type": "boolean"
+										},
+										"enabled": {
 											"type": "boolean"
 										},
 										"id": {
@@ -442,7 +660,9 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.zones",
+		"x-fern-sdk-method-name": "set-can-be-enabled"
 	},
 	"PATCH /zones/{zone_id}/pay-per-crawl/configuration": {
 		"operationId": "pay-per-crawl.patchConfig",
@@ -695,7 +915,9 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.config",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/pay-per-crawl/zones_can_be_enabled/query": {
 		"operationId": "pay-per-crawl.queryZonesCanBeEnabled",
@@ -722,22 +944,14 @@
 							"zones": {
 								"type": "array",
 								"items": {
-									"type": "object",
-									"properties": {
-										"can_be_enabled": {
-											"type": "boolean"
-										},
-										"id": {
-											"type": "string"
-										}
-									}
+									"type": "string"
 								}
 							}
 						}
 					}
 				}
 			},
-			"description": "Data for setting flag on zones",
+			"description": "Zone IDs to check for pay-per-crawl eligibility",
 			"required": true,
 			"x-auditable": true
 		},
@@ -846,6 +1060,9 @@
 												"type": "object",
 												"properties": {
 													"can_be_enabled": {
+														"type": "boolean"
+													},
+													"enabled": {
 														"type": "boolean"
 													},
 													"id": {
@@ -966,7 +1183,9 @@
 			"Billing Read",
 			"Account Settings Write",
 			"Account Settings Read"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.zones",
+		"x-fern-sdk-method-name": "query-can-be-enabled"
 	},
 	"POST /zones/{zone_id}/pay-per-crawl/configuration": {
 		"operationId": "pay-per-crawl.createConfig",
@@ -1219,6 +1438,8 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.config",
+		"x-fern-sdk-method-name": "create"
 	}
 }

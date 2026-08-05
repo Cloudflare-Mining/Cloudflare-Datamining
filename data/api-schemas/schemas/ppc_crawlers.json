@@ -1,0 +1,264 @@
+{
+	"GET /accounts/{account_id}/pay-per-crawl/crawlers": {
+		"operationId": "pay-per-crawl.listCrawlers",
+		"summary": "List pay-per-crawl crawlers",
+		"description": "Lists the crawlers known to pay-per-crawl.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "account id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"x-auditable": true
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OK",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/crawlers.responses.200.content.application/json.schema.properties.errors.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error_chain": {
+												"type": "array",
+												"items": "[Circular ~.GET /accounts/{account_id}/pay-per-crawl/crawlers.responses.200.content.application/json.schema.properties.messages.items]"
+											},
+											"message": {
+												"type": "string"
+											},
+											"meta": {
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"parameter": {
+														"description": "Parameter is a string indicating which URI query parameter caused the error.",
+														"type": "string"
+													},
+													"parameter_value_index": {
+														"description": "ParameterPosition indicates position of parameter value which caused the error,\nfor cases when there are multiple values for the same parameter.",
+														"type": "integer"
+													},
+													"pointer": {
+														"description": "Pointer is a JSON Pointer [RFC6901] to the associated entity in the request document\ne.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"crawlers": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"bot_management": {
+														"type": "boolean"
+													},
+													"category": {
+														"type": "string"
+													},
+													"category_id": {
+														"type": "integer"
+													},
+													"heuristic_id": {
+														"type": "integer",
+														"format": "int64",
+														"nullable": true
+													},
+													"info_url": {
+														"type": "string",
+														"format": "uri",
+														"nullable": true
+													},
+													"managed": {
+														"type": "boolean"
+													},
+													"name": {
+														"type": "string"
+													},
+													"onboarded": {
+														"type": "boolean"
+													},
+													"operator": {
+														"type": "string"
+													},
+													"slug": {
+														"type": "string"
+													},
+													"testing_id": {
+														"type": "string",
+														"nullable": true
+													},
+													"user_agent": {
+														"type": "string",
+														"nullable": true
+													},
+													"verified_id": {
+														"type": "integer",
+														"format": "int64",
+														"nullable": true
+													},
+													"visible": {
+														"type": "boolean"
+													},
+													"wba_id": {
+														"type": "string",
+														"nullable": true
+													}
+												}
+											}
+										}
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										},
+										"total_pages": {
+											"description": "TotalPages is a pointer so that if TotalPages == 0 we return that there\nare indeed 0 pages. omitempty would have removed the field otherwise.\nThis is important as a customer may be relying on always reading this\nproperty and it should not be absent just because it is 0, only absent\nif a value is never provided.",
+											"type": "integer"
+										}
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"error": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"result": {},
+								"success": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"ppc_crawlers"
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.crawlers",
+		"x-fern-sdk-method-name": "list"
+	}
+}

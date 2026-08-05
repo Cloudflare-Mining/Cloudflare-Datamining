@@ -193,7 +193,9 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.crawler.stripe",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/pay-per-crawl/publisher/stripe": {
 		"operationId": "pay-per-crawl.publisherDeleteStripeConfig",
@@ -389,7 +391,9 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.publisher.stripe",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/pay-per-crawl/crawler/stripe": {
 		"operationId": "pay-per-crawl.crawlerGetStripeConfig",
@@ -624,7 +628,9 @@
 			"Billing Read",
 			"Account Settings Write",
 			"Account Settings Read"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.crawler.stripe",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/pay-per-crawl/publisher/stripe": {
 		"operationId": "pay-per-crawl.publisherGetStripeConfig",
@@ -859,7 +865,9 @@
 			"Billing Read",
 			"Account Settings Write",
 			"Account Settings Read"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.publisher.stripe",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/pay-per-crawl/crawler/stripe": {
 		"operationId": "pay-per-crawl.crawlerCreateStripeConfig",
@@ -1063,7 +1071,9 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.crawler.stripe",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/pay-per-crawl/publisher/stripe": {
 		"operationId": "pay-per-crawl.publisherCreateStripeConfig",
@@ -1267,6 +1277,8 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-sdk-group-name": "pay-per-crawl.publisher.stripe",
+		"x-fern-sdk-method-name": "create"
 	}
 }

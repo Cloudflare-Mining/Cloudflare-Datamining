@@ -150,6 +150,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -572,6 +577,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -1328,6 +1338,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -2332,6 +2347,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3048,6 +3068,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3510,6 +3535,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -3848,6 +3878,12 @@
 										"enabled"
 									]
 								}
+							},
+							"filter": {
+								"description": "Optional Logpush filter predicate to restrict which events are\ningested. If omitted, the existing filter is left unchanged. Set\nto an empty string (`\"\"`) to clear the filter. Otherwise,\nreplaces the dataset's filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
+								"type": "string",
+								"nullable": true,
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3982,6 +4018,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"
@@ -4261,6 +4302,12 @@
 										"enabled"
 									]
 								}
+							},
+							"filter": {
+								"description": "Optional Logpush filter predicate to restrict which events are\ningested. If omitted, the existing filter is left unchanged. Set\nto an empty string (`\"\"`) to clear the filter. Otherwise,\nreplaces the dataset's filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
+								"type": "string",
+								"nullable": true,
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -4395,6 +4442,11 @@
 															"enabled"
 														]
 													}
+												},
+												"filter": {
+													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"type": "object"

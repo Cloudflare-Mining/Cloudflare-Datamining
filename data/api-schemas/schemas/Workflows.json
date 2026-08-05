@@ -2636,6 +2636,9 @@
 																	"message"
 																]
 															},
+															"event_type": {
+																"type": "string"
+															},
 															"finished": {
 																"type": "boolean"
 															},
@@ -3034,6 +3037,10 @@
 												"name",
 												"message"
 											]
+										},
+										"event_type": {
+											"description": "The event type the step is waiting on, as supplied to step.waitForEvent. Only present when type='waitForEvent'.",
+											"type": "string"
 										},
 										"output": {
 											"description": "Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON.",
