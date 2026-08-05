@@ -10,7 +10,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -30,7 +30,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -247,7 +247,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -388,7 +388,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -418,7 +418,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -518,7 +518,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -659,7 +659,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -669,7 +669,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -805,7 +805,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -813,7 +814,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -955,7 +956,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -975,7 +976,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1116,7 +1117,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1250,7 +1251,7 @@
 	"GET /accounts/{account_id}/intel/sinkholes/{sinkhole_id}/ingresses": {
 		"operationId": "sinkhole-config-list-sinkhole-ingresses",
 		"summary": "List ingresses for a sinkhole",
-		"description": "Returns all ingress rules associated with the specified sinkhole.",
+		"description": "List all ingress rules associated with the specified sinkhole.",
 		"parameters": [
 			{
 				"description": "The unique identifier for the Cloudflare account.",
@@ -1258,7 +1259,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1278,7 +1279,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1417,7 +1418,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1559,7 +1560,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1589,7 +1590,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1725,7 +1726,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1867,7 +1868,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -1909,10 +1910,10 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Sinkhole created.",
+				"description": "Sinkhole Created",
 				"headers": {
 					"Location": {
-						"description": "URI of the created sinkhole.",
+						"description": "URI of the created sinkhole",
 						"schema": {
 							"type": "string"
 						}
@@ -2058,7 +2059,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2199,7 +2200,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2225,7 +2226,7 @@
 						"type": "object",
 						"properties": {
 							"cidr": {
-								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Provide a Cloudflare BYOIP CIDR that your account owns.",
+								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Must be a Cloudflare BYOIP associated with your account.",
 								"type": "string"
 							}
 						},
@@ -2238,10 +2239,10 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Ingress created.",
+				"description": "Ingress Created",
 				"headers": {
 					"Location": {
-						"description": "URI of the created ingress.",
+						"description": "URI of the created ingress",
 						"schema": {
 							"type": "string"
 						}
@@ -2382,7 +2383,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2515,7 +2516,7 @@
 	"PUT /accounts/{account_id}/intel/sinkholes/{sinkhole_id}": {
 		"operationId": "sinkhole-config-update-sinkhole",
 		"summary": "Update a sinkhole",
-		"description": "Replaces the name or R2 configuration of the specified sinkhole. This is a full replacement — all fields, including r2_secret, must be re-supplied. Omitting r2_secret will overwrite the stored value with an empty string.",
+		"description": "Update the name or R2 configuration of the specified sinkhole.",
 		"parameters": [
 			{
 				"description": "The unique identifier for the Cloudflare account.",
@@ -2523,7 +2524,7 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2575,7 +2576,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2675,7 +2676,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2808,7 +2809,7 @@
 	"PUT /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-update-ingress",
 		"summary": "Update an ingress rule",
-		"description": "Replaces the specified ingress rule. The sinkhole must belong to the same account as the zone.",
+		"description": "Update the specified ingress rule. The sinkhole must belong to the same account as the zone.",
 		"parameters": [
 			{
 				"description": "The unique identifier for the Cloudflare zone.",
@@ -2816,7 +2817,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "An identifier for the resource.",
+					"description": "Identifier.",
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
@@ -2852,7 +2853,7 @@
 						"type": "object",
 						"properties": {
 							"cidr": {
-								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Provide a Cloudflare BYOIP CIDR that your account owns.",
+								"description": "The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Must be a Cloudflare BYOIP associated with your account.",
 								"type": "string"
 							}
 						},
@@ -2865,7 +2866,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Successful response.",
+				"description": "Successful Response",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2965,7 +2966,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Error response.",
+				"description": "Error Response",
 				"content": {
 					"application/json": {
 						"schema": {
