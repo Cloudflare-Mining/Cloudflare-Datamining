@@ -50,7 +50,7 @@ Atlanta, GA
 
 Immerse Atlanta
 
-Nov 12-13
+Nov 12–13
 
 Coming soon
 
@@ -58,13 +58,9 @@ Las Vegas, NV
 
 AWS re:Invent
 
-Nov 30-Dec 4
+Nov 30–Dec 4
 
 Coming soon
-
-Previous events
-
-[Seattle, WAImmerse SeattleJun 18Learn more](https://fieldmarketing.www.cloudflare.com/immerse-seattle?utm%5Fmedium=display&utm%5Fsource=demandbase&utm%5Fcampaign=2026-q2-acq-namer%5Fen-connectivity-ge-he-general-seattle%5Fcfhub)
 
 # Build without boundaries
 

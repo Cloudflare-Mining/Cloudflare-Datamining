@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 5, 2026[Cloudflare is the only vendor named a Visionary in 2026 SASE and SSE reports](https://blog.cloudflare.com/cloudflare-sase-sse-gartner-magic-quadrants-2026/)
+
+We're honored to announce that Cloudflare is the only vendor that has been recognized as a Visionary in both the 2026 Gartner® Magic Quadrant™ for SASE Platforms and the 2026 Gartner® Magic Quadrant™ for Security Service Edge reports.
+
+![Michael Keane](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NH30V32ND238KA4C7HFD.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Michael Keane](https://blog.cloudflare.com/author/michael-keane/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7BWZQ3V6HEP8XX36S72VZE.png&w=1999&h=1132&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cloudflare-sase-sse-gartner-magic-quadrants-2026/)
+
 August 5, 2026[The Agent Access Model](https://blog.cloudflare.com/the-agent-access-model/)
 
 The Agent Access Model proposes a new architecture to secure task-scoped agents using strict identity brokering, continuous mediation, and stateful trust.
@@ -13,8 +23,6 @@ The Agent Access Model proposes a new architecture to secure task-scoped agents 
 ![Matt Silverlock](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492M11VMJ0WCWAND287DEN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matt Silverlock](https://blog.cloudflare.com/author/silverlock/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7NYA8BN3XM3K0Y64KJCWP4.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/the-agent-access-model/)
 
 August 5, 2026[How we're rethinking work at Cloudflare with Cloudflare OS](https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os/)
 
@@ -151,14 +159,6 @@ Agents Week explores how cloud infrastructure must evolve to serve autonomous ag
 ![Rita Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4775C0A7PYM3T9XKH4PH9J.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Rita Kozlov](https://blog.cloudflare.com/author/rita/)
-
-July 31, 2026[An API for MoQ: provision your own isolated relays](https://blog.cloudflare.com/moq-relays/)
-
-Last year we made every Cloudflare server a Media over QUIC (MoQ) relay. Now the new provisioning API lets you create your own isolated relay and control who can publish and who can only watch.
-
-![Jacob Curtis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYWTSMKPNBYED7CGRDERCH1G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Manish Pandit](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYVX7C6NS9762W5KTANHJ704.webp&w=64&h=64&f=webp&fit=cover&position=center)![Mike English](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456AKXY6NZWXBX72F7RG6T.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jacob Curtis](https://blog.cloudflare.com/author/jacob-curtis/), [Manish Pandit](https://blog.cloudflare.com/author/manish-pandit/), and [Mike English](https://blog.cloudflare.com/author/mike-english/)
 
 Load more
 
