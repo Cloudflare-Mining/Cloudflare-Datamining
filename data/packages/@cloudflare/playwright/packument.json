@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/playwright",
 	"dist-tags": {
-		"latest": "1.3.3"
+		"latest": "1.3.5"
 	},
 	"versions": {
 		"0.0.0-test": {
@@ -370,6 +370,37 @@
 			"name": "@cloudflare/playwright",
 			"version": "1.3.3",
 			"devDependencies": {
+				"vite": "^6.1.0",
+				"pkg-pr-new": "^0.0.59",
+				"@tsconfig/node18": "^18.2.6"
+			},
+			"peerDependencies": {
+				"playwright-core": "*"
+			},
+			"dist": {
+				"shasum": "5acfcec82fdf26b7ae8589e47a061cccb563e7b1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-1.3.3.tgz",
+				"fileCount": 325,
+				"integrity": "sha512-Iz66dgICSjWN1yIZDzLIOCGh8mNkDyvkE6gf1Boyc0oz1J/IHvf3T0C+JEJschDyZRLz2uE7ruVLLqEJOfv1+Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIDn0tXlXjYrrUK8svdOMQYCPCWqYnVMmy7mjixFL/dbFAiEAirj/HARMYBPrORmQiYbNpHXaYGfzJjOU6I07o10H5jw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fplaywright@1.3.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7391034
+			}
+		},
+		"1.3.5": {
+			"name": "@cloudflare/playwright",
+			"version": "1.3.5",
+			"devDependencies": {
 				"@tsconfig/node18": "^18.2.6",
 				"pkg-pr-new": "^0.0.59",
 				"vite": "^6.1.0"
@@ -378,13 +409,13 @@
 				"playwright-core": "*"
 			},
 			"dist": {
-				"integrity": "sha512-Iz66dgICSjWN1yIZDzLIOCGh8mNkDyvkE6gf1Boyc0oz1J/IHvf3T0C+JEJschDyZRLz2uE7ruVLLqEJOfv1+Q==",
-				"shasum": "5acfcec82fdf26b7ae8589e47a061cccb563e7b1",
-				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-1.3.3.tgz",
+				"integrity": "sha512-FJqX6bJxcJd+82WvVm315HfOAVh3Yg7AiuaDJrHx78UWPP3E28o6HHgvDVtTpKXUmtLHwqwkw706+pGw4pmWvA==",
+				"shasum": "8c366773308dd00561590680c7f531835f4276d6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright/-/playwright-1.3.5.tgz",
 				"fileCount": 325,
-				"unpackedSize": 7391034,
+				"unpackedSize": 7391942,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fplaywright@1.3.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fplaywright@1.3.5",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -392,7 +423,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDn0tXlXjYrrUK8svdOMQYCPCWqYnVMmy7mjixFL/dbFAiEAirj/HARMYBPrORmQiYbNpHXaYGfzJjOU6I07o10H5jw="
+						"sig": "MEUCICuVAJ9A005cf5Zo3Atdd+2eBtdqDq4vpmyKm/6tgCwyAiEA7bH1iXTM1Qg7zbaklqLbJFgCurCgT7KaLzy7N5J7Knw="
 					}
 				]
 			}
