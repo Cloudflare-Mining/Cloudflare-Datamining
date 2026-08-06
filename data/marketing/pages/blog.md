@@ -1,10 +1,60 @@
 ---
 description: Technical deep dives, product updates, and insights from the teams that are helping to build a better Internet.
-title: The Cloudflare Blog
+title: Cloudflare Blog
 image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png
 ---
 
 [Skip to content](#main-content)
+
+August 6, 2026[Building an open Agentic Internet: readable, discoverable, callable, and payable](https://blog.cloudflare.com/the-agentic-internet/)
+
+Agents are a new kind of visitor. They don't render CSS or click ads, but they have a paying human on the other end. Block them and you block your customer. We're building the open tools and protocols so publishers and agents can cooperate and not collide.
+
+![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Andrew Galloni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467820APNFQVPB01C3445A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/), [Will Papper](https://blog.cloudflare.com/author/will-papper/), and [Andrew Galloni](https://blog.cloudflare.com/author/andrew-galloni/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA0FMHPRQW9N737YVV9WYRZ.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/the-agentic-internet/)
+
+August 6, 2026[Cloudflare AI Search: give your agents a search engine for your data ](https://blog.cloudflare.com/ai-search-easier/)
+
+AI Search makes search easier than ever, with no Cloudflare primitives to stitch together. Point it at your data to create a search for your own files and websites. We're also sharing a preview of our new pricing model. 
+
+![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tiago Teles](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZAW99A81NNDP6P3SFH65HTE.webp&w=64&h=64&f=webp&fit=cover&position=center)![Anni Wang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4618C573MJFB0RNKW6K68R.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/), [Tiago Teles](https://blog.cloudflare.com/author/tiago-teles/), and [Anni Wang](https://blog.cloudflare.com/author/anni/)
+
+August 6, 2026[The next generation of MCP](https://blog.cloudflare.com/mcp-v2/)
+
+The next version of MCP has a rewritten, stateless core that just works on Workers. We cover upgrades to the protocol, the new feature lifecycle and SDK migration path, and hear from early adopters already running it in production. 
+
+![Matt Carey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BHQSGCBKVGAAVQVS4V3E.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matt Carey](https://blog.cloudflare.com/author/matt-carey/)
+
+August 6, 2026[From ranking to recommended: get your site ready to thrive in the age of AI agents](https://blog.cloudflare.com/aeo/)
+
+More than half of requests now come from machines, not people. Agent Readiness shows how well agents can discover and read your site, while Answer Engine Optimization tracks how often AI assistants recommend you.
+
+![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/) and [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/)
+
+August 6, 2026[Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers](https://blog.cloudflare.com/kitesurf/)
+
+We should be giving all agents tools that excel at what's important for an AI model. Kitesurf is Cloudflare's new stateless, highly scalable, and cost-effective web browser that runs entirely on top of Workers and was designed specifically for the Agentic Cloud
+
+![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Ruskin Constant](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BW07W83PCRTM6JP4W61R.webp&w=64&h=64&f=webp&fit=cover&position=center)![Rui Figueira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VN7XMZ4WCQMGQSPJ2B3Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Luís Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4768W5B20EQMM9ZD5AQMED.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Celso Martinho](https://blog.cloudflare.com/author/celso/), [Ruskin Constant](https://blog.cloudflare.com/author/ruskin-constant/), [Rui Figueira](https://blog.cloudflare.com/author/rui-figueira/), and [Luís Duarte](https://blog.cloudflare.com/author/luis-duarte/)
+
+August 6, 2026[Give any website a WebMCP interface](https://blog.cloudflare.com/webmcp/)
+
+Today we're launching a developer preview of WebMCP on Cloudflare. With one switch, any site becomes usable by browser AI agents — no new APIs, no origin changes — while the human stays in control and creators keep their traffic.
+
+![Will Rowe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RTXYC845D1Y5KJHYETK71.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Will Rowe](https://blog.cloudflare.com/author/will-rowe/)
 
 August 5, 2026[Cloudflare is the only vendor named a Visionary in 2026 SASE and SSE reports](https://blog.cloudflare.com/cloudflare-sase-sse-gartner-magic-quadrants-2026/)
 
@@ -13,8 +63,6 @@ We're honored to announce that Cloudflare is the only vendor that has been recog
 ![Michael Keane](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NH30V32ND238KA4C7HFD.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michael Keane](https://blog.cloudflare.com/author/michael-keane/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7BWZQ3V6HEP8XX36S72VZE.png&w=1999&h=1132&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cloudflare-sase-sse-gartner-magic-quadrants-2026/)
 
 August 5, 2026[The Agent Access Model](https://blog.cloudflare.com/the-agent-access-model/)
 
@@ -112,54 +160,6 @@ By replacing manual issue verification with isolated AI subagents running in Git
 
 [Matthew Phillips](https://blog.cloudflare.com/author/matthew-phillips/)
 
-August 3, 2026[Your agent needs a computer, not a container — introducing @cloudflare/computer](https://blog.cloudflare.com/cloudflare-computer/)
-
-Agents need more than just a container to scale. We're introducing @cloudflare/computer, an agent runtime that dynamically orchestrates between fast, efficient isolates and full Linux containers to give every agent a computer of its own.
-
-![Matt Carey](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BHQSGCBKVGAAVQVS4V3E.png&w=64&h=64&f=webp&fit=cover&position=center)![Aron Carroll](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ0QBKB6JZ26WGQW2DHCS5M4.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matt Carey](https://blog.cloudflare.com/author/matt-carey/) and [Aron Carroll](https://blog.cloudflare.com/author/aron-carroll/)
-
-August 3, 2026[Cloudflare Workers and Containers now support inbound TCP connections and gRPC](https://blog.cloudflare.com/grpc-workers/)
-
-Cloudflare Workers now support inbound TCP connections via Spectrum, allowing direct socket forwarding to Durable Objects and Containers. Developers can run full-duplex gRPC applications or leverage automatic gRPC-to-gRPC-web translation directly within Workers.
-
-![Mar Witek](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ235CPB4AH0E1QF256SHBFJ.webp&w=64&h=64&f=webp&fit=cover&position=center)![Thomas Rubini](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ23W8FJDE19KMKKPMZSP5PP.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Mar Witek](https://blog.cloudflare.com/author/mar-witek/) and [Thomas Rubini](https://blog.cloudflare.com/author/thomas-rubini/)
-
-August 3, 2026[Introducing the Billable Usage API: programmatic cost visibility for Cloudflare](https://blog.cloudflare.com/billable-usage-api/)
-
-Cloudflare has launched a new Billable Usage API for accounts, giving developers and FinOps teams single-endpoint programmatic visibility into cost and usage across all self-serve products. Built around the FOCUS specification, track spend seamlessly alongside the rest of your cloud stack.
-
-![Ryan Noel](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X993V2NQBSHZCEDTSYH99.webp&w=64&h=64&f=webp&fit=cover&position=center)![Zunayed Ali](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X7VHNGDVK1WPDK7WS7DWR.webp&w=64&h=64&f=webp&fit=cover&position=center)![Filipa Nóbrega](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X62NSE3TRWSABF7J6JR84.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Ryan Noel](https://blog.cloudflare.com/author/ryan-noel/), [Zunayed Ali](https://blog.cloudflare.com/author/zunayed-ali/), and [Filipa Nóbrega](https://blog.cloudflare.com/author/filipa-nobrega/)
-
-August 3, 2026[Smaller, faster, safer: running Kimi and GLM at scale](https://blog.cloudflare.com/smaller-faster-safer-models/)
-
-Serving frontier models like Kimi and GLM means fighting for GPU memory. Here's how we quantize KV caches, compress model weights, and add integrity checks to serve them faster, cheaper, and safely.
-
-![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)![Chi McIsaac](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1QJYZF8GBATHV6TF6MD5KE.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/), [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/), and [Chi McIsaac](https://blog.cloudflare.com/author/chi-mcisaac/)
-
-August 3, 2026[Workers RPC now works across Python and JavaScript](https://blog.cloudflare.com/python-workers-rpc/)
-
-One coding agent can write a Python Worker and another can write a JavaScript Worker. At runtime, those Workers can exchange references to live objects and call their methods without defining APIs, schemas, or serialization code
-
-![Dominik Picheta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P5G8RRA9GKFZA6BYERZ1.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Gyeongjae Choi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYT1GVVH6V865W8Z5B63CYZT.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Dominik Picheta](https://blog.cloudflare.com/author/dominik/) and [Gyeongjae Choi](https://blog.cloudflare.com/author/gyeongjae-choi/)
-
-August 2, 2026[Welcome to Agents Week](https://blog.cloudflare.com/agents-week-welcome/)
-
-Agents Week explores how cloud infrastructure must evolve to serve autonomous agents rather than human browsers. Join us as we unpack the storage, execution, and security primitives needed for an agent-native web.
-
-![Rita Kozlov](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4775C0A7PYM3T9XKH4PH9J.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Rita Kozlov](https://blog.cloudflare.com/author/rita/)
-
 Load more
 
 Search is temporarily unavailable.
@@ -209,5 +209,5 @@ English
 LightDark
 
 ```json
-{"@context":"https://schema.org","@type":"WebSite","name":"The Cloudflare Blog","url":"https://blog.cloudflare.com"}
+{"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare Blog","url":"https://blog.cloudflare.com"}
 ```
