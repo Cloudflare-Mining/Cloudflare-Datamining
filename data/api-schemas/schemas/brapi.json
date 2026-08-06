@@ -456,6 +456,7 @@
 														"type": "string"
 													},
 													"metadata": {
+														"description": "Absent for urls that never reached a fetch.",
 														"type": "object",
 														"properties": {
 															"status": {
@@ -495,8 +496,7 @@
 												},
 												"required": [
 													"url",
-													"status",
-													"metadata"
+													"status"
 												],
 												"type": "object"
 											}

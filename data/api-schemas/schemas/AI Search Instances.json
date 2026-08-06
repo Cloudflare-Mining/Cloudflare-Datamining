@@ -571,10 +571,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -586,10 +586,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -613,6 +613,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -691,7 +744,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -1449,10 +1504,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -1464,10 +1519,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -1491,6 +1546,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -1569,7 +1677,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -2285,6 +2395,44 @@
 															"nullable": true
 														},
 														"properties": {
+															"discover_options": {
+																"type": "object",
+																"additionalProperties": {
+																	"nullable": true
+																},
+																"properties": {
+																	"depth": {
+																		"type": "number",
+																		"maximum": 100000,
+																		"minimum": 1
+																	},
+																	"include_external_links": {
+																		"type": "boolean"
+																	},
+																	"include_subdomains": {
+																		"type": "boolean"
+																	},
+																	"limit": {
+																		"description": "Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.",
+																		"type": "number",
+																		"maximum": 100000,
+																		"minimum": 1
+																	},
+																	"max_age": {
+																		"type": "number",
+																		"maximum": 604800,
+																		"minimum": 0
+																	},
+																	"source": {
+																		"type": "string",
+																		"enum": [
+																			"all",
+																			"sitemaps",
+																			"links"
+																		]
+																	}
+																}
+															},
 															"parse_options": {
 																"type": "object",
 																"additionalProperties": {
@@ -3177,10 +3325,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -3192,10 +3340,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -3219,6 +3367,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -3297,7 +3498,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -4212,6 +4415,44 @@
 															"nullable": true
 														},
 														"properties": {
+															"discover_options": {
+																"type": "object",
+																"additionalProperties": {
+																	"nullable": true
+																},
+																"properties": {
+																	"depth": {
+																		"type": "number",
+																		"maximum": 100000,
+																		"minimum": 1
+																	},
+																	"include_external_links": {
+																		"type": "boolean"
+																	},
+																	"include_subdomains": {
+																		"type": "boolean"
+																	},
+																	"limit": {
+																		"description": "Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time.",
+																		"type": "number",
+																		"maximum": 100000,
+																		"minimum": 1
+																	},
+																	"max_age": {
+																		"type": "number",
+																		"maximum": 604800,
+																		"minimum": 0
+																	},
+																	"source": {
+																		"type": "string",
+																		"enum": [
+																			"all",
+																			"sitemaps",
+																			"links"
+																		]
+																	}
+																}
+															},
 															"parse_options": {
 																"type": "object",
 																"additionalProperties": {
@@ -5123,10 +5364,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -5138,10 +5379,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -5165,6 +5406,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -5243,7 +5537,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -6159,10 +6455,10 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -6174,10 +6470,10 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -6201,6 +6497,59 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
+											"discover_options": {
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"type": "object",
+												"properties": {
+													"depth": {
+														"description": "Maximum link-follow depth from the seed URL.",
+														"type": "number",
+														"example": 5,
+														"default": 5,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"include_external_links": {
+														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"include_subdomains": {
+														"description": "Follow links to subdomains of the source host.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"limit": {
+														"description": "Maximum number of pages to crawl (1-100000).",
+														"type": "number",
+														"example": 10000,
+														"default": 100000,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"max_age": {
+														"description": "Maximum content age in seconds to accept (0–604800).",
+														"type": "number",
+														"example": 86400,
+														"default": 86400,
+														"maximum": 604800,
+														"minimum": 0
+													},
+													"source": {
+														"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+														"type": "string",
+														"example": "all",
+														"default": "all",
+														"enum": [
+															"all",
+															"sitemaps",
+															"links"
+														]
+													}
+												}
+											},
 											"parse_options": {
 												"type": "object",
 												"properties": {
@@ -6279,7 +6628,9 @@
 												}
 											},
 											"parse_type": {
+												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 												"type": "string",
+												"example": "sitemap",
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
@@ -6917,10 +7268,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -6932,10 +7283,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -6959,6 +7310,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -7037,7 +7441,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -9143,10 +9549,10 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -9158,10 +9564,10 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -9185,6 +9591,59 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
+											"discover_options": {
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"type": "object",
+												"properties": {
+													"depth": {
+														"description": "Maximum link-follow depth from the seed URL.",
+														"type": "number",
+														"example": 5,
+														"default": 5,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"include_external_links": {
+														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"include_subdomains": {
+														"description": "Follow links to subdomains of the source host.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"limit": {
+														"description": "Maximum number of pages to crawl (1-100000).",
+														"type": "number",
+														"example": 10000,
+														"default": 100000,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"max_age": {
+														"description": "Maximum content age in seconds to accept (0–604800).",
+														"type": "number",
+														"example": 86400,
+														"default": 86400,
+														"maximum": 604800,
+														"minimum": 0
+													},
+													"source": {
+														"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+														"type": "string",
+														"example": "all",
+														"default": "all",
+														"enum": [
+															"all",
+															"sitemaps",
+															"links"
+														]
+													}
+												}
+											},
 											"parse_options": {
 												"type": "object",
 												"properties": {
@@ -9263,7 +9722,9 @@
 												}
 											},
 											"parse_type": {
+												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 												"type": "string",
+												"example": "sitemap",
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
@@ -9901,10 +10362,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -9916,10 +10377,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -9943,6 +10404,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -10021,7 +10535,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -12318,10 +12834,10 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -12333,10 +12849,10 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -12360,6 +12876,59 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
+											"discover_options": {
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"type": "object",
+												"properties": {
+													"depth": {
+														"description": "Maximum link-follow depth from the seed URL.",
+														"type": "number",
+														"example": 5,
+														"default": 5,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"include_external_links": {
+														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"include_subdomains": {
+														"description": "Follow links to subdomains of the source host.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"limit": {
+														"description": "Maximum number of pages to crawl (1-100000).",
+														"type": "number",
+														"example": 10000,
+														"default": 100000,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"max_age": {
+														"description": "Maximum content age in seconds to accept (0–604800).",
+														"type": "number",
+														"example": 86400,
+														"default": 86400,
+														"maximum": 604800,
+														"minimum": 0
+													},
+													"source": {
+														"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+														"type": "string",
+														"example": "all",
+														"default": "all",
+														"enum": [
+															"all",
+															"sitemaps",
+															"links"
+														]
+													}
+												}
+											},
 											"parse_options": {
 												"type": "object",
 												"properties": {
@@ -12438,7 +13007,9 @@
 												}
 											},
 											"parse_type": {
+												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 												"type": "string",
+												"example": "sitemap",
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
@@ -13121,10 +13692,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -13136,10 +13707,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -13163,6 +13734,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -13241,7 +13865,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
@@ -13975,10 +14601,10 @@
 								"nullable": true,
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -13990,10 +14616,10 @@
 										"maxItems": 10
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 										"type": "array",
 										"items": {
-											"maxLength": 512,
+											"maxLength": 500,
 											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
@@ -14017,6 +14643,59 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
+											"discover_options": {
+												"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+												"type": "object",
+												"properties": {
+													"depth": {
+														"description": "Maximum link-follow depth from the seed URL.",
+														"type": "number",
+														"example": 5,
+														"default": 5,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"include_external_links": {
+														"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"include_subdomains": {
+														"description": "Follow links to subdomains of the source host.",
+														"type": "boolean",
+														"example": false,
+														"default": false
+													},
+													"limit": {
+														"description": "Maximum number of pages to crawl (1-100000).",
+														"type": "number",
+														"example": 10000,
+														"default": 100000,
+														"maximum": 100000,
+														"minimum": 1
+													},
+													"max_age": {
+														"description": "Maximum content age in seconds to accept (0–604800).",
+														"type": "number",
+														"example": 86400,
+														"default": 86400,
+														"maximum": 604800,
+														"minimum": 0
+													},
+													"source": {
+														"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+														"type": "string",
+														"example": "all",
+														"default": "all",
+														"enum": [
+															"all",
+															"sitemaps",
+															"links"
+														]
+													}
+												}
+											},
 											"parse_options": {
 												"type": "object",
 												"properties": {
@@ -14095,7 +14774,9 @@
 												}
 											},
 											"parse_type": {
+												"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 												"type": "string",
+												"example": "sitemap",
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
@@ -14778,10 +15459,10 @@
 											"nullable": true,
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -14793,10 +15474,10 @@
 													"maxItems": 10
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it.",
 													"type": "array",
 													"items": {
-														"maxLength": 512,
+														"maxLength": 500,
 														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
@@ -14820,6 +15501,59 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"discover_options": {
+															"description": "Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.",
+															"type": "object",
+															"properties": {
+																"depth": {
+																	"description": "Maximum link-follow depth from the seed URL.",
+																	"type": "number",
+																	"example": 5,
+																	"default": 5,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"include_external_links": {
+																	"description": "Follow links that point outside the source domain. Must stay `false` — discover crawls are restricted to the zone you own.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"include_subdomains": {
+																	"description": "Follow links to subdomains of the source host.",
+																	"type": "boolean",
+																	"example": false,
+																	"default": false
+																},
+																"limit": {
+																	"description": "Maximum number of pages to crawl (1-100000).",
+																	"type": "number",
+																	"example": 10000,
+																	"default": 100000,
+																	"maximum": 100000,
+																	"minimum": 1
+																},
+																"max_age": {
+																	"description": "Maximum content age in seconds to accept (0–604800).",
+																	"type": "number",
+																	"example": 86400,
+																	"default": 86400,
+																	"maximum": 604800,
+																	"minimum": 0
+																},
+																"source": {
+																	"description": "Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links' follows page links only, 'all' does both.",
+																	"type": "string",
+																	"example": "all",
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	]
+																}
+															}
+														},
 														"parse_options": {
 															"type": "object",
 															"properties": {
@@ -14898,7 +15632,9 @@
 															}
 														},
 														"parse_type": {
+															"description": "How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.",
 															"type": "string",
+															"example": "sitemap",
 															"default": "sitemap",
 															"enum": [
 																"sitemap",

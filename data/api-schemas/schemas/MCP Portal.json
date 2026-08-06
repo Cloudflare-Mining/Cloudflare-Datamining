@@ -382,6 +382,18 @@
 																"unauthenticated"
 															]
 														},
+														"authentication_status": {
+															"description": "Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.",
+															"type": "string",
+															"enum": [
+																"not_required",
+																"required",
+																"connected",
+																"stale",
+																"manual"
+															],
+															"readOnly": true
+														},
 														"created_at": {
 															"type": "string",
 															"format": "date-time",
@@ -864,6 +876,18 @@
 															"bearer",
 															"unauthenticated"
 														]
+													},
+													"authentication_status": {
+														"description": "Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.",
+														"type": "string",
+														"enum": [
+															"not_required",
+															"required",
+															"connected",
+															"stale",
+															"manual"
+														],
+														"readOnly": true
 													},
 													"created_at": {
 														"type": "string",
@@ -1628,6 +1652,18 @@
 															"unauthenticated"
 														]
 													},
+													"authentication_status": {
+														"description": "Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.",
+														"type": "string",
+														"enum": [
+															"not_required",
+															"required",
+															"connected",
+															"stale",
+															"manual"
+														],
+														"readOnly": true
+													},
 													"created_at": {
 														"type": "string",
 														"format": "date-time",
@@ -2249,6 +2285,18 @@
 															"bearer",
 															"unauthenticated"
 														]
+													},
+													"authentication_status": {
+														"description": "Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.",
+														"type": "string",
+														"enum": [
+															"not_required",
+															"required",
+															"connected",
+															"stale",
+															"manual"
+														],
+														"readOnly": true
 													},
 													"created_at": {
 														"type": "string",

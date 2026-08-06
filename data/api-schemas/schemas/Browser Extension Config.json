@@ -1,8 +1,359 @@
 {
+	"DELETE /accounts/{account_id}/browser-extension/config": {
+		"operationId": "accounts-browser-extension-config-delete",
+		"summary": "Delete browser extension configuration",
+		"description": "Deletes the browser extension configuration for an account.\nThe shard mapping is preserved and not deleted.\n",
+		"responses": {
+			"200": {
+				"description": "Browser extension configuration deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Config"
+		]
+	},
 	"GET /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-get",
 		"summary": "Get browser extension configuration",
-		"description": "Returns the browser extension configuration for an account.\n\nThis endpoint is currently backed by the scaffolded service response while\nthe runtime configuration surface is being implemented.\n",
+		"description": "Returns the browser extension configuration for an account.\n",
 		"responses": {
 			"200": {
 				"description": "Browser extension configuration response.",
@@ -41,14 +392,949 @@
 									}
 								},
 								"result": {
-									"description": "Browser extension configuration payload.",
-									"type": "string",
-									"example": "Hello World!"
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"min_extension_version": {
+													"description": "Minimum required browser extension version.",
+													"type": "string"
+												},
+												"mode": {
+													"type": "string",
+													"default": "proxy",
+													"enum": [
+														"proxy"
+													]
+												},
+												"proxy_url": {
+													"description": "PAC script URL for proxy configuration.",
+													"type": "string",
+													"format": "uri"
+												},
+												"team_domain": {
+													"description": "Team domain for the browser extension.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"proxy_url",
+												"team_domain"
+											]
+										},
+										{
+											"properties": {
+												"created_at": {
+													"description": "ISO 8601 timestamp of when the configuration was created.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"updated_at": {
+													"description": "ISO 8601 timestamp of the last configuration update.",
+													"type": "string",
+													"format": "date-time"
+												}
+											},
+											"required": [
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									]
 								},
 								"success": {
 									"type": "boolean",
 									"enum": [
 										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Config"
+		]
+	},
+	"POST /accounts/{account_id}/browser-extension/config": {
+		"operationId": "accounts-browser-extension-config-post",
+		"summary": "Create browser extension configuration",
+		"description": "Creates the browser extension configuration for an account.\n",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"config": {
+								"type": "object",
+								"properties": {
+									"min_extension_version": {
+										"description": "Minimum required browser extension version.",
+										"type": "string"
+									},
+									"mode": {
+										"type": "string",
+										"default": "proxy",
+										"enum": [
+											"proxy"
+										]
+									},
+									"proxy_url": {
+										"description": "PAC script URL for proxy configuration.",
+										"type": "string",
+										"format": "uri"
+									},
+									"team_domain": {
+										"description": "Team domain for the browser extension.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"proxy_url",
+									"team_domain"
+								]
+							}
+						},
+						"required": [
+							"config"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Browser extension configuration created.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"min_extension_version": {
+													"description": "Minimum required browser extension version.",
+													"type": "string"
+												},
+												"mode": {
+													"type": "string",
+													"default": "proxy",
+													"enum": [
+														"proxy"
+													]
+												},
+												"proxy_url": {
+													"description": "PAC script URL for proxy configuration.",
+													"type": "string",
+													"format": "uri"
+												},
+												"team_domain": {
+													"description": "Team domain for the browser extension.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"proxy_url",
+												"team_domain"
+											]
+										},
+										{
+											"properties": {
+												"created_at": {
+													"description": "ISO 8601 timestamp of when the configuration was created.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"updated_at": {
+													"description": "ISO 8601 timestamp of the last configuration update.",
+													"type": "string",
+													"format": "date-time"
+												}
+											},
+											"required": [
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user is not authorized to access this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Configuration already exists for this account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Browser Extension Config"
+		]
+	},
+	"PUT /accounts/{account_id}/browser-extension/config": {
+		"operationId": "accounts-browser-extension-config-put",
+		"summary": "Update browser extension configuration",
+		"description": "Replaces the browser extension configuration for an account.\nThe configuration must already exist. The shard mapping is immutable.\n",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"config": {
+								"type": "object",
+								"properties": {
+									"min_extension_version": {
+										"description": "Minimum required browser extension version.",
+										"type": "string"
+									},
+									"mode": {
+										"type": "string",
+										"default": "proxy",
+										"enum": [
+											"proxy"
+										]
+									},
+									"proxy_url": {
+										"description": "PAC script URL for proxy configuration.",
+										"type": "string",
+										"format": "uri"
+									},
+									"team_domain": {
+										"description": "Team domain for the browser extension.",
+										"type": "string"
+									}
+								},
+								"required": [
+									"proxy_url",
+									"team_domain"
+								]
+							}
+						},
+						"required": [
+							"config"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Browser extension configuration updated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"min_extension_version": {
+													"description": "Minimum required browser extension version.",
+													"type": "string"
+												},
+												"mode": {
+													"type": "string",
+													"default": "proxy",
+													"enum": [
+														"proxy"
+													]
+												},
+												"proxy_url": {
+													"description": "PAC script URL for proxy configuration.",
+													"type": "string",
+													"format": "uri"
+												},
+												"team_domain": {
+													"description": "Team domain for the browser extension.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"proxy_url",
+												"team_domain"
+											]
+										},
+										{
+											"properties": {
+												"created_at": {
+													"description": "ISO 8601 timestamp of when the configuration was created.",
+													"type": "string",
+													"format": "date-time"
+												},
+												"updated_at": {
+													"description": "ISO 8601 timestamp of the last configuration update.",
+													"type": "string",
+													"format": "date-time"
+												}
+											},
+											"required": [
+												"created_at",
+												"updated_at"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body or account ID.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
 									]
 								}
 							},
