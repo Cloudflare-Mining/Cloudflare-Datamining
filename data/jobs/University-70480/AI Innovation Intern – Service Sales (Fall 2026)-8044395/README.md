@@ -18,7 +18,7 @@
 	<li>Contribute to internal knowledge bases and documentation to improve team efficiency and consistency. Create collateral to enable the team.</li>
 	<li><strong>Customer engagement:</strong> Working alongside commercial leadership to present solutions to internal stakeholders to deliver external solutions for customer outcomes.</li>
 </ul>
-<p><strong>Skills &amp; Qualifications</strong></p>
+<p><strong>Desirable skills &amp; Qualifications</strong></p>
 <ul>
 	<li>Currently pursuing a Bachelor’s or Master’s degree in Management Information Systems (MIS), Business Analytics, or a related technical field.</li>
 	<li>Available for a full-time, 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
@@ -30,8 +30,8 @@
 	<li>Strong problem-solving and analytical skills</li>
 	<li>Ability to learn quickly in a fast-paced technical environment</li>
 	<li>Strong communication and collaboration skills to explain complex technical AI concepts to non-technical stakeholders</li>
-	<li>Bonus points: Experience in a customer facing role</li>
-	<li>Bonus points: Experience deploying applications leveraging Cloudflare Workers AI.</li>
+	<li style="font-style: italic;"><em>Bonus points: Experience in a customer facing role</em></li>
+	<li style="font-style: italic;"><em>Bonus points: Experience deploying applications leveraging Cloudflare Workers AI.</em></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,39 +5,30 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon</strong></h4>
-<p><strong>About the Role</strong></p>
-<p>The Field Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic, data-driven team dedicated to showcasing Cloudflare's innovative connectivity cloud products to an enterprise audience. Through strategic field campaigns, high-impact hosted events, and scalable operational frameworks, we drive awareness, generate enterprise pipeline, and support our company's rapid growth. As an intern on this team, you will not just support events execution—you will gain hands-on experience working inside a cutting-edge, AI-driven automation ecosystem designed to scale marketing footprint with maximum efficiency.</p>
-<p>As a Marketing Events &amp; Campaigns Intern, you will play a crucial supporting role in both the tactical execution of Cloudflare’s international field initiatives and the rolling rollout of our modern platform tools. This is an exciting opportunity to gain hands-on experience across a variety of enterprise marketing formats, including intimate executive roundtables, deep-dive technical workshops, and flagship regional roadshows.</p>
-<p>You will contribute to the end-to-end event lifecycle, from logistical coordination and asset management to supporting our automated platform pipelines. Your work will directly insulate field &amp; event managers from operational drag, help maintain data hygiene across our data layers, and ensure our sales teams are fully enabled to accelerate pipeline conversion.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location:&nbsp;</strong>London, UK</p>
+<p><strong>About the Role:</strong></p>
+<p>We are looking for a Senior Talent Acquisition Business Partner – GTM to join our London-based EMEA team. Acting as a strategic talent advisor and go-to-market specialist, you will drive the expansion of our sales and GTM teams with full autonomy. You will leverage your deep market expertise, extensive network, and AI-driven strategies to identify and secure top-tier talent for Cloudflare. While your primary focus will be the SEUR region, using your recruitment experience in France, Spain, Italy and Portugal to navigate these specific markets, you will also maintain the agility to pivot your support to other regions as business needs evolve.</p>
+<p><strong><em>Language Requirements: </em></strong><em>Fluency in French is required to effectively partner with regional stakeholders and candidates; proficiency in Spanish is considered a significant advantage.</em></p>
+<p><strong>Core Responsibilities</strong></p>
 <ul>
-	<li><strong>Unified Ecosystem Support:</strong> Assist with managing and testing entries within the <strong>OneSource Core Hub</strong> and tracking incoming sales-led requests.</li>
-	<li><strong>Logistical Coordination:</strong> Help drive the logistical planning and execution of virtual events and in-person field activations across regions, including scheduling, vendor outreach, swag orders and asset preparation for events.</li>
-	<li><strong>Social Media Content &amp; Management:</strong> Draft, create, and schedule engaging social media posts (primarily for LinkedIn) to promote upcoming hosted events, amplify regional customer panels, and share post-event highlights. Support the coordination of content calendars to ensure consistent visibility before, during, and after key activations.</li>
-	<li><strong>Asset &amp; Playbook Readiness:</strong> Help compile on-demand digital playbooks, pre-approved content decks, and operational checklists, collaborating with cross-functional design and product marketing teams.</li>
-	<li><strong>Support Build of Event in a Box</strong> for sales-self serve motion - picking our best resources and templates to adjust and enable those programs.</li>
-	<li><strong>Performance Analysis:</strong> Contribute to post-event reporting and pipeline conversion tracking by gathering behavioral signals, post-event feedback, and attendance data to build clean summary dashboards.</li>
+	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
+	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies for a variety of GTM roles, maintaining a heavy focus on Account Executives and Customer Engineers.</li>
+	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with the GEO VP and cross-functional stakeholders, including Finance, HRBPs, and compensation teams.</li>
+	<li><strong>AI-Agent Integration &amp; Process Optimisation:</strong> Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimise administrative outreach workflows at scale, and synthesise complex market data to inform regional talent strategies.</li>
+	<li><strong>Data Utilisation &amp; Analytics:</strong> Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analysing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
+	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the EMEA market to elevate Cloudflare's profile as a top destination for GTM talent.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge and Experience</strong></p>
+<p><strong>Examples of desirable skills</strong></p>
 <ul>
-	<li><strong>Currently pursuing a Bachelor’s or Master's degree</strong> in Marketing, Communications, Management Information Systems (MIS), Business, or a related field.</li>
-	<li><strong>Available for a full-time 12-week </strong>internship, working from our Lisbon office 3–5 days a week.</li>
-	<li><strong>Exceptional organizational skills </strong>with a "systems-thinking" mindset—someone who naturally loves logic, templates, and figuring out how pieces of a puzzle snap together efficiently.</li>
-	<li><strong>Excellent written and verbal communication</strong> skills in English (additional European languages are a strong plus).</li>
-	<li><strong>The ability to thrive in a fast-paced</strong>, collaborative environment.</li>
-	<li><strong>A proactive, tech-savvy attitude </strong>with a strong desire to learn modern marketing automation platforms and AI-driven workflow tools.</li>
-	<li>Ability to collaborate effectively within a fast-paced environment and handle cross-functional handoffs smoothly.</li>
-	<li>Proficiency with standard productivity tools (e.g., Google Workspace, Microsoft Office).</li>
-	<li><strong>AI Platform Enablement &amp; Optimization:</strong> Support the team in testing, refining, and documenting our emerging AI platform features. This includes assisting with user-acceptance testing (UAT) for conversational AI triggers within the <strong>Marketing Concierge (Jojo)</strong> , auditing data outputs from our <strong>AI Registration Auditor skill</strong> , and compiling approved messaging libraries to optimize our automated AI executive copywriting and ghostwriting templates.</li>
+	<li><strong>Extensive GTM Recruiting Experience:</strong> A proven track record of success as a Senior Recruiter, well-versed in scaling technical and sales GTM organisations.</li>
+	<li><strong>Strategic Problem Solving:</strong> Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialise, and resolving complex organisational issues with high autonomy.</li>
+	<li><strong>Negotiation &amp; Closing Skills:</strong> Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare’s unique value proposition.</li>
+	<li><strong>AI &amp; Ecosystem Proficiency:</strong> Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
+	<li><strong>Candidate Experience Focus:</strong> Strong organisational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
+	<li><strong>Communication &amp; Influencing:</strong> Exceptional written and verbal English skills, with the ability to communicate transparently, foster alignment across teams and stakeholders and leverage data and market insights to influence.</li>
+	<li><strong>Adaptability &amp; Self-Direction:</strong> Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organisational landscape.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Previous academic or professional experience with event coordination, digital campaign tracking, or project management.</li>
-	<li>Basic understanding of CRM systems (Salesforce), marketing automation software (Marketo), or relational data management.</li>
-</ul>
-<h3 data-path-to-node="4"><strong data-path-to-node="4" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="5">● For Portugal based hires: Estimated monthly pay range is between €1,500 - €2,000.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
