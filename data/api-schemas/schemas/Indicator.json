@@ -652,7 +652,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
 		"operationId": "get_IndicatorList",
 		"summary": "Lists indicators across multiple datasets",
-		"description": "Retrieves a paginated list of indicators across specified datasets. Use datasetIds=all or datasetIds=* to query all datasets for the account. If no datasetIds provided, uses the default dataset.",
+		"description": "Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use datasetIds=all or datasetIds=* to query all datasets for the account. If no datasetIds provided, uses the default dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -917,9 +917,9 @@
 			{
 				"name": "includeTotalCount",
 				"in": "query",
-				"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
+				"description": "Whether to compute total count via COUNT(*). Defaults to false for performance. total_count is null unless this is true and the complete fan-out succeeds.",
 				"schema": {
-					"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
+					"description": "Whether to compute total count via COUNT(*). Defaults to false for performance. total_count is null unless this is true and the complete fan-out succeeds.",
 					"type": "boolean"
 				}
 			},
@@ -975,6 +975,151 @@
 								"properties": {
 									"type": "object",
 									"properties": {
+										"completeness": {
+											"properties": {
+												"properties": {
+													"type": "object",
+													"properties": {
+														"complete": {
+															"properties": {
+																"type": {
+																	"type": "string",
+																	"example": "boolean"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"failedDatasets": {
+															"properties": {
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "array"
+																}
+															},
+															"required": [
+																"type",
+																"items"
+															],
+															"type": "object"
+														},
+														"failedShards": {
+															"properties": {
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"properties": {
+																			"type": "object",
+																			"properties": {
+																				"datasetId": {
+																					"properties": {
+																						"type": {
+																							"type": "string",
+																							"example": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"shardId": {
+																					"properties": {
+																						"type": {
+																							"type": "string",
+																							"example": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"datasetId",
+																				"shardId"
+																			]
+																		},
+																		"type": {
+																			"type": "string",
+																			"example": "object"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "array"
+																}
+															},
+															"required": [
+																"type",
+																"items"
+															],
+															"type": "object"
+														},
+														"warnings": {
+															"properties": {
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"example": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"example": "array"
+																}
+															},
+															"required": [
+																"type",
+																"items"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"complete",
+														"failedDatasets",
+														"failedShards",
+														"warnings"
+													]
+												},
+												"type": {
+													"type": "string",
+													"example": "object"
+												}
+											},
+											"required": [
+												"type",
+												"properties"
+											],
+											"type": "object"
+										},
 										"indicators": {
 											"properties": {
 												"items": {
@@ -1107,13 +1252,40 @@
 														},
 														"total_count": {
 															"properties": {
+																"description": {
+																	"type": "string",
+																	"example": "Exact matching count when requested and fan-out is complete; otherwise null."
+																},
+																"nullable": {
+																	"type": "boolean",
+																	"example": true
+																},
 																"type": {
 																	"type": "string",
 																	"example": "number"
 																}
 															},
 															"required": [
-																"type"
+																"type",
+																"nullable",
+																"description"
+															],
+															"type": "object"
+														},
+														"total_count_is_exact": {
+															"properties": {
+																"description": {
+																	"type": "string",
+																	"example": "Whether total_count is exact across the complete query fan-out."
+																},
+																"type": {
+																	"type": "string",
+																	"example": "boolean"
+																}
+															},
+															"required": [
+																"type",
+																"description"
 															],
 															"type": "object"
 														}
@@ -1122,7 +1294,8 @@
 														"count",
 														"page",
 														"per_page",
-														"total_count"
+														"total_count",
+														"total_count_is_exact"
 													]
 												},
 												"type": {
@@ -1139,7 +1312,8 @@
 									},
 									"required": [
 										"indicators",
-										"pagination"
+										"pagination",
+										"completeness"
 									]
 								},
 								"type": {

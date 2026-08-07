@@ -6971,6 +6971,20 @@
 									}
 								}
 							},
+							"location_hint": {
+								"type": "string",
+								"enum": [
+									"wnam",
+									"weur",
+									"enam",
+									"eeur",
+									"apac",
+									"oc",
+									"sam",
+									"afr",
+									"me"
+								]
+							},
 							"params": {
 								"description": "JSON-encoded event payload passed into the new instance.",
 								"type": "string"
@@ -7646,6 +7660,20 @@
 											]
 										}
 									}
+								},
+								"location_hint": {
+									"type": "string",
+									"enum": [
+										"wnam",
+										"weur",
+										"enam",
+										"eeur",
+										"apac",
+										"oc",
+										"sam",
+										"afr",
+										"me"
+									]
 								},
 								"params": {
 									"description": "JSON-encoded event payload passed into the new instance.",

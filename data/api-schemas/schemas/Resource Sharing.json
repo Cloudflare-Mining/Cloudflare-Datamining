@@ -738,7 +738,7 @@
 	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"operationId": "share-recipient-delete",
 		"summary": "Delete a share recipient",
-		"description": "Deletion is not immediate, an updated share recipient object with a new status will be returned.",
+		"description": "Performs a **soft delete**: sets the recipient's\n`desired_association_status` to `disassociated`, which signals the\nbackground reconciliation workflow (Temporal) to remove the shared\nresources from the recipient account. The recipient record remains in\nthe database for audit purposes and is still returned by\n`GET /accounts/{account_id}/shares/{share_id}/recipients` with its\nupdated status.\n\nResource access is not fully removed until the workflow completes and\n`current_association_status` transitions to `disassociated`. The\nrecipient record itself is never physically deleted.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -836,6 +836,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
@@ -845,7 +846,7 @@
 													"x-auditable": true
 												},
 												"association_status": {
-													"description": "Share Recipient association status.",
+													"description": "The current state of the recipient relative to the share. The\n`desired_association_status` (not exposed in the response) tracks the\ntarget state set by the API; the background reconciliation workflow\ndrives `current_association_status` toward it.\n\n- `associating` — The recipient was recently added; the workflow is\n  pushing shared resources into the recipient account.\n- `associated` — Shared resources have been successfully applied to\n  the recipient account.\n- `disassociating` — The recipient was removed (via DELETE or PUT\n  replacement); the workflow is removing shared resources from the\n  recipient account.\n- `disassociated` — Shared resources have been removed from the\n  recipient account. The recipient record remains in the database.\n",
 													"type": "string",
 													"enum": [
 														"associating",
@@ -3154,7 +3155,7 @@
 	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipients-list",
 		"summary": "List share recipients by share ID",
-		"description": "List share recipients by share ID.",
+		"description": "List share recipients by share ID. Returns **all** recipients\nregardless of their `association_status` (associating, associated,\ndisassociating, disassociated). Callers that want only \"active\"\nrecipients must filter client-side on the `association_status` field.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3320,6 +3321,7 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
 												"properties": {
 													"account_id": {
 														"description": "Account identifier.",
@@ -3329,7 +3331,7 @@
 														"x-auditable": true
 													},
 													"association_status": {
-														"description": "Share Recipient association status.",
+														"description": "The current state of the recipient relative to the share. The\n`desired_association_status` (not exposed in the response) tracks the\ntarget state set by the API; the background reconciliation workflow\ndrives `current_association_status` toward it.\n\n- `associating` — The recipient was recently added; the workflow is\n  pushing shared resources into the recipient account.\n- `associated` — Shared resources have been successfully applied to\n  the recipient account.\n- `disassociating` — The recipient was removed (via DELETE or PUT\n  replacement); the workflow is removing shared resources from the\n  recipient account.\n- `disassociated` — Shared resources have been removed from the\n  recipient account. The recipient record remains in the database.\n",
 														"type": "string",
 														"enum": [
 															"associating",
@@ -3675,6 +3677,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
@@ -3684,7 +3687,7 @@
 													"x-auditable": true
 												},
 												"association_status": {
-													"description": "Share Recipient association status.",
+													"description": "The current state of the recipient relative to the share. The\n`desired_association_status` (not exposed in the response) tracks the\ntarget state set by the API; the background reconciliation workflow\ndrives `current_association_status` toward it.\n\n- `associating` — The recipient was recently added; the workflow is\n  pushing shared resources into the recipient account.\n- `associated` — Shared resources have been successfully applied to\n  the recipient account.\n- `disassociating` — The recipient was removed (via DELETE or PUT\n  replacement); the workflow is removing shared resources from the\n  recipient account.\n- `disassociated` — Shared resources have been removed from the\n  recipient account. The recipient record remains in the database.\n",
 													"type": "string",
 													"enum": [
 														"associating",
@@ -6131,7 +6134,7 @@
 	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipient-create",
 		"summary": "Create a new share recipient",
-		"description": "Adds a recipient to a resource share, granting them access to the shared resources.",
+		"description": "Adds a single recipient to an account-targeted resource share, granting\nthem access to the shared resources. The recipient account must belong\nto the same organization as the share owner.\n\nTo replace the entire recipient list in one call, use\n`PUT /accounts/{account_id}/shares/{share_id}/recipients` instead.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6266,6 +6269,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
@@ -6275,7 +6279,7 @@
 													"x-auditable": true
 												},
 												"association_status": {
-													"description": "Share Recipient association status.",
+													"description": "The current state of the recipient relative to the share. The\n`desired_association_status` (not exposed in the response) tracks the\ntarget state set by the API; the background reconciliation workflow\ndrives `current_association_status` toward it.\n\n- `associating` — The recipient was recently added; the workflow is\n  pushing shared resources into the recipient account.\n- `associated` — Shared resources have been successfully applied to\n  the recipient account.\n- `disassociating` — The recipient was removed (via DELETE or PUT\n  replacement); the workflow is removing shared resources from the\n  recipient account.\n- `disassociated` — Shared resources have been removed from the\n  recipient account. The recipient record remains in the database.\n",
 													"type": "string",
 													"enum": [
 														"associating",
@@ -6890,7 +6894,7 @@
 	"PUT /accounts/{account_id}/shares/{share_id}": {
 		"operationId": "share-update",
 		"summary": "Update a share",
-		"description": "Updating is not immediate, an updated share object with a new status will be returned.",
+		"description": "Updates the share's display name and tags. This endpoint does **not**\nmodify recipients or resources — those are managed via dedicated\nsubresource endpoints:\n\n- **Recipients**: Use `POST /accounts/{account_id}/shares/{share_id}/recipients`\n  to add a single recipient, `PUT /accounts/{account_id}/shares/{share_id}/recipients`\n  to replace the full recipient list, or\n  `DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}`\n  to remove a recipient.\n- **Resources**: Use the share's resource subresource endpoints.\n\nUpdating is not immediate; an updated share object with a new status\nwill be returned.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6922,6 +6926,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Request body for `PUT /accounts/{account_id}/shares/{share_id}`. The\nshare's display `name` and `tags` can be updated via this endpoint. To\nmodify recipients, use the\n`/accounts/{account_id}/shares/{share_id}/recipients` subresource\nendpoints (POST, PUT, DELETE).\n",
 						"type": "object",
 						"properties": {
 							"name": {
@@ -7563,7 +7568,7 @@
 	"PUT /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipients-update",
 		"summary": "Update a share's recipients",
-		"description": "Changes a share's recipients to match the given list. Returns an error if the share targets an organization.",
+		"description": "Replaces the full recipient list for an account-targeted share. The\nserver computes the diff between the current and desired recipients:\nnew accounts are added, accounts no longer in the list are marked for\ndisassociation, and unchanged accounts are left as-is.\n\nReturns an error if the share targets an organization\n(`target_type=organization`); org-targeted shares derive their\nrecipients dynamically from org membership and cannot be modified\nthrough this endpoint.\n",
 		"parameters": [
 			{
 				"name": "account_id",

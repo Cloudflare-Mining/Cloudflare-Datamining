@@ -929,6 +929,161 @@
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/delete": {
+		"operationId": "delete-catalog",
+		"summary": "Delete R2 catalog metadata",
+		"description": "Removes the catalog from the control plane without deleting R2 bucket objects.\nSet force=true to remove catalog namespaces, tables, views, and maintenance\nmetadata. Force deletion is limited to a configured catalog object count.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$"
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"type": "string",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$"
+				}
+			},
+			{
+				"name": "force",
+				"in": "query",
+				"description": "Remove child metadata before deleting the catalog.",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Catalog metadata deleted successfully."
+			},
+			"400": {
+				"description": "Bad request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication failed."
+			},
+			"403": {
+				"description": "Forbidden."
+			},
+			"404": {
+				"description": "Catalog not found."
+			},
+			"409": {
+				"description": "Catalog is non-empty, has unfinished work, is protected, or exceeds the force-delete limit.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"R2 Catalog Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This removes catalog metadata. R2 bucket objects are retained."
+	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/disable": {
 		"operationId": "disable-catalog",
 		"summary": "Disable R2 catalog",

@@ -1,4 +1,116 @@
 {
+	"DELETE /accounts/{account_id}/scim/v2/Users/{user_id}": {
+		"operationId": "scim-users-delete",
+		"summary": "Delete SCIM User",
+		"description": "Deprovisions a SCIM User by removing their membership from this account (RFC 7644 Section 3.6). This does not delete the global Cloudflare user.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"allOf": [
+						{
+							"description": "Identifier",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"x-auditable": true
+						}
+					],
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"name": "user_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The user tag identifying a SCIM User resource (account member).",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"title": "SCIM User Identifier"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "SCIM User deprovisioned"
+			},
+			"4XX": {
+				"description": "Delete SCIM User response failure",
+				"content": {
+					"application/scim+json": {
+						"schema": {
+							"description": "SCIM error envelope (RFC 7644 Section 3.12). Returned on all 4XX and 5XX responses from SCIM endpoints.\n",
+							"type": "object",
+							"properties": {
+								"detail": {
+									"description": "A human-readable message describing the error.",
+									"type": "string",
+									"example": "Invalid SCIM request: userName is required"
+								},
+								"schemas": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [
+										"urn:ietf:params:scim:api:messages:2.0:Error"
+									]
+								},
+								"scimType": {
+									"description": "A SCIM detail error keyword (RFC 7644 Section 3.12). Only present for specific error conditions (e.g. `uniqueness` for duplicate member).\n",
+									"type": "string",
+									"example": "uniqueness"
+								},
+								"status": {
+									"description": "The HTTP status code as a string.",
+									"type": "string",
+									"example": "400"
+								}
+							},
+							"required": [
+								"schemas",
+								"status"
+							],
+							"title": "SCIM Error Response"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"SCIM Users"
+		],
+		"x-api-token-group": [
+			"SCIM Provisioning",
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.member.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "scim.users",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure you want to remove this user from the account?"
+	},
 	"GET /accounts/{account_id}/scim/v2/Users": {
 		"operationId": "scim-users-list",
 		"summary": "List SCIM Users",

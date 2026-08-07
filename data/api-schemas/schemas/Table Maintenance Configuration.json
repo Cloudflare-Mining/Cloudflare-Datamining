@@ -507,81 +507,66 @@
 					},
 					"schema": {
 						"description": "Contains request to update table maintenance configuration.",
-						"allOf": [
-							{
-								"description": "Contains maintenance update parameters.",
+						"type": "object",
+						"properties": {
+							"compaction": {
+								"description": "Updates table compaction configuration; all fields are optional.",
 								"type": "object",
 								"properties": {
-									"compaction": {
-										"description": "Updates compaction configuration (all fields optional).",
-										"type": "object",
-										"properties": {
-											"state": {
-												"description": "Updates the state optionally.",
-												"allOf": [
-													{
-														"description": "Specifies the state of maintenance operations.",
-														"type": "string",
-														"example": "enabled",
-														"enum": [
-															"enabled",
-															"disabled"
-														]
-													}
-												]
-											},
-											"target_size_mb": {
-												"description": "Updates the target file size optionally.",
-												"allOf": [
-													{
-														"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
-														"type": "string",
-														"example": "128",
-														"enum": [
-															"64",
-															"128",
-															"256",
-															"512"
-														]
-													}
-												]
-											}
-										}
+									"state": {
+										"description": "Specifies the state of maintenance operations.",
+										"type": "string",
+										"example": "enabled",
+										"enum": [
+											"enabled",
+											"disabled"
+										]
 									},
-									"snapshot_expiration": {
-										"description": "Updates snapshot expiration configuration (all fields optional).",
-										"type": "object",
-										"properties": {
-											"max_snapshot_age": {
-												"description": "Updates the maximum age for snapshots optionally.",
+									"target_size_mb": {
+										"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
+										"type": "string",
+										"example": "128",
+										"enum": [
+											"64",
+											"128",
+											"256",
+											"512"
+										]
+									}
+								}
+							},
+							"snapshot_expiration": {
+								"description": "Updates snapshot expiration configuration (all fields optional).",
+								"type": "object",
+								"properties": {
+									"max_snapshot_age": {
+										"description": "Updates the maximum age for snapshots optionally.",
+										"type": "string",
+										"pattern": "^\\d+(d|h|m|s)$"
+									},
+									"min_snapshots_to_keep": {
+										"description": "Updates the minimum number of snapshots to retain optionally.",
+										"type": "integer",
+										"format": "int64",
+										"minimum": 1
+									},
+									"state": {
+										"description": "Updates the state optionally.",
+										"allOf": [
+											{
+												"description": "Specifies the state of maintenance operations.",
 												"type": "string",
-												"pattern": "^\\d+(d|h|m|s)$"
-											},
-											"min_snapshots_to_keep": {
-												"description": "Updates the minimum number of snapshots to retain optionally.",
-												"type": "integer",
-												"format": "int64",
-												"minimum": 1
-											},
-											"state": {
-												"description": "Updates the state optionally.",
-												"allOf": [
-													{
-														"description": "Specifies the state of maintenance operations.",
-														"type": "string",
-														"example": "enabled",
-														"enum": [
-															"enabled",
-															"disabled"
-														]
-													}
+												"example": "enabled",
+												"enum": [
+													"enabled",
+													"disabled"
 												]
 											}
-										}
+										]
 									}
 								}
 							}
-						]
+						}
 					}
 				}
 			}
