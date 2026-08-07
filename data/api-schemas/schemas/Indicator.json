@@ -208,6 +208,12 @@
 															"type": "string",
 															"example": "dataset-uuid-123"
 														},
+														"eventDate": {
+															"description": "ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.",
+															"type": "string",
+															"example": "2024-06-15T00:00:00Z",
+															"nullable": true
+														},
 														"eventId": {
 															"type": "string",
 															"example": "event-uuid-456"
@@ -373,6 +379,12 @@
 											"datasetId": {
 												"type": "string",
 												"example": "dataset-uuid-123"
+											},
+											"eventDate": {
+												"description": "ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.",
+												"type": "string",
+												"example": "2024-06-15T00:00:00Z",
+												"nullable": true
 											},
 											"eventId": {
 												"type": "string",
@@ -1147,6 +1159,12 @@
 																		"type": "string",
 																		"example": "dataset-uuid-123"
 																	},
+																	"eventDate": {
+																		"description": "ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.",
+																		"type": "string",
+																		"example": "2024-06-15T00:00:00Z",
+																		"nullable": true
+																	},
 																	"eventId": {
 																		"type": "string",
 																		"example": "event-uuid-456"
@@ -1729,6 +1747,12 @@
 												"type": "string",
 												"example": "dataset-uuid-123"
 											},
+											"eventDate": {
+												"description": "ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.",
+												"type": "string",
+												"example": "2024-06-15T00:00:00Z",
+												"nullable": true
+											},
 											"eventId": {
 												"type": "string",
 												"example": "event-uuid-456"
@@ -2176,6 +2200,12 @@
 											"datasetId": {
 												"type": "string",
 												"example": "dataset-uuid-123"
+											},
+											"eventDate": {
+												"description": "ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added.",
+												"type": "string",
+												"example": "2024-06-15T00:00:00Z",
+												"nullable": true
 											},
 											"eventId": {
 												"type": "string",
