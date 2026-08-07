@@ -9,19 +9,20 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"meta": {
-								"type": "string",
-								"minLength": 1
-							},
 							"resourceId": {
 								"type": "string",
 								"minLength": 1
 							},
 							"resourceType": {
 								"type": "string",
-								"minLength": 1
+								"enum": [
+									"workers",
+									"d1",
+									"r2"
+								]
 							}
 						},
+						"additionalProperties": false,
 						"required": [
 							"resourceType",
 							"resourceId"
@@ -379,6 +380,7 @@
 								"result": {
 									"type": "array",
 									"items": {
+										"additionalProperties": false,
 										"properties": {
 											"createdAt": {
 												"type": "string"
@@ -391,17 +393,17 @@
 												},
 												"minItems": 1
 											},
-											"meta": {
-												"type": "string",
-												"minLength": 1
-											},
 											"resourceId": {
 												"type": "string",
 												"minLength": 1
 											},
 											"resourceType": {
 												"type": "string",
-												"minLength": 1
+												"enum": [
+													"workers",
+													"d1",
+													"r2"
+												]
 											},
 											"updatedAt": {
 												"type": "string"
@@ -567,6 +569,7 @@
 					"schema": {
 						"anyOf": [
 							{
+								"additionalProperties": false,
 								"properties": {
 									"destinations": {
 										"type": "array",
@@ -576,17 +579,17 @@
 										},
 										"minItems": 1
 									},
-									"meta": {
-										"type": "string",
-										"minLength": 1
-									},
 									"resourceId": {
 										"type": "string",
 										"minLength": 1
 									},
 									"resourceType": {
 										"type": "string",
-										"minLength": 1
+										"enum": [
+											"workers",
+											"d1",
+											"r2"
+										]
 									}
 								},
 								"required": [
@@ -597,9 +600,11 @@
 								"type": "object"
 							},
 							{
+								"additionalProperties": false,
 								"properties": {
 									"requester": {
 										"type": "object",
+										"additionalProperties": false,
 										"properties": {
 											"requesterId": {
 												"type": "string",
@@ -607,7 +612,9 @@
 											},
 											"requesterType": {
 												"type": "string",
-												"minLength": 1
+												"enum": [
+													"workers"
+												]
 											}
 										},
 										"required": [
@@ -618,6 +625,7 @@
 									"resources": {
 										"type": "array",
 										"items": {
+											"additionalProperties": false,
 											"properties": {
 												"destinations": {
 													"type": "array",
@@ -627,17 +635,17 @@
 													},
 													"minItems": 1
 												},
-												"meta": {
-													"type": "string",
-													"minLength": 1
-												},
 												"resourceId": {
 													"type": "string",
 													"minLength": 1
 												},
 												"resourceType": {
 													"type": "string",
-													"minLength": 1
+													"enum": [
+														"workers",
+														"d1",
+														"r2"
+													]
 												}
 											},
 											"required": [
@@ -656,10 +664,12 @@
 								"type": "object"
 							},
 							{
+								"additionalProperties": false,
 								"properties": {
 									"resources": {
 										"type": "array",
 										"items": {
+											"additionalProperties": false,
 											"properties": {
 												"destinations": {
 													"type": "array",
@@ -669,17 +679,17 @@
 													},
 													"minItems": 1
 												},
-												"meta": {
-													"type": "string",
-													"minLength": 1
-												},
 												"resourceId": {
 													"type": "string",
 													"minLength": 1
 												},
 												"resourceType": {
 													"type": "string",
-													"minLength": 1
+													"enum": [
+														"workers",
+														"d1",
+														"r2"
+													]
 												}
 											},
 											"required": [
@@ -744,6 +754,7 @@
 								"result": {
 									"type": "array",
 									"items": {
+										"additionalProperties": false,
 										"properties": {
 											"createdAt": {
 												"type": "string"
@@ -756,17 +767,17 @@
 												},
 												"minItems": 1
 											},
-											"meta": {
-												"type": "string",
-												"minLength": 1
-											},
 											"resourceId": {
 												"type": "string",
 												"minLength": 1
 											},
 											"resourceType": {
 												"type": "string",
-												"minLength": 1
+												"enum": [
+													"workers",
+													"d1",
+													"r2"
+												]
 											},
 											"updatedAt": {
 												"type": "string"

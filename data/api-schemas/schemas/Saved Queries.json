@@ -86,69 +86,105 @@
 													"description": "Create Calculations to compute as part of the query.",
 													"type": "array",
 													"items": {
-														"properties": {
-															"alias": {
-																"type": "string"
-															},
-															"key": {
-																"type": "string"
-															},
-															"keyType": {
-																"type": "string",
-																"enum": [
-																	"string",
-																	"number",
-																	"boolean"
-																]
-															},
-															"operator": {
-																"type": "string",
-																"enum": [
-																	"uniq",
-																	"count",
-																	"max",
-																	"min",
-																	"sum",
-																	"avg",
-																	"median",
-																	"p001",
-																	"p01",
-																	"p05",
-																	"p10",
-																	"p25",
-																	"p75",
-																	"p90",
-																	"p95",
-																	"p99",
-																	"p999",
-																	"stddev",
-																	"variance",
-																	"COUNT_DISTINCT",
-																	"COUNT",
-																	"MAX",
-																	"MIN",
-																	"SUM",
-																	"AVG",
-																	"MEDIAN",
-																	"P001",
-																	"P01",
-																	"P05",
-																	"P10",
-																	"P25",
-																	"P75",
-																	"P90",
-																	"P95",
-																	"P99",
-																	"P999",
-																	"STDDEV",
-																	"VARIANCE"
-																]
-															}
+														"discriminator": {
+															"propertyName": "operator"
 														},
-														"required": [
-															"operator"
-														],
-														"type": "object"
+														"oneOf": [
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"count",
+																			"COUNT"
+																		]
+																	}
+																},
+																"required": [
+																	"operator"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string",
+																		"pattern": "\\S"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"uniq",
+																			"max",
+																			"min",
+																			"sum",
+																			"avg",
+																			"median",
+																			"p001",
+																			"p01",
+																			"p05",
+																			"p10",
+																			"p25",
+																			"p75",
+																			"p90",
+																			"p95",
+																			"p99",
+																			"p999",
+																			"stddev",
+																			"variance",
+																			"COUNT_DISTINCT",
+																			"MAX",
+																			"MIN",
+																			"SUM",
+																			"AVG",
+																			"MEDIAN",
+																			"P001",
+																			"P01",
+																			"P05",
+																			"P10",
+																			"P25",
+																			"P75",
+																			"P90",
+																			"P95",
+																			"P99",
+																			"P999",
+																			"STDDEV",
+																			"VARIANCE"
+																		]
+																	}
+																},
+																"required": [
+																	"key",
+																	"operator"
+																],
+																"type": "object"
+															}
+														]
 													}
 												},
 												"datasets": {
@@ -754,69 +790,105 @@
 														"description": "Create Calculations to compute as part of the query.",
 														"type": "array",
 														"items": {
-															"properties": {
-																"alias": {
-																	"type": "string"
-																},
-																"key": {
-																	"type": "string"
-																},
-																"keyType": {
-																	"type": "string",
-																	"enum": [
-																		"string",
-																		"number",
-																		"boolean"
-																	]
-																},
-																"operator": {
-																	"type": "string",
-																	"enum": [
-																		"uniq",
-																		"count",
-																		"max",
-																		"min",
-																		"sum",
-																		"avg",
-																		"median",
-																		"p001",
-																		"p01",
-																		"p05",
-																		"p10",
-																		"p25",
-																		"p75",
-																		"p90",
-																		"p95",
-																		"p99",
-																		"p999",
-																		"stddev",
-																		"variance",
-																		"COUNT_DISTINCT",
-																		"COUNT",
-																		"MAX",
-																		"MIN",
-																		"SUM",
-																		"AVG",
-																		"MEDIAN",
-																		"P001",
-																		"P01",
-																		"P05",
-																		"P10",
-																		"P25",
-																		"P75",
-																		"P90",
-																		"P95",
-																		"P99",
-																		"P999",
-																		"STDDEV",
-																		"VARIANCE"
-																	]
-																}
+															"discriminator": {
+																"propertyName": "operator"
 															},
-															"required": [
-																"operator"
-															],
-															"type": "object"
+															"oneOf": [
+																{
+																	"properties": {
+																		"alias": {
+																			"type": "string"
+																		},
+																		"key": {
+																			"type": "string"
+																		},
+																		"keyType": {
+																			"type": "string",
+																			"enum": [
+																				"string",
+																				"number",
+																				"boolean"
+																			]
+																		},
+																		"operator": {
+																			"type": "string",
+																			"enum": [
+																				"count",
+																				"COUNT"
+																			]
+																		}
+																	},
+																	"required": [
+																		"operator"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"alias": {
+																			"type": "string"
+																		},
+																		"key": {
+																			"type": "string",
+																			"pattern": "\\S"
+																		},
+																		"keyType": {
+																			"type": "string",
+																			"enum": [
+																				"string",
+																				"number",
+																				"boolean"
+																			]
+																		},
+																		"operator": {
+																			"type": "string",
+																			"enum": [
+																				"uniq",
+																				"max",
+																				"min",
+																				"sum",
+																				"avg",
+																				"median",
+																				"p001",
+																				"p01",
+																				"p05",
+																				"p10",
+																				"p25",
+																				"p75",
+																				"p90",
+																				"p95",
+																				"p99",
+																				"p999",
+																				"stddev",
+																				"variance",
+																				"COUNT_DISTINCT",
+																				"MAX",
+																				"MIN",
+																				"SUM",
+																				"AVG",
+																				"MEDIAN",
+																				"P001",
+																				"P01",
+																				"P05",
+																				"P10",
+																				"P25",
+																				"P75",
+																				"P90",
+																				"P95",
+																				"P99",
+																				"P999",
+																				"STDDEV",
+																				"VARIANCE"
+																			]
+																		}
+																	},
+																	"required": [
+																		"key",
+																		"operator"
+																	],
+																	"type": "object"
+																}
+															]
 														}
 													},
 													"datasets": {
@@ -1387,69 +1459,105 @@
 													"description": "Create Calculations to compute as part of the query.",
 													"type": "array",
 													"items": {
-														"properties": {
-															"alias": {
-																"type": "string"
-															},
-															"key": {
-																"type": "string"
-															},
-															"keyType": {
-																"type": "string",
-																"enum": [
-																	"string",
-																	"number",
-																	"boolean"
-																]
-															},
-															"operator": {
-																"type": "string",
-																"enum": [
-																	"uniq",
-																	"count",
-																	"max",
-																	"min",
-																	"sum",
-																	"avg",
-																	"median",
-																	"p001",
-																	"p01",
-																	"p05",
-																	"p10",
-																	"p25",
-																	"p75",
-																	"p90",
-																	"p95",
-																	"p99",
-																	"p999",
-																	"stddev",
-																	"variance",
-																	"COUNT_DISTINCT",
-																	"COUNT",
-																	"MAX",
-																	"MIN",
-																	"SUM",
-																	"AVG",
-																	"MEDIAN",
-																	"P001",
-																	"P01",
-																	"P05",
-																	"P10",
-																	"P25",
-																	"P75",
-																	"P90",
-																	"P95",
-																	"P99",
-																	"P999",
-																	"STDDEV",
-																	"VARIANCE"
-																]
-															}
+														"discriminator": {
+															"propertyName": "operator"
 														},
-														"required": [
-															"operator"
-														],
-														"type": "object"
+														"oneOf": [
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"count",
+																			"COUNT"
+																		]
+																	}
+																},
+																"required": [
+																	"operator"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string",
+																		"pattern": "\\S"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"uniq",
+																			"max",
+																			"min",
+																			"sum",
+																			"avg",
+																			"median",
+																			"p001",
+																			"p01",
+																			"p05",
+																			"p10",
+																			"p25",
+																			"p75",
+																			"p90",
+																			"p95",
+																			"p99",
+																			"p999",
+																			"stddev",
+																			"variance",
+																			"COUNT_DISTINCT",
+																			"MAX",
+																			"MIN",
+																			"SUM",
+																			"AVG",
+																			"MEDIAN",
+																			"P001",
+																			"P01",
+																			"P05",
+																			"P10",
+																			"P25",
+																			"P75",
+																			"P90",
+																			"P95",
+																			"P99",
+																			"P999",
+																			"STDDEV",
+																			"VARIANCE"
+																		]
+																	}
+																},
+																"required": [
+																	"key",
+																	"operator"
+																],
+																"type": "object"
+															}
+														]
 													}
 												},
 												"datasets": {
@@ -1972,69 +2080,105 @@
 										"description": "Create Calculations to compute as part of the query.",
 										"type": "array",
 										"items": {
-											"properties": {
-												"alias": {
-													"type": "string"
-												},
-												"key": {
-													"type": "string"
-												},
-												"keyType": {
-													"type": "string",
-													"enum": [
-														"string",
-														"number",
-														"boolean"
-													]
-												},
-												"operator": {
-													"type": "string",
-													"enum": [
-														"uniq",
-														"count",
-														"max",
-														"min",
-														"sum",
-														"avg",
-														"median",
-														"p001",
-														"p01",
-														"p05",
-														"p10",
-														"p25",
-														"p75",
-														"p90",
-														"p95",
-														"p99",
-														"p999",
-														"stddev",
-														"variance",
-														"COUNT_DISTINCT",
-														"COUNT",
-														"MAX",
-														"MIN",
-														"SUM",
-														"AVG",
-														"MEDIAN",
-														"P001",
-														"P01",
-														"P05",
-														"P10",
-														"P25",
-														"P75",
-														"P90",
-														"P95",
-														"P99",
-														"P999",
-														"STDDEV",
-														"VARIANCE"
-													]
-												}
+											"discriminator": {
+												"propertyName": "operator"
 											},
-											"required": [
-												"operator"
-											],
-											"type": "object"
+											"oneOf": [
+												{
+													"properties": {
+														"alias": {
+															"type": "string"
+														},
+														"key": {
+															"type": "string"
+														},
+														"keyType": {
+															"type": "string",
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"count",
+																"COUNT"
+															]
+														}
+													},
+													"required": [
+														"operator"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alias": {
+															"type": "string"
+														},
+														"key": {
+															"type": "string",
+															"pattern": "\\S"
+														},
+														"keyType": {
+															"type": "string",
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"uniq",
+																"max",
+																"min",
+																"sum",
+																"avg",
+																"median",
+																"p001",
+																"p01",
+																"p05",
+																"p10",
+																"p25",
+																"p75",
+																"p90",
+																"p95",
+																"p99",
+																"p999",
+																"stddev",
+																"variance",
+																"COUNT_DISTINCT",
+																"MAX",
+																"MIN",
+																"SUM",
+																"AVG",
+																"MEDIAN",
+																"P001",
+																"P01",
+																"P05",
+																"P10",
+																"P25",
+																"P75",
+																"P90",
+																"P95",
+																"P99",
+																"P999",
+																"STDDEV",
+																"VARIANCE"
+															]
+														}
+													},
+													"required": [
+														"key",
+														"operator"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"datasets": {
@@ -2380,69 +2524,105 @@
 													"description": "Create Calculations to compute as part of the query.",
 													"type": "array",
 													"items": {
-														"properties": {
-															"alias": {
-																"type": "string"
-															},
-															"key": {
-																"type": "string"
-															},
-															"keyType": {
-																"type": "string",
-																"enum": [
-																	"string",
-																	"number",
-																	"boolean"
-																]
-															},
-															"operator": {
-																"type": "string",
-																"enum": [
-																	"uniq",
-																	"count",
-																	"max",
-																	"min",
-																	"sum",
-																	"avg",
-																	"median",
-																	"p001",
-																	"p01",
-																	"p05",
-																	"p10",
-																	"p25",
-																	"p75",
-																	"p90",
-																	"p95",
-																	"p99",
-																	"p999",
-																	"stddev",
-																	"variance",
-																	"COUNT_DISTINCT",
-																	"COUNT",
-																	"MAX",
-																	"MIN",
-																	"SUM",
-																	"AVG",
-																	"MEDIAN",
-																	"P001",
-																	"P01",
-																	"P05",
-																	"P10",
-																	"P25",
-																	"P75",
-																	"P90",
-																	"P95",
-																	"P99",
-																	"P999",
-																	"STDDEV",
-																	"VARIANCE"
-																]
-															}
+														"discriminator": {
+															"propertyName": "operator"
 														},
-														"required": [
-															"operator"
-														],
-														"type": "object"
+														"oneOf": [
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"count",
+																			"COUNT"
+																		]
+																	}
+																},
+																"required": [
+																	"operator"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string",
+																		"pattern": "\\S"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"uniq",
+																			"max",
+																			"min",
+																			"sum",
+																			"avg",
+																			"median",
+																			"p001",
+																			"p01",
+																			"p05",
+																			"p10",
+																			"p25",
+																			"p75",
+																			"p90",
+																			"p95",
+																			"p99",
+																			"p999",
+																			"stddev",
+																			"variance",
+																			"COUNT_DISTINCT",
+																			"MAX",
+																			"MIN",
+																			"SUM",
+																			"AVG",
+																			"MEDIAN",
+																			"P001",
+																			"P01",
+																			"P05",
+																			"P10",
+																			"P25",
+																			"P75",
+																			"P90",
+																			"P95",
+																			"P99",
+																			"P999",
+																			"STDDEV",
+																			"VARIANCE"
+																		]
+																	}
+																},
+																"required": [
+																	"key",
+																	"operator"
+																],
+																"type": "object"
+															}
+														]
 													}
 												},
 												"datasets": {
@@ -2954,69 +3134,105 @@
 										"description": "Create Calculations to compute as part of the query.",
 										"type": "array",
 										"items": {
-											"properties": {
-												"alias": {
-													"type": "string"
-												},
-												"key": {
-													"type": "string"
-												},
-												"keyType": {
-													"type": "string",
-													"enum": [
-														"string",
-														"number",
-														"boolean"
-													]
-												},
-												"operator": {
-													"type": "string",
-													"enum": [
-														"uniq",
-														"count",
-														"max",
-														"min",
-														"sum",
-														"avg",
-														"median",
-														"p001",
-														"p01",
-														"p05",
-														"p10",
-														"p25",
-														"p75",
-														"p90",
-														"p95",
-														"p99",
-														"p999",
-														"stddev",
-														"variance",
-														"COUNT_DISTINCT",
-														"COUNT",
-														"MAX",
-														"MIN",
-														"SUM",
-														"AVG",
-														"MEDIAN",
-														"P001",
-														"P01",
-														"P05",
-														"P10",
-														"P25",
-														"P75",
-														"P90",
-														"P95",
-														"P99",
-														"P999",
-														"STDDEV",
-														"VARIANCE"
-													]
-												}
+											"discriminator": {
+												"propertyName": "operator"
 											},
-											"required": [
-												"operator"
-											],
-											"type": "object"
+											"oneOf": [
+												{
+													"properties": {
+														"alias": {
+															"type": "string"
+														},
+														"key": {
+															"type": "string"
+														},
+														"keyType": {
+															"type": "string",
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"count",
+																"COUNT"
+															]
+														}
+													},
+													"required": [
+														"operator"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alias": {
+															"type": "string"
+														},
+														"key": {
+															"type": "string",
+															"pattern": "\\S"
+														},
+														"keyType": {
+															"type": "string",
+															"enum": [
+																"string",
+																"number",
+																"boolean"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"uniq",
+																"max",
+																"min",
+																"sum",
+																"avg",
+																"median",
+																"p001",
+																"p01",
+																"p05",
+																"p10",
+																"p25",
+																"p75",
+																"p90",
+																"p95",
+																"p99",
+																"p999",
+																"stddev",
+																"variance",
+																"COUNT_DISTINCT",
+																"MAX",
+																"MIN",
+																"SUM",
+																"AVG",
+																"MEDIAN",
+																"P001",
+																"P01",
+																"P05",
+																"P10",
+																"P25",
+																"P75",
+																"P90",
+																"P95",
+																"P99",
+																"P999",
+																"STDDEV",
+																"VARIANCE"
+															]
+														}
+													},
+													"required": [
+														"key",
+														"operator"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"datasets": {
@@ -3362,69 +3578,105 @@
 													"description": "Create Calculations to compute as part of the query.",
 													"type": "array",
 													"items": {
-														"properties": {
-															"alias": {
-																"type": "string"
-															},
-															"key": {
-																"type": "string"
-															},
-															"keyType": {
-																"type": "string",
-																"enum": [
-																	"string",
-																	"number",
-																	"boolean"
-																]
-															},
-															"operator": {
-																"type": "string",
-																"enum": [
-																	"uniq",
-																	"count",
-																	"max",
-																	"min",
-																	"sum",
-																	"avg",
-																	"median",
-																	"p001",
-																	"p01",
-																	"p05",
-																	"p10",
-																	"p25",
-																	"p75",
-																	"p90",
-																	"p95",
-																	"p99",
-																	"p999",
-																	"stddev",
-																	"variance",
-																	"COUNT_DISTINCT",
-																	"COUNT",
-																	"MAX",
-																	"MIN",
-																	"SUM",
-																	"AVG",
-																	"MEDIAN",
-																	"P001",
-																	"P01",
-																	"P05",
-																	"P10",
-																	"P25",
-																	"P75",
-																	"P90",
-																	"P95",
-																	"P99",
-																	"P999",
-																	"STDDEV",
-																	"VARIANCE"
-																]
-															}
+														"discriminator": {
+															"propertyName": "operator"
 														},
-														"required": [
-															"operator"
-														],
-														"type": "object"
+														"oneOf": [
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"count",
+																			"COUNT"
+																		]
+																	}
+																},
+																"required": [
+																	"operator"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alias": {
+																		"type": "string"
+																	},
+																	"key": {
+																		"type": "string",
+																		"pattern": "\\S"
+																	},
+																	"keyType": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"number",
+																			"boolean"
+																		]
+																	},
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"uniq",
+																			"max",
+																			"min",
+																			"sum",
+																			"avg",
+																			"median",
+																			"p001",
+																			"p01",
+																			"p05",
+																			"p10",
+																			"p25",
+																			"p75",
+																			"p90",
+																			"p95",
+																			"p99",
+																			"p999",
+																			"stddev",
+																			"variance",
+																			"COUNT_DISTINCT",
+																			"MAX",
+																			"MIN",
+																			"SUM",
+																			"AVG",
+																			"MEDIAN",
+																			"P001",
+																			"P01",
+																			"P05",
+																			"P10",
+																			"P25",
+																			"P75",
+																			"P90",
+																			"P95",
+																			"P99",
+																			"P999",
+																			"STDDEV",
+																			"VARIANCE"
+																		]
+																	}
+																},
+																"required": [
+																	"key",
+																	"operator"
+																],
+																"type": "object"
+															}
+														]
 													}
 												},
 												"datasets": {

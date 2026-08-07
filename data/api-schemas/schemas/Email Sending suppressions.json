@@ -84,7 +84,7 @@
 	"DELETE /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "delete_publicDeleteSendingSuppression",
 		"summary": "Delete account Email Sending suppression",
-		"description": "Deletes an account-level Email Sending suppression, allowing future delivery attempts to the address.",
+		"description": "Deletes the suppression, its note, and every legacy internal zone membership, allowing future delivery attempts to the address.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -153,6 +153,96 @@
 					}
 				}
 			},
+			"400": {
+				"description": "Invalid suppression input.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "This suppression is read-only.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Suppression not found.",
 				"content": {
@@ -199,7 +289,7 @@
 				}
 			},
 			"409": {
-				"description": "Suppression already exists.",
+				"description": "Suppression conflicts with this operation.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -641,7 +731,7 @@
 	"GET /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "get_publicListSendingSuppressions",
 		"summary": "List account Email Sending suppressions",
-		"description": "Lists account-level Email Sending suppressions with cursor pagination and optional email or reason filters.",
+		"description": "Lists every active Email Sending suppression owned by the account, including legacy rows with internal zone memberships.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -666,18 +756,31 @@
 				"name": "cursor",
 				"in": "query",
 				"schema": {
-					"description": "Opaque pagination cursor returned as `result_info.next_cursor`. When supplied, `order`, `direction`, `email` and `reason` are taken from the cursor and any conflicting values are rejected.",
+					"description": "Opaque pagination cursor returned as `result_info.next_cursor`. It carries the filters that produced it.",
 					"type": "string",
-					"example": "eyJ0IjoxLCJvIjoiY3JlYXRlZF9hdCIsImQiOiJkZXNjIn0"
+					"example": "eyJ0IjozLCJwIjoxMjMsImMiOiJjM2RjNWYwYjM0YTE0ZmY4ZTFiM2VjMDQ4OTVlMWIyMiJ9",
+					"maxLength": 2048
 				}
 			},
 			{
 				"name": "email",
 				"in": "query",
 				"schema": {
+					"description": "Exact email-address filter.",
 					"type": "string",
 					"format": "email",
 					"example": "user@example.com"
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"schema": {
+					"description": "A complete address is an exact match; a value ending in `@` matches that username across every domain. Prefix searches may return short intermediate pages while the bounded account scan advances.",
+					"type": "string",
+					"example": "billing@",
+					"maxLength": 320,
+					"minLength": 1
 				}
 			},
 			{
@@ -689,39 +792,15 @@
 						"manual",
 						"complaint",
 						"hard_bounce",
-						"soft_bounce"
-					]
-				}
-			},
-			{
-				"name": "order",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"default": "created_at",
-					"enum": [
-						"email",
-						"expires_at",
-						"created_at"
-					]
-				}
-			},
-			{
-				"name": "direction",
-				"in": "query",
-				"schema": {
-					"type": "string",
-					"default": "desc",
-					"enum": [
-						"asc",
-						"desc"
+						"soft_bounce",
+						"policy"
 					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Returns account-level Email Sending suppressions.",
+				"description": "Returns Email Sending suppressions.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -761,6 +840,15 @@
 												"type": "string",
 												"format": "uuid"
 											},
+											"note": {
+												"type": "string",
+												"example": "Imported from CRM",
+												"nullable": true
+											},
+											"read_only": {
+												"description": "Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`.",
+												"type": "boolean"
+											},
 											"reason": {
 												"type": "string",
 												"example": "hard_bounce"
@@ -771,7 +859,8 @@
 											"email",
 											"reason",
 											"created_at",
-											"expires_at"
+											"expires_at",
+											"read_only"
 										],
 										"type": "object"
 									}
@@ -784,9 +873,9 @@
 											"example": 1
 										},
 										"next_cursor": {
-											"description": "Opaque cursor for the next page. Pass it back as the `cursor` query parameter. `null` when there are no more results.",
+											"description": "Opaque cursor for the next page. Pass it back as the `cursor` query parameter and continue until it is `null`. A bounded large-account scan may return a short intermediate page.",
 											"type": "string",
-											"example": "eyJ0IjoxLCJvIjoiY3JlYXRlZF9hdCIsImQiOiJkZXNjIn0",
+											"example": "eyJ0IjozLCJwIjoxMjMsImMiOiJjM2RjNWYwYjM0YTE0ZmY4ZTFiM2VjMDQ4OTVlMWIyMiJ9",
 											"nullable": true
 										},
 										"per_page": {
@@ -817,7 +906,7 @@
 				}
 			},
 			"400": {
-				"description": "Bad Request.",
+				"description": "Invalid list parameters.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -828,7 +917,8 @@
 									"items": {
 										"properties": {
 											"message": {
-												"type": "string"
+												"type": "string",
+												"example": "Suppression not found"
 											}
 										},
 										"required": [
@@ -837,18 +927,24 @@
 										"type": "object"
 									}
 								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
 								"result": {
 									"type": "object"
 								},
 								"success": {
-									"type": "boolean",
-									"example": false
+									"type": "boolean"
 								}
 							},
 							"required": [
+								"errors",
+								"messages",
 								"result",
-								"success",
-								"errors"
+								"success"
 							]
 						}
 					}
@@ -874,7 +970,7 @@
 	"GET /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "get_publicGetSendingSuppression",
 		"summary": "Get account Email Sending suppression",
-		"description": "Gets an account-level Email Sending suppression by its identifier.",
+		"description": "Gets an Email Sending suppression owned by the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -937,6 +1033,15 @@
 											"type": "string",
 											"format": "uuid"
 										},
+										"note": {
+											"type": "string",
+											"example": "Imported from CRM",
+											"nullable": true
+										},
+										"read_only": {
+											"description": "Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`.",
+											"type": "boolean"
+										},
 										"reason": {
 											"type": "string",
 											"example": "hard_bounce"
@@ -947,7 +1052,8 @@
 										"email",
 										"reason",
 										"created_at",
-										"expires_at"
+										"expires_at",
+										"read_only"
 									]
 								},
 								"success": {
@@ -1322,6 +1428,282 @@
 		"x-fern-ignore": true,
 		"x-forge-hidden": true
 	},
+	"PATCH /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
+		"operationId": "patch_publicUpdateSendingSuppression",
+		"summary": "Update account Email Sending suppression",
+		"description": "Updates expiry or advisory note fields without changing legacy internal zone memberships.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "54442216"
+				}
+			},
+			{
+				"name": "suppression_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"expires_at": {
+								"description": "New expiry. Send `null` to make the suppression permanent; omit to leave it unchanged.",
+								"type": "string",
+								"format": "date-time",
+								"nullable": true
+							},
+							"note": {
+								"description": "Replacement advisory note. Send an empty string to clear it; omit to leave it unchanged.",
+								"type": "string",
+								"example": "Customer re-confirmed opt-in",
+								"maxLength": 1000
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated Email Sending suppression.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"email": {
+											"type": "string",
+											"format": "email",
+											"example": "user@example.com"
+										},
+										"expires_at": {
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
+										},
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"note": {
+											"type": "string",
+											"example": "Imported from CRM",
+											"nullable": true
+										},
+										"read_only": {
+											"description": "Whether clients may mutate this suppression. This is determined by the server and must not be inferred from `reason`.",
+											"type": "boolean"
+										},
+										"reason": {
+											"type": "string",
+											"example": "hard_bounce"
+										}
+									},
+									"required": [
+										"id",
+										"email",
+										"reason",
+										"created_at",
+										"expires_at",
+										"read_only"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "No updatable fields supplied.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "This suppression is read-only.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Suppression not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
 	"POST /accounts/{account_id}/email/sending/suppression": {
 		"operationId": "post_publicNewSuppressionSending",
 		"summary": "Create account email suppression",
@@ -1434,7 +1816,7 @@
 	"POST /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "post_publicCreateSendingSuppression",
 		"summary": "Create account Email Sending suppression",
-		"description": "Prevents Email Sending from delivering to an address until the suppression expires or is deleted.",
+		"description": "Creates an account-wide suppression. If a mutable legacy zone-linked row already exists, it is promoted without changing its identifier.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1522,6 +1904,96 @@
 					}
 				}
 			},
+			"400": {
+				"description": "Invalid suppression input.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "This suppression is read-only.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "Suppression not found"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"messages",
+								"result",
+								"success"
+							]
+						}
+					}
+				}
+			},
 			"404": {
 				"description": "Suppression not found.",
 				"content": {
@@ -1568,7 +2040,7 @@
 				}
 			},
 			"409": {
-				"description": "Suppression already exists.",
+				"description": "Suppression conflicts with this operation.",
 				"content": {
 					"application/json": {
 						"schema": {
