@@ -429,6 +429,9 @@
 	"billing-unified-checkout-payment-management": {
 		"enabled": true
 	},
+	"billing-unified-checkout-purchase-authz": {
+		"enabled": false
+	},
 	"billing-unified-checkout-r2": {
 		"enabled": true
 	},
@@ -538,6 +541,9 @@
 		"enabled": true
 	},
 	"cf-agent-artifacts": {
+		"enabled": true
+	},
+	"cf-agent-support-handoff": {
 		"enabled": true
 	},
 	"cf-one-incident-response": {
@@ -904,6 +910,9 @@
 	"deseng-kumofy-kv-pairs": {
 		"enabled": true
 	},
+	"deseng-load-balancing-ui": {
+		"enabled": false
+	},
 	"deseng-logout-on-403-from-must-succeed-endpoints": {
 		"enabled": false
 	},
@@ -935,7 +944,7 @@
 		"enabled": true
 	},
 	"deseng-subscriptions-redesign": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-support-forms": {
 		"enabled": true
@@ -1563,6 +1572,9 @@
 	},
 	"lb-cname-flattening": {
 		"enabled": true
+	},
+	"lb-custom-rules-changes": {
+		"enabled": false
 	},
 	"lb-select-zone-at-account-level": {
 		"enabled": false
@@ -2231,6 +2243,9 @@
 			"variant-a",
 			"variant-b"
 		]
+	},
+	"prg-workers-and-pages-plan-choice": {
+		"enabled": false
 	},
 	"prg-zone-plan-post-purchase-survey": {
 		"enabled": true
