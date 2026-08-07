@@ -6,15 +6,39 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
-August 6, 2026[Building an open Agentic Internet: readable, discoverable, callable, and payable](https://blog.cloudflare.com/the-agentic-internet/)
+August 7, 2026[Unveiling good and bad behaviors on the Agentic Internet](https://blog.cloudflare.com/good-and-bad-agentic-behaviors/)
 
-Agents are a new kind of visitor. They don't render CSS or click ads, but they have a paying human on the other end. Block them and you block your customer. We're building the open tools and protocols so publishers and agents can cooperate and not collide.
+Cloudflare is shifting bot mitigation from point-in-time Risk assessment to continuous Trust evaluation. Learn how new good and bad behaviors from bots and agents are assessed by our systems, including BotBase and Precursor — and try out our Precursor Trace simulation to see how your own cursor movements would be assessed as human or bot. 
 
-![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Andrew Galloni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467820APNFQVPB01C3445A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/), [Will Papper](https://blog.cloudflare.com/author/will-papper/), and [Andrew Galloni](https://blog.cloudflare.com/author/andrew-galloni/)
+[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
 
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA0FMHPRQW9N737YVV9WYRZ.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/the-agentic-internet/)
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZCHB9VT6PFY8DZNPV0SX1SS.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/good-and-bad-agentic-behaviors/)
+
+August 7, 2026[Introducing Radar Researcher: An AI tool for exploring Internet data in plain language](https://blog.cloudflare.com/introducing-radar-researcher/)
+
+Cloudflare Radar Researcher is a new AI-powered tool that lets you explore global Internet trends and traffic data using plain language. Built entirely on Cloudflare's Developer Platform, it turns natural language queries into real, interactive charts. 
+
+![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)![André Jesus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SMWWWW1RG87RNZQH78V5.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/) and [André Jesus](https://blog.cloudflare.com/author/andre-jesus/)
+
+August 7, 2026[Announcing Cloudflare Ambassadors, Community Engineers, and another $1M in open-source funding](https://blog.cloudflare.com/community-program-refresh/)
+
+We are launching updated community programs, including Cloudflare Ambassadors and Community Engineers, backed by $1M in open-source funding. Learn how we are supporting maintainers and scaling our developer community. 
+
+![Kristian Freeman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462MJYGBGN7HVTSXBB8KW4.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Phil Hawksworth](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZCBH0CA3FX93V6XPK9HEK7W.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Marissa Phul](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZE22MPC0Q34D7CRRGJ2MA5X.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kristian Freeman](https://blog.cloudflare.com/author/kristian/), [Phil Hawksworth](https://blog.cloudflare.com/author/phil-hawksworth/), and [Marissa Phul](https://blog.cloudflare.com/author/marissa-phul/)
+
+August 7, 2026[Unifying Workers AI and AI Gateway into a single AI control plane](https://blog.cloudflare.com/workers-ai-gateway-unification/)
+
+Cloudflare is unifying AI Gateway and Workers AI into a single control plane, giving developers observability, billing, and dynamic routing across both managed GPUs and external providers. Learn how unified bindings and model-first routing simplify building resilient AI applications.
+
+![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Ming Lu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449KZ4869TJZZSHHFJXPTB.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Michelle Chen](https://blog.cloudflare.com/author/michelle/) and [Ming Lu](https://blog.cloudflare.com/author/ming-lu/)
 
 August 6, 2026[Cloudflare AI Search: give your agents a search engine for your data ](https://blog.cloudflare.com/ai-search-easier/)
 
@@ -39,6 +63,14 @@ More than half of requests now come from machines, not people. Agent Readiness s
 ![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/) and [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/)
+
+August 6, 2026[Building an open Agentic Internet: readable, discoverable, callable, and payable](https://blog.cloudflare.com/the-agentic-internet/)
+
+Agents are a new kind of visitor. They don't render CSS or click ads, but they have a paying human on the other end. Block them and you block your customer. We're building the open tools and protocols so publishers and agents can cooperate and not collide.
+
+![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Andrew Galloni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467820APNFQVPB01C3445A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/), [Will Papper](https://blog.cloudflare.com/author/will-papper/), and [Andrew Galloni](https://blog.cloudflare.com/author/andrew-galloni/)
 
 August 6, 2026[Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers](https://blog.cloudflare.com/kitesurf/)
 
@@ -127,38 +159,6 @@ Learn how to build customizable, sandboxed CI/CD pipelines natively on Cloudflar
 ![André Venceslau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TZTSTWQ6JMKEC8GX38NE.png&w=64&h=64&f=webp&fit=cover&position=center)![Mia Malden](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4559TC07A12MQHAEK8YM1R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tomáš Hobza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68VHPDKGWAD30V2CTC811Z.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [André Venceslau](https://blog.cloudflare.com/author/andre-venceslau/), [Mia Malden](https://blog.cloudflare.com/author/mia/), and [Tomáš Hobza](https://blog.cloudflare.com/author/tomas-hobza/)
-
-August 4, 2026[How Cloudflare enforces engineering standards using AI](https://blog.cloudflare.com/engineering-standards-enforcement/)
-
-We created the Cloudflare Codex, a governed body of engineering standards that AI agents consume across the development lifecycle. By pairing structured RFCs with agentic reviews, teams automatically enforce consistency across code, specs, and incident reports. 
-
-![Timo Reimann](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4ZCETTVNS8WXDGQ3XB26VB.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Timo Reimann](https://blog.cloudflare.com/author/timo-reimann/)
-
-August 4, 2026[Introducing: Cloudflare Agents](https://blog.cloudflare.com/agents-on-cloudflare/)
-
-Cloudflare Agents brings all of your deployed agent sessions into a single experience, surfacing key information and insights into how your agents perform at scale.
-
-![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BZN18F7KC4GE3NPR8Z9J.png&w=64&h=64&f=webp&fit=cover&position=center)![Matt Simpson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4XF9V911MSMP824RMR1TN9.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Fred Schott](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HE62TBFWQKQNG8KP7ZXC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Nevi Shah](https://blog.cloudflare.com/author/nevi/), [Matt Simpson](https://blog.cloudflare.com/author/matt-simpson/), and [Fred Schott](https://blog.cloudflare.com/author/fred-schott/)
-
-August 4, 2026[Your agent can now debug Workers with local tracing](https://blog.cloudflare.com/local-tracing/)
-
-wrangler dev now produces structured traces for every local request. Your coding agent can hit a single API to pinpoint exactly what failed and why — no deployment required.
-
-![Zin Khant](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4W0QD64WYSDDV54ZT5MVB7.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Nickhil Pattikonda](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4W3C38ZG2MNYJCQ7Q7RK7X.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Nevi Shah](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BZN18F7KC4GE3NPR8Z9J.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Zin Khant](https://blog.cloudflare.com/author/zin-khant/), [Nickhil Pattikonda](https://blog.cloudflare.com/author/nickhil-pattikonda/), and [Nevi Shah](https://blog.cloudflare.com/author/nevi/)
-
-August 4, 2026[How we built a software factory to drive Astro's GitHub issue count to zero](https://blog.cloudflare.com/astro-issue-triage/)
-
-By replacing manual issue verification with isolated AI subagents running in GitHub Actions, the Astro maintainers reduced open issue count by 85%. This post explores the architecture behind automated bug reproduction, patch verification, and preview releases.
-
-![Matthew Phillips](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4J8HE0RG26Q2E313B8V83G.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matthew Phillips](https://blog.cloudflare.com/author/matthew-phillips/)
 
 Load more
 
