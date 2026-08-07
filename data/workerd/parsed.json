@@ -4155,6 +4155,10 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers_20260610",
 						"compatDisableFlag": "no_python_workers_20260610",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2026-08-25"
+						},
 						"pythonSnapshotRelease": true
 					},
 					"type": "Bool"
@@ -6458,6 +6462,13 @@
 						"name": "Size"
 					},
 					"type": "UInt64"
+				},
+				{
+					"name": "parent",
+					"annotations": {
+						"name": "Parent"
+					},
+					"type": "Text"
 				}
 			]
 		},
