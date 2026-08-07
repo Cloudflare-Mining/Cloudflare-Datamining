@@ -6,9 +6,9 @@ image: https://www.cloudflare.com/preview.png
 
 ##  Cloudflare Events 
 
-###### Connect SF 2026
+###### Cloudflare Connect 2026
 
-October 19–22 · San Francisco
+October 19–21 · San Francisco
 
 ###### Immerse New York
 
@@ -33,8 +33,6 @@ Events by region
 Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
-
-[Las Vegas, NVBlack Hat USAAug 3–6Learn more](https://fieldmarketing.www.cloudflare.com/CAD-black-hat-2026)
 
 Orlando, FL
 
@@ -61,6 +59,10 @@ AWS re:Invent
 Nov 30–Dec 4
 
 Coming soon
+
+Previous events
+
+[Las Vegas, NVBlack Hat USAAug 3–6Learn more](https://fieldmarketing.www.cloudflare.com/CAD-black-hat-2026)
 
 # Build without boundaries
 

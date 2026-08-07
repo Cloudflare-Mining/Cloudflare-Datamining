@@ -209,8 +209,8 @@ Your monthly invoices will include a detailed breakdown of your usage, credits d
 While credits cover the vast majority of our compute, storage, and Developer Platform, please keep the following specific rules in mind:
 
 * **R2 Object Storage:** Covered up to a $10,000 cap.
-* **Workers AI:** Covered up to a $2,500 cap for Tier 3, $25,000 for Tier 2, and $50,000 for Tier 1 (standard partner model pricing applies).
-* **AI Gateway:** _Temporarily_ not covered by credits. We are actively working to make it accessible and will update all startups in the program as soon as it goes live.
+* **Workers AI:** Covered up to a $2,500 cap for Tier 3, $10,000 for Tier 2, and $50,000 for Tier 1 (standard partner model pricing applies).
+* **AI Gateway:** _Temporarily_ not covered by credits. We are actively working to make it accessible.
 
 ###### Can I get upgraded to the new credit tiers?
 
@@ -253,6 +253,12 @@ The following products and services are currently excluded from Startup Program 
 
 Credits are valid for one year or until fully consumed, whichever comes first. We are not able to approve extensions at this time. Mark the date you received your confirmation email on your calendar, so you're not caught off guard when you approach graduation.
 
+###### Who isn't a good fit?
+
+Right now, this program isn't open to educational institutions, personal blogs, consultancies, service-based agencies, MSPs, or resellers.
+
+If you are a government entity or a civic project, we'd still love to support you! We offer free security and performance for state and local election websites through the [Athenian Project](https://www.cloudflare.com/athenian/), and robust protection for civic projects through [Project Galileo](https://www.cloudflare.com/galileo/).
+
 ###### What happens when I graduate from the program?
 
 We want to make your transition as smooth as possible. Our team will reach out to the contact email listed on your application with **three reminders** leading up to your official graduation date.
@@ -262,12 +268,6 @@ Upon graduation, you have a few options depending on your setup:
 * **Move to a Self-Serve Plan:** You can select any self-serve plan directly from your Cloudflare dashboard to continue using pay-as-you-go features without interruption.
 * **Downgrade to a Free Plan:** Any Enterprise domains that are not actively moved to a paid self-serve plan by your graduation date will automatically revert to our Free plan.
 * **Stay on Enterprise:** If your startup has scaled and you would like to remain on an Enterprise plan, please reach out to our team prior to graduation to discuss pricing and options.
-
-###### Who isn't a good fit?
-
-Right now, this program isn't open to educational institutions, personal blogs, consultancies, service-based agencies, MSPs, or resellers.
-
-If you are a government entity or a civic project, we'd still love to support you! We offer free security and performance for state and local election websites through the [Athenian Project](https://www.cloudflare.com/athenian/), and robust protection for civic projects through [Project Galileo](https://www.cloudflare.com/galileo/).
 
 ###### Is the program available more than once, or can I transfer my credits?
 
@@ -288,9 +288,13 @@ All tiers include priority ticket support and chat. If you ever need help escala
 * **Tier 2:** Access to a dedicated Account Manager (case-dependent).
 * **Tier 1:** Bi-weekly Solutions Architect office hours.
 
-###### Why don't I see any credit usage?
+###### How can I upgrade my domains?
 
-Because Cloudflare offers a generous free tier across many of our features, you may be using our products without drawing from your balance. Your Startup Program credits will only be applied when you utilize paid features or exceed the limits of the free tier.
+You can [upgrade your domains](https://developers.cloudflare.com/billing/manage/change-plan/) directly from the Cloudflare dashboard. Select the domain you want to upgrade, then change it to your desired plan. As part of the program, you receive access to three Enterprise domains. You should see three Enterprise domain upgrades available in your account. If you select a paid plan, such as Pro or Business, the system may still show a payment prompt. This is expected, and eligible charges will be covered by your startup benefits while your program benefits are active.
+
+###### What are your Terms of Service?
+
+Acceptance into Cloudflare for Startups is at Cloudflare's sole discretion. Cloudflare may change or discontinue the program or any aspect of it (including these terms) at any time without notice. We reserve the right to suspend or terminate your access to the program. Credits are non-transferable, nonrefundable, non-redeemable for cash, and may not be sold, purchased, or bartered. You are responsible for paying any potential taxes associated with the value of the credits. The Cloudflare Startup Plan is for up to one year for full use of the credits, whichever occurs first, and is subject to product-specific usage limitations described on the Cloudflare for Startups page or as otherwise provided by Cloudflare. You grant Cloudflare a non-exclusive, worldwide, royalty free right to include your company's name and logo on any Cloudflare websites, brochures, fliers, presentations, annual reports and any other marketing materials. The Startup Plan may not be used by existing enterprise customers. The Startup Plan does not include Registrar and AI Gateway for clarity all Registrar purchases must be paid for in full using the payment method associated with your account. As a Startup Plan participant, you will only be able to use up to $10,000 of Credits for any R2 service and $50,000 for Workers AI, the actual amount depends on your tier. You will be automatically billed for any overages. You will be required to create a Cloudflare account and upload a valid payment method on file. Your use of our services is also subject to cloudflare.com/terms/. The Startup Plan does not include a service level agreement. Upon expiration of credits, Cloudflare will bill your credit card on file unless you enter into a contract for prepaid services.
 
 ##  Ready to build? 
 

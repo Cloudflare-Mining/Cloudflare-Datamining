@@ -42,7 +42,7 @@ More than half of requests now come from machines, not people. Agent Readiness s
 
 August 6, 2026[Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers](https://blog.cloudflare.com/kitesurf/)
 
-We should be giving all agents tools that excel at what's important for an AI model. Kitesurf is Cloudflare's new stateless, highly scalable, and cost-effective web browser that runs entirely on top of Workers and was designed specifically for the Agentic Cloud
+We should be giving all agents tools that excel at what's important for an AI model. Kitesurf is Cloudflare's new stateless, highly scalable, and cost-effective web browser that runs entirely on top of Workers and was designed specifically for the Agentic Cloud.
 
 ![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Ruskin Constant](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BW07W83PCRTM6JP4W61R.webp&w=64&h=64&f=webp&fit=cover&position=center)![Rui Figueira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VN7XMZ4WCQMGQSPJ2B3Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Luís Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4768W5B20EQMM9ZD5AQMED.png&w=64&h=64&f=webp&fit=cover&position=center)
 
