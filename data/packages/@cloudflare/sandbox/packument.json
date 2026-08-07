@@ -2,7 +2,7 @@
 	"name": "@cloudflare/sandbox",
 	"dist-tags": {
 		"beta": "0.0.0-1558ec9",
-		"latest": "0.12.4",
+		"latest": "0.12.5",
 		"next": "0.13.0-next.711.1"
 	},
 	"versions": {
@@ -6783,22 +6783,63 @@
 			"name": "@cloudflare/sandbox",
 			"version": "0.13.0-next.711.1",
 			"dependencies": {
-				"@cloudflare/containers": "^0.3.7",
+				"hono": "^4.12.26",
+				"capnweb": "^0.8.0",
+				"aws4fetch": "^1.0.20",
+				"@cloudflare/containers": "^0.3.7"
+			},
+			"devDependencies": {
+				"acorn": "^8.14.0",
+				"wrangler": "^4.102.0",
+				"@types/bun": "^1.3.14",
+				"tar-stream": "^3.2.0",
+				"async-mutex": "^0.5.0",
+				"@repo/shared": "^0.0.0",
+				"@types/acorn": "^4.0.6",
+				"@xterm/xterm": "^6.0.0",
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40",
+				"@types/tar-stream": "^3.1.4"
+			},
+			"peerDependencies": {
+				"@xterm/xterm": ">=5.0.0",
+				"@openai/agents": "^0.3.3",
+				"@opencode-ai/sdk": "^1.1.40"
+			},
+			"dist": {
+				"shasum": "2c91bdd088e8e34d6fbd2ada203a64043eca0c8c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.13.0-next.711.1.tgz",
+				"fileCount": 62,
+				"integrity": "sha512-LVOIOhN2GJI0l4V41z8uGDHVQEneabibqge7B5M1xJZulWiegafZdqoDdoz/50On+MHZDBlYSiSuNMQrQ71dRQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIBVl1ACe3m/FQmvk5zasZHW61jnPL1975A59n1fQmG9XAiBnPmNYT+OwRn3jSQQwQtvoxjAkOdvtKt5cSIuha/Zr9g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.13.0-next.711.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2423000
+			}
+		},
+		"0.12.5": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.12.5",
+			"dependencies": {
+				"@cloudflare/containers": "^0.3.5",
 				"aws4fetch": "^1.0.20",
 				"capnweb": "^0.8.0",
-				"hono": "^4.12.26"
+				"hono": "^4.13.0"
 			},
 			"devDependencies": {
 				"@openai/agents": "^0.3.3",
 				"@opencode-ai/sdk": "^1.1.40",
 				"@repo/shared": "^0.0.0",
-				"@types/acorn": "^4.0.6",
-				"@types/bun": "^1.3.14",
-				"@types/tar-stream": "^3.1.4",
 				"@xterm/xterm": "^6.0.0",
-				"acorn": "^8.14.0",
-				"async-mutex": "^0.5.0",
-				"tar-stream": "^3.2.0",
 				"wrangler": "^4.102.0"
 			},
 			"peerDependencies": {
@@ -6807,13 +6848,13 @@
 				"@xterm/xterm": ">=5.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-LVOIOhN2GJI0l4V41z8uGDHVQEneabibqge7B5M1xJZulWiegafZdqoDdoz/50On+MHZDBlYSiSuNMQrQ71dRQ==",
-				"shasum": "2c91bdd088e8e34d6fbd2ada203a64043eca0c8c",
-				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.13.0-next.711.1.tgz",
-				"fileCount": 62,
-				"unpackedSize": 2423000,
+				"integrity": "sha512-D+EvqrpnJHmEaIbFMf5HefavBLMEbUcz7XdhbBfaJzFMma0sjKoN8JuQ5VNlMmPvwKx+Rj7mw5djSg9YMZVbeA==",
+				"shasum": "4a080b865c1db4f5ee94d38f5461b22bb37122ef",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.12.5.tgz",
+				"fileCount": 34,
+				"unpackedSize": 2210336,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.13.0-next.711.1",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.12.5",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -6821,7 +6862,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBVl1ACe3m/FQmvk5zasZHW61jnPL1975A59n1fQmG9XAiBnPmNYT+OwRn3jSQQwQtvoxjAkOdvtKt5cSIuha/Zr9g=="
+						"sig": "MEYCIQCNVTCV5f2w0+rv8i4y8Wf8cdl0OwRlc0E05hhs60qjAQIhANuCYCTSC/YsWHMP3YF85uWj7PVU3XsITOaohxxN0qFh"
 					}
 				]
 			}
