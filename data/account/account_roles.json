@@ -1,5 +1,24 @@
 [
 	{
+		"id": "1efdd50fb1ba9d0da3218deac58d5770",
+		"name": "Zone Settings Read",
+		"description": "Can view zone settings.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "649b5b25c8f1f00020ee947b8c459ea7",
 		"name": "Websearch Admin",
 		"description": "Can create, read, update, delete and run queries in Websearch.",
@@ -2080,33 +2099,6 @@
 				"edit": false
 			},
 			"ssl": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "629ae7e9cd43b305474cdecb23427234",
-		"name": "Waiting Room Read",
-		"description": "Can read waiting rooms configuration.",
-		"permissions": {
-			"waitingroom": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
