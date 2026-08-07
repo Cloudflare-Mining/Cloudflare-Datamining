@@ -2,6 +2,7 @@
 	"GET /accounts/{account_id}/cni/slots": {
 		"operationId": "list_slots",
 		"summary": "Retrieve a list of all slots matching the specified parameters",
+		"description": "Lists all available infrastructure slots for the account, showing allocation status and\ncapacity.",
 		"parameters": [
 			{
 				"name": "address_contains",
@@ -84,6 +85,10 @@
 												"description": "Customer account tag",
 												"type": "string"
 											},
+											"ccr_device_name": {
+												"type": "string",
+												"nullable": true
+											},
 											"facility": {
 												"type": "object",
 												"properties": {
@@ -162,11 +167,16 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.slots",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cni/slots/{slot}": {
 		"operationId": "get_slot",
 		"summary": "Get information about the specified slot",
+		"description": "Gets information about a specific infrastructure slot allocation.",
 		"parameters": [
 			{
 				"name": "slot",
@@ -198,6 +208,10 @@
 								"account": {
 									"description": "Customer account tag",
 									"type": "string"
+								},
+								"ccr_device_name": {
+									"type": "string",
+									"nullable": true
 								},
 								"facility": {
 									"type": "object",
@@ -269,6 +283,10 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.slots",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

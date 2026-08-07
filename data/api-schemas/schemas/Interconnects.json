@@ -2,6 +2,7 @@
 	"DELETE /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "delete_interconnect",
 		"summary": "Delete an interconnect object",
+		"description": "Permanently removes a network interconnect configuration. The physical or virtual connection\nwill be terminated.",
 		"parameters": [
 			{
 				"name": "icon",
@@ -49,11 +50,16 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cni/interconnects": {
 		"operationId": "list_interconnects",
 		"summary": "List existing interconnects",
+		"description": "Lists all network interconnects configured for the account, including physical and virtual\nconnections.",
 		"parameters": [
 			{
 				"name": "site",
@@ -148,6 +154,10 @@
 													},
 													{
 														"properties": {
+															"ccr_device_name": {
+																"type": "string",
+																"nullable": true
+															},
 															"facility": {
 																"type": "object",
 																"properties": {
@@ -176,9 +186,14 @@
 															},
 															"speed": {
 																"type": "string"
+															},
+															"virtual_port_reservation_id": {
+																"type": "string",
+																"format": "uuid"
 															}
 														},
 														"required": [
+															"virtual_port_reservation_id",
 															"slot_id",
 															"site",
 															"speed",
@@ -236,9 +251,14 @@
 																	"20G",
 																	"50G"
 																]
+															},
+															"virtual_port_reservation_id": {
+																"type": "string",
+																"format": "uuid"
 															}
 														},
 														"required": [
+															"virtual_port_reservation_id",
 															"region"
 														],
 														"type": "object"
@@ -284,11 +304,16 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "get_interconnect",
 		"summary": "Get information about an interconnect object",
+		"description": "Retrieves configuration and status details for a specific network interconnect.",
 		"parameters": [
 			{
 				"name": "icon",
@@ -351,6 +376,10 @@
 										},
 										{
 											"properties": {
+												"ccr_device_name": {
+													"type": "string",
+													"nullable": true
+												},
 												"facility": {
 													"type": "object",
 													"properties": {
@@ -379,9 +408,14 @@
 												},
 												"speed": {
 													"type": "string"
+												},
+												"virtual_port_reservation_id": {
+													"type": "string",
+													"format": "uuid"
 												}
 											},
 											"required": [
+												"virtual_port_reservation_id",
 												"slot_id",
 												"site",
 												"speed",
@@ -439,9 +473,14 @@
 														"20G",
 														"50G"
 													]
+												},
+												"virtual_port_reservation_id": {
+													"type": "string",
+													"format": "uuid"
 												}
 											},
 											"required": [
+												"virtual_port_reservation_id",
 												"region"
 											],
 											"type": "object"
@@ -479,11 +518,16 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa": {
 		"operationId": "get_interconnect_loa",
 		"summary": "Generate the Letter of Authorization (LOA) for a given interconnect",
+		"description": "Downloads the Letter of Authorization (LOA) for a network interconnect, required for\nphysical cross-connect provisioning.",
 		"parameters": [
 			{
 				"name": "icon",
@@ -492,6 +536,15 @@
 				"required": true,
 				"schema": {
 					"type": "string"
+				}
+			},
+			{
+				"name": "name",
+				"in": "query",
+				"description": "Custom name to use in the LOA instead of the account name (200 Character limit)",
+				"schema": {
+					"type": "string",
+					"nullable": true
 				}
 			},
 			{
@@ -533,11 +586,91 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "loa",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa/default": {
+		"operationId": "get_interconnect_loa_default_name",
+		"summary": "Get the default customer name for LOA generation",
+		"description": "Retrieves the default customer name that will be used in the LOA if no name is provided to the\n`/accounts/{account_id}/cni/interconnects/{icon}/loa` endpoint.",
+		"parameters": [
+			{
+				"name": "icon",
+				"in": "path",
+				"description": "Interconnect name to retrieve information about",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Customer account tag",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Default customer name",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"description": "The default customer name for the interconnect",
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request"
+			},
+			"404": {
+				"description": "Interconnect not found"
+			},
+			"500": {
+				"description": "Internal server error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Interconnects"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "loa-default-name",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/status": {
 		"operationId": "get_interconnect_status",
 		"summary": "Get the current status of an interconnect object",
+		"description": "Gets the current operational status of a network interconnect, including link state and\ntraffic metrics.",
 		"parameters": [
 			{
 				"name": "icon",
@@ -665,11 +798,16 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "status",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cni/interconnects": {
 		"operationId": "create_interconnect",
 		"summary": "Create a new interconnect",
+		"description": "Creates a new network interconnect for connecting Cloudflare's network to external networks.\nInterconnects provide dedicated bandwidth and reduced latency for traffic exchange.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -831,6 +969,10 @@
 										},
 										{
 											"properties": {
+												"ccr_device_name": {
+													"type": "string",
+													"nullable": true
+												},
 												"facility": {
 													"type": "object",
 													"properties": {
@@ -859,9 +1001,14 @@
 												},
 												"speed": {
 													"type": "string"
+												},
+												"virtual_port_reservation_id": {
+													"type": "string",
+													"format": "uuid"
 												}
 											},
 											"required": [
+												"virtual_port_reservation_id",
 												"slot_id",
 												"site",
 												"speed",
@@ -919,9 +1066,14 @@
 														"20G",
 														"50G"
 													]
+												},
+												"virtual_port_reservation_id": {
+													"type": "string",
+													"format": "uuid"
 												}
 											},
 											"required": [
+												"virtual_port_reservation_id",
 												"region"
 											],
 											"type": "object"
@@ -954,6 +1106,10 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.interconnects",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

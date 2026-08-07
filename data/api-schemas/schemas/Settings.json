@@ -2,6 +2,7 @@
 	"GET /accounts/{account_id}/cni/settings": {
 		"operationId": "get_settings",
 		"summary": "Get the current settings for the active account",
+		"description": "Retrieves current settings configuration for the specified resource or service.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -59,11 +60,16 @@
 			"Magic WAN Read",
 			"Magic Transit Read",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/cni/settings": {
 		"operationId": "update_settings",
 		"summary": "Update the current settings for the active account",
+		"description": "Updates configuration settings for the specified resource or service.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -137,6 +143,10 @@
 		"x-api-token-group": [
 			"Magic WAN Write",
 			"Magic Transit Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "network-interconnects.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
