@@ -5,63 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<h3><strong>About the Department</strong></h3>
-<p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
-<h3><strong>About the role</strong></h3>
-<p>Cloudflare engineering delivers code to production at a tremendous pace, and depends on automated testing to do so without incidents. The SLO team builds and runs the internal platform and tooling that empowers other engineering teams to set up Service Level Indicators (SLIs) and effectively measure their Service Level Objectives (SLOs). This enables all engineering teams to effectively measure their service and feature reliability that verify the interactions between systems and products in production at huge scale.</p>
-<p>We are looking for a highly motivated software engineer to join our Production Platform Organization. You will build the infrastructure necessary to collect, store, and make reliability data easily accessible for monitoring needs. You’ll need to communicate effectively and proactively with engineers across the company to deeply understand the behaviors of our systems and refine their reliability objectives. You will also work closely with Product Managers and Product Site Reliability Engineers on quality of service measurements for enterprise customers.&nbsp;</p>
-<p><strong>What You Will Do</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>About the Department</strong><strong><br></strong>Cloudflare’s Enterprise Integrations Engineering Team designs, builds, and maintains integrations across a wide range of SaaS applications used throughout the organization. Our mission is to create scalable, reliable, and maintainable systems that ensure data flows securely and efficiently between platforms. With several high-impact projects always in motion, the ability to manage shifting priorities, communicate clearly, and collaborate effectively is essential.</p>
+<p>Our team is highly collaborative, values continuous learning, and supports each other through shared ownership and open communication. We work closely with both technical and business teams, conduct regular retrospectives, and look for ways to improve how we build and deliver integrations.</p>
+<p><strong>What You’ll Do</strong><strong><br></strong>We’re looking for a software engineer to join our Enterprise Integrations Team. You’ll work on building and maintaining integration workflows between Cloudflare and a variety of SaaS applications. This includes taking work from concept through implementation, including gathering requirements, writing technical specifications, development, testing, and deployment.</p>
+<p>You’ll collaborate closely with internal teams to ensure integrations meet business needs and are built following engineering best practices. As you grow in the role, you’ll have the opportunity to lead larger initiatives and own projects from end to end.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li><strong>Build the Platform</strong>: Create and maintain production reliability testing infrastructure and availability reporting.</li>
-	<li><strong>Define Reliability Metrics</strong>: Measure uptime metrics like correctness, availability, and latency SLIs/SLOs. Develop, document, and execute SLI/SLO plans to verify systems continue to operate as expected.</li>
-	<li><strong>Collaborate Cross-Functionally</strong>: Collaborate with engineering teams to understand how their systems function and interact with other Cloudflare systems in production at a huge scale.&nbsp;</li>
-	<li><strong>Communicate &amp; Improve</strong>: Provide clear and concise feedback to engineering and product teams as an excellent communicator. Help drive continued improvements in the software development and reliability measurement processes.</li>
+	<li>Bachelor’s degree in Computer Science or a related field, or equivalent work experience</li>
+	<li>Minimum of 5 years of professional experience as a software engineer</li>
+	<li>Experience working with internal stakeholders to solve business problems through integration solutions</li>
+	<li>Proficiency in Go</li>
+	<li>Experience building RESTful APIs with proper service security practices</li>
+	<li>Experience working with observability tools such as Grafana, Prometheus, Sentry, or Kibana</li>
+	<li>Experience with Kubernetes</li>
+	<li>Experience with GitLab or other CI/CD tools</li>
+	<li>Willingness to participate in an on-call rotation with 10+ engineers</li>
 </ul>
-<p><strong>What You Will Need</strong></p>
+<p><strong>Bonus Points:</strong><strong><br></strong></p>
 <ul>
-	<li><strong>Experience</strong>: Proven track record as a software engineer or similar role with a deep understanding of developing and maintaining distributed systems.</li>
-	<li><strong>System Design</strong>: Experience designing, implementing, and maintaining secure and highly-available distributed systems.</li>
-	<li><strong>Programming Languages</strong>: Programming experience with one of the following languages: Go, Rust, or Python.</li>
-	<li><strong>Reliability Metrics</strong>: Deep understanding and hands-on experience measuring uptime metrics like correctness, availability, and latency using SLOs/SLIs.</li>
+	<li>Experience working with ERP systems such as Oracle or NetSuite</li>
+	<li>Experience working in an Agile Scrum environment</li>
+	<li>Familiarity with tools like Jira and Confluence</li>
+	<li>Familiarity with integration patterns such as pub/sub, CDM (Common Data Model), and batch processing</li>
+	<li>Experience working with PostgreSQL</li>
+	<li>Experience with Cloudflare Developer’s Platform</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience working with Clickhouse, Prometheus, GraphQL, and Postgres.</li>
-	<li>Experience working with data pipelines with a focus on reliability and scale.</li>
-	<li>Experience working with synthetic traffic &amp; load testing tools.&nbsp;</li>
-	<li>Experience developing reliable, extensible platforms that other engineers can trust and leverage.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

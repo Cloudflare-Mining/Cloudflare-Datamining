@@ -5,53 +5,34 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: Austin, TX</strong></p>
-<p><strong>About Cloudflare's Security Team</strong></p>
-<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
-<p>The Security Governance, Risk and Compliance team (GRC) is a sub-team of Security. Our job is to make sure that Cloudflare has the right controls in place to secure our systems and customer data. We work cross-functionally with almost every team at Cloudflare to implement new controls, manage risk, and demonstrate our security posture to auditors and customers.&nbsp;</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
-<p><strong>What you’ll do</strong></p>
-<p>As a GRC intern, you won’t just be checking boxes. Over 12-16 weeks, you will:</p>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>About the Department</strong><strong><br></strong></p>
+<p>Cloudflare’s Enterprise Integrations Engineering Team designs, builds, and maintains integrations across a wide range of SaaS applications used throughout the organization. Our mission is to create scalable, reliable, and maintainable systems that ensure data flows securely and efficiently between platforms. With several high-impact projects always in motion, the ability to manage shifting priorities, communicate clearly, and collaborate effectively is essential.</p>
+<p>Our team is highly collaborative, values continuous learning, and supports each other through shared ownership and open communication. We work closely with both technical and business teams, conduct regular retrospectives, and look for ways to improve how we build and deliver integrations.</p>
+<h4><strong>What You’ll Do</strong></h4>
+<p>We’re looking for a software engineer to join our Enterprise Integrations Team. You’ll work on building and maintaining integration workflows between Cloudflare and a variety of SaaS applications. This includes taking work from concept through implementation, including gathering requirements, writing technical specifications, development, testing, and deployment.</p>
+<p>You’ll collaborate closely with internal teams to ensure integrations meet business needs and are built following engineering best practices. As you grow in the role, you’ll have the opportunity to lead larger initiatives and own projects from end to end.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Execute a specialized project that directly improves Cloudflare’s security posture.</li>
-	<li>Improve the maturity of Cloudflare’s Security Compliance program by working on projects like:</li>
-	<ul>
-		<li>Evaluating the efficacy of Cloudflare security controls implemented across the organization.</li>
-		<li>Developing and implementing automated solutions to improve Governance, Risk, and Compliance processes and operations, integrating with existing security, engineering, and AI tools.&nbsp;</li>
-		<li>Supporting the security risk register by triaging and assessing potential risks, proposing mitigation strategies, and presenting key security insights to leadership.</li>
-		<li>Supporting Cloudflare’s security data center audits and assessments.</li>
-	</ul>
-	<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
-	<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
-	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
-	<li>Present your security project to the entire company at the end of the internship.</li>
-	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
+	<li>Bachelor’s degree in Computer Science or a related field, or equivalent work experience</li>
+	<li>Minimum of 3 years of professional experience as a software engineer</li>
+	<li>Experience working with internal stakeholders to solve business problems through integration solutions</li>
+	<li>Proficiency in Go</li>
+	<li>Experience building RESTful APIs with proper service security practices</li>
+	<li>Experience working with observability tools such as Grafana, Prometheus, Sentry, or Kibana</li>
+	<li>Experience with Kubernetes</li>
+	<li>Experience with GitLab or other CI/CD tools</li>
+	<li>Willingness to participate in an on-call rotation with 10+ engineers</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Bonus Points:</strong><strong><br></strong></p>
 <ul>
-	<li>Working knowledge of industry-standard frameworks such as NIST 800-53, ISO 27001, or SOC 2 principles through coursework or personal study.</li>
-	<li>Understanding of risk management methodologies - identifying threats, assessing impact/likelihood, and suggesting mitigation strategies.</li>
-	<li>Ability to write basic Python scripts to automate repetitive tasks, such as interacting with APIs or data cleaning.&nbsp;</li>
-	<li>Workflow Logic &amp; Orchestration - experience with "if-this-then-that" logic in automation platforms.</li>
-	<li>Understanding how to "instruct" AI models effectively and leverage them to perform day-to-day tasks.</li>
-	<li>Ability to build, deploy a full application</li>
-	<li>Technical writing/documenting</li>
-	<li>Observability and metrics experience</li>
-	<li>“Prompt engineering” or experience using LLM coding</li>
-	<li>Familiarity and previous use of cloudflare products: Workers, Workers AI, R2, D1</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In the office 3-5 days a week in the location of the internship.</li>
+	<li>Experience working with ERP systems such as Oracle or NetSuite</li>
+	<li>Experience working in an Agile Scrum environment</li>
+	<li>Familiarity with tools like Jira and Confluence</li>
+	<li>Familiarity with integration patterns such as pub/sub, CDM (Common Data Model), and batch processing</li>
+	<li>Experience working with PostgreSQL&nbsp;</li>
+	<li>Experience with Cloudflare Developer’s Platform</li>
 </ul>
-<p><strong>Bonus points</strong></p>
-<ul>
-	<li>Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience&nbsp;</li>
-	<li>You’ve built something with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students</a></li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -9,6 +9,7 @@
 <ul>
 	<li>Austin, US</li>
 	<li>Washington DC, US</li>
+	<li>San Francisco, CA</li>
 </ul>
 <h2>About the Role</h2>
 <p>Cloudflare is seeking a lawyer with a passion for new technologies to join the Product Counsel team. The Product Counsel team serves as the frontline legal contact and helps solve some of the company’s thorniest issues. As a member of the team, you’ll wear many hats and lead cross-functional projects with meaningful impact. The ideal candidate brings deep enthusiasm for innovative technology and the ability to collaborate closely with product, engineering, and business teams throughout the software development and commercialization lifecycle.</p>
@@ -30,7 +31,7 @@
 <h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction.</li>
-	<li>3+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</li>
+	<li>4+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</li>
 	<li>Technical background / expertise is highly desired. While a science or technical degree is not a prerequisite for this job, a passion for technologies is.</li>
 	<li>Experience with copyright law and Internet law is desired (e.g., AI Act, Data Act, net neutrality, DMCA, CFAA).</li>
 	<li>Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</li>
@@ -41,6 +42,7 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Washington D.C. based hires: Estimated annual salary of $150,000 - $$207,000</li>
+	<li>For Bay Area based hires: Estimated annual salary of $158,000 - $217,000</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

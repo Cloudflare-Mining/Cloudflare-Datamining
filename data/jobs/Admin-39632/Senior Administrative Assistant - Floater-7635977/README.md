@@ -33,7 +33,7 @@
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>New York Estimated Base salary $84,000 - $105,000.</p>
+<p>New York Estimated Base salary $84,000 - $116,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
