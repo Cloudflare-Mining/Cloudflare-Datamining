@@ -4155,8 +4155,7 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers_20260610",
 						"compatDisableFlag": "no_python_workers_20260610",
-						"pythonSnapshotRelease": true,
-						"experimental": true
+						"pythonSnapshotRelease": true
 					},
 					"type": "Bool"
 				},
@@ -4197,6 +4196,15 @@
 					"annotations": {
 						"compatEnableFlag": "expose_draining_reader",
 						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "workflowsEnableFastEngineCreation",
+					"annotations": {
+						"compatEnableFlag": "workflows_enable_fast_engine_creation",
+						"compatDisableFlag": "workflows_disable_fast_engine_creation",
+						"compatEnableDate": "2026-08-11"
 					},
 					"type": "Bool"
 				}
@@ -7173,6 +7181,16 @@
 					"name": "containerEngine",
 					"annotations": {},
 					"type": "workerd/src/workerd/server/workerd.capnp:Worker.containerEngine"
+				},
+				{
+					"name": "accessBlobHeader",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "accessBindingService",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/workerd.capnp:ServiceDesignator"
 				}
 			]
 		},
