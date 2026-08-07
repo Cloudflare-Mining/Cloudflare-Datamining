@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-06T04:33:57.185Z",
-	"model_count": 211,
+	"generated_at": "2026-08-07T04:34:04.988Z",
+	"model_count": 210,
 	"models": {
 		"alibaba/hh1-i2v": {
 			"model_id": "alibaba/hh1-i2v",
@@ -11781,7 +11781,7 @@
 			"model_id": "anthropic/claude-opus-5",
 			"slug": "anthropic/claude-opus-5",
 			"display_name": "Claude Opus 5",
-			"description": "Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.",
+			"description": "Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -15345,98 +15345,6 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/black-forest-labs/flux-2-pro-preview/parameters.json",
-				"raw_files": [
-					"schema-input.json",
-					"schema-output.json"
-				]
-			}
-		},
-		"black-forest-labs/flux-3-video": {
-			"model_id": "black-forest-labs/flux-3-video",
-			"slug": "black-forest-labs/flux-3-video",
-			"display_name": "FLUX 3 Video",
-			"description": "FLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.",
-			"task": {
-				"id": "",
-				"name": "Text-to-Video",
-				"description": ""
-			},
-			"tags": [
-				"Video Generation",
-				"Image to Video",
-				"Audio"
-			],
-			"context_length": null,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "terms",
-					"value": "https://blackforestlabs.ai/terms-of-service/"
-				},
-				{
-					"property_id": "info",
-					"value": "https://blackforestlabs.ai/"
-				}
-			],
-			"metadata": {
-				"Audio Generation": "Yes",
-				"Max Duration": "20s",
-				"Max Resolution": "FHD",
-				"Modes": "Text-to-video, image-to-video, video continuation"
-			},
-			"external_info": "https://blackforestlabs.ai/",
-			"terms": "https://blackforestlabs.ai/terms-of-service/",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/black-forest-labs/flux-3-video.png",
-			"schema_version": "1.0.0",
-			"created_at": "2026-08-04 19:40:03",
-			"updated_at": null,
-			"zdr_comment": null,
-			"banner": null,
-			"request_formats": null,
-			"examples": [
-				{
-					"name": "Text to Video",
-					"description": "Generate a video from a text prompt alone (t2v), with synchronized ambient audio.",
-					"input": {
-						"mode": "t2v",
-						"prompt": "A cozy ramen shop on a rainy Tokyo night, steam rising from the broth. Rain patter and quiet kitchen sounds.",
-						"resolution": "hd",
-						"duration": 5,
-						"generate_audio": true
-					},
-					"output": {
-						"video": "https://examples.aig.cloudflare.com/black-forest-labs/flux-3-video/text-to-video.mp4"
-					},
-					"raw_response": {
-						"state": "Completed",
-						"result": {
-							"video": "https://examples.aig.cloudflare.com/black-forest-labs/flux-3-video/text-to-video.mp4"
-						},
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						}
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'black-forest-labs/flux-3-video',\n  {\n    mode: 't2v',\n    prompt:\n      'A cozy ramen shop on a rainy Tokyo night, steam rising from the broth. Rain patter and quiet kitchen sounds.',\n    resolution: 'hd',\n    duration: 5,\n    generate_audio: true,\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"black-forest-labs/flux-3-video\",\n  \"input\": {\n    \"mode\": \"t2v\",\n    \"prompt\": \"A cozy ramen shop on a rainy Tokyo night, steam rising from the broth. Rain patter and quiet kitchen sounds.\",\n    \"resolution\": \"hd\",\n    \"duration\": 5,\n    \"generate_audio\": true\n  }\n}'"
-						}
-					]
-				}
-			],
-			"default_example": null,
-			"code_snippets": [],
-			"schema_manifest": {
-				"parameters_json": "v1/workers-ai-model-catalog/models/black-forest-labs/flux-3-video/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
