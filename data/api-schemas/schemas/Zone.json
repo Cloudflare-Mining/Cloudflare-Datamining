@@ -3656,7 +3656,12 @@
 			"enum": [
 				"#cache_purge:edit"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cache",
+		"x-fern-sdk-method-name": "purge",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation will delete cached content for the zone."
 	},
 	"PUT /zones/{zone_id}/activation_check": {
 		"operationId": "put-zones-zone_id-activation_check",
