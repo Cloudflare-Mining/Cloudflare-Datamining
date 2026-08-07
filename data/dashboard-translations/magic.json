@@ -945,7 +945,7 @@
 	"magic.routes.unified.type_tooltip.mesh_cidr": "Mesh CIDR route — routes private IP traffic through a Cloudflare Mesh node for service-to-service or user-to-service connectivity.",
 	"magic.routes.unified.type_tooltip.tunnel_hostname": "Tunnel hostname route — resolves a private hostname through a Cloudflare Tunnel, accessible via the Cloudflare One Client or Gateway.",
 	"magic.routes.unified.type_tooltip.mesh_hostname": "Mesh hostname route — resolves a private hostname through a Cloudflare Mesh node, accessible via the Cloudflare One Client or Gateway.",
-	"magic.routes.unified.type_tooltip.system": "Reserved system subnet — managed by Cloudflare. Used for internal addressing (Cloudflare Mesh IPs, Cloudflare source IPs). Cannot be deleted.",
+	"magic.routes.unified.type_tooltip.system": "Reserved system subnet — managed by Cloudflare. Used for internal addressing (Cloudflare Mesh IPs, Cloudflare source IPs, initial resolved IPs for hostname routing). Cannot be deleted.",
 	"magic.routes.unified.type.system": "System",
 	"magic.routes.unified.mk2_banner": "Your account uses the legacy routing engine where Tunnel routes always take precedence over WAN routes regardless of prefix length. <0>Upgrade to Unified Routing</0> to enable longest-prefix-match evaluation.",
 	"magic.routes.unified.delete.title": "Delete route",
