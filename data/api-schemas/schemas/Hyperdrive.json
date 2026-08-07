@@ -3887,6 +3887,266 @@
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "restart"
 	},
+	"POST /accounts/{account_id}/hyperdrive/integrationsOperations/{integration}/createDatabaseSignature": {
+		"operationId": "create-hyperdrive-database-signature",
+		"summary": "Create Database Signature",
+		"description": "Returns a short-lived signed authorization for creating a database that is billed through Cloudflare. The caller passes these values to the integration partner's own CLI, which verifies the signature before creating the database. Requires the account to be entitled to Cloudflare-billed databases for the integration.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "The Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Define configurations using a unique string identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "integration",
+				"in": "path",
+				"description": "The database integration to authorize against.",
+				"required": true,
+				"schema": {
+					"description": "The database integration that bills the new database through Cloudflare.",
+					"type": "string",
+					"example": "planetScale",
+					"enum": [
+						"planetScale"
+					],
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Create Database Signature Response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"type": "object"
+												},
+												"success": {
+													"description": "Return the status of the API call success.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"account_id": {
+													"description": "The Cloudflare account the signature authorizes. This is the identifier the signature is computed over, and is passed to the integration partner's CLI.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"x-auditable": true
+												},
+												"signature": {
+													"description": "Hex-encoded signature authorizing the database creation.",
+													"type": "string",
+													"example": "9f2b8c1d4e6a7b3c5d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c"
+												},
+												"timestamp": {
+													"description": "Unix timestamp, in seconds, at which the signature was issued. The integration partner uses it to verify the signature and reject stale authorizations.",
+													"type": "string",
+													"example": "1700000000",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"account_id",
+												"timestamp",
+												"signature"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Database Signature Failure Response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Return the status of the API call success.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Hyperdrive"
+		],
+		"x-api-token-group": [
+			"Hyperdrive Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "create-database-signature"
+	},
 	"PUT /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"operationId": "update-hyperdrive",
 		"summary": "Replace Hyperdrive",
