@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-07T04:34:04.988Z",
-	"model_count": 210,
+	"generated_at": "2026-08-08T04:33:45.226Z",
+	"model_count": 211,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -1203,6 +1203,46 @@
 			"terms": null,
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedance-2.0.png",
 			"created_at": "2026-05-22 17:52:58",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "bytedance/seedance-2.5",
+			"slug": "bytedance/seedance-2.5",
+			"display_name": "Seedance 2.5",
+			"description": "ByteDance's next-generation video model with a unified multimodal reference-to-video architecture. Generates video from text, up to 30 reference images, 10 reference videos, and 10 reference audio clips — including audio-only input with no image or video required. Supports first/last-frame image-to-video, video editing, video extension, intelligent duration (including automatic selection), and adaptive aspect ratio.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Image-to-Video",
+				"Reference Images",
+				"Reference Videos",
+				"Reference Audio",
+				"Audio Generation",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [],
+			"metadata": {
+				"Aspect Ratios": "16:9, 4:3, 1:1, 3:4, 9:16, 21:9, adaptive",
+				"Max Duration": "30 seconds",
+				"Max Reference Images": "30",
+				"Max Reference Videos": "10",
+				"Max Reference Audio Clips": "10",
+				"Native Audio": "Yes",
+				"Resolutions": "480p, 720p"
+			},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-08-07 19:10:41",
 			"zdr_comment": null
 		},
 		{
