@@ -1,0 +1,132 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"description": "Text prompt describing the video to generate. Optional when at least one reference image, video, or audio clip is provided (Seedance 2.5 supports audio-only input).",
+			"type": "string",
+			"maxLength": 2000
+		},
+		"image": {
+			"description": "First-frame reference image (HTTP(S) URL or base64 data URI) for image-to-video",
+			"type": "string"
+		},
+		"last_frame_image": {
+			"description": "Last-frame reference image (HTTP(S) URL or base64 data URI). Requires a first-frame image to also be given.",
+			"type": "string"
+		},
+		"reference_images": {
+			"description": "Reference images (0-30, HTTP(S) URLs or base64 data URIs) to guide multimodal video generation, editing, or extension.",
+			"maxItems": 30,
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"reference_videos": {
+			"description": "Reference videos (0-10, HTTP(S) URLs or base64 data URIs) for style/motion guidance, video editing, or video extension. Total duration of all reference videos must not exceed 30 seconds.",
+			"maxItems": 10,
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"reference_audios": {
+			"description": "Reference audio clips (0-10, HTTP(S) URLs or base64 data:audio/... URIs). Supports audio-only input (no image or video required). Total duration of all audio clips must not exceed 30 seconds.",
+			"maxItems": 10,
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"duration": {
+			"description": "Generated video duration in seconds. Supported range: 4-30, or -1 for automatic selection. For multimodal reference-to-video requests that edit an input reference video, only -1 is supported and the output duration is kept close to the input.",
+			"default": 5,
+			"anyOf": [
+				{
+					"type": "number",
+					"const": -1
+				},
+				{
+					"type": "integer",
+					"minimum": 4,
+					"maximum": 30
+				}
+			]
+		},
+		"resolution": {
+			"description": "Video resolution",
+			"default": "720p",
+			"type": "string",
+			"enum": [
+				"480p",
+				"720p"
+			]
+		},
+		"aspect_ratio": {
+			"description": "Video aspect ratio. \"adaptive\" automatically matches the aspect ratio of the provided reference image or video when applicable. First/last-frame generation always uses \"adaptive\"; any supplied value is overridden.",
+			"default": "adaptive",
+			"type": "string",
+			"enum": [
+				"16:9",
+				"4:3",
+				"1:1",
+				"3:4",
+				"9:16",
+				"21:9",
+				"adaptive"
+			]
+		},
+		"fps": {
+			"description": "Frame rate (frames per second)",
+			"default": 24,
+			"type": "number",
+			"const": 24
+		},
+		"camera_fixed": {
+			"description": "Whether to fix camera position. Not currently supported by the provider; has no effect.",
+			"default": false,
+			"type": "boolean"
+		},
+		"generate_audio": {
+			"description": "Whether to generate audio with the video",
+			"type": "boolean"
+		},
+		"watermark": {
+			"description": "Whether to add a watermark to the output video",
+			"default": false,
+			"type": "boolean"
+		},
+		"seed": {
+			"description": "Random seed. Passing this does not error, but reproducibility is not guaranteed and is not documented by the provider.",
+			"type": "integer",
+			"minimum": -9007199254740991,
+			"maximum": 9007199254740991
+		},
+		"output_format": {
+			"description": "Output video container format. \"mp4\" offers the best compatibility and smaller file size; \"mov\" preserves higher color fidelity for professional post-production workflows at the cost of a larger file.",
+			"default": "mp4",
+			"type": "string",
+			"enum": [
+				"mp4",
+				"mov"
+			]
+		},
+		"use_virtual_avatar": {
+			"description": "Route image reference inputs (image, reference_images, last_frame_image) through ByteDance's trusted virtual avatar asset library before generation. Intended for AI-generated/virtual character avatars that would otherwise be blocked by face or deepfake detection",
+			"default": false,
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"duration",
+		"resolution",
+		"aspect_ratio",
+		"fps",
+		"camera_fixed",
+		"watermark",
+		"output_format",
+		"use_virtual_avatar"
+	],
+	"additionalProperties": false
+}
