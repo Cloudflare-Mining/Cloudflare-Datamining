@@ -210,7 +210,7 @@
 	"ai-gateway.insights.adoption.series_requests": "Requests",
 	"ai-gateway.insights.adoption.no_data": "No adoption points were returned for this gateway and time range.",
 	"ai-gateway.insights.sessionCostHistogram.title": "Session cost distribution",
-	"ai-gateway.insights.sessionCostHistogram.description": "Distribution of per-session costs across all gateway sessions.",
+	"ai-gateway.insights.sessionCostHistogram.description": "Distribution of per-session costs across gateway sessions, capped at the 10,000 highest-cost sessions.",
 	"ai-gateway.insights.sessionCostHistogram.no_data": "No session cost data available for this gateway and time range.",
 	"ai-gateway.insights.sessionCostHistogram.loading": "Loading session cost distribution",
 	"ai-gateway.insights.sessionCostHistogram.tooltip_sessions": "%{count} session |||| %{count} sessions",
