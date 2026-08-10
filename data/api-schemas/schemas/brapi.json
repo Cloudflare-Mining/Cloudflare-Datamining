@@ -699,7 +699,8 @@
 				"schema": {
 					"description": "Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets)",
 					"type": "string",
-					"example": "eyJhbGxvd2VkRG9tYWlucyI6WyIqLmV4YW1wbGUuY29tIl19"
+					"example": "eyJhbGxvd2VkRG9tYWlucyI6WyIqLmV4YW1wbGUuY29tIl19",
+					"nullable": true
 				}
 			}
 		],

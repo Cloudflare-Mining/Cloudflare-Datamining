@@ -375,6 +375,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.delete"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/indexes": {
@@ -781,6 +788,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.list"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"GET /accounts/{account_id}/vectorize/indexes/{index_name}": {
@@ -1216,6 +1230,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.read"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes": {
@@ -1724,6 +1745,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.create"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/delete-by-ids": {
@@ -2141,6 +2169,13 @@
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids` endpoint.",
 			"display": true,
 			"id": "vectorize_delete_by_ids_deprecation"
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.delete-by.ids",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/get-by-ids": {
@@ -2594,6 +2629,13 @@
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids` endpoint.",
 			"display": true,
 			"id": "vectorize_get_by_ids_deprecation"
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.get-by.ids",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/insert": {
@@ -3003,6 +3045,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.update"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.insert",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/query": {
@@ -3471,6 +3520,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.read"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.query",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/upsert": {
@@ -3875,6 +3931,13 @@
 			"description": "This endpoint is deprecated in favor of the POST `/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert` endpoint.",
 			"display": true,
 			"id": "vectorize_upsert_deprecation"
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.upsert",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	},
 	"PUT /accounts/{account_id}/vectorize/indexes/{index_name}": {
@@ -4330,6 +4393,13 @@
 			"enum": [
 				"com.cloudflare.edge.vectorize.index.update"
 			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
 		}
 	}
 }

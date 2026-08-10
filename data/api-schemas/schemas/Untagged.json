@@ -2327,7 +2327,8 @@
 			"required": true,
 			"schema": {
 				"type": "string",
-				"format": "uuid"
+				"format": "uuid",
+				"x-auditable": true
 			}
 		}
 	],
@@ -2338,7 +2339,8 @@
 			"name": "internal_user_id",
 			"required": true,
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -2347,7 +2349,8 @@
 			"name": "internal_account_id",
 			"required": true,
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		}
 	],
@@ -2358,7 +2361,8 @@
 			"name": "internal_user_id",
 			"required": true,
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -2367,7 +2371,8 @@
 			"name": "internal_account_id",
 			"required": true,
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -2377,7 +2382,8 @@
 			"required": true,
 			"schema": {
 				"type": "string",
-				"format": "uuid"
+				"format": "uuid",
+				"x-auditable": true
 			}
 		}
 	],
@@ -2388,7 +2394,8 @@
 			"name": "internal_user_id",
 			"required": true,
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		},
 		{
@@ -2397,7 +2404,8 @@
 			"name": "internal_account_id",
 			"required": true,
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"x-auditable": true
 			}
 		}
 	],

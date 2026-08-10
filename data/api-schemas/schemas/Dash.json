@@ -33,27 +33,32 @@
 									"properties": {
 										"booking_id": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"x-auditable": true
 										},
 										"case_id": {
 											"description": "Linked Salesforce case id. A booking is never confirmed without a case attached.",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"category": {
 											"description": "Support category/problem summary. Customers select this from the create-case flow. The server uses the configured eligibility mapping to resolve it to a skill group, determine available engineers, and decide whether to offer scheduling.",
 											"type": "string",
-											"minLength": 1
+											"minLength": 1,
+											"x-auditable": true
 										},
 										"channel": {
 											"description": "The support channel for the booking. v1 supports voice callbacks only; engineers manually dial customers at the scheduled time.",
 											"type": "string",
 											"enum": [
 												"voice_callback"
-											]
+											],
+											"x-auditable": true
 										},
 										"created_at": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"customer_phone": {
 											"description": "Customer contact number for the callback, captured at booking time and validated against the selected country code. This directly addresses wrong/international phone numbers (notably EMEA/APJC) that were a top pain point with the prior ad-hoc callback feature.",
@@ -63,7 +68,8 @@
 													"description": "ISO 3166-1 alpha-2 country code selected from the country-code dropdown, defaulting to the country inferred from account locale. Used to validate and format phone_number.",
 													"type": "string",
 													"example": "US",
-													"pattern": "^[A-Z]{2}$"
+													"pattern": "^[A-Z]{2}$",
+													"x-auditable": true
 												},
 												"phone_number": {
 													"description": "Phone number in national format, validated against country_code.",
@@ -81,18 +87,21 @@
 											"description": "IANA timezone identifier.",
 											"type": "string",
 											"example": "America/Los_Angeles",
-											"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$"
+											"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$",
+											"x-auditable": true
 										},
 										"description": {
 											"type": "string"
 										},
 										"end_time": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"start_time": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"status": {
 											"description": "Current lifecycle state of a booking.",
@@ -102,14 +111,16 @@
 												"completed",
 												"no_show",
 												"cancelled"
-											]
+											],
+											"x-auditable": true
 										},
 										"subject": {
 											"type": "string"
 										},
 										"updated_at": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -142,7 +153,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -150,7 +162,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -170,7 +183,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -178,7 +192,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -198,7 +213,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -206,7 +222,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -226,7 +243,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -234,7 +252,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -254,7 +273,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -262,7 +282,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -282,7 +303,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -290,7 +312,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -328,7 +351,8 @@
 						"completed",
 						"no_show",
 						"cancelled"
-					]
+					],
+					"x-auditable": true
 				}
 			},
 			{
@@ -339,7 +363,8 @@
 					"type": "integer",
 					"default": 20,
 					"maximum": 100,
-					"minimum": 1
+					"minimum": 1,
+					"x-auditable": true
 				}
 			},
 			{
@@ -347,7 +372,8 @@
 				"in": "query",
 				"name": "page_token",
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -367,27 +393,32 @@
 										"properties": {
 											"booking_id": {
 												"type": "string",
-												"format": "uuid"
+												"format": "uuid",
+												"x-auditable": true
 											},
 											"case_id": {
 												"description": "Linked Salesforce case id. A booking is never confirmed without a case attached.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"category": {
 												"description": "Support category/problem summary. Customers select this from the create-case flow. The server uses the configured eligibility mapping to resolve it to a skill group, determine available engineers, and decide whether to offer scheduling.",
 												"type": "string",
-												"minLength": 1
+												"minLength": 1,
+												"x-auditable": true
 											},
 											"channel": {
 												"description": "The support channel for the booking. v1 supports voice callbacks only; engineers manually dial customers at the scheduled time.",
 												"type": "string",
 												"enum": [
 													"voice_callback"
-												]
+												],
+												"x-auditable": true
 											},
 											"created_at": {
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"x-auditable": true
 											},
 											"customer_phone": {
 												"description": "Customer contact number for the callback, captured at booking time and validated against the selected country code. This directly addresses wrong/international phone numbers (notably EMEA/APJC) that were a top pain point with the prior ad-hoc callback feature.",
@@ -397,7 +428,8 @@
 														"description": "ISO 3166-1 alpha-2 country code selected from the country-code dropdown, defaulting to the country inferred from account locale. Used to validate and format phone_number.",
 														"type": "string",
 														"example": "US",
-														"pattern": "^[A-Z]{2}$"
+														"pattern": "^[A-Z]{2}$",
+														"x-auditable": true
 													},
 													"phone_number": {
 														"description": "Phone number in national format, validated against country_code.",
@@ -415,18 +447,21 @@
 												"description": "IANA timezone identifier.",
 												"type": "string",
 												"example": "America/Los_Angeles",
-												"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$"
+												"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$",
+												"x-auditable": true
 											},
 											"description": {
 												"type": "string"
 											},
 											"end_time": {
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"x-auditable": true
 											},
 											"start_time": {
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"x-auditable": true
 											},
 											"status": {
 												"description": "Current lifecycle state of a booking.",
@@ -436,14 +471,16 @@
 													"completed",
 													"no_show",
 													"cancelled"
-												]
+												],
+												"x-auditable": true
 											},
 											"subject": {
 												"type": "string"
 											},
 											"updated_at": {
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -462,7 +499,8 @@
 								},
 								"next_page_token": {
 									"description": "Token to retrieve the next page of results, if any.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -481,7 +519,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -489,7 +528,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -509,7 +549,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -517,7 +558,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -537,7 +579,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -545,7 +588,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -565,7 +609,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -573,7 +618,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -612,27 +658,32 @@
 									"properties": {
 										"booking_id": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"x-auditable": true
 										},
 										"case_id": {
 											"description": "Linked Salesforce case id. A booking is never confirmed without a case attached.",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"category": {
 											"description": "Support category/problem summary. Customers select this from the create-case flow. The server uses the configured eligibility mapping to resolve it to a skill group, determine available engineers, and decide whether to offer scheduling.",
 											"type": "string",
-											"minLength": 1
+											"minLength": 1,
+											"x-auditable": true
 										},
 										"channel": {
 											"description": "The support channel for the booking. v1 supports voice callbacks only; engineers manually dial customers at the scheduled time.",
 											"type": "string",
 											"enum": [
 												"voice_callback"
-											]
+											],
+											"x-auditable": true
 										},
 										"created_at": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"customer_phone": {
 											"description": "Customer contact number for the callback, captured at booking time and validated against the selected country code. This directly addresses wrong/international phone numbers (notably EMEA/APJC) that were a top pain point with the prior ad-hoc callback feature.",
@@ -642,7 +693,8 @@
 													"description": "ISO 3166-1 alpha-2 country code selected from the country-code dropdown, defaulting to the country inferred from account locale. Used to validate and format phone_number.",
 													"type": "string",
 													"example": "US",
-													"pattern": "^[A-Z]{2}$"
+													"pattern": "^[A-Z]{2}$",
+													"x-auditable": true
 												},
 												"phone_number": {
 													"description": "Phone number in national format, validated against country_code.",
@@ -660,18 +712,21 @@
 											"description": "IANA timezone identifier.",
 											"type": "string",
 											"example": "America/Los_Angeles",
-											"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$"
+											"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$",
+											"x-auditable": true
 										},
 										"description": {
 											"type": "string"
 										},
 										"end_time": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"start_time": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"status": {
 											"description": "Current lifecycle state of a booking.",
@@ -681,14 +736,16 @@
 												"completed",
 												"no_show",
 												"cancelled"
-											]
+											],
+											"x-auditable": true
 										},
 										"subject": {
 											"type": "string"
 										},
 										"updated_at": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -721,7 +778,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -729,7 +787,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -749,7 +808,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -757,7 +817,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -777,7 +838,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -785,7 +847,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -805,7 +868,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -813,7 +877,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -833,7 +898,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -841,7 +907,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -875,7 +942,8 @@
 				"schema": {
 					"description": "Support category/problem summary. Customers select this from the create-case flow. The server uses the configured eligibility mapping to resolve it to a skill group, determine available engineers, and decide whether to offer scheduling.",
 					"type": "string",
-					"minLength": 1
+					"minLength": 1,
+					"x-auditable": true
 				}
 			},
 			{
@@ -886,7 +954,8 @@
 				"schema": {
 					"type": "string",
 					"example": "America/Los_Angeles",
-					"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$"
+					"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$",
+					"x-auditable": true
 				}
 			}
 		],
@@ -908,16 +977,19 @@
 											"end_time": {
 												"description": "End of the slot (RFC 3339, UTC).",
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"x-auditable": true
 											},
 											"slot_token": {
 												"description": "Opaque, short-lived token identifying this candidate slot and the engineer holding it. Clients pass this token in CreateBookingRequest to atomically claim the slot. If another booking claims the slot first, the API returns 409 and clients must re-fetch availability.",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"start_time": {
 												"description": "Start of the slot (RFC 3339, UTC). Render in the timezone supplied on the availability request.",
 												"type": "string",
-												"format": "date-time"
+												"format": "date-time",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -944,7 +1016,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -952,7 +1025,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -972,7 +1046,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -980,7 +1055,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1000,7 +1076,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1008,7 +1085,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1028,7 +1106,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1036,7 +1115,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1056,7 +1136,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1064,7 +1145,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1084,7 +1166,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1092,7 +1175,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1128,7 +1212,8 @@
 							"category": {
 								"description": "Support category/problem summary. Customers select this from the create-case flow. The server uses the configured eligibility mapping to resolve it to a skill group, determine available engineers, and decide whether to offer scheduling.",
 								"type": "string",
-								"minLength": 1
+								"minLength": 1,
+								"x-auditable": true
 							},
 							"customer_phone": {
 								"description": "Customer contact number for the callback, captured at booking time and validated against the selected country code. This directly addresses wrong/international phone numbers (notably EMEA/APJC) that were a top pain point with the prior ad-hoc callback feature.",
@@ -1138,7 +1223,8 @@
 										"description": "ISO 3166-1 alpha-2 country code selected from the country-code dropdown, defaulting to the country inferred from account locale. Used to validate and format phone_number.",
 										"type": "string",
 										"example": "US",
-										"pattern": "^[A-Z]{2}$"
+										"pattern": "^[A-Z]{2}$",
+										"x-auditable": true
 									},
 									"phone_number": {
 										"description": "Phone number in national format, validated against country_code.",
@@ -1156,7 +1242,8 @@
 								"description": "IANA timezone identifier, echoed back on the booking for display and confirmation purposes.",
 								"type": "string",
 								"example": "America/Los_Angeles",
-								"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$"
+								"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$",
+								"x-auditable": true
 							},
 							"description": {
 								"description": "Additional details about the support request.",
@@ -1164,7 +1251,8 @@
 							},
 							"slot_token": {
 								"description": "Token for the specific slot to claim, as GET .../booking/availability returned. The booking fails with 409 if the slot becomes unavailable.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"subject": {
 								"description": "Short summary of the support request.",
@@ -1195,27 +1283,32 @@
 									"properties": {
 										"booking_id": {
 											"type": "string",
-											"format": "uuid"
+											"format": "uuid",
+											"x-auditable": true
 										},
 										"case_id": {
 											"description": "Linked Salesforce case id. A booking is never confirmed without a case attached.",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"category": {
 											"description": "Support category/problem summary. Customers select this from the create-case flow. The server uses the configured eligibility mapping to resolve it to a skill group, determine available engineers, and decide whether to offer scheduling.",
 											"type": "string",
-											"minLength": 1
+											"minLength": 1,
+											"x-auditable": true
 										},
 										"channel": {
 											"description": "The support channel for the booking. v1 supports voice callbacks only; engineers manually dial customers at the scheduled time.",
 											"type": "string",
 											"enum": [
 												"voice_callback"
-											]
+											],
+											"x-auditable": true
 										},
 										"created_at": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"customer_phone": {
 											"description": "Customer contact number for the callback, captured at booking time and validated against the selected country code. This directly addresses wrong/international phone numbers (notably EMEA/APJC) that were a top pain point with the prior ad-hoc callback feature.",
@@ -1225,7 +1318,8 @@
 													"description": "ISO 3166-1 alpha-2 country code selected from the country-code dropdown, defaulting to the country inferred from account locale. Used to validate and format phone_number.",
 													"type": "string",
 													"example": "US",
-													"pattern": "^[A-Z]{2}$"
+													"pattern": "^[A-Z]{2}$",
+													"x-auditable": true
 												},
 												"phone_number": {
 													"description": "Phone number in national format, validated against country_code.",
@@ -1243,18 +1337,21 @@
 											"description": "IANA timezone identifier.",
 											"type": "string",
 											"example": "America/Los_Angeles",
-											"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$"
+											"pattern": "^[A-Za-z_+0-9-]+/[A-Za-z_+0-9-]+(?:/[A-Za-z_+0-9-]+)?$",
+											"x-auditable": true
 										},
 										"description": {
 											"type": "string"
 										},
 										"end_time": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"start_time": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										},
 										"status": {
 											"description": "Current lifecycle state of a booking.",
@@ -1264,14 +1361,16 @@
 												"completed",
 												"no_show",
 												"cancelled"
-											]
+											],
+											"x-auditable": true
 										},
 										"subject": {
 											"type": "string"
 										},
 										"updated_at": {
 											"type": "string",
-											"format": "date-time"
+											"format": "date-time",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1304,7 +1403,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1312,7 +1412,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1332,7 +1433,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1340,7 +1442,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1360,7 +1463,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1368,7 +1472,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1388,7 +1493,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1396,7 +1502,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1416,7 +1523,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1424,7 +1532,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1444,7 +1553,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1452,7 +1562,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -1472,7 +1583,8 @@
 							"properties": {
 								"code": {
 									"description": "Machine-readable error code.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"message": {
 									"description": "Human-readable error message.",
@@ -1480,7 +1592,8 @@
 								},
 								"request_id": {
 									"description": "Identifier correlating this error to server-side logs, when available.",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
