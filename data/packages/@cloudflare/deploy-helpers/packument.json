@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/deploy-helpers",
 	"dist-tags": {
-		"latest": "0.6.6"
+		"latest": "0.6.7"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1241,6 +1241,58 @@
 			"name": "@cloudflare/deploy-helpers",
 			"version": "0.6.6",
 			"dependencies": {
+				"chalk": "5.3.0",
+				"dotenv": "16.3.1",
+				"undici": "7.29.0",
+				"p-queue": "9.0.0",
+				"miniflare": "5.20260801.1-alpha",
+				"blake3-wasm": "2.1.5",
+				"pretty-bytes": "6.1.1",
+				"command-exists": "1.2.9",
+				"@cloudflare/workers-utils": "0.31.2",
+				"@cloudflare/cli-shared-helpers": "0.1.21"
+			},
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"esbuild": "0.28.1",
+				"json-diff": "^1.0.6",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"concurrently": "^8.2.2",
+				"@types/json-diff": "^1.0.3",
+				"devtools-protocol": "^0.0.1182435",
+				"@types/command-exists": "^1.2.0",
+				"@cloudflare/workers-shared": "0.19.9",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/containers-shared": "0.16.0",
+				"@cspotcode/source-map-support": "0.8.1"
+			},
+			"dist": {
+				"shasum": "8c5ad3ffcb0ed25d9c0183e91719a2fc50545b04",
+				"tarball": "https://registry.npmjs.org/@cloudflare/deploy-helpers/-/deploy-helpers-0.6.6.tgz",
+				"fileCount": 12,
+				"integrity": "sha512-ZbxWBDObbQobmUfPZ3YBtlTLb+HZFhzq0qMGFm7PXtoT5U2ATLONQkk5D6kWPyBTCt4XI7Jmi/4tYPHN9DIHyQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIBgZVehVEanO+MqM71tJVx28UQyzAonNveWDtVTAShyDAiEArVm/i1uUY73t8Z72TQQq+NCW1/VLXK93yGCnu1Yxhdc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fdeploy-helpers@0.6.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1254729
+			}
+		},
+		"0.6.7": {
+			"name": "@cloudflare/deploy-helpers",
+			"version": "0.6.7",
+			"dependencies": {
 				"blake3-wasm": "2.1.5",
 				"chalk": "5.3.0",
 				"command-exists": "1.2.9",
@@ -1248,9 +1300,9 @@
 				"p-queue": "9.0.0",
 				"pretty-bytes": "6.1.1",
 				"undici": "7.29.0",
-				"@cloudflare/workers-utils": "0.31.2",
 				"@cloudflare/cli-shared-helpers": "0.1.21",
-				"miniflare": "5.20260801.1-alpha"
+				"@cloudflare/workers-utils": "0.31.2",
+				"miniflare": "5.20260804.0-alpha"
 			},
 			"devDependencies": {
 				"@cspotcode/source-map-support": "0.8.1",
@@ -1265,18 +1317,18 @@
 				"tsup": "8.3.0",
 				"typescript": "5.8.3",
 				"vitest": "4.1.0",
-				"@cloudflare/containers-shared": "0.16.0",
 				"@cloudflare/workers-shared": "0.19.9",
+				"@cloudflare/containers-shared": "0.16.0",
 				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-ZbxWBDObbQobmUfPZ3YBtlTLb+HZFhzq0qMGFm7PXtoT5U2ATLONQkk5D6kWPyBTCt4XI7Jmi/4tYPHN9DIHyQ==",
-				"shasum": "8c5ad3ffcb0ed25d9c0183e91719a2fc50545b04",
-				"tarball": "https://registry.npmjs.org/@cloudflare/deploy-helpers/-/deploy-helpers-0.6.6.tgz",
+				"integrity": "sha512-J69+cZ5+eetVpZPkVXob2uH2bxJ5Y1+KrvW9rsuEYjEmqLL6jEcq5QIphknDBbEDFiEFTX1iZShqmvJVJUg+Uw==",
+				"shasum": "4d4b4728c050ac9f4b545711ac6e1e23fcf8a7b2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/deploy-helpers/-/deploy-helpers-0.6.7.tgz",
 				"fileCount": 12,
 				"unpackedSize": 1254729,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fdeploy-helpers@0.6.6",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fdeploy-helpers@0.6.7",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1284,7 +1336,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBgZVehVEanO+MqM71tJVx28UQyzAonNveWDtVTAShyDAiEArVm/i1uUY73t8Z72TQQq+NCW1/VLXK93yGCnu1Yxhdc="
+						"sig": "MEYCIQCySgqFq2wuVY6XYHSg42BMFM97qwu4E57i+7otSsezzwIhAPeVcBryXT3l4LYV7zTTmrj2yGzSCwoKNpqkl+uf94ua"
 					}
 				]
 			}
