@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"next": "0.0.4-1",
 		"beta": "0.0.0-be89144",
-		"latest": "0.10.2"
+		"latest": "0.10.3"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1927,8 +1927,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIA/DsrkNr/XVw4vZEyC5kNsof/STnOiPc56v8ruB94S4AiA6sS9JYznoDnwt+kk2v+mUU7MLc6QRhNCkLVtYEhbAOA=="
+						"sig": "MEQCIA/DsrkNr/XVw4vZEyC5kNsof/STnOiPc56v8ruB94S4AiA6sS9JYznoDnwt+kk2v+mUU7MLc6QRhNCkLVtYEhbAOA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1938,6 +1938,44 @@
 					}
 				},
 				"unpackedSize": 256212
+			}
+		},
+		"0.10.3": {
+			"name": "@cloudflare/workers-oauth-provider",
+			"version": "0.10.3",
+			"devDependencies": {
+				"tsdown": "^0.18.1",
+				"vitest": "^4.1.8",
+				"prettier": "^3.7.4",
+				"wrangler": "^4.115.0",
+				"pkg-pr-new": "^0.0.62",
+				"typescript": "^5.9.3",
+				"@changesets/cli": "^2.29.8",
+				"@cloudflare/workers-types": "^5.20260730.1",
+				"@changesets/changelog-github": "^0.5.2"
+			},
+			"dist": {
+				"shasum": "fd60f21153ddc082a74e8971c4dc79a2cbf116fb",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-oauth-provider/-/workers-oauth-provider-0.10.3.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-25ufMONJir9PllqVpK4GwOOoSFgpYm3+bM6NBedj7ufMCIfNf5jk4OI0LPuTJBaJgLl2lGCLqFqEPJXcSuPopQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCacpzAXxK86DfXjOms6oR2v9j6UlpV3VLh/AZH+eztKAIhAPRXx3rOKWsMV26wvLIuGt+nBUBdGkV9Os1dj45G8DEN",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIFaoQi2UzVQ8/umT2+5Q630q5qHOgvxheUlsm6ZEPEreAiEAzGJ2g9YX9MQ/dNdJH2piMAxghasshAEQAdDRjR7rAMA="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-oauth-provider@0.10.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 257536
 			}
 		}
 	}

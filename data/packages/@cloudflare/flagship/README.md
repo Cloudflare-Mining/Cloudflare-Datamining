@@ -145,6 +145,8 @@ const darkMode = client.getBooleanValue('dark-mode', false);
 | Logging               | `logging` option surfaces fetch errors and cache misses (off by default)     |
 | Response caching      | Opt-in per-context TTL + LRU cache via `cacheTtl` (off by default)           |
 | Retries + timeouts    | Configurable retry logic with `AbortController`-based timeouts (HTTP only)   |
+| Custom transport      | Inject `fetch` per client or per call — no global mutation (HTTP only)       |
+| Cancellation          | Caller `AbortSignal` aborts the in-flight request, never retried (HTTP only) |
 | Hooks                 | Built-in `LoggingHook` and `TelemetryHook`                                   |
 | Tree-shakeable        | Server and client bundles are fully isolated                                 |
 | TypeScript            | Strict types throughout                                                      |
