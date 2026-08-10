@@ -6,15 +6,23 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 10, 2026[Serving the most critical missions: Cloudflare for Government achieves FedRAMP Class D (High) Certified status](https://blog.cloudflare.com/fedramp-class-d-certification/)
+
+Cloudflare for Government achieves FedRAMP Class D (High) Certified status. We also announce our commitment to pursue DoD IL4 authorization. Cloudflare brings world-class security, performance, and developer products to the public sector.
+
+![Wesley Evans](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NY89SHS2051YPQ8PN11B.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Tom Lianza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F5DZ4RQ7MZN8EVG2J7A4.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jake Schaeufele](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWHPYY93PKDF2943PJ1P6JTH.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Wesley Evans](https://blog.cloudflare.com/author/wesley/), [Tom Lianza](https://blog.cloudflare.com/author/tom-lianza/), and [Jake Schaeufele](https://blog.cloudflare.com/author/jake-schaeufele/)
+
+[![BLOG-2966 hero image](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWJ8S81EFDW5RYDPNZEQSX7A.png&w=2048&h=1152&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/fedramp-class-d-certification/)
+
 August 7, 2026[Unveiling good and bad behaviors on the Agentic Internet](https://blog.cloudflare.com/good-and-bad-agentic-behaviors/)
 
-Cloudflare is shifting bot mitigation from point-in-time Risk assessment to continuous Trust evaluation. Learn how new good and bad behaviors from bots and agents are assessed by our systems, including BotBase and Precursor — and try out our Precursor Trace simulation to see how your own cursor movements would be assessed as human or bot. 
+Cloudflare is shifting bot mitigation from point-in-time Risk assessment to continuous Trust evaluation. Learn how new good and bad behaviors from bots and agents are assessed by our systems, including BotBase and Precursor — and try out our Precursor Trace simulation to see how your own cursor movements would be assessed as human or bot.
 
 ![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/) and [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZCHB9VT6PFY8DZNPV0SX1SS.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/good-and-bad-agentic-behaviors/)
 
 August 7, 2026[Introducing Radar Researcher: An AI tool for exploring Internet data in plain language](https://blog.cloudflare.com/introducing-radar-researcher/)
 
@@ -151,14 +159,6 @@ Cloudflare Wallets will provide AI agents with native payments and verifiable id
 ![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Will Papper](https://blog.cloudflare.com/author/will-papper/)
-
-August 4, 2026[Run CI/CD for millions of repos — on your platform, on Cloudflare](https://blog.cloudflare.com/ci-workflows/)
-
-Learn how to build customizable, sandboxed CI/CD pipelines natively on Cloudflare using Workflows, Artifacts, and the CI SDK. We walk through replacing complex YAML configurations with TypeScript workflow steps and self-healing AI agents.
-
-![André Venceslau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TZTSTWQ6JMKEC8GX38NE.png&w=64&h=64&f=webp&fit=cover&position=center)![Mia Malden](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4559TC07A12MQHAEK8YM1R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tomáš Hobza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ68VHPDKGWAD30V2CTC811Z.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[André Venceslau](https://blog.cloudflare.com/author/andre-venceslau/), [Mia Malden](https://blog.cloudflare.com/author/mia/), and [Tomáš Hobza](https://blog.cloudflare.com/author/tomas-hobza/)
 
 Load more
 
