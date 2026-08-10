@@ -678,7 +678,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/domain/bulk": {
 		"operationId": "domain-intelligence-get-multiple-domain-details",
@@ -1422,6 +1426,10 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.domains.bulks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

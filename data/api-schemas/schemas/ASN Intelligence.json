@@ -345,7 +345,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.asn",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/asn/{asn}/subnets": {
 		"operationId": "asn-intelligence-get-asn-subnets",
@@ -565,6 +569,10 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.asn.subnets",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

@@ -363,7 +363,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-delete-list-items",
@@ -786,7 +790,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists.items",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rules/lists": {
 		"operationId": "lists-get-lists",
@@ -1291,7 +1299,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}": {
 		"operationId": "lists-get-a-list",
@@ -1769,7 +1781,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-get-list-items",
@@ -1808,7 +1824,7 @@
 				"name": "cursor",
 				"in": "query",
 				"schema": {
-					"description": "The pagination cursor. An opaque string token indicating the position from which to continue when requesting the next/previous set of records. Cursor values are provided under `result_info.cursors` in the response. You should make no assumptions about a cursor's content or length.",
+					"description": "The pagination cursor. An opaque string token that indicates where to continue when requesting the next/previous set of records. The response provides cursor values under `result_info.cursors`. You should make no assumptions about a cursor's content or length.",
 					"type": "string",
 					"example": "zzz"
 				}
@@ -1915,10 +1931,10 @@
 																"type": "object",
 																"properties": {
 																	"hostname": {
-																		"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																		"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 																		"properties": {
 																			"exclude_exact_hostname": {
-																				"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																				"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
 																				"type": "boolean",
 																				"example": true
 																			},
@@ -2359,10 +2375,10 @@
 																		"type": "object",
 																		"properties": {
 																			"hostname": {
-																				"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																				"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 																				"properties": {
 																					"exclude_exact_hostname": {
-																						"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																						"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
 																						"type": "boolean",
 																						"example": true
 																					},
@@ -2826,7 +2842,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists.items",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}/items/{item_id}": {
 		"operationId": "lists-get-a-list-item",
@@ -2956,10 +2976,10 @@
 															"type": "object",
 															"properties": {
 																"hostname": {
-																	"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																	"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 																	"properties": {
 																		"exclude_exact_hostname": {
-																			"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																			"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
 																			"type": "boolean",
 																			"example": true
 																		},
@@ -3360,10 +3380,10 @@
 																	"type": "object",
 																	"properties": {
 																		"hostname": {
-																			"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																			"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 																			"properties": {
 																				"exclude_exact_hostname": {
-																					"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+																					"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
 																					"type": "boolean",
 																					"example": true
 																				},
@@ -3789,7 +3809,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists.items",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rules/lists/bulk_operations/{operation_id}": {
 		"operationId": "lists-get-bulk-operation-status",
@@ -4326,7 +4350,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists.bulk-operations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/rules/lists": {
 		"operationId": "lists-create-a-list",
@@ -4831,7 +4859,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-create-list-items",
@@ -4983,10 +5015,10 @@
 											"type": "object",
 											"properties": {
 												"hostname": {
-													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+													"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 													"properties": {
 														"exclude_exact_hostname": {
-															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
 															"type": "boolean",
 															"example": true
 														},
@@ -5405,7 +5437,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists.items",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}": {
 		"operationId": "lists-update-a-list",
@@ -5902,7 +5938,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-update-all-list-items",
@@ -6054,10 +6094,10 @@
 											"type": "object",
 											"properties": {
 												"hostname": {
-													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+													"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
 													"properties": {
 														"exclude_exact_hostname": {
-															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.",
+															"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
 															"type": "boolean",
 															"example": true
 														},
@@ -6476,6 +6516,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rules.lists.items",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

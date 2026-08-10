@@ -650,7 +650,7 @@
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser": {
 		"operationId": "brapi-get_DevtoolsBrowserAcquire",
 		"summary": "Acquire and connect to browser session.",
-		"description": "Acquires and establishes a WebSocket connection to a browser session.",
+		"description": "Acquires and establishes a WebSocket connection to a browser session. Session guardrails may be supplied in the `cf-brapi-guardrails` header as base64url-encoded JSON of the same `guardrails` object the POST body accepts (for example `{\"allowedDomains\":[\"*.example.com\"]}`).",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -690,6 +690,16 @@
 				"schema": {
 					"type": "boolean",
 					"default": false
+				}
+			},
+			{
+				"name": "cf-brapi-guardrails",
+				"in": "header",
+				"description": "Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets)",
+				"schema": {
+					"description": "Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets)",
+					"type": "string",
+					"example": "eyJhbGxvd2VkRG9tYWlucyI6WyIqLmV4YW1wbGUuY29tIl19"
 				}
 			}
 		],
