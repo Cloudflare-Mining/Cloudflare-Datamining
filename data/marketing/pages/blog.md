@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 10, 2026[Everything we launched during Agents Week](https://blog.cloudflare.com/agents-week-review-august-2026/)
+
+Our latest Agents Week has come to a close. Here's a recap of all the announcements we made, from Wallets to Radar.
+
+![Shelley Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48R153ZF4GWNZYC0QQPY6F.png&w=64&h=64&f=webp&fit=cover&position=center)![Ann Ming Samborski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MY1PMDMM9JK9SM0E02KA.png&w=64&h=64&f=webp&fit=cover&position=center)![Kathy Liao](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CCSZ168NDHJPTF31M9JS.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Shelley Jones](https://blog.cloudflare.com/author/shelley/), [Ann Ming Samborski](https://blog.cloudflare.com/author/ann-ming-samborski/), and [Kathy Liao](https://blog.cloudflare.com/author/kathy/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZEF2H4G3BD74C5TP4BWMS76.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/agents-week-review-august-2026/)
+
 August 10, 2026[Serving the most critical missions: Cloudflare for Government achieves FedRAMP Class D (High) Certified status](https://blog.cloudflare.com/fedramp-class-d-certification/)
 
 Cloudflare for Government achieves FedRAMP Class D (High) Certified status. We also announce our commitment to pursue DoD IL4 authorization. Cloudflare brings world-class security, performance, and developer products to the public sector.
@@ -13,8 +23,6 @@ Cloudflare for Government achieves FedRAMP Class D (High) Certified status. We a
 ![Wesley Evans](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NY89SHS2051YPQ8PN11B.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Tom Lianza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F5DZ4RQ7MZN8EVG2J7A4.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jake Schaeufele](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWHPYY93PKDF2943PJ1P6JTH.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Wesley Evans](https://blog.cloudflare.com/author/wesley/), [Tom Lianza](https://blog.cloudflare.com/author/tom-lianza/), and [Jake Schaeufele](https://blog.cloudflare.com/author/jake-schaeufele/)
-
-[![BLOG-2966 hero image](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWJ8S81EFDW5RYDPNZEQSX7A.png&w=2048&h=1152&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/fedramp-class-d-certification/)
 
 August 7, 2026[Unveiling good and bad behaviors on the Agentic Internet](https://blog.cloudflare.com/good-and-bad-agentic-behaviors/)
 
@@ -151,14 +159,6 @@ Agents can write code faster than teams can review, deploy, and maintain it. Tod
 ![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
-
-August 4, 2026[Announcing Cloudflare Wallets: the programmable wallet for the agentic Internet](https://blog.cloudflare.com/wallets/)
-
-Cloudflare Wallets will provide AI agents with native payments and verifiable identity on the web. Using the x402 protocol, agents can autonomously purchase APIs and content within clear safety guardrails.
-
-![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Will Papper](https://blog.cloudflare.com/author/will-papper/)
 
 Load more
 
