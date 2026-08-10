@@ -198,7 +198,11 @@
 		],
 		"x-api-token-group": [
 			"Zone Versioning Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.environments",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsList",
@@ -400,7 +404,11 @@
 		"x-api-token-group": [
 			"Zone Versioning Write",
 			"Zone Versioning Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.environments",
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsEdit",
@@ -665,7 +673,11 @@
 		],
 		"x-api-token-group": [
 			"Zone Versioning Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.environments",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsCreate",
@@ -930,7 +942,11 @@
 		],
 		"x-api-token-group": [
 			"Zone Versioning Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.environments",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/rollback": {
 		"operationId": "zonesEnvironmentsRollback",
@@ -1131,7 +1147,11 @@
 		],
 		"x-api-token-group": [
 			"Zone Versioning Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.environments",
+		"x-fern-sdk-method-name": "rollback"
 	},
 	"PUT /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsUpdate",
@@ -1396,6 +1416,10 @@
 		],
 		"x-api-token-group": [
 			"Zone Versioning Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zones.environments",
+		"x-fern-sdk-method-name": "update"
 	}
 }
