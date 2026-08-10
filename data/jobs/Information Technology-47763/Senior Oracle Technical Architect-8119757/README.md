@@ -5,65 +5,31 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p>Available Locations- New York</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare’s Engineering Team is home to some of the industry’s top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our Detection department sits at the heart of that mission: we identify automated, fraudulent, and malicious activity across the Internet and through our gateway. We develop advanced detection systems and machine learning models that operate at scale, collaborating with Product and Engineering teams across the company to protect our customers and stay ahead of the constantly evolving threat landscape.</p>
-<p><strong>Responsibilities</strong></p>
+<h2><span style="font-size: 12pt;">Available Locations: </span><span style="font-size: 10pt;"><strong>Austin, US</strong></span></h2>
+<h2><span style="font-size: 12pt;">About the Role</span></h2>
+<p>The Senior Oracle Technical Architect is the definitive technical architect responsible for developing, maintaining, governing, and standardizing all data capture/movement/reports involving our Oracle Fusion ERP/GTM/Integration Cloud environment. This highly influential role serves as the top techno-functional expert and is critical for leading the design and hands-on development of the most challenging, cross-functional technical solutions.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>Research, design, and evaluate detection models that identify automated, fraudulent, and malicious activity across Internet-scale data.</li>
-	<li>Dig into massive datasets to uncover the patterns and behaviors that distinguish adversaries from legitimate users.</li>
-	<li>Define how detection success is measured, designing metrics and evaluation strategies for problems where ground truth is noisy, delayed, or contested.</li>
-	<li>Stay current on emerging AI/ML research and evaluate how new techniques (e.g., LLMs, generative AI) can be applied to our products.</li>
-	<li>Partner with ML Engineers, Data Engineers, and Product to take detection approaches from research to production and measure their real-world impact.</li>
+	<li><strong>Technical Architecture: </strong>Oversee technical architecture, ensuring that all new integrations, extensions, conversions, workflows and customizations align with scalability, maintainability, and security standards across the entire Oracle ecosystem.</li>
+	<li><strong>Ownership:</strong> Act as the technical gatekeeper for all Oracle Fusion development and integration design, setting enterprise standards and defining the long-term technical roadmap.</li>
+	<li><strong>RICEW:</strong> Personally lead the design and hands-on development of the most challenging, cross-functional integrations and technical solutions, including Reports, Interfaces, Extensions, Conversions, and Workflows within OIC and the Fusion framework (using Groovy, VBCS, PaaS, OBN, Adapters, and Oracle AI Data).</li>
+	<li><strong>Security:</strong> Define security protocols (e.g., OAuth, API Gateway) and lead performance tuning initiatives for critical batch jobs and high-volume interfaces.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience&nbsp;</strong></p>
+<h2>Role Requirements</h2>
+<h2>Must-Have Skills</h2>
 <ul>
-	<li><strong>Fraud and bots at scale.</strong> You have experience across fraud, abuse, and/or bot detection on large, high-velocity traffic. You may focus on one, but you transfer instincts between them.</li>
-	<li><strong>Strong fundamentals, fluent in data.</strong> You have solid applied statistics, machine learning, and AI methodology fundamentals. You choose the right technique for the problem, and are fluent with large-scale data.</li>
-	<li>You have at least 5-7 years of experience professionally working in Data Science, ML Engineering, or Software Engineering.&nbsp;</li>
-	<li>You are very comfortable with Python &amp; SQL in production environments.</li>
+	<li><strong>12+ years</strong> of deep RICEW and support experience with Oracle Fusion ERP.</li>
+	<li><strong>Mandatory 6+ years:</strong> Proven history of designing and building complex custom technical/RICEW solutions within the Fusion framework (e.g., BI Publisher, Groovy scripting, VBCS, PaaS extensions, AI Agent Studio). Architectural and design experience for enterprise ERP/SCM/GTM system integrations is also required.</li>
+	<li><strong>Mandatory 6+ years:</strong>Expert-level, hands-on proficiency with Oracle Integration Cloud, including orchestration and standard adapter capabilities</li>
+	<li>Deep understanding of modern architecture (SOA, microservices, API management) and security protocols.</li>
+	<li>Good understanding of technical details of finance and supply chain modules within Oracle Fusion ERP/EPM/GTM ecosystem.</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<h2>Nice-to-Have Skills</h2>
 <ul>
-	<li><strong>At home in ground truth ambiguity.</strong> Building detections when ground truth is scarce is the heart of this job. You make real progress with weak, delayed, or absent labels and you're energized by adversaries that fight back.</li>
-	<li><strong>You don't burn signals.</strong> You understand (or are curious to learn) how to act on detections without tipping your hand, knowing that how you deploy and respond can erode your future visibility.</li>
-	<li><strong>Pragmatic about complexity.</strong> You know when a simple solution beats a complex one, and you don't chase small gains at disproportionate cost.</li>
-	<li><strong>Disciplined in code.</strong> You apply strong programming and engineering best practices in both research and production code.</li>
-	<li><strong>Impact-driven and clear.</strong> You connect your work to business impact and communicate clearly across technical and non-technical stakeholders.</li>
+	<li>Experience in an organization transitioning to the Oracle Cloud Ecosystem.</li>
+	<li>Hands-on experience building CI/CD tools (e.g., FlexDeploy, or custom VBCS) platforms.</li>
+	<li>Relevant professional product/functional certifications (e.g., Oracle Fusion, OIC/OPA, Database)</li>
 </ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>&nbsp;For New York City based hires: Estimated annual salary of $185,000 - $231,000.</li>
-</ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,36 +5,48 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco, CA</strong></p>
-<p><strong>About the role<br><br></strong>The Technical Marketing team works closely with product teams, sales and marketing to ensure our customers understand the technical details of how our products work. Our goal is to ensure the technical buyer and customer understands how Cloudflare products and solutions work in terms of their business needs. We are highly technical and get to touch every aspect of Cloudflare's technology.<strong><br></strong></p>
-<h4><strong>What you'll do</strong></h4>
-<p>As a Technical Marketing intern, you will help accelerate our plans to improve the content and tools we build for technical sales, partners and customers. You will be tasked with gathering feedback from the field, defining what customers are looking to understand and then helping build the videos, demonstrations and other technical assets. Your work will be key to improving our ability to explain to customers the complex technical details which will lead to an increase in sales. Our team is also looking at ways in which AI agents and MCP servers can be utilized to significantly increase our productivity. You will play a role in evaluating and deploying AI tools to help us build quicker.&nbsp;The ideal candidate has a hands on mindset, a get-it-done attitude and is not afraid of challenging the status quo. You should feel comfortable facing a brand new technology and having to read documentation and being hands on with servers, scripts and APIs.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations: London</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Cloudflare Data Intelligence &amp; Analytics (DIA) team has built a unified data &amp; ML platform to provide our internal Business Partners with actionable analytics, insights, and recommendations.</p>
+<p>Our goals are to:</p>
 <ul>
-	<li>Gain experience with all of Cloudflare's amazing technology and work with the people that build it.</li>
-	<li>Understand complex technologies and explain them in simple terms and align solutions to customer problems.</li>
-	<li>Explore real world uses of AI tools and understand how to deploy them.</li>
-	<li>Identify inefficiencies and implement automation to reduce the time it takes for technical sales to learn our solutions.</li>
-	<li>Collaborate with cross-functional teams to understand business needs and objectives, ensuring relevant and impactful content.</li>
-	<li>Partner with our Product Management and Special Projects team to improve strategies, products and services.</li>
+	<li>Democratize data &amp; intelligence for humans and agents</li>
+	<li>Build a context layer and an AI systems layer upon our unified data &amp; content platform</li>
+	<li>Support Cloudflare’s critical business needs</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>DIA is a ~ 75-member strong geographically distributed but organizationally centralized team. This role is within the growth &amp; adoption analytics pod based in London that works across several business functions, offering broad exposure to Cloudflare's entire business.</p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for an experienced Senior Data Analyst in London to scale our growth &amp; adoption analytics initiatives. You will be a trusted data advisor to our business partners, a technical coach to your peers, and the lead in terms of shaping AI-first data models, workflows, and agent-ready-datasets.</p>
+<p>Success in this role will rely on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence adoption. This role also requires a deep understanding of data infrastructure, job orchestration, and lineage, all with the use of AI-tooling as default.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Currently pursuing a degree in Management Information Systems (MIS), Information Technology, Technical Communication, Business Analytics,, Marketing, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Strong communication skills. Ability to explain complex concepts in a manner that's understandable without dumbing down the content.</li>
-	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
-	<li>Strong understanding of AI technologies such as AI agents, MCP servers and LLMs.</li>
-	<li>Proficient in operating systems, networking, Internet technologies (SSL/TLS/HTTP/SSH etc) and ability to write code to solve simple problems.</li>
-	<li>Previous experience in technical &amp; product marketing/product management is a plus.</li>
-	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing.</li>
-	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
+	<li>Own the development and maintenance of agent-ready curated datasets end-to-end</li>
+	<li>Provide analytics support and a strategic perspective to our business partners</li>
+	<li>Partner with data engineers, product managers, and stakeholders to enable data-driven answers to key business problems</li>
+	<li>Review Merge Requests created by your team of humans and agents</li>
+	<li>Take initiative to gather requirements, define, build, and maintain pipelines and metrics</li>
+	<li>Tell easily digestible and highly actionable stories with data to help stakeholders understand analytical insights</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Role Requirements</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>Demonstrable proficiency with analytics-relevant AI-tooling</li>
+	<li>4+ years experience in a centralized data analytics teams in close partnership with business stakeholders</li>
+	<li>Expert-level proficiency in writing and optimizing complex SQL queries is mandatory, with a proven ability to performance-tune complex queries and manage analysis workflows against large, petabyte-scale datasets (Candidates will be assessed on advanced SQL skills including window functions and common table expressions (CTEs))</li>
+	<li>3+ years experience working in version control environments using platforms such as Gitlab or Github</li>
+	<li>2+ years experience working with job orchestration tools like Apache Airflow, both as a pipeline developer and reviewer</li>
+	<li>2+ years experience with data ingestion and transformation frameworks (e.g., dbt, Fivetran, or custom/in-house developed platforms)</li>
+	<li>Initiative, curiosity, strong stakeholder engagement, and empathy</li>
+	<li>Experience translating business questions into analysis frameworks, converting results into business recommendations, and presenting those to stakeholders</li>
 </ul>
+<p><strong>Nice-to-Have Experience</strong></p>
+<ul>
+	<li>Experience and/or a keen interest in internet security, protocols, and edge-development</li>
+	<li>Analytics experience in a fast-growing technology, SaaS, or subscription-based business</li>
+	<li>Experience with statistical analysis programming languages (Python, R etc.)</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

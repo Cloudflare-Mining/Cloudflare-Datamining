@@ -5,40 +5,41 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>The Role:</strong></p>
+<p>We are seeking a highly skilled AI Security Research &amp; Red team engineer<strong> </strong>&nbsp;to join our Red Team within the Security Threat Detection, Response and Emulation organization. This is a critical role that will be at the forefront of protecting our company and customers from malicious threats. You will be responsible for driving security research, exercises, and activities that emulate real world attackers and attacks to drive improvements in Cloudflare’s security posture focusing on AI, Agents, harnesses and LLM’s.&nbsp;</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Bengaluru, India</li>
+	<li><strong>AI Security and Vulnerability Research: </strong>Stay current with emerging threats and perform deep-dive research to identify AI-specific vulnerabilities and risks in addition to general vulnerabilities across Cloudflare’s products and services.</li>
+	<li><strong>Agentic testing and adoption: </strong>As a core function, identifying AI-related attack surfaces through rigorous testing of agentic implementations and LLM usage which will help&nbsp; define requirements and implementation guidance while proactively.&nbsp;</li>
+	<li><strong>Adversary Simulation:</strong> Execution of full-chain red team operations targeting Cloudflare’s global infrastructure, corporate networks, and product ecosystems.</li>
+	<li><strong>Efficacy Testing:</strong> Establish a rigorous framework for testing "Security Efficacy"—measuring exactly how well our WAF, EDR, and SIEM detections perform against known TTPs (Tactics, Techniques, and Procedures).</li>
+	<li><strong>Purple Teaming:</strong> Foster a highly collaborative relationship with the Blue Team (Detection &amp; Response) to ensure findings are translated into immediate defensive improvements.</li>
+	<li><strong>Mentorship &amp; Growth:</strong> Be a technical leader, providing technical expertise while fostering a culture of curiosity, ethical hacking and partnering to improve Cloudflare’s security posture.&nbsp;</li>
+	<li><strong>Executive Reporting:</strong> Translate complex technical exploits into risk-based narratives for leadership, helping prioritize engineering resources where they matter most.</li>
 </ul>
-<h2>About the Role</h2>
-<p>We are looking for an experienced data scientist to join our Bangalore team and help scale the next generation of our AI/ML models. In this role, you will train predictive models and the workflows behind AI-driven applications, Agents, Chatbots that power teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing systems to implementation, deployment, and long-term ownership.</p>
-<p>You will focus on building scalable, reliable AI/ML models, services and GenAI powered application backends,&nbsp; partnering closely with data and full-stack engineers to deliver new features and operate the pipelines and platforms behind our products. Our stack spans multiple languages and technologies, including Python, React, and TypeScript, and continues to evolve. Many of our applications also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
-<h2>Responsibilities</h2>
+<p><strong>Partnerships</strong></p>
 <ul>
-	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
-	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
-	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
-	<li>Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.</li>
-	<li>Define, implement, and train statistical, machine learning, deep learning and generative AI models.</li>
-	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
-	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
-	<li>Active role in hiring, growing, and mentoring the data scientist team in Bengaluru.</li>
+	<li><strong>Security Incident Response Team (SIRT):</strong> You will act as the "sparring partner" for SIRT. By conducting unannounced exercises, you help them refine their playbooks, test their on-call rotations, and ensure their forensic tooling is effective under pressure.</li>
+	<li><strong>Threat Detection &amp; Threat Engineering:</strong> You will partner closely with these teams to bridge the gap between adversary simulation and defensive coverage. You will proactively identify detection gaps, lead the development of new detection logic, and establish rigorous validation frameworks to test and tune detections against emerging TTPs.</li>
+	<li><strong>Product Engineering/SRE:</strong> We operate as "Customer Zero" of our own products, your red teaming findings will drive resilience in processes and implementations, ultimately making Cloudflare and its customers more secure.</li>
+	<li><strong>Governance, Risk, and Compliance (GRC):</strong> You will bridge the gap between "paper security" and "technical reality." By providing empirical evidence of control effectiveness, you help GRC move away from manual audits and toward continuous, automated compliance validation.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Required Qualifications:</strong></p>
 <ul>
-	<li>Bachelors or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
-	<li>4-9 years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)</li>
-	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
-	<li>3+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in scientific computing using Python.</li>
-	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;</li>
-	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
-	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
-	<li>Proficiency in large language models and the frameworks (Langchain, Langgraph, etc.) necessary for implementing GenAI applications, such as AI Agents, chatbots and related use cases.</li>
-	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
-	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
-	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
+	<li><strong>Experience:</strong> 4+ years in offensive security, application security or other relevant field</li>
+	<li><strong>Deep knowledge:&nbsp; </strong>AI, Coding agents, LLMs, prompt engineering, AI-related attack vectors (e.g., prompt injection, jailbreaking), and Agentic concepts all for use in the red team but also testing Cloudflare&nbsp; uses.</li>
+	<li><strong>Technical Roots:</strong> A strong background in manual penetration testing, exploit development, or cloud security (AWS/GCP/Bare Metal).</li>
+	<li><strong>Operational Mindset:</strong> Experience using the MITRE ATT&amp;CK framework to map coverage and identify "blind spots" in defensive telemetry.</li>
+	<li><strong>Communication Skills:</strong> The ability to explain a complex "0-day" exploit to a non-technical stakeholder while maintaining the respect of a deep-dive engineering team.</li>
+	<li><strong>Tooling Familiarity:</strong> Knowledge of automated breach and attack simulation (BAS) tools, as well as custom-built frameworks for payload delivery and C2 infrastructure.</li>
 </ul>
+<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li data-path-to-node="3">For New York based hires: Estimated annual salary of $166,000 - $208,000.</li>
+</ul>
+<h3 data-path-to-node="4"><strong data-path-to-node="4" data-index-in-node="0">Equity</strong></h3>
+<p data-path-to-node="5">This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
