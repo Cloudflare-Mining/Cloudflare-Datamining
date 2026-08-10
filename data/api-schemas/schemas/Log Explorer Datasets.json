@@ -71,7 +71,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -82,22 +84,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -106,13 +116,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -149,14 +163,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -498,7 +517,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -509,22 +530,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -533,13 +562,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -576,14 +609,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -922,7 +960,9 @@
 												"description": "RFC3339 timestamp recording when the API created this dataset.",
 												"type": "string",
 												"format": "date-time",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"dataset": {
 												"description": "Dataset type name (e.g. `http_requests`).",
@@ -933,22 +973,30 @@
 												"description": "Unique dataset ID.",
 												"type": "string",
 												"pattern": "^[a-f0-9]{32}$",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"deletion_protection": {
 												"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 												"type": "boolean",
-												"x-auditable": true
+												"default": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"enabled": {
 												"description": "Whether log ingest is currently active for this dataset.",
 												"type": "boolean",
-												"x-auditable": true
+												"default": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"object_id": {
 												"description": "Public ID of the account or zone that owns this dataset.",
 												"type": "string",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"object_type": {
 												"description": "Whether this dataset belongs to an account or a zone.",
@@ -957,13 +1005,17 @@
 													"account",
 													"zone"
 												],
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"updated_at": {
 												"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 												"type": "string",
 												"format": "date-time",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"required": [
@@ -1259,7 +1311,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -1270,22 +1324,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -1294,13 +1356,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -1337,14 +1403,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -1931,7 +2002,9 @@
 												"description": "RFC3339 timestamp recording when the API created this dataset.",
 												"type": "string",
 												"format": "date-time",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"dataset": {
 												"description": "Dataset type name (e.g. `http_requests`).",
@@ -1942,22 +2015,30 @@
 												"description": "Unique dataset ID.",
 												"type": "string",
 												"pattern": "^[a-f0-9]{32}$",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"deletion_protection": {
 												"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 												"type": "boolean",
-												"x-auditable": true
+												"default": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"enabled": {
 												"description": "Whether log ingest is currently active for this dataset.",
 												"type": "boolean",
-												"x-auditable": true
+												"default": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"object_id": {
 												"description": "Public ID of the account or zone that owns this dataset.",
 												"type": "string",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"object_type": {
 												"description": "Whether this dataset belongs to an account or a zone.",
@@ -1966,13 +2047,17 @@
 													"account",
 													"zone"
 												],
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											},
 											"updated_at": {
 												"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 												"type": "string",
 												"format": "date-time",
-												"x-auditable": true
+												"readOnly": true,
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed"
 											}
 										},
 										"required": [
@@ -2268,7 +2353,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -2279,22 +2366,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -2303,13 +2398,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -2346,14 +2445,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -2928,12 +3032,14 @@
 										"name",
 										"enabled"
 									]
-								}
+								},
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filter": {
 								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nIf provided, replaces the dataset's default filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -2989,7 +3095,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -3000,22 +3108,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -3024,13 +3140,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -3067,14 +3187,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -3395,12 +3520,14 @@
 										"name",
 										"enabled"
 									]
-								}
+								},
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filter": {
 								"description": "Optional Logpush filter predicate to restrict which events are ingested.\nIf provided, replaces the dataset's default filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -3456,7 +3583,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -3467,22 +3596,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -3491,13 +3628,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -3534,14 +3675,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -3849,12 +3995,14 @@
 							"deletion_protection": {
 								"description": "Set to `false` to allow deletion of this dataset.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"enabled": {
 								"description": "Whether to enable or disable log ingest for this dataset.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"fields": {
 								"description": "Controls which fields the API ingests after the update. Defaults\nto all available fields when absent.\n",
@@ -3877,13 +4025,15 @@
 										"name",
 										"enabled"
 									]
-								}
+								},
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filter": {
 								"description": "Optional Logpush filter predicate to restrict which events are\ningested. If omitted, the existing filter is left unchanged. Set\nto an empty string (`\"\"`) to clear the filter. Otherwise,\nreplaces the dataset's filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
 								"type": "string",
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -3939,7 +4089,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -3950,22 +4102,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -3974,13 +4134,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -4017,14 +4181,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
@@ -4273,12 +4442,14 @@
 							"deletion_protection": {
 								"description": "Set to `false` to allow deletion of this dataset.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"enabled": {
 								"description": "Whether to enable or disable log ingest for this dataset.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"fields": {
 								"description": "Controls which fields the API ingests after the update. Defaults\nto all available fields when absent.\n",
@@ -4301,13 +4472,15 @@
 										"name",
 										"enabled"
 									]
-								}
+								},
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"filter": {
 								"description": "Optional Logpush filter predicate to restrict which events are\ningested. If omitted, the existing filter is left unchanged. Set\nto an empty string (`\"\"`) to clear the filter. Otherwise,\nreplaces the dataset's filter entirely.\nSee [Logpush filters](https://developers.cloudflare.com/logs/reference/filters/)\nfor syntax and examples.\n",
 								"type": "string",
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -4363,7 +4536,9 @@
 													"description": "RFC3339 timestamp recording when the API created this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"dataset": {
 													"description": "Dataset type name (e.g. `http_requests`).",
@@ -4374,22 +4549,30 @@
 													"description": "Unique dataset ID.",
 													"type": "string",
 													"pattern": "^[a-f0-9]{32}$",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"deletion_protection": {
 													"description": "Whether deletion is blocked. Set to `false` before deleting the dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"description": "Whether log ingest is currently active for this dataset.",
 													"type": "boolean",
-													"x-auditable": true
+													"default": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"object_id": {
 													"description": "Public ID of the account or zone that owns this dataset.",
 													"type": "string",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"object_type": {
 													"description": "Whether this dataset belongs to an account or a zone.",
@@ -4398,13 +4581,17 @@
 														"account",
 														"zone"
 													],
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"updated_at": {
 													"description": "RFC3339 timestamp recording when the API last updated this dataset.",
 													"type": "string",
 													"format": "date-time",
-													"x-auditable": true
+													"readOnly": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -4441,14 +4628,19 @@
 															"name",
 															"enabled"
 														]
-													}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"filter": {
 													"description": "The Logpush filter predicate applied to this dataset. Omitted\nwhen no filter is set.\n",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"required": [
+												"fields"
+											],
 											"type": "object"
 										}
 									]
