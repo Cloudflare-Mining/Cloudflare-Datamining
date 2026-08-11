@@ -22,8 +22,9 @@ things in it.
   module. Pick a full Linux container, a fast in-Worker shell, or an
   isolated JavaScript runtime, all against the same files.
 - **Batteries for agents.** Ready-made [AI SDK](https://github.com/vercel/ai)
-  tools (`read`, `write`, `edit`, `ls`, `exec`), a git client, R2-backed
-  read-only mounts, and helpers for publishing files.
+  tools (`read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, and optional
+  `exec`), a git client, R2-backed read-only mounts, and helpers for publishing
+  files.
 
 The Workspace can also run with no execution backend at all, giving you
 just the filesystem.
@@ -100,6 +101,7 @@ quickest way to get `exec` working:
 ```ts
 import { withWorkspace, getWorkspace } from "@cloudflare/computer";
 import { WorkerShellBackend } from "@cloudflare/computer/backends/worker-shell";
+import curlModules from "@cloudflare/computer/shell/curl";
 import { DurableObject } from "cloudflare:workers";
 
 export class Agent extends withWorkspace(
@@ -111,6 +113,7 @@ export class Agent extends withWorkspace(
         loader: self.env.LOADER,
         workspace: { binding: "Agent", id: self.ctx.id.toString() },
         ctx: self.ctx,
+        commands: [curlModules],
       }),
     ],
   }),
@@ -125,6 +128,16 @@ Add the loader binding and the `experimental` flag to `wrangler.jsonc`:
   "worker_loaders": [{ "binding": "LOADER" }]
 }
 ```
+
+The worker shell ships as feature groups: an always-on core plus
+one optional group per command at
+`@cloudflare/computer/shell/<feature>`. Import the groups you want
+and pass them to `WorkerShellBackend`'s `commands` option; a group you
+never import is unreachable in your bundle and the bundler drops
+it. The optional groups are `curl`, `html-to-markdown`, `python`,
+`sqlite`, `js-exec`, `yq`, `file`, `xan`, and `jq`. `curl` runs on
+the isolate's global `fetch` (no `undici` in the bundle); egress
+stays governed by the Dynamic Worker's `globalOutbound`.
 
 Now `exec` runs against the same files your `fs` calls wrote:
 
@@ -242,9 +255,8 @@ Alongside `exec`, the runtime exposes `getExec`, `killExec`, and
 - **Worker JavaScript** evaluates a module with structured
   input/results, durable relative imports, configured libraries,
   Workspace-backed `node:fs/promises`, and trusted `ws:git` /
-  `ws:artifacts` modules. It runs after `runtime.exec()` returns, so
-  pass `waitUntil: ctx.waitUntil.bind(ctx)` to `Workspace`; the backend
-  refuses to connect without it. See
+  `ws:artifacts` modules. It runs after `runtime.exec()` returns; the
+  run stays alive while its event stream is consumed. See
   [`docs/17_isolate_javascript.md`](../../docs/17_isolate_javascript.md)
   and [`examples/worker-javascript`](../../examples/worker-javascript).
 
@@ -255,8 +267,10 @@ to a named one — see [Multiple backends](#multiple-backends).
 
 `@cloudflare/computer/tools` ships AI SDK tools that wrap the Workspace
 surfaces, ready to hand to `generateText`, `streamText`, or an agent
-framework's `getTools()`. The default set is `read`, `write`, `edit`,
-and `ls`; `exec` and `publish` are added when you configure them.
+framework's `getTools()`. The default set is `read`, `ls`, `find`,
+`grep`, `write`, `edit`, and `delete`; `exec` and `publish` are added
+when you configure them. Read-only mode keeps `read`, `ls`, `find`, and
+`grep`.
 
 ```ts
 import { createAITools } from "@cloudflare/computer/tools";
@@ -275,7 +289,15 @@ const tools = createAITools({
 ```
 
 The model reads each backend's `description` when deciding where a
-command should run, so write them in plain language. See
+command should run, so write them in plain language. Truncated text
+model output keeps both line and byte continuations; pass both to the
+next call to avoid transferring the same bytes again. Eligible image and
+PDF bytes are captured once during the bounded tool execution and returned
+as AI SDK `file` model output without re-reading the file. SVG source remains
+text. `ls`, `find`, and `grep` pass pagination through to the storage layer
+and return `nextOffset` when more results exist. File mutations share
+locks across tool sets for the same workspace, and recursive deletion
+excludes mutations throughout its subtree. See
 [`docs/09_tool_interface.md`](../../docs/09_tool_interface.md).
 
 ## Git
@@ -389,7 +411,7 @@ on a computerd instance.
 | `@cloudflare/computer/backends/container` | `CloudflareContainerBackend` and `withWorkspaceContainer`. Pulls in the computerd / capnweb sync plumbing. |
 | `@cloudflare/computer/backends/worker-shell` | `WorkerShellBackend` and the bundled just-bash runtime. |
 | `@cloudflare/computer/backends/worker-javascript` | `WorkerJavaScriptBackend`, configured libraries, durable imports, `node:fs/promises`, and trusted `ws:git` / `ws:artifacts`. |
-| `@cloudflare/computer/tools` | AI SDK tools for agents: `read`, `write`, `edit`, `ls`, optional `exec` and `publish`. |
+| `@cloudflare/computer/tools` | AI SDK tools for agents: `read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, and optional `exec` and `publish`. |
 | `@cloudflare/computer/git` | Opt-in `isomorphic-git` glue for checkouts inside the workspace. |
 | `@cloudflare/computer/assets` | `createAssets` — share a workspace file to R2 as a presigned URL. |
 | `@cloudflare/computer/artifacts` | `createArtifact` and its CLI, a session-scoped facade over the Cloudflare Artifacts binding. |
