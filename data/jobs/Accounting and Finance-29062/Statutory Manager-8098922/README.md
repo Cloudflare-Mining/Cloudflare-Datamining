@@ -23,11 +23,12 @@
 <p>Proven experience acting as a primary reviewer for audited statutory financial statements in a multinational corporate framework</p>
 <p>Extensive progressive accounting and tax compliance experience, with a proven track record of managing highly complex processes, driving strategic initiatives, and navigating ambiguous, precedent-setting financial scenarios.</p>
 <p>Demonstrated capability to analyze unique, significant business issues, evaluate intangibles, and independently formulate creative, effective solutions.</p>
-<p><strong>Language Proficiency: </strong>Professional fluency in Spanish and English is required</p>
+<p><strong>Language Proficiency: </strong>Professional fluency in English is required</p>
 <p><br><br></p>
 <p><strong>Nice-to-Have Skills</strong></p>
 <p>Relevant professional certification such as a CPA, Chartered Accountant (CA), ACCA</p>
 <p>Proficiency with Oracle and NetSuite&nbsp;</p>
+<p>Professional fluency in Spanish</p>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <ul>
