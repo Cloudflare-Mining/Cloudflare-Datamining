@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 11, 2026[Cloudflare DDoS Threat Report H1 2026: 1 Tbps attacks soar as DNS floods and geopolitical tensions drive a new wave](https://blog.cloudflare.com/ddos-threat-report-2026-h1/)
+
+In the first half of 2026, Cloudflare detected a 519% surge in hyper-volumetric DDos attacks across its network. These attacks were driven heavily by DNS and CLDAP reflection vectors. This report breaks down how major geopolitical conflicts reshaped the global cyber threat landscape.
+
+![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQNQBJ1WH5E5QSQP8KFDVJV.png&w=2048&h=1152&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/ddos-threat-report-2026-h1/)
+
 August 10, 2026[Everything we launched during Agents Week](https://blog.cloudflare.com/agents-week-review-august-2026/)
 
 Our latest Agents Week has come to a close. Here's a recap of all the announcements we made, from Wallets to Radar.
@@ -13,8 +23,6 @@ Our latest Agents Week has come to a close. Here's a recap of all the announceme
 ![Shelley Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48R153ZF4GWNZYC0QQPY6F.png&w=64&h=64&f=webp&fit=cover&position=center)![Ann Ming Samborski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MY1PMDMM9JK9SM0E02KA.png&w=64&h=64&f=webp&fit=cover&position=center)![Kathy Liao](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CCSZ168NDHJPTF31M9JS.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Shelley Jones](https://blog.cloudflare.com/author/shelley/), [Ann Ming Samborski](https://blog.cloudflare.com/author/ann-ming-samborski/), and [Kathy Liao](https://blog.cloudflare.com/author/kathy/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZEF2H4G3BD74C5TP4BWMS76.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/agents-week-review-august-2026/)
 
 August 10, 2026[Serving the most critical missions: Cloudflare for Government achieves FedRAMP Class D (High) Certified status](https://blog.cloudflare.com/fedramp-class-d-certification/)
 
@@ -151,14 +159,6 @@ Identity-aware AI Gateway is now in open beta. User Insights turns that traffic 
 ![Ming Lu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449KZ4869TJZZSHHFJXPTB.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Ayush Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449VZTK4C95VB94E47SS8C.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Ming Lu](https://blog.cloudflare.com/author/ming-lu/), [Kenny Johnson](https://blog.cloudflare.com/author/kenny/), and [Ayush Kumar](https://blog.cloudflare.com/author/ayush/)
-
-August 4, 2026[The Agent Development Lifecycle has arrived on Cloudflare](https://blog.cloudflare.com/agent-development-lifecycle/)
-
-Agents can write code faster than teams can review, deploy, and maintain it. Today we're introducing the Agent Development Lifecycle and the Cloudflare primitives that underpin it
-
-![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/)
 
 Load more
 
