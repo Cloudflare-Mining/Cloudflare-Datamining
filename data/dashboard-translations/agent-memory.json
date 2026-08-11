@@ -1,0 +1,23 @@
+{
+	"agent_memory.overview.title": "Agent Memory",
+	"agent_memory.overview.description": "Persistent memory for AI agents. Monitor how your agents ingest conversations and recall memories across sessions.",
+	"agent_memory.overview.documentation": "Documentation",
+	"agent_memory.get_started.title": "Create your first namespace",
+	"agent_memory.get_started.description": "Agent Memory gives your AI agents persistent memory across sessions. Create a namespace with Wrangler to get started, then bind it to your Worker.",
+	"agent_memory.charts.ingest.description": "Ingest operations over time, split by outcome (success or error).",
+	"agent_memory.charts.recall.description": "Recall operations over time, split by outcome (success or error).",
+	"agent_memory.charts.remember.description": "Remember operations over time, split by outcome (success or error).",
+	"agent_memory.charts.delete.description": "Memory delete operations over time, split by outcome (success or error). Session deletes are a separate operation and aren't included here.",
+	"agent_memory.summary.requests.title": "Requests",
+	"agent_memory.summary.errors.title": "Errors",
+	"agent_memory.summary.ingest.title": "Ingest",
+	"agent_memory.summary.recall.title": "Recall",
+	"agent_memory.summary.load_error": "Couldn't load summary metrics.",
+	"agent_memory.summary.window": "Last 7 days",
+	"agent_memory.operation.ingest": "Ingest",
+	"agent_memory.operation.recall": "Recall",
+	"agent_memory.operation.remember": "Remember",
+	"agent_memory.operation.delete": "Delete memory",
+	"agent_memory.status.success": "Success",
+	"agent_memory.status.error": "Error"
+}
