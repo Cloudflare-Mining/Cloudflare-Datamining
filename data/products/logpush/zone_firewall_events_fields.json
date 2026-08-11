@@ -1,4 +1,5 @@
 {
+	"AISecurityCustomTopicCategories": "object; Customer-defined AI Security topic labels and their relevance scores. A score of 1 indicates the highest relevance, and 99 indicates the lowest relevance.",
 	"AISecurityInjectionScore": "int; The score indicating the likelihood of a prompt injection attack in the request, as determined by AI Security.",
 	"AISecurityPIICategories": "array[string]; List of PII categories detected in the request by AI Security.",
 	"AISecurityTokenCount": "int; The number of tokens in the request, as counted by AI Security.",
