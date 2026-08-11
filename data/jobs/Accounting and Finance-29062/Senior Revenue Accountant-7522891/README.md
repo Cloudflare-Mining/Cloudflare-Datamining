@@ -5,55 +5,55 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco, CA</strong></p>
-<p><strong>About the role<br><br></strong>The Customer Advocacy Intern will support the team responsible for building, managing and growing customer marketing programs. Reporting to the Principle, Customer Advocacy Manager, the ideal candidate will be interested in a focus on customer storytelling and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to build a better internet.<strong><br></strong></p>
-<h4><strong>What you'll do<br></strong></h4>
-<p>You will shadow the Customer Advocacy Manager and work cross functionally with global teams in building customer stories, and scaling customer advocacy programs, including participation with enterprise customers across many industries. You will work with Strategy, Sales, Customer Success, Marketing, Product, and Communications.&nbsp;</p>
-<p>The candidate is an entry level intern who will work closely with the global strategy team. Success is measured by the ability to drive forward efficiently and at the speed of the business, learn how to use AI tools to drive efficiency, and deliver quality content.</p>
-<p>The main projects are:</p>
-<p><strong>Customer References:</strong></p>
+<p><strong>Available Locations: Austin, TX, San Francisco, CA,</strong><strong> New York City, NY&nbsp;</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Senior Revenue Accountant’s primary responsibility is ensuring the Company’s revenue recognition is in compliance with US GAAP and Company policies, while leaning heavily into AI-driven automation to enhance process efficiency and scalability. The role is both advisory and operational in nature, helping business partners make informed decisions while managing complex accounting processes—including token-based usage and evolving AI-related revenue streams—through the adoption of innovative, automated tools.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Help support and fulfill sales 1:1 and RFP requests for customer references working with tools and across customer advocacy and account teams</li>
-	<li>Manage/track customer references requests via customer marketing tools</li>
-	<li>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;</li>
+	<li>Participates in accounting close activities, including:</li>
+	<ul>
+		<li>Leverage AI and automation tools to streamline close processes (ie flux analysis automation, enhancing reconciliations, automating large datasets)</li>
+		<li>Partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
+		<li>Complete contract accounting of executed customer contracts</li>
+		<li>Preparation / review of journal entries</li>
+		<li>Preparation / review of reconciliations and related financial analysis for management and external reporting</li>
+	</ul>
+	<li>Participates in Company-wide AI driven initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities&nbsp;</li>
+	<li>Proactively identify and implement AI-driven automation solutions to transform revenue accounting workflows, prioritizing process efficiency, scalability, and reduction of manual effort.</li>
+	<li>Adopt a "clean sheet" methodology to evaluate operational processes, specifically leveraging generative AI and advanced automation tools to streamline complex tasks and enhance overall accuracy.</li>
+	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
+	<li>Mentors and supports junior members of the team and provides feedback</li>
+	<li>Communicates any problems to senior management timely</li>
+	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
+	<li>Establish and track Key Performance Indicators (KPI’s)</li>
+	<li>Prepares schedules in support of the external audit process while also utilizing AI capabilities to streamline any workbooks&nbsp;</li>
+	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
+	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
 </ul>
-<p><strong>Customer Advocacy:&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Help to qualify, develop and maintain a targeted pipeline of strategic customer relationships</li>
-	<li>Help to qualify incoming nominations &nbsp;</li>
-	<li>Contribute to the development of high quality, world-class customer story content and promotion</li>
-</ul>
-<p><strong>Advisory Boards and Councils:&nbsp;</strong></p>
-<ul>
-	<li>Shadow the process and contribute to our customer advisory boards/councils</li>
-	<li>Help coordinate across many teams and executives, pre/post event success &nbsp;</li>
-</ul>
-<h4><strong>Responsibilities</strong></h4>
-<ul>
-	<li>Collaborate with the Strategy team to develop and execute customer marketing strategies that align with business goals.</li>
-	<li>Support the research, writing, and editing of engaging case studies, internal and external interviews, and other marketing collateral.</li>
-	<li>Learn and support marketing and customer advocacy tech stack.</li>
-	<li>Contribute to planning and brainstorming sessions, bringing creative ideas and new efficiencies using AI to the table.</li>
-	<li>Support the team in analyzing advocacy activity performance and identifying opportunities for improvement.</li>
-	<li>Contribute to monthly and quarterly reporting, including newsletters</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, Business, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sep-Dec).</li>
-	<li>A strong portfolio showcasing your writing samples across different formats (e.g., blog posts, articles, essays).</li>
-	<li>Ability to write clearly, concisely, and adaptably for various digital platforms and audiences.</li>
-	<li>Strong project management skills.</li>
-	<li>Strong research skills and a keen eye for detail.</li>
-	<li>Excellent communication and collaboration skills.</li>
-	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
-	<li>A passion for technology and its impact on the internet is desirable.</li>
+	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
+	<li>Active CPA</li>
+	<li>Accounting/Audit firm experience preferred&nbsp;</li>
+	<li>4+ years of experience in accounting roles</li>
+	<li>Proven ability to leverage AI and automation tools to drive process efficiencies, data analysis, and workflow improvements.</li>
+	<li>Strong understanding of revenue accounting rules under ASC 606</li>
+	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
+	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
+	<li>Ability to work effectively with various departments, particularly Sales</li>
+	<li>Ability to manage multiple priorities</li>
+	<li>Flexibility to work under time constraints and deadlines</li>
+	<li>Must be meticulous, detail oriented, and organized</li>
+	<li>Strong interpersonal and communication skills</li>
+	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
+	<li>Highly proficient in advanced MS Excel</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
-</ul>
+<p>San Francisco Estimated Base salary $131,000 - $180,000.</p>
+<p>New York Estimated Base salary $126,000 - $173,000.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
