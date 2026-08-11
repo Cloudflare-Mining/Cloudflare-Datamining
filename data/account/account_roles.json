@@ -1071,8 +1071,16 @@
 	{
 		"id": "98a33bce907b575c9607725ec26ef20a",
 		"name": "Workers Editor",
-		"description": "Can use the workers editor.",
+		"description": "Read, update, and deploy all Workers in this account. Includes\nscript content, settings, routes, schedules, versions, deployments,\nand observability. Cannot create or delete Workers — use Workers\nAdmin for that. This replaces Workers Editor (now deprecated),\nwhich previously covered the dash code editor.\n",
 		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone": {
 				"read": true,
 				"edit": false
